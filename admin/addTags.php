@@ -16,9 +16,12 @@ ob_start();
 $connection = mysql_connect("ramen.cs.man.ac.uk", "11_COMP10120_D1", "ztDsBWSMqDny80BR") or die("Could not connect: " . mysql_error());
 mysql_select_db("11_COMP10120_D1", $connection) or die("Could not select database");
 
+
+
 if (isset($_POST['addTag']))
 {
-  mysql_query("INSERT INTO `tags` VALUES ('', '{$_POST['tag']}', 1)") or die("Could not add tag");
+  $tag = strtolower($_POST['tag']);
+  mysql_query("INSERT INTO `tags` VALUES ('', '{$tag}', 1)") or die("Could not add tag");
   echo $_POST['tag'] . " has been added to the tags list.";
 }
 else
