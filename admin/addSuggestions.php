@@ -88,11 +88,19 @@ else
 {
   $image = "/images/" . $_FILES['image']['name'];
   
+  echo "INSERT INTO `suggestions` VALUES (
+                                                 '{$_POST['category']}', '{$_POST['tags']}', '{$_POST['age']}', '{$_POST['title']}', '{$_POST['author']}', 
+                                                 '{$_POST['gender']}', 'image', '', '{$_POST['summary']}', '{$_POST['description']}', '{$_SERVER['REQUEST_TIME']}', 
+                                                 '{$_POST['created_by']}', '', '', '{$_POST['length']}', '{$_POST['url']}','{$_POST['release_year']}'
+                                                ";
+  
   mysql_query("INSERT INTO `suggestions` VALUES (
                                                  '{$_POST['category']}', '{$_POST['tags']}', '{$_POST['age']}', '{$_POST['title']}', '{$_POST['author']}', 
                                                  '{$_POST['gender']}', 'image', '', '{$_POST['summary']}', '{$_POST['description']}', '{$_SERVER['REQUEST_TIME']}', 
                                                  '{$_POST['created_by']}', '', '', '{$_POST['length']}', '{$_POST['url']}','{$_POST['release_year']}'
-                                                ") or die("Could not add suggestion");
+                                                ") or die("Could not add suggestion: ".mysql_error());
+												
+												
   
   copy($_FILES['image']['tmp_name'], $image);
   
