@@ -90,9 +90,9 @@ else
   
   mysql_query("INSERT INTO `suggestions` VALUES (
                                                  '{$_POST['category']}', '{$_POST['tags']}', '{$_POST['age']}', '{$_POST['title']}', '{$_POST['author']}', 
-                                                 '{$_POSt['gender']}', 'image', '', '{$_POST['summary']}', '{$_POST['description']}', '{$_SERVER['REQUEST_TIME']}', 
+                                                 '{$_POST['gender']}', 'image', '', '{$_POST['summary']}', '{$_POST['description']}', '{$_SERVER['REQUEST_TIME']}', 
                                                  '{$_POST['created_by']}', '', '', '{$_POST['length']}', '{$_POST['url']}','{$_POST['release_year']}'
-                                                ) or die("Could not add suggestion");
+                                                ") or die("Could not add suggestion");
   
   copy($_FILES['image']['tmp_name'], $image);
   
@@ -101,9 +101,8 @@ else
 
 mysql_close($connection);
 
-?> 
 
-_close($connection);
+//_close($connection);
 
 ?> 
 
