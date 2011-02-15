@@ -48,7 +48,7 @@ if(loggedIn()) {
 				include('viewSuggestions.php');
 				
 		break; case 'addTags':
-				$page['page'] = 'View Tags';
+				$page['page'] = 'Add Tags';
 				include('addTags.php');
 				
 		break; case 'logout':
