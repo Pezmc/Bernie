@@ -1,3 +1,4 @@
+<h1>View Suggestions</h1>
 <?php
 
 // Connect to the database
@@ -14,3 +15,4 @@ while ($row = mysql_fetch_array($result))
 mysql_close($connection);
 
 ?>
+<a href="index.php">Back</a>
