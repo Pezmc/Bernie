@@ -12,6 +12,8 @@
  *
 /*/
 
+echo "yay";
+
 /* ===== God like code from here on in ===== */
 
 /* Include our systems main parts, these are just varibles and functions */
