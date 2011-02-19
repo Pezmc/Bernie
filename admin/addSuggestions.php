@@ -106,11 +106,9 @@ Release year:
 } 
 else
 { 
-	print_r($_POST);
-	print_r($_FILES);
 
-	$dir = "../".$CONFIG['imagedir']. $_POST['category'] . "/" . $_POST['author'] . "/";
-	$target_image = $dir . str_replace(" ", "_", $_POST['title'].'_'.substr(md5(time()), 0, 3).'.jpg');
+	$dir = "../".$CONFIG['imagedir']. sanitise(str_replace(" ",'',$_POST['category']),3) . "/" . sanitise(str_replace(" ",'',$_POST['author']),3) . "/";
+	$target_image = $dir . str_replace(" ", "_", sanitise($_POST['title'],3).'_'.substr(md5(time()), 0, 3).'.jpg');
 	if (!is_dir ($dir)) { 
 		mkdir($dir, 0777, true); 
 	}
@@ -201,7 +199,7 @@ else
 		  echo '</td><td>'.$row['age'].'</td>
 		  <td>'.$row['title'].'</td><td>'.$row['author'].'</td><td>'.$row['gender'].'</td>
 		  <td>'.$row['weighting'].'</td><td>'.truncate($row['summary'],50,' ','...').'</td>
-		  <td>'.Truncate($row['description'],100,' ','..').'</td><td>'.$row['created_date'].'</td>
+		  <td>'.truncate($row['description'],100,' ','..').'</td><td>'.$row['created_date'].'</td>
 		  <td>'.$row['created_by'].'</td><td>'.$row['likes'].'</td><td>'.$row['dislikes'].'</td>
 		  <td>'.$row['length'].'</td><td>'.$row['url'].'</td><td>'.$row['release_year'].'</td></tr>';
 		  // Space for otputing and formatting the result.
