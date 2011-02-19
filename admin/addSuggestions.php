@@ -10,10 +10,13 @@
  * Devs: Florin, Pez
 /*/
 
+//Include Database Settings
+include_once("../inc/database.php");
+include_once("../config.php");
+include_once("../inc/lib.php");
 
 // Connect to the database
-$connection = mysql_connect("ramen.cs.man.ac.uk", "11_COMP10120_D1", "ztDsBWSMqDny80BR") or die("Could not connect: " . mysql_error());
-mysql_select_db("11_COMP10120_D1", $connection) or die("Could not select database");
+$connection = connectMe("11_COMP10120_D1");
 
 $result = mysql_query("SELECT * FROM `tags`") or die("Could not retrieve tags");
 while($row = mysql_fetch_array($result))
@@ -21,21 +24,6 @@ while($row = mysql_fetch_array($result))
 
 /* Buffer the page */
 ob_start();
-
-function Truncate($string, $limit, $break=" ", $pad="...")
-{
-  // return with no change if string is shorter than $limit
-  if(strlen($string) <= $limit) return $string;
-
-  // is $break present between $limit and the end of the string?
-  if(false !== ($breakpoint = strpos($string, $break, $limit))) {
-    if($breakpoint < strlen($string) - 1) {
-      $string = substr($string, 0, $breakpoint) . $pad;
-    }
-  }
-    
-  return $string;
-}
 
 if (!isset($_POST['upload'])) 
 {
@@ -118,7 +106,10 @@ Release year:
 } 
 else
 { 
-	$dir = "../images/" . $_POST['category'] . "/" . $_POST['author'] . "/";
+	print_r($_POST);
+	print_r($_FILES);
+
+	$dir = "../".$CONFIG['imagedir']. $_POST['category'] . "/" . $_POST['author'] . "/";
 	$target_image = $dir . str_replace(" ", "_", $_POST['title'].'_'.substr(md5(time()), 0, 3).'.jpg');
 	if (!is_dir ($dir)) { 
 		mkdir($dir, 0777, true); 
@@ -144,6 +135,18 @@ else
 	
 		$time = date('Y-m-d H:i:s');
 		$post_tags_text = serialize($post_tags);
+		
+		$_POST['category'] = sanitise($_POST['category']);
+		$_POST['age'] = sanitise($_POST['age']);
+		$_POST['title'] = sanitise($_POST['title']);
+		$_POST['author'] = sanitise($_POST['author']);
+		$_POST['gender'] = sanitise($_POST['gender']);
+		$_POST['summary'] = sanitise($_POST['summary']);
+		$_POST['description'] = sanitise($_POST['description']);
+		$_POST['created_by'] = sanitise($_POST['created_by']);
+		$_POST['length'] = sanitise($_POST['length']);
+		$_POST['url'] = sanitise($_POST['url']);
+		$_POST['release_year'] = sanitise($_POST['release_year']);
 	
   		mysql_query("INSERT INTO `suggestions` (
 				`category`,
@@ -197,7 +200,7 @@ else
 		  }
 		  echo '</td><td>'.$row['age'].'</td>
 		  <td>'.$row['title'].'</td><td>'.$row['author'].'</td><td>'.$row['gender'].'</td>
-		  <td>'.$row['weighting'].'</td><td>'.Truncate($row['summary'],50,' ','...').'</td>
+		  <td>'.$row['weighting'].'</td><td>'.truncate($row['summary'],50,' ','...').'</td>
 		  <td>'.Truncate($row['description'],100,' ','..').'</td><td>'.$row['created_date'].'</td>
 		  <td>'.$row['created_by'].'</td><td>'.$row['likes'].'</td><td>'.$row['dislikes'].'</td>
 		  <td>'.$row['length'].'</td><td>'.$row['url'].'</td><td>'.$row['release_year'].'</td></tr>';
@@ -207,7 +210,7 @@ else
 	}
 }
 
-mysql_close($connection);
+disconnectMe();
 
 
 /* Set the contents of the page & don't output */

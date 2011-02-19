@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1>Log In</h1>
 <form name="login" action="login.php" method="post">
     Username: <input type="text" name="username" />
     Password: <input type="password" name="password" />

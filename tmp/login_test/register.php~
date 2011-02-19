@@ -4,9 +4,9 @@ $username = $_POST['username'];
 $pass1 = $_POST['pass1'];
 $pass2 = $_POST['pass2'];
 if($pass1 != $pass2)
-    header('Location: index.php');
+    header('Location: register_form.php');
 if(strlen($username) > 30)
-    header('Location: index.php');
+    header('Location: register_form.php');
 
 $hash = hash('sha256', $pass);
 
@@ -19,7 +19,10 @@ function createSalt()
 $salt = createSalt();
 $hash = hash('sha256', $salt . $hash);
 
-
+$dbhost = 'ramen.cs.man.ac.uk';
+$dbname = '11_COMP10120_D1';
+$dbuser = '11_COMP10120_D1';
+$dbpass = 'ztDsBWSMqDny';
 $conn = mysql_connect($dbhost, $dbuser, $dbpass);
 mysql_select_db($dbname, $conn);
 //sanitize username

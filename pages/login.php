@@ -1,6 +1,13 @@
 <?php
 
-/* Test Login Page */
+/*/          
+ * pages/login.php
+ * Processes a client login
+ *
+ * Usage: Include when the home page is needed
+ *
+ * Devs: ??
+/*/
 
 session_start(); //must call session_start before using any $_SESSION variables
 $username = $_POST['username'];
@@ -13,14 +20,14 @@ $query = "SELECT password, salt
 $result = mysql_query($query);
 if(mysql_num_rows($result) < 1) //no such user exists
 {
-    header('Location: login_form.php');
+    header('Location: ?p=home');
     die();
 }
 $userData = mysql_fetch_array($result, MYSQL_ASSOC);
 $hash = hash('sha256', $userData['salt'] . hash('sha256', $password) );
 if($hash != $userData['password']) //incorrect password
 {
-    header('Location: login_form.php');
+    header('Location: ?p=home');
     die();
 }
 else

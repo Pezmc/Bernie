@@ -23,4 +23,23 @@ function tidy($input, $level = 0) {
 	return $input;	
 }
 
+/*
+ * Shortens given text and adds ... 
+ * Modified from: http://www.the-art-of-web.com/php/truncate/
+ */
+function truncate($string, $limit, $break=" ", $pad="...") {
+
+  // Return with no change if string is shorter than $limit
+  if(strlen($string) <= $limit) return $string;
+
+  // is $break present between $limit and the end of the string?
+  if(false !== ($breakpoint = strpos($string, $break, $limit))) {
+    if($breakpoint < strlen($string) - 1) {
+      $string = substr($string, 0, $breakpoint) . $pad;
+    }
+  }
+    
+  return $string;
+}
+
 ?>

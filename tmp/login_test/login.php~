@@ -2,7 +2,6 @@
 
 /* Test Login Page */
 
-session_start(); //must call session_start before using any $_SESSION variables
 $username = $_POST['username'];
 $password = $_POST['password'];
 //connect to the database here
@@ -13,20 +12,14 @@ $query = "SELECT password, salt
 $result = mysql_query($query);
 if(mysql_num_rows($result) < 1) //no such user exists
 {
-    header('Location: login_form.php');
-    die();
+    header('Location: index.php');
 }
 $userData = mysql_fetch_array($result, MYSQL_ASSOC);
 $hash = hash('sha256', $userData['salt'] . hash('sha256', $password) );
 if($hash != $userData['password']) //incorrect password
 {
-    header('Location: login_form.php');
-    die();
+    header('Location: index.php');
 }
-else
-{
-    validateUser(); //sets the session data for this user
-}
-//redirect to another page or display "login success" messag
+//login successful
 
 ?>

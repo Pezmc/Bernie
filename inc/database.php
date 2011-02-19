@@ -64,9 +64,10 @@
 		//2 - Converts html to things like &amp;
 		//3 - Removes all html
 		if(level>=0) $input = trim($input);
-		if(level>=1) $input = mysql_real_escape_string($input);
 		if(level>=3) $input = strip_tags($input);
 		if(level>=2) $input = htmlspecialchars($input);
+		if(level>=1) $input = mysql_real_escape_string($input);
+		return $input;
 	}
 
 ?>
