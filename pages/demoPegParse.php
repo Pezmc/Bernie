@@ -9,11 +9,8 @@
  *
 /*/
 
-error_reporting(E_ALL);
-include('PegParse.class.php');
-
 $t = new pegParse();
-$t->config("rootDir", $_SERVER['DOCUMENT_ROOT']."/PegParse/");
+$t->config("rootDir", $_SERVER['DOCUMENT_ROOT']."/Bernie/");
 $t->config("templateDir", "templates/");
 $t->config("compileDir", "tmp/");
 
@@ -57,6 +54,6 @@ if($page=="examples") {  //Extra stuff for the examples page
 }
 
 //Echo the output
-echo $t->output("demoPegParse.html");
+die($t->output("demoPegParse.html"));
 
 ?>

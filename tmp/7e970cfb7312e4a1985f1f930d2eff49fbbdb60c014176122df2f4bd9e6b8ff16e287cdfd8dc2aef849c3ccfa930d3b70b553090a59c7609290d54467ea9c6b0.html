@@ -1,17 +1,12 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bernie: Bernie Home</title>
+</head>
 
-/*/          
- * pages/home.php
- * Provide the content for the home page
- *
- * Usage: Include when the home page is needed
- *
- * Devs: ??
-/*/
+<body>
+<h1>Bernie Home: Login/Register</h1>
 
-$PAGE['title'] = "Bernie Home";
-$PAGE['subtitle'] = "Login/Register";
-$PAGE['content'] = '
 <h1>Login</h1>
 <form name="login" action="?p=login" method="post">
     Username: <input type="text" name="username" />
@@ -24,8 +19,7 @@ $PAGE['content'] = '
     Password: <input type="password" name="pass1" />
     Password Again: <input type="password" name="pass2" />
     <input type="submit" value="Register" />
-</form>';
-
-$PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
-
-?>
+</form><br /><br />Congrats you found home... Would you like to see a <a href="?page=demoPegParse">pegParseDemo</a>?!?<br /><br />
+<a href="javascript:history.go(-1)">Go Back</a><br />
+&copy; D1 - University of Manchester / d1@lists.pezcuckow.com / By using this website you agree not to sue us</body>
+</html>

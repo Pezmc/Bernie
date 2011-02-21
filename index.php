@@ -22,6 +22,9 @@ include_once('globals/page.php');
 include_once('inc/database.php');
 include_once('inc/parse.php');
 
+/* Template parse, in case someone needs it */
+include_once('inc/PegParse.class.php');
+
 /* Database */
 connectMe('11_COMP10120_D1'); //We always need a database connection
 
@@ -41,7 +44,8 @@ switch ($GLOBAL['page']) {
 disconnectMe(); //Last thing we do is close the DB
 
 /* Parse Template Here */
-include_once('inc/PegParse.class.php');
-echo parse('templates/master.html');
+echo parse('master.html');
+
+/* Short and sweet :-) */
 
 ?>

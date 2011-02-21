@@ -12,6 +12,8 @@
 /*/
 
 function parse($template) {
+	global $CONFIG, $GLOBAL, $PAGE;
+	
 	/* Create new instance, set up vars */
 	$t = new pegParse();
 	$t->config("rootDir", $_SERVER['DOCUMENT_ROOT']."/Bernie/");

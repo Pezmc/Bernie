@@ -145,7 +145,9 @@ class pegParse {
 	 * Can be a key and value or array of key => values
 	 */
 	public function assign($key, $value = '') {
-		if(is_array($key)) { //Create lots of new keys
+		if(empty($key)) {
+			do_error("You are giving me empty keys?!?");
+		} elseif(is_array($key)) { //Create lots of new keys
 			foreach($key as $name=>$value) {
 				$this->data->$name = $value;
 			}
