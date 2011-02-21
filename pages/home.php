@@ -2,12 +2,19 @@
 
 /*/          
  * pages/home.php
- * Provide the content for the home page
+ * Either displays logged in or logged out home page
+ *
+ * Includes the tip of the day, recent likes, current interests etc...
  *
  * Usage: Include when the home page is needed
  *
- * Devs: ??
+ * Devs: Pez
 /*/
+
+/* Thinking Code */
+include_once('inc/home.php');
+
+/* Rest of document just deals with displaying information not getting it */
 
 $PAGE['title'] = "Bernie Home";
 $PAGE['subtitle'] = "Login/Register";

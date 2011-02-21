@@ -1,7 +1,7 @@
 <?php
 
 /*/          
- * pages/login.php
+ * pages/profile.php
  * This will allow the user to change all their personal settings which they entered during step one of the sign up process
  * Global $GLOBAL['id'] 1 is for edit profile, 2 is for edit interests
  *
@@ -12,7 +12,7 @@
 /*/
 
 /* Thinking Code */
-include_once('inc/login.php');
+include_once('inc/logout.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
