@@ -1,0 +1,14 @@
+<?php
+
+session_start();
+//if the user has not logged in
+if(!isLoggedIn())
+{
+    header('Location: index.php');
+    die();
+}
+//page content follows
+echo "Awesome, you're logged in"
+
+
+?>

@@ -1,0 +1,3 @@
+The PHP files in this dir are directly related to dealing with content from the related page.
+
+Functions etc should be in /inc/ and included seperately.
