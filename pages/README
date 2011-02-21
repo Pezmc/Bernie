@@ -1,3 +1,5 @@
 The PHP files in this dir are directly related to dealing with content from the related page.
 
 Functions etc should be in /inc/ and included seperately.
+
+For example /pages/home calls the function isLogged in from /inc/home.php

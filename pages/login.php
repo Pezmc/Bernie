@@ -2,8 +2,7 @@
 
 /*/          
  * pages/login.php
- * This will allow the user to change all their personal settings which they entered during step one of the sign up process
- * Global $GLOBAL['id'] 1 is for edit profile, 2 is for edit interests
+ * System processes logging in and out, should redirect to home everytime
  *
  * Usage: Imported by index when this page is requested
  *
