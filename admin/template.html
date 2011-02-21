@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>{title}: {page}</title>
+<style>
+.error {
+	background-color:#ffebe8;
+	display:inline-block;
+	border:1px solid #dd3c10;
+	color:#333333;
+	padding:10px;
+	font-size:14px;
+	font-weight: bold; 
+}
+</style>
+</head>
+
+<body>
+<h1>{title}: {page}</h1>
+{error}
+{content}
+<br /><br />
+<a href="javascript:history.go(-1)">Go Back</a> - 
+<a href="index.php">Return to index</a>
+</body>
+
+</html>
