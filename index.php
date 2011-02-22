@@ -35,6 +35,7 @@ switch ($GLOBAL['page']) {
 	case "logout": break;	
 	case "likes": break;
 	case "profile": break;	
+	case "lostPassword": break;
 	case "signup": break;
 	case "demoPegParse": include_once('pages/demoPegParse.php'); break;
 	default: include_once('pages/home.php'); break;
