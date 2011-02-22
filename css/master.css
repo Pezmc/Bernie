@@ -1,0 +1,245 @@
+/* Master CSS stylesheet to be used with all pages
+ * Will add styles as we go along
+ * Do not edit existing styles, as the changes that look ok with your HTML might not 
+ * look good with someone else's. 
+ * Feel free to add new styles though.
+ * Will do my best to think of all required styles.
+ */
+
+/* Part of master HTML: no need to use in other bits */
+body {
+background-color: #ffffff;
+background-image: url(/Bernie/images/header_loop.png);
+background-repeat: repeat-x;
+margin: 0px;
+padding: 0px;
+font-family: "Helvetica";
+}
+
+header {
+background-image: url(/Bernie/images/header_bg.png);
+background-repeat: no-repeat;
+height: 189px;
+margin-bottom: 1px;
+}
+
+section.header {
+margin-left: 295px;
+width: 530px;
+height: 189px;
+/*border: 1px solid #000000;*/
+}
+
+section.content {
+margin-left: 175px;
+width: 789px;
+min-height: 400px;
+padding-top: 40px;
+padding-bottom: 40px;
+/*border: 1px solid #000000;*/
+}
+
+section.footer {
+background-image: url(/Bernie/images/footer_bg.png);
+background-repeat: no-repeat;
+padding-bottom: 15px;
+padding-top: 27px;
+padding-left: 15px;
+}
+
+footer {
+background-image: url(/Bernie/images/footer_loop.png);
+background-repeat: repeat-x;
+width: 100%;
+height: 57px;
+color: #BABABA;
+font-size: 13px;
+}
+
+table {
+border: 0px;
+}
+/* End master HTML */
+
+/* The blue text used on the front page and as an item subtitle */
+section.subtitle {
+color: #1778AF;
+font-size: 16px;
+line-height: 24px;
+}
+
+/* Regular content text */
+section.text {
+color: #3D3741;
+font-size: 13px;
+line-height: 18px;
+text-align: justify;
+}
+
+/* Use for topmost table cell that accommodates the title of the page */
+td.title {
+padding-bottom: 22px;
+}
+
+/* Specifies the width of a dominant left content area (eg front page, suggestion 	  
+ * page), and provides a right border;
+ */
+td.left {
+width: 568px;
+border-right: 1px solid #CBDBC4;
+padding-right: 12px;
+}
+
+/* The right side of the content area (front page and suggestion page) */
+td.right {
+padding-left: 12px;
+vertical-align: top;
+}
+
+/* Bold and italic text is a certain hue*/
+b {
+color: #47C3B0;
+}
+
+i {
+color: #DB6442;
+}
+
+
+/* A thin line separator for different paragraphs and sections */
+hr {
+width: 100%;
+border: 0px;
+background-color: #CBDBC4;
+height: 1px;
+}
+
+/* Ignore these, only used on the front page... */
+#toBernie {
+font-size: 16px;
+color: #2F2933;
+padding-left: 7px;
+}
+
+#definition {
+font-size: 14px;
+color: #6C6C6C;
+padding-left: 7px;
+}
+
+#categories {
+margin-left: 65px;
+text-align: left;
+width: 450px;
+color: #3D3741;
+font-size: 13px;
+line-height: 16px;
+}
+
+#icon {
+vertical-align: middle;
+text-align: center;
+width: 25px;
+}
+
+b.books {
+color: #5B860A;
+}
+
+b.tv {
+color: #0F567C;
+}
+
+b.music {
+color: #32A1E5;
+}
+
+b.web {
+color: #B22B38;
+}
+
+#tip {
+background-image: url(/Bernie/images/tip.png);
+background-repeat: no-repeat;
+padding-top: 75px;
+padding-left: 35px;
+font-family: "Baskerville";
+font-size: 18px;
+font-style: italic;
+color: #59545B;
+height: 240px;
+}
+
+/* End ignore*/
+
+/* Any link */
+a {
+text-decoration: underline;
+color: #D95D3A;
+}
+
+/* Form elements */
+input.textfield {
+}
+
+input.textfield.error {
+}
+
+button {
+}
+
+/* Different colours for boy and girl comments and welcome message */
+.welcome_girl, .welcome_boy {
+font-size: 18px;
+font-weight: bold;
+color: #E66709;
+}
+
+.welcome_boy {
+color: #3EB7BA;
+}
+
+.welcome_girl {
+color: #E66709;
+}
+
+.comment_girl, .comment_boy {
+font-size: 14px;
+font-weight: bold;
+}
+
+.comment_boy {
+color: #3EB7BA;
+}
+
+.comment_girl {
+color: #E66709;
+}
+
+/* Comment date and time */
+.comment_time {
+color: #53B926;
+font-size: 12px;
+font-style: italic;
+}
+
+/* Selected interests are highlighted */
+.selected_interest {
+width: 100%;
+background-color: #CCF9F2;
+}
+
+/* Large item title used on suggestion page */
+.item_title, .item_title_small {
+font-size: 18px;
+font-weight: bold;
+color: #32AA1B;
+}
+
+/* Smaller item title used on similar items or recent likes lists.. */
+.item_title_small {
+font-size: 16px;
+}
+
+
+
