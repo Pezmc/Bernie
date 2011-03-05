@@ -9,7 +9,7 @@
 /* Part of master HTML: no need to use in other bits */
 body {
 background-color: #ffffff;
-background-image: url("/Bernie/images/header_loop.png");
+background-image: url(/Bernie/images/header_loop.png);
 background-repeat: repeat-x;
 margin: 0px;
 padding: 0px;
@@ -17,7 +17,7 @@ font-family: "Helvetica";
 }
 
 header {
-background-image: url("/Bernie/images/header_bg.png");
+background-image: url(/Bernie/images/header_bg.png);
 background-repeat: no-repeat;
 height: 189px;
 margin-bottom: 1px;
@@ -40,7 +40,7 @@ padding-bottom: 40px;
 }
 
 section.footer {
-background-image: url("/Bernie/images/footer_bg.png");
+background-image: url(/Bernie/images/footer_bg.png);
 background-repeat: no-repeat;
 padding-bottom: 15px;
 padding-top: 27px;
@@ -48,7 +48,7 @@ padding-left: 15px;
 }
 
 footer {
-background-image: url("/Bernie/images/footer_loop.png");
+background-image: url(/Bernie/images/footer_loop.png);
 background-repeat: repeat-x;
 width: 100%;
 height: 57px;
@@ -58,11 +58,16 @@ font-size: 13px;
 
 table {
 border: 0px;
+padding: 0px;
+margin: 0px;
 }
 /* End master HTML */
 
-/* The blue text used on the front page and as an item subtitle */
-section.subtitle {
+/* The blue text used on the front page,
+ * as an item subtitle, 
+ * and in the tabs on the sign up page
+ */
+.subtitle {
 color: #1778AF;
 font-size: 16px;
 line-height: 24px;
@@ -159,7 +164,7 @@ color: #B22B38;
 }
 
 #tip {
-background-image: url("/Bernie/images/tip.png");
+background-image: url(/Bernie/images/tip.png);
 background-repeat: no-repeat;
 padding-top: 75px;
 padding-left: 35px;
@@ -179,14 +184,79 @@ color: #D95D3A;
 }
 
 /* Form elements */
-input.textfield {
+
+/* Regular textarea */
+input[type=text] {
+margin: 0px;
+padding: 0px;
+padding-left: 20px;
+border: 0px;
+width: 185px;
+height: 46px;
+vertical-align: top;
+background-image: url("/Bernie/images/textarea.png");
+background-repeat: no-repeat;
+background-position: top left;
+color: #C8C7C9;
+font-family: "Arial";
+font-size: 17px;
+font-weight: bold;
 }
 
-input.textfield.error {
+/* Regular textarea error */
+input[type=text].error {
+background-image: url("/Bernie/images/textarea_error.png");
 }
 
-button {
+/* Day and month textarea */
+input[type=text].date {
+padding-left: 10px;
+width: 36px;
+background-image: url("/Bernie/images/textarea_date.png");
 }
+
+/* Day and month textarea error */
+input[type=text].date_error {
+padding-left: 10px;
+width: 36px;
+background-image: url("/Bernie/images/textarea_date_error.png");
+}
+
+/* Year textarea */
+input[type=text].year {
+padding-left: 10px;
+width: 70px;
+background-image: url("/Bernie/images/textarea_year.png");
+}
+
+/* Year textarea error*/
+input[type=text].year_error {
+width: 70px;
+background-image: url("/Bernie/images/textarea_year_error.png");
+}
+
+/* Don't show a border when click inside textfield */
+input:focus {
+border: 0px;
+outline-width: 0px;
+}
+
+/* All buttons */ 
+input[type="submit"] {
+font-size: 13px;
+font-weight: bold;
+color: #FFFFFF;
+border: 0px;
+}
+
+/* A medium sized button used in the sign up steps */ 
+input[type="submit"].medium {
+width: 78px;
+height: 31px;
+background-image: url("/Bernie/images/button_medium.png");
+background-repeat: no-repeat;
+}
+/* End of form element styles */
 
 /* Different colours for boy and girl comments and welcome message */
 .welcome_girl, .welcome_boy {
@@ -240,6 +310,4 @@ color: #32AA1B;
 .item_title_small {
 font-size: 16px;
 }
-
-
 
