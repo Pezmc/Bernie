@@ -19,6 +19,10 @@ include_once('inc/home.php');
 $PAGE['title'] = "Bernie Home";
 $PAGE['subtitle'] = "Login/Register";
 $PAGE['content'] = '
+
+{include:/Bernie/templates/FrontPageLoggedOut.html}
+
+<!--
 <h1>Login</h1>
 <form name="login" action="?p=login" method="post">
     Username: <input type="text" name="username" />
@@ -32,7 +36,7 @@ $PAGE['content'] = '
     Password Again: <input type="password" name="pass2" />
     <input type="submit" value="Register" />
 </form>';
-
+-->
 $PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
 
 ?>
