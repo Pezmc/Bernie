@@ -385,6 +385,14 @@ background-image: url("/Bernie/images/button_small.png");
 background-repeat: no-repeat;
 }
 
+/* A really large button to Bernie another category */ 
+input[type="submit"].small {
+width: 248px;
+height: 40px;
+background-image: url("/Bernie/images/button_bernie.png");
+background-repeat: no-repeat;
+}
+
 /* Different colours for boy and girl comments and welcome message */
 .welcome_girl, .welcome_boy {
 font-size: 18px;
