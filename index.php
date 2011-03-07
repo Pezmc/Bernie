@@ -14,6 +14,11 @@
 
 /* ===== God like code from here on in ===== */
 
+/* Show us errors */
+ini_set('display_errors', 1); 
+ini_set('log_errors', 1); 
+error_reporting(E_ALL);
+
 /* Include our systems main parts, these are just varibles and functions */
 include_once('config.php');
 include_once('inc/lib.php');
