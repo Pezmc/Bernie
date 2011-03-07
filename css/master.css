@@ -1,8 +1,18 @@
+@import url("signup.css");
+@import url("styleBernie.css");
+
 /* Master CSS stylesheet to be used with all pages
  * Will add styles as we go along
  * Do not edit existing styles, as the changes that look ok with your HTML might not 
  * look good with someone else's. 
+ *
  * Feel free to add new styles though.
+ * You may want to make your own style sheet in a separate file, in which case you should add 
+ * @import url("stylesheetname.css"); 
+ * to the beginning of this file. 
+ * Make sure the imported stylesheet does not contain styles with the same name, 
+ * or they will be overriden by master.css
+ *
  * Will do my best to think of all required styles.
  */
 
@@ -17,15 +27,13 @@ font-family: "Helvetica";
 }
 
 header {
-background-image: url(/Bernie/images/header_bg.png);
+background-image: url(/Bernie/images/testingheader/header_bg.png);
 background-repeat: no-repeat;
 height: 189px;
 margin-bottom: 1px;
 }
 
 section.header {
-margin-left: 295px;
-width: 530px;
 height: 189px;
 /*border: 1px solid #000000;*/
 }
@@ -62,6 +70,102 @@ padding: 0px;
 margin: 0px;
 }
 /* End master HTML */
+
+
+/* Begin header element styles */
+/* The login and welcome area */
+
+td.logo {
+max-width: 272px;
+padding-left: 19px;
+}
+
+
+td.topbar {
+height: 71px;
+vertical-align: middle;
+}
+
+/* The login box */
+td.loginbox {
+max-width: 180px;
+}
+
+/* The cell that accommodates the four main categories */
+td.maincats {
+max-width: 350px;
+height: 119px;
+vertical-align: bottom;
+}
+
+/* A cell that accommodates a category */
+#cat_books, #cat_tv, #cat_music, #cat_web, #cat_open {
+min-width: 86px;
+height: 110px;
+vertical-align: bottom;
+text-align: center;
+background-repeat: no-repeat;
+background-position: bottom left;
+}
+
+/* A cell that accommodates the chosen category */
+#cat_open {
+background-image: url("/Bernie/images/cat_open.png");
+}
+
+/* The cell that accommodates either the bernie button or the sign up button */
+td.button {
+vertical-align: top;
+}
+
+/* Error message bubble */
+#username_error, #passw_error {
+position: absolute;
+top: 63px;
+left: 336px;
+min-height: 61px;
+min-width: 275px;
+padding-top: 30px;
+padding-left: 20px;
+background-repeat: no-repeat;
+}
+
+#username_error {
+background-image: url("/Bernie/images/error_message_bubble_1.png");
+}
+
+#passw_error {
+background-image: url("/Bernie/images/error_message_bubble_2.png");
+}
+
+/* Error message text style */
+#error_message {
+color: #DD7150;
+font-size: 13px;
+width: 240px;
+text-align: center;
+}
+
+/* Welcome message cell */
+#welcome {
+width: 330px;
+vertical-align: middle;
+}
+
+/* Change profile information and logout cell */
+#usernavi {
+width: 190px;
+text-align: right;
+vertical-align: middle;
+}
+
+/* Small welcome message text under Welcome, user! */
+#welcome_text {
+color: #898989;
+font-size: 12px;
+}
+
+/* End header element styles */
 
 /* The blue text used on the front page,
  * as an item subtitle, 
@@ -208,6 +312,22 @@ input[type=text].error {
 background-image: url("/Bernie/images/textarea_error.png");
 }
 
+/* Login textarea */
+input[type=text].login {
+padding-top: 4px;
+width: 180px;
+background-color: #F3F3F3;
+background-image: url("/Bernie/images/login_textarea.png");
+}
+
+/* Login textarea error */
+input[type=text].login_error {
+padding-top: 4px;
+width: 180px;
+background-color: #F3F3F3;
+background-image: url("/Bernie/images/login_textarea_error.png");
+}
+
 /* Day and month textarea */
 input[type=text].date {
 padding-left: 10px;
@@ -256,21 +376,19 @@ height: 31px;
 background-image: url("/Bernie/images/button_medium.png");
 background-repeat: no-repeat;
 }
-/* End of form element styles */
+
+/* A small button used in the login */ 
+input[type="submit"].small {
+width: 49px;
+height: 31px;
+background-image: url("/Bernie/images/button_small.png");
+background-repeat: no-repeat;
+}
 
 /* Different colours for boy and girl comments and welcome message */
 .welcome_girl, .welcome_boy {
 font-size: 18px;
 font-weight: bold;
-color: #E66709;
-}
-
-.welcome_boy {
-color: #3EB7BA;
-}
-
-.welcome_girl {
-color: #E66709;
 }
 
 .comment_girl, .comment_boy {
@@ -278,11 +396,11 @@ font-size: 14px;
 font-weight: bold;
 }
 
-.comment_boy {
+.welcome_boy, .comment_boy {
 color: #3EB7BA;
 }
 
-.comment_girl {
+.welcome_girl, .comment_girl {
 color: #E66709;
 }
 
@@ -310,4 +428,3 @@ color: #32AA1B;
 .item_title_small {
 font-size: 16px;
 }
-
