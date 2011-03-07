@@ -19,7 +19,7 @@ include_once('inc/home.php');
 $PAGE['title'] = "Bernie Home";
 $PAGE['subtitle'] = "Login/Register";
 
-$PAGE['content'] = parse(includes/FrontPageLoggedOut.html");
+$PAGE['content'] = parse(FrontPageLoggedOut.html");
 
 $PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
 
