@@ -346,7 +346,7 @@ class pegParse {
 	 * Returns false if any of them are newer than the timestamp
 	 */
 	private function timestampIncludes($path, $template, $cache) {
-		$num = preg_match_all('/\{include:([^{}]*)\}/', file_get_contents($path.$template), &$matches);
+		$num = preg_match_all('/\{include:([^{}]*)\}/', file_get_contents($path.$template), $matches);
 		if($num > 0) {
 			for($i = 0; $i < $num; $i++) {
 				if(file_exists($this->templates.$matches[1][$i])&&filemtime($this->templates.$matches[1][$i])>=$cache)
@@ -390,7 +390,7 @@ class pegParse {
 		$newLines[] = '<?php if(!isset($this)) die("You can\'t run these files"); ?>'; //Stop access of the PHP files
 		$matches = null;
 		foreach($lines as $line)  {
-			$num = preg_match_all('/\{([^{}]+)\}/', $line, &$matches);
+			$num = preg_match_all('/\{([^{}]+)\}/', $line, $matches);
 			if($num > 0) {
 				if(strpos($line,'{!}') === false) {
 					for($i = 0; $i < $num; $i++) {
