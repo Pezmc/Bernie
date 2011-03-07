@@ -44,7 +44,6 @@ switch ($GLOBAL['page']) {
 /* Database */
 disconnectMe(); //Last thing we do is close the DB
 
-die("Template Not Working");
 /* Parse Template Here */
 echo parse('master.html');
 
