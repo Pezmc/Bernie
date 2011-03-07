@@ -386,7 +386,7 @@ background-repeat: no-repeat;
 }
 
 /* A really large button to Bernie another category */ 
-input[type="submit"].small {
+input[type="submit"].bernie {
 width: 248px;
 height: 40px;
 background-image: url("/Bernie/images/button_bernie.png");
