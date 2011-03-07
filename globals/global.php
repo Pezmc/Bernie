@@ -20,7 +20,7 @@ $GLOBAL['db']['queries'] = 0; //Total queries so far
 
 /* Page Requested */
 $GLOBAL['page'] = tidy((isset($_GET['p']) ? $_GET['p'] : ""));
-$GLOBAL['catagory'] = tidy((isset($_GET['p']) ? $_GET['c'] : ""));
-$GLOBAL['id'] = tidy((isset($_GET['p']) ? $_GET['id'] : ""));
+$GLOBAL['catagory'] = tidy((isset($_GET['c']) ? $_GET['c'] : ""));
+$GLOBAL['id'] = tidy((isset($_GET['id']) ? $_GET['id'] : ""));
 
 ?>
