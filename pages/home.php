@@ -22,6 +22,8 @@ $PAGE['content'] = '
 
 {include:/Bernie/templates/FrontPageLoggedOut.html}
 
+'
+
 $PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
 
 ?>
