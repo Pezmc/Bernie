@@ -1,11 +1,9 @@
-@import url("master.css");
-
 td.tabs {
 height: 37px;
 width: 100%;
 padding: 0px;
 padding-bottom: 20px;
-background-image: url("signup_tabs_bg.png");
+background-image: url("/Bernie/images/signup_tabs_bg.png");
 background-position: top left;
 background-repeat: no-repeat;
 }
@@ -24,7 +22,7 @@ line-height: 10px;
 }
 
 .tab_open {
-background-image: url("signup_tab_open.png");
+background-image: url("/Bernie/images/signup_tab_open.png");
 background-repeat: no-repeat;
 background-position: 0px 33px;
 }
@@ -34,8 +32,8 @@ padding-left: 5px;
 max-width: 180px;
 }
 
-/* The left side of the table is 385px wide. Overrides master.css */
-td.left {
+/* The left side of the table is 450px wide, smaller than the left area of the front page */
+td.formarea {
 max-width: 450px;
 border-right: 1px solid #CBDBC4;
 padding-right: 12px;
