@@ -1,6 +1,3 @@
-/* Get styles from master.css; all that follow will override master.css */
-@import url(/Bernie/css/master.css);
-
 p { margin: 0; padding: 0; }
 ul.hoof {
 margin: 0;
