@@ -7,6 +7,23 @@
   <title>{name}: {title}</title>
   
   <link rel="stylesheet" type="text/css" href="/Bernie/css/master.css">
+
+  <script>
+    // View category name on mouseover
+		function catMouseover (image, id)
+		{
+			var element = document.getElementById(id);
+			element.style.backgroundImage = "url("+image+")";
+		}
+
+    // Clear category name on mouseout
+		function catMouseout (id)
+		{
+			var element = document.getElementById(id);
+			element.style.backgroundImage = "";
+		}
+  </script>
+
 </head>
 
 <body>
