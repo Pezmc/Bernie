@@ -91,8 +91,7 @@ background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repea
 
 #purchase {
 	width: 278px;
-	height: auto;
-	padding-top: 20px;
+	height: auto;	
 	padding-bottom: 20px;
 	border-bottom: 1px solid silver;
 	float: left;
@@ -118,5 +117,26 @@ background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repea
 	float: left;
 
 }
+
+.altSug {
+	width: 277px;
+	height: 100px;
+	padding-top: 20px;
+	float: left;
+}
+
+.altPic {
+	width: 100px;
+	height: 100px;
+	padding-top: 20px;
+	float: left;
 	
+}
+
+.altText {
+	width: 150px;
+	height: 100px;
+	padding-top: 20px;
+	float: left;
+}	
 
