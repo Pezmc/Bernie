@@ -21,7 +21,7 @@ include_once('inc/signup.php');
 
 $PAGE['title'] = "Sign Up";
 
-if(isLoggedOut()) {
+if(!isLoggedIn()) {
 	$PAGE['content'] = parse("SignUp.html");
 } else {
 	$PAGE['content'] = parse("ErrorPage.html"); /* They shouldn't be on the sign up page if they're logged in right? */
