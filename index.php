@@ -14,6 +14,12 @@
 
 /* ===== God like code from here on in ===== */
 
+/* Show us errors */
+ini_set('display_errors', 1); 
+ini_set('log_errors', 1); 
+error_reporting(E_ALL);
+ini_set('mysql.connect_timeout', 1);
+
 /* Include our systems main parts, these are just varibles and functions */
 include_once('config.php');
 include_once('inc/lib.php');
@@ -23,10 +29,10 @@ include_once('inc/database.php');
 include_once('inc/parse.php');
 
 /* Template parse, in case someone needs it */
-include_once('inc/PegParse.class.php');
+include_once('inc/pegParse.class.php');
 
 /* Database */
-connectMe('11_COMP10120_D1'); //We always need a database connection
+//connectMe('11_COMP10120_D1'); //We always need a database connection
 
 /* What page has the user requested? */
 switch ($GLOBAL['page']) {
@@ -44,7 +50,6 @@ switch ($GLOBAL['page']) {
 /* Database */
 disconnectMe(); //Last thing we do is close the DB
 
-die("Template Not Working");
 /* Parse Template Here */
 echo parse('master.html');
 
