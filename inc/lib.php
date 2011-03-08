@@ -113,4 +113,17 @@ function isGirl() {
 	}
 }
 
+/*
+ * Is the current user a boy?
+ */
+function isGenderUnknown() {
+	global $USER;
+	if(!isset($USER['gender'])) return true; //If we don't know guess they aren't
+    if($USER['gender']=="u") {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 ?>

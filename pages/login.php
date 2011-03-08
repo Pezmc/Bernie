@@ -16,7 +16,7 @@ include_once('inc/login.php');
 /* Rest of document just deals with displaying information not getting it */
 
 //Currently just let them in anyway and send them home
-validateUser(1);
+validateUser(round(rand(1,2)));
 header('Location: ?p=home');
 
 /***** HELP FROM PEZ *****/
