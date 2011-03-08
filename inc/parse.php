@@ -23,6 +23,7 @@ function parse($template, $extra = "") {
 	$t->config("rootDir", $_SERVER['DOCUMENT_ROOT']."/Bernie/");
 	$t->config("templateDir", "templates/");
 	$t->config("compileDir", "tmp/");
+	if($CONFIG['debug']) $t->config("warning", true);
 	
 	/* Include out globals, but in case of overlaps, in a certain order */
 	$t->assign($CONFIG);

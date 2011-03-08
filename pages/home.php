@@ -16,15 +16,21 @@ include_once('inc/home.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
-$PAGE['title'] = "Bernie Home";
-$PAGE['subtitle'] = "Login/Register";
+$PAGE['title'] = "Home";
+
+//This is just for demo purposes atm - should be from database
+$extraContent = array();
+switch (round(rand(1,4))) {
+	case 1: $extraContent['tip'] = "Don't stab people"; break;
+	case 2: $extraContent['tip'] = "Brush your teeth before bedtime!"; break;
+	case 3: $extraContent['tip'] = "Drugs are bad!"; break;
+	default: $extraContent['tip'] = "Be nice to everyone!"; break;
+}
 
 if(isLoggedIn()) {
 	$PAGE['content'] = parse("FrontPageLoggedIn.html");
-	$PAGE['content'] .= "Pretty sure you're logged in";
 } else {
-	$PAGE['content'] = parse("FrontPageLoggedOut.html");
-	$PAGE['content'] .= "Pretty sure you're logged out";
+	$PAGE['content'] = parse("FrontPageLoggedOut.html", $extraContent);
 }
 
 $PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';

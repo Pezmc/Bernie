@@ -41,7 +41,7 @@ See comments for explanations.
 		<tr>
 			<td class="logo" rowspan="2">
 			<!-- Logo here -->
-			<a href="/Bernie" alt="Go to homepage">
+			<a href="?p=home" alt="Go to homepage">
 			<img src="/Bernie/images/logo.png" alt="Back to homepage" />
 			</a>
 			</td>
@@ -55,18 +55,18 @@ See comments for explanations.
 				<tr>
 
 				<!-------------------- NEEDS PHP: make form work -------------------->
-				<form name="" action="" method="">
+				<form name="login" action="?p=login" method="POST">
 				
 					<td class="loginbox">
 					
 					<!-- Enter username -->
-					<input type="text" name="login_username" placeholder="Username" maxlength="16" class="login">
+					<input type="text" name="login_username" placeholder="Username" maxlength="16" autocomplete="off" class="login">
 
 					</td>
 					<td class="loginbox">
 					
 					<!-- Enter password -->
-					<input type="password" name="login_passw" placeholder="Password" maxlength="16" class="login">
+					<input type="password" name="login_passw" placeholder="Password" maxlength="16" autocomplete="off" class="login">
 
 					</td>
 					<td>
@@ -81,7 +81,7 @@ See comments for explanations.
 					<section class="text">
 					<a href="" alt="Lost password?">Lost password?</a>
 					<br />
-					<a href="?p=SignUp.html" alt="Sign up!">Sign up!</a>
+					<a href="?p=signup" alt="Sign up!">Sign up!</a>
 					</section>
 					
 					</td>

@@ -87,4 +87,43 @@ function logout() {
     session_destroy();
 }
 
+/*
+ * Is the current user a boy?
+ */
+function isBoy() {
+	global $USER;
+	if(!isset($USER['gender'])) return true; //If we don't know guess they are
+    if($USER['gender']=="m") {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/*
+ * Is the current user a boy?
+ */
+function isGirl() {
+	global $USER;
+	if(!isset($USER['gender'])) return false; //If we don't know guess they aren't
+    if($USER['gender']=="f") {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/*
+ * Is the current user a boy?
+ */
+function isGenderUnknown() {
+	global $USER;
+	if(!isset($USER['gender'])) return true; //If we don't know guess they aren't
+    if($USER['gender']=="u") {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 ?>
