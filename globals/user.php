@@ -1,0 +1,22 @@
+<?php
+
+/*/          
+ * globals/user.php
+ * Grabs all the user information for the currently logged in session
+ * 
+ * The template parses all globals, configs and page globals.
+ *
+ * Usage: Include this page, this lists the defaults
+ *
+ * Devs: Everyone
+ *
+/*/
+
+$USER['username'] = "";
+$USER['parents_email'] = "";
+$USER['first_name'] = "";
+$USER['last_name'] = "";
+$USER['password'] = "";
+$USER['salt'] = "";
+
+?>
