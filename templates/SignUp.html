@@ -36,10 +36,17 @@ Devs: Elise, Florin
     	<tr>
         <td>
 
-        <!-- Code here for php include form1 and form2 (will add as soon as i figure out the syntax....) -->
+        <!-- Code here for php include form1 and form2 -->
+        
+        <!-------------------- NEEDS LOGIC: When to display which step of the sign up? -------------------->
+        <!-- {if:user is on step one} (function for this...) -->
+                    {include:includes/Form1.html}
+        <!---{elseif:user is on step 2} (function...) -->
+        <!----------{include:includes/Form2.html} -->
+        <!-- {else} -->
+        <!----------{include:includes/Confirmation.html} -->
+                    
 
 	</td>
     	</tr>
 	</table>
-
-  </section>
