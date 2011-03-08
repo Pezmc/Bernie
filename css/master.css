@@ -112,10 +112,16 @@ min-width: 86px;
 height: 110px;
 vertical-align: bottom;
 text-align: center;
-cursor:pointer;
 background:url(/Bernie/images/header_tab_bg.png);
 background-repeat: no-repeat;
 background-position: bottom left;
+}
+
+/* All the cat links... */
+.maincats a {
+cursor: pointer;
+min-width: 86px;
+height: 110px;
 }
 
 /* A cell that accommodates the chosen category */

@@ -8,10 +8,11 @@
  *
  * Usage: See index.php
  *
- * Version: 1.4
+ * Version: 1.5
  *
  * Changelog:
- *   1.4 - Added hash function for old PHP users
+ *   1.5 - Added the option to disable checking include files
+ *   1.4 - Added hash function for old PHP users + error fix
  *   1.3 - General Improvements
  *   1.2b - Improved if statement parsing, fixed some bugs
  *   1.1b - Caching of the HTML
@@ -31,10 +32,11 @@ class pegParse {
 	private $tmp; // Where to store compiled temp files
 	private $templates; //Where are the template files stored?
 	private $warning; //Are we outputting warnings	
-	private $version = '1.2b'; //Current version
+	private $version = '1.5'; //Current version
 	private $stripPHP; //Do we want php removed?
 	private $cachePHP; //Cache the PHP?
 	private $cacheHTML; //Cache the HTML?
+	private $checkIncludes; //Check the includes for changes on every load
 	
 	private $data; // a stdClass object to hold the data passed to the template
 	private $servedBy; //What was most recently served
@@ -56,6 +58,7 @@ class pegParse {
 		$this->cachePHP = true;
 		$this->cacheHTML = true;
 		$this->debugOn = false;
+		$this->checkIncludes = true;
 	}
 	
 	/*
@@ -107,6 +110,7 @@ class pegParse {
 			case "cachePHP": $this->cachePHP = (boolean) $value; break;
 			case "cacheHTML": $this->cacheHTML = (boolean) $value; break;
 			case "debug": $this->debugOn = (boolean) $value; break;
+			case "checkIncludes": $this->checkIncludes = (boolean) $value; break;
 			default: $this->doError('Unknown config value '.$key.' set');	
 		}
 	}
@@ -346,6 +350,9 @@ class pegParse {
 	 * Returns false if any of them are newer than the timestamp
 	 */
 	private function timestampIncludes($path, $template, $cache) {
+		if(!$this->checkIncludes)
+			return true;
+			
 		$num = preg_match_all('/\{include:([^{}]*)\}/', file_get_contents($path.$template), $matches);
 		if($num > 0) {
 			for($i = 0; $i < $num; $i++) {
@@ -442,6 +449,10 @@ class pegParse {
 			case 'if':
 				//$string .= 'if(eval("return ('.preg_replace($from, $to, $parts[1]).');")) {';
 				$string .= 'if('.preg_replace($from, $to, $parts[1]).') {';
+				break;
+			case 'elseif':
+			case 'elif':
+				$string .= 'elseif('.preg_replace($from, $to, $parts[1]).') {';
 				break;
 			case 'switch':
 				$string .= $parts[0] . '(' . preg_replace($from, $to, $parts[1]) . ') { ' . ($parts[0] == 'switch' ? 'default: ' : '');

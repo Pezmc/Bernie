@@ -17,5 +17,7 @@
 /* Thinking Code */
 include_once('inc/bernie.php');
 
+$PAGE['content'] = parse("Bernie.html");
+
 /* Rest of document just deals with displaying information not getting it */
 ?>
