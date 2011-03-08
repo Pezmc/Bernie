@@ -119,9 +119,21 @@ background-position: bottom left;
 
 /* All the cat links... */
 .maincats a {
-cursor: pointer;
-min-width: 86px;
-height: 110px;
+	cursor: pointer;
+	display: block;
+	min-width: 86px;
+	height: 110px;
+	position:relative;
+	top:0;
+	left:0;
+}
+
+/* All the cat images */
+.maincats img {
+	position:absolute;
+	bottom:5px;
+	left:50%;
+	margin-left:-18px;
 }
 
 /* A cell that accommodates the chosen category */

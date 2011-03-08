@@ -8,9 +8,10 @@
  *
  * Usage: See index.php
  *
- * Version: 1.5
+ * Version: 1.6
  *
  * Changelog:
+ *   1.6 - Added else if
  *   1.5 - Added the option to disable checking include files
  *   1.4 - Added hash function for old PHP users + error fix
  *   1.3 - General Improvements
@@ -32,7 +33,7 @@ class pegParse {
 	private $tmp; // Where to store compiled temp files
 	private $templates; //Where are the template files stored?
 	private $warning; //Are we outputting warnings	
-	private $version = '1.5'; //Current version
+	private $version = '1.6'; //Current version
 	private $stripPHP; //Do we want php removed?
 	private $cachePHP; //Cache the PHP?
 	private $cacheHTML; //Cache the HTML?
