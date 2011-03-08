@@ -16,12 +16,11 @@ include_once('inc/home.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
-$PAGE['title'] = "Bernie Home";
-$PAGE['subtitle'] = "Login/Register";
+$PAGE['title'] = "Home";
 
 //This is just for demo purposes atm - should be from database
 $extraContent = array();
-switch (round(rand(1,3))) {
+switch (round(rand(1,4))) {
 	case 1: $extraContent['tip'] = "Don't stab people"; break;
 	case 2: $extraContent['tip'] = "Brush your teeth before bedtime!"; break;
 	case 3: $extraContent['tip'] = "Drugs are bad!"; break;
