@@ -19,6 +19,8 @@ include_once('inc/home.php');
 $PAGE['title'] = "Home";
 
 //This is just for demo purposes atm - should be from database
+//But this demonstrates how to add information that the parser can understand
+//In this case I have added {tip}
 $extraContent = array();
 switch (round(rand(1,4))) {
 	case 1: $extraContent['tip'] = "Don't stab people"; break;

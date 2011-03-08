@@ -15,7 +15,7 @@
 /*/
 
 /* Thinking Code */
-include_once('inc/bernie.php');
+//include_once('inc/bernie.php');
 
 $PAGE['content'] = parse("Bernie.html");
 

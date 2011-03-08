@@ -51,7 +51,7 @@ if(!isLoggedIn()) {
 
 /* What page has the user requested? */
 switch ($GLOBAL['page']) {
-	case "bernie": break;	
+	case "bernie": include_once('pages/bernie.php'); break;	
 	case "login": include_once('pages/login.php'); break;	
 	case "logout": include_once('pages/logout.php'); break;	
 	case "likes": break;
