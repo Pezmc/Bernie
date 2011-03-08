@@ -27,9 +27,8 @@ See comments for explanations.
 					<section class="text">
 
 					<!-- Use different class for boy and girl: welcome_boy or welcome_girl -->
-					
-					<!-------------------- NEEDS LOGIC: boy/girl, username -------------------->
-					<div class="welcome_girl">Welcome, {first_name} {last_name}!</div> 
+					<div class="welcome_{if:isBoy()}boy{else}girl{end}">
+					Welcome, {first_name}!</div> 
 					<div id="welcome_text">We hope you find something new and interesting today!</br>
 
 					</section>
@@ -69,14 +68,13 @@ See comments for explanations.
 							 id="cat_CATEGORYNAME"
 							 onmouseover="catMouseover('mouseover_CATEGORYNAME.png', 'cat_CATEGORYNAME')"
 							 onmouseout="catMouseout('cat_CATEGORYNAME')"
-
-	  						 In the below example, the books tab is open and the rest are closed 
 						 	 -->
 
 					<!-------------------- NEEDS LOGIC: which cat is open, if any? -------------------->
 					     
 					<!-- Books -->
-					<td id="cat_open" style="background-image: url('/Bernie/images/mouseover_books.png')">
+					<td id="cat_books" onmouseover="catMouseover('/Bernie/images/mouseover_books.png', 'cat_books')"    
+												 onmouseout="catMouseout('cat_books')">
 					<img src="/Bernie/images/icon_books.png" alt="Bernie books!" />
 					</td>
 

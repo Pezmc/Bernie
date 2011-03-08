@@ -112,7 +112,6 @@ min-width: 86px;
 height: 110px;
 vertical-align: bottom;
 text-align: center;
-cursor:pointer;
 background:url(/Bernie/images/header_tab_bg.png);
 background-repeat: no-repeat;
 background-position: bottom left;
@@ -300,7 +299,7 @@ color: #D95D3A;
 /* Form elements */
 
 /* Regular textarea */
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password] {
 margin: 0px;
 padding: 0px;
 padding-left: 20px;
