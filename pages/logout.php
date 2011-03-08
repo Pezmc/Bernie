@@ -16,5 +16,6 @@
 //Log them out and then send them home
 logout();
 header('Location: ?p=home');
+die();
 
 ?>
