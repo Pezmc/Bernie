@@ -21,6 +21,4 @@ if($results = dbQuery("SELECT * FROM users WHERE id = '".$_SESSION['userid']."'"
 	die("Glitch in security");
 }
 
-
-
 ?>
