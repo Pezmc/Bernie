@@ -322,7 +322,7 @@ background-image: url("/Bernie/images/textarea_error.png");
 }
 
 /* Login textarea */
-input[type=text].login {
+input[type=text].login, input[type=password].login {
 padding-top: 4px;
 width: 180px;
 background-color: #F3F3F3;
@@ -330,7 +330,7 @@ background-image: url("/Bernie/images/login_textarea.png");
 }
 
 /* Login textarea error */
-input[type=text].login_error {
+input[type=text].login_error, input[type=password].login_error {
 padding-top: 4px;
 width: 180px;
 background-color: #F3F3F3;
