@@ -12,7 +12,7 @@
 /*/
 
 function parse($template) {
-	global $CONFIG, $GLOBAL, $PAGE;
+	global $CONFIG, $GLOBAL, $PAGE, $USER;
 	
 	/* Create new instance, set up vars */
 	$t = new pegParse();
@@ -24,6 +24,7 @@ function parse($template) {
 	$t->assign($CONFIG);
 	$t->assign($GLOBAL);
 	$t->assign($PAGE);
+	$t->assign($USER);
 	
 	/* How does the engine know which page we're on?!? */
 	return $t->output($template);

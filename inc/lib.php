@@ -50,4 +50,41 @@ function randomStr($length = 3) {
     return substr($string, 0, $length);
 }
 
+/*
+ * Grant a user website access, you MUST set the ID
+ */
+function validateUser($id) {
+	if(empty($id)) die("You started a session without an ID...");
+    session_regenerate_id (); //this is a security measure
+    $_SESSION['valid'] = 1;
+    $_SESSION['userid'] = $id;
+}
+
+/*
+ * Is a user logged in?
+ */
+function isLoggedIn() {
+	if(empty($_SESSION['valid'])) return false;
+	
+    elseif($_SESSION['valid'])
+        return true;
+
+    return false;
+}
+
+/*
+ * Log a user out (from the system)
+ */
+function logout() {
+    $_SESSION = array(); //destroy all of the session variables
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+    session_destroy();
+}
+
 ?>

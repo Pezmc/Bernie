@@ -38,9 +38,8 @@
 			echo 'Query '.$admin_mysql_queries.': '.$query.'<br />';
 		}
 		if(!empty($query)) {
-			if(!$config['debug']) {  //Debug on/off?
-				//$str = mysql_query($query) or die(mysql_error()); 
-				$str = mysql_query($query); 
+			if(!$config['debug']) {  //Debug off?
+				$str = @mysql_query($query); 
 			} else {  
 				$str = mysql_query($query) or(print('<h3>MySQL Error</h3><br />'
 													.'File: '.$_SERVER['PHP_SELF'].'<br />'

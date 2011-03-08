@@ -20,19 +20,37 @@ ini_set('log_errors', 1);
 error_reporting(E_ALL);
 ini_set('mysql.connect_timeout', 1);
 
+/* Allow tracking sessions (logins) */
+session_start();
+
 /* Include our systems main parts, these are just varibles and functions */
 include_once('config.php');
+include_once('inc/database.php');
 include_once('inc/lib.php');
 include_once('globals/global.php');
 include_once('globals/page.php');
-include_once('inc/database.php');
+include_once('globals/user.php');
 include_once('inc/parse.php');
 
 /* Template parse, in case someone needs it */
 include_once('inc/pegParse.class.php');
 
 /* Database */
-//connectMe('11_COMP10120_D1'); //We always need a database connection
+connectMe('11_COMP10120_D1'); //We always need a database connection
+
+/* TEMPORARY FORCE LOGIN */
+validateUser(1);
+
+/* If the user isn't logged in yet */
+if(!isLoggedIn()) {
+	//If they are trying to access something they are not allowed to
+	if($GLOBAL['page']!="login"&&$GLOBAL['page']!="signup"&&$GLOBAL['page']!="lostPassword"&&$GLOBAL['page']!="demoPegParse") {
+		$GLOBAL['page']="home"; //Send them home	
+	}
+} else { //They are logged in
+	//Lets grab that users information
+	include_once("inc/getUserInfo.php");
+}
 
 /* What page has the user requested? */
 switch ($GLOBAL['page']) {
