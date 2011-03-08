@@ -7,7 +7,7 @@ ul.hoof li {
 margin: ;
 padding: 0px 25px;
 list-style: none;
-background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repeat top left;
+background: url('/Bernie/images/bullet.png') no-repeat top left;
 }
 .green {color: green;}
 .orange {color: orange;}
@@ -34,19 +34,18 @@ background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repea
 	float: left;
 }
 #leftcontainer {
-	width: 480px;
+	width: 475px;
 	float: left;
 	padding-right: 20px;
 	border-right: 1px solid silver;
 }
 #rightcontainer {
-	width: 278px;
-	padding-left: 20px;
-	float: left;
+	width: auto;
+	float: right;
 }
 
 #footer {
-	width: 800px;	
+	width: auto;	
 	float: left;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -82,18 +81,18 @@ background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repea
 }
 
 #comments {
-	width: 480px;
+	width: auto;
 	height: 300px;
 	padding-top: 20px;
 	float: left;
 }
 
 #purchase {
-	width: 278px;
+	width: 200px;
 	height: auto;	
 	padding-bottom: 20px;
 	border-bottom: 1px solid silver;
-	float: left;
+	float: right;
 
 }
 
@@ -113,7 +112,8 @@ background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repea
 	width: 278px;
 	height: 450px;
 	padding-top: 20px;
-	float: left;
+	float: right;
+	clear:right;
 
 }
 
@@ -126,7 +126,7 @@ background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repea
 
 .altPic {
 	width: 100px;
-	height: 100px;
+	height: 100px;	
 	padding-top: 20px;
 	float: left;
 	

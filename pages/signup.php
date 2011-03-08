@@ -24,7 +24,11 @@ $PAGE['title'] = "Sign Up";
 if(!isLoggedIn()) {
 	$PAGE['content'] = parse("SignUp.html");
 } else {
-	$PAGE['content'] = parse("ErrorPage.html"); /* They shouldn't be on the sign up page if they're logged in right? */
+	/*$PAGE['content'] = parse("ErrorPage.html"); /* They shouldn't be on the sign up page if they're logged in right? */
+	//For the moment just send them home...
+	header('Location: ?p=home');
+	die();
+	
 }
 
 

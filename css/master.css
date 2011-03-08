@@ -46,7 +46,7 @@ height: 189px;
 section.content {
 /*margin-left: 175px;*/
 margin: 0 auto;
-width: 789px;
+width: 800px;
 min-height: 400px;
 padding-top: 40px;
 padding-bottom: 40px;
@@ -131,7 +131,7 @@ background-position: bottom left;
 }
 
 /* All the cat images */
-.maincats img {
+.maincats a img {
 	position:absolute;
 	bottom:5px;
 	left:50%;
@@ -395,6 +395,7 @@ outline-width: 0px;
 input[type="submit"] {
 font-size: 13px;
 font-weight: bold;
+cursor:pointer;
 color: #FFFFFF;
 border: 0px;
 }
