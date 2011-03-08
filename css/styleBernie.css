@@ -5,9 +5,9 @@ padding: 0;
 }
 ul.hoof li {
 margin: ;
-padding: 5px 0 2px 40px;
+padding: 0px 25px;
 list-style: none;
-background: url('http://server.pezcuckow.com/Bernie/images/hoof.png') no-repeat top left;
+background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repeat top left;
 }
 .green {color: green;}
 .orange {color: orange;}
@@ -75,7 +75,11 @@ background: url('http://server.pezcuckow.com/Bernie/images/hoof.png') no-repeat 
 #bio #picturestuff h3 { colour: red; } 
 
 #bio #biotext {
-	width: 100%;
+	width: 100%;	
+}
+
+#biotext {	
+	margin-top: 20px;
 }
 
 #comments {
@@ -87,11 +91,24 @@ background: url('http://server.pezcuckow.com/Bernie/images/hoof.png') no-repeat 
 
 #purchase {
 	width: 278px;
-	height: 250px;
+	height: auto;
 	padding-top: 20px;
+	padding-bottom: 20px;
 	border-bottom: 1px solid silver;
 	float: left;
 
+}
+
+#list {
+	width: 100px;	
+	padding-top: 20px;
+	float: left;
+}
+
+#parcel {
+	width: 100px;
+	margin: 30px 62px 0 0;
+	float: right;
 }
 
 #similar {
