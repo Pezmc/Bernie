@@ -29,7 +29,7 @@ font-family: "Helvetica";
 header {
 background-image: url(/Bernie/images/header_bg.png);
 background-repeat: no-repeat;
-background-position:top center;
+background-position:center 5px;
 height: 189px;
 margin-bottom: 1px;
 }
