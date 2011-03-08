@@ -14,9 +14,8 @@ background: url('http://server.pezcuckow.com/Bernie/images/bullet.png') no-repea
 
 
 #container {
-	width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+	width:auto;
+	display:block;
 }
 
 #head {
