@@ -18,6 +18,7 @@
 ini_set('display_errors', 1); 
 ini_set('log_errors', 1); 
 error_reporting(E_ALL);
+ini_set('mysql.connect_timeout', 1);
 
 /* Include our systems main parts, these are just varibles and functions */
 include_once('config.php');
@@ -31,7 +32,7 @@ include_once('inc/parse.php');
 include_once('inc/pegParse.class.php');
 
 /* Database */
-connectMe('11_COMP10120_D1'); //We always need a database connection
+//connectMe('11_COMP10120_D1'); //We always need a database connection
 
 /* What page has the user requested? */
 switch ($GLOBAL['page']) {

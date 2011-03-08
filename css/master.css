@@ -29,8 +29,13 @@ font-family: "Helvetica";
 header {
 background-image: url(/Bernie/images/header_bg.png);
 background-repeat: no-repeat;
+background-position:top center;
 height: 189px;
 margin-bottom: 1px;
+}
+
+section.header table {
+	margin: 0 auto;	
 }
 
 section.header {
@@ -39,7 +44,8 @@ height: 189px;
 }
 
 section.content {
-margin-left: 175px;
+/*margin-left: 175px;*/
+margin: 0 auto;
 width: 789px;
 min-height: 400px;
 padding-top: 40px;
@@ -104,6 +110,7 @@ min-width: 86px;
 height: 110px;
 vertical-align: bottom;
 text-align: center;
+background:url(/Bernie/images/header_tab_bg.png);
 background-repeat: no-repeat;
 background-position: bottom left;
 }
