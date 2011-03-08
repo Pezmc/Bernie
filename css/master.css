@@ -55,6 +55,7 @@ padding-bottom: 40px;
 
 section.footer {
 background-image: url(/Bernie/images/footer_bg.png);
+background-position:top center;
 background-repeat: no-repeat;
 padding-bottom: 15px;
 padding-top: 27px;
@@ -68,6 +69,7 @@ width: 100%;
 height: 57px;
 color: #BABABA;
 font-size: 13px;
+text-align:center;
 }
 
 table {
@@ -320,7 +322,7 @@ background-image: url("/Bernie/images/textarea_error.png");
 }
 
 /* Login textarea */
-input[type=text].login {
+input[type=text].login, input[type=password].login {
 padding-top: 4px;
 width: 180px;
 background-color: #F3F3F3;
@@ -328,7 +330,7 @@ background-image: url("/Bernie/images/login_textarea.png");
 }
 
 /* Login textarea error */
-input[type=text].login_error {
+input[type=text].login_error, input[type=password].login_error {
 padding-top: 4px;
 width: 180px;
 background-color: #F3F3F3;
