@@ -11,7 +11,11 @@
  *
 /*/
 
-function parse($template) {
+/* 
+ * Parse a provided template
+ * Either just define the template or add an array for extra variables
+ */
+function parse($template, $extra = "") {
 	global $CONFIG, $GLOBAL, $PAGE, $USER;
 	
 	/* Create new instance, set up vars */
@@ -25,6 +29,7 @@ function parse($template) {
 	$t->assign($GLOBAL);
 	$t->assign($PAGE);
 	$t->assign($USER);
+	if(!empty($extra)) { $t->assign($extra); }
 	
 	/* How does the engine know which page we're on?!? */
 	return $t->output($template);

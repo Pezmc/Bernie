@@ -37,8 +37,12 @@
 
   <!-- Code for header area here (width and padding has been applied) -->
   
-  <!-------------------- NEEDS LOGIC: disp logged in or logged out header? -------------------->
-  {include:includes/header_loggedout.html}
+  <!-- If user logged in -->
+  {if:isLoggedIn()}
+  	{include:includes/header_loggedin.html}
+  {else}
+  	{include:includes/header_loggedout.html}
+  {end}
  
   </section>
   </header>

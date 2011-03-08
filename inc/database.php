@@ -34,11 +34,11 @@
 /* Make a query on the database */
 	function dbQuery($query=false) {
 		global $CONFIG, $GLOBAL;
-		if($config['printqueries']) {
-			echo 'Query '.$admin_mysql_queries.': '.$query.'<br />';
+		if($CONFIG['printqueries']) {
+			echo 'Query '.$GLOBAL['db']['queries'].': '.$query.'<br />';
 		}
 		if(!empty($query)) {
-			if(!$config['debug']) {  //Debug off?
+			if(!$CONFIG['debug']) {  //Debug off?
 				$str = @mysql_query($query); 
 			} else {  
 				$str = mysql_query($query) or(print('<h3>MySQL Error</h3><br />'
@@ -49,13 +49,14 @@
 													.'<br />Good luck finding the problem!'
 													.'<br /><br />Less than happy error bot.'));
 			}
+			$GLOBAL['db']['queries']++;
 			return($str); //Return the results
 		} else {
-			if($config['debug']) print("No query made?!?");
+			if($CONFIG['debug']) print("No query made?!?");
 		}
 	}
 	
-	function databaseQuery($query=false) { return admin_mysql_query($query); } //Alias
+	function databaseQuery($query=false) { return dbQuery($query); } //Alias
 	
  /* Try and make user input "safer" */
 	function sanitise($input, $level=0) {
