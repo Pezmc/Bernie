@@ -27,10 +27,15 @@ font-family: "Helvetica";
 }
 
 header {
-background-image: url(/Bernie/images/testingheader/header_bg.png);
+background-image: url(/Bernie/images/header_bg.png);
 background-repeat: no-repeat;
+background-position:top center;
 height: 189px;
 margin-bottom: 1px;
+}
+
+section.header table {
+	margin: 0 auto;	
 }
 
 section.header {
@@ -39,7 +44,8 @@ height: 189px;
 }
 
 section.content {
-margin-left: 175px;
+/*margin-left: 175px;*/
+margin: 0 auto;
 width: 789px;
 min-height: 400px;
 padding-top: 40px;
@@ -49,6 +55,7 @@ padding-bottom: 40px;
 
 section.footer {
 background-image: url(/Bernie/images/footer_bg.png);
+background-position:top center;
 background-repeat: no-repeat;
 padding-bottom: 15px;
 padding-top: 27px;
@@ -62,6 +69,7 @@ width: 100%;
 height: 57px;
 color: #BABABA;
 font-size: 13px;
+text-align:center;
 }
 
 table {
@@ -104,6 +112,7 @@ min-width: 86px;
 height: 110px;
 vertical-align: bottom;
 text-align: center;
+background:url(/Bernie/images/header_tab_bg.png);
 background-repeat: no-repeat;
 background-position: bottom left;
 }
@@ -313,7 +322,7 @@ background-image: url("/Bernie/images/textarea_error.png");
 }
 
 /* Login textarea */
-input[type=text].login {
+input[type=text].login, input[type=password].login {
 padding-top: 4px;
 width: 180px;
 background-color: #F3F3F3;
@@ -321,7 +330,7 @@ background-image: url("/Bernie/images/login_textarea.png");
 }
 
 /* Login textarea error */
-input[type=text].login_error {
+input[type=text].login_error, input[type=password].login_error {
 padding-top: 4px;
 width: 180px;
 background-color: #F3F3F3;
@@ -382,6 +391,14 @@ input[type="submit"].small {
 width: 49px;
 height: 31px;
 background-image: url("/Bernie/images/button_small.png");
+background-repeat: no-repeat;
+}
+
+/* A really large button to Bernie another category */ 
+input[type="submit"].bernie {
+width: 248px;
+height: 40px;
+background-image: url("/Bernie/images/button_bernie.png");
 background-repeat: no-repeat;
 }
 

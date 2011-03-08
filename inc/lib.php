@@ -17,9 +17,9 @@ function tidy($input, $level = 0) {
 	//0 - Delete whitespace
 	//1 - Convert & to &amp; etc
 	//2 - Make all lowercase
-	if(level>=0) $input = trim($input);
-	if(level>=1) $input = htmlspecialchars($input);
-	if(level>=2) $input = strtolower($input);
+	if($level>=0) $input = trim($input);
+	if($level>=1) $input = htmlspecialchars($input);
+	if($level>=2) $input = strtolower($input);
 	return $input;	
 }
 
