@@ -19,6 +19,15 @@ include_once('inc/signup.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
+$PAGE['title'] = "Sign Up";
+
+if(isLoggedOut()) {
+	$PAGE['content'] = parse("SignUp.html");
+} else {
+	$PAGE['content'] = parse("ErrorPage.html"); /* They shouldn't be on the sign up page if they're logged in right? */
+}
+
+
 
 /***** HELP FROM PEZ *****/
 /* When you give them username or password
