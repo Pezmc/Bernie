@@ -19,4 +19,12 @@ include_once('inc/signup.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
+
+/***** HELP FROM PEZ *****/
+/* When you give them username or password
+/* use randomStr(3) to create a random three letter string
+/* Then when you hash the password do something like md5(randomStr(3).md5($password))
+/* Store that value in the database, along with the random string (the SALT)
+/* Makes it much harder to hack the website */
+
 ?>

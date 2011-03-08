@@ -42,4 +42,12 @@ function truncate($string, $limit, $break=" ", $pad="...") {
   return $string;
 }
 
+/*
+ * Return random letters
+ */
+function randomStr($length = 3) {
+    $string = md5(uniqid(rand(), true));
+    return substr($string, 0, $length);
+}
+
 ?>
