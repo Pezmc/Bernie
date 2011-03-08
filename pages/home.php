@@ -21,8 +21,10 @@ $PAGE['subtitle'] = "Login/Register";
 
 if(isLoggedIn()) {
 	$PAGE['content'] = parse("FrontPageLoggedIn.html");
+	$PAGE['content'] .= "Pretty sure you're logged in";
 } else {
 	$PAGE['content'] = parse("FrontPageLoggedOut.html");
+	$PAGE['content'] .= "Pretty sure you're logged out";
 }
 
 $PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';

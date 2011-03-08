@@ -38,7 +38,7 @@ include_once('inc/pegParse.class.php');
 /* Database */
 connectMe('11_COMP10120_D1'); //We always need a database connection
 
-/* TEMPORARY FORCE LOGIN */
+/* TEMPORARY FORCE LOGIN - Use this to simulate login/out for now */
 validateUser(1);
 
 /* If the user isn't logged in yet */
@@ -56,7 +56,7 @@ if(!isLoggedIn()) {
 switch ($GLOBAL['page']) {
 	case "bernie": break;	
 	case "login": break;	
-	case "logout": break;	
+	case "logout": include_once('pages/logout.php'); break;	
 	case "likes": break;
 	case "profile": break;	
 	case "lostPassword": break;
