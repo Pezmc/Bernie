@@ -17,6 +17,7 @@ $USER['parents_email'] = "";
 $USER['first_name'] = "";
 $USER['last_name'] = "";
 $USER['password'] = "";
+$USER['gender'] = "";
 $USER['salt'] = "";
 
 ?>

@@ -38,9 +38,6 @@ include_once('inc/pegParse.class.php');
 /* Database */
 connectMe('11_COMP10120_D1'); //We always need a database connection
 
-/* TEMPORARY FORCE LOGIN - Use this to simulate login/out for now */
-// Now just hit login and it will always say yes
-
 /* If the user isn't logged in yet */
 if(!isLoggedIn()) {
 	//If they are trying to access something they are not allowed to
