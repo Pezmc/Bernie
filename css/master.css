@@ -299,7 +299,7 @@ color: #D95D3A;
 /* Form elements */
 
 /* Regular textarea */
-input[type=text] {
+input[type=text], input[type=password] {
 margin: 0px;
 padding: 0px;
 padding-left: 20px;
