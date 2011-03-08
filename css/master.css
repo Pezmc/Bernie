@@ -299,7 +299,7 @@ color: #D95D3A;
 /* Form elements */
 
 /* Regular textarea */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
 margin: 0px;
 padding: 0px;
 padding-left: 20px;
@@ -317,7 +317,7 @@ font-weight: bold;
 }
 
 /* Regular textarea error */
-input[type=text].error {
+input[type=text].error, input[type=email].error {
 background-image: url("/Bernie/images/textarea_error.png");
 }
 
