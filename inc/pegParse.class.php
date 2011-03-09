@@ -8,10 +8,10 @@
  *
  * Usage: See index.php
  *
- * Version: 1.6
+ * Version: 1.6b
  *
  * Changelog:
- *   1.6 - Added else if
+ *   1.6b - Added else if, ignoring html comments and some try/catch statements
  *   1.5 - Added the option to disable checking include files
  *   1.4 - Added hash function for old PHP users + error fix
  *   1.3 - General Improvements
@@ -23,6 +23,7 @@
  *
  * Ideas:
  *   - Prevent served by message on includes
+ *   - Recognise html comments...
  *
  * Devs: Pez Cuckow - email@pezcuckow.com
  * If you are interested in helping dev PegParse please get in contact
@@ -33,11 +34,12 @@ class pegParse {
 	private $tmp; // Where to store compiled temp files
 	private $templates; //Where are the template files stored?
 	private $warning; //Are we outputting warnings	
-	private $version = '1.6'; //Current version
+	private $version = '1.6b'; //Current version
 	private $stripPHP; //Do we want php removed?
 	private $cachePHP; //Cache the PHP?
 	private $cacheHTML; //Cache the HTML?
 	private $checkIncludes; //Check the includes for changes on every load
+	private $ignoreComments; //Ignore HTML comments
 	
 	private $data; // a stdClass object to hold the data passed to the template
 	private $servedBy; //What was most recently served
@@ -60,6 +62,7 @@ class pegParse {
 		$this->cacheHTML = true;
 		$this->debugOn = false;
 		$this->checkIncludes = true;
+		$this->ignoreComments = true;
 	}
 	
 	/*
@@ -112,6 +115,7 @@ class pegParse {
 			case "cacheHTML": $this->cacheHTML = (boolean) $value; break;
 			case "debug": $this->debugOn = (boolean) $value; break;
 			case "checkIncludes": $this->checkIncludes = (boolean) $value; break;
+			case "ignoreComments": $this->ignoreComments = (boolean) $value; break;
 			default: $this->doError('Unknown config value '.$key.' set');	
 		}
 	}
@@ -321,15 +325,23 @@ class pegParse {
 			$this->compile($path, $template); //Compile the page PHP if needed
 	
 			ob_start(); //Buffer everything
-			$cachedPHP = $this->tmp . md5($path.$template) . '.php';
+			$cachedPHP = $this->tmp . $this->hash($path.$template) . '.php';
 			if(file_exists($cachedPHP)) {
-				include($cachedPHP); //Show the page
+				try {
+					include($cachedPHP); //Show the page
+				} catch (Exception $e) {
+					$this->doError("A PHP Error Occured: ".$e->getMessage()." on line ".$e->getLine()." in ".$e->getFile()."<br /> - Please check your pegParse syntax!");	
+				}
 			} else {
 				$this->doError('The PHP cache file '.$cachedPHP.' coudln\'t be found, try reloading or check permissions');
 			}
 			$outputStr = ob_get_clean(); //Clear the buffer
 		} else {
-			$outputStr = eval('?>'.$this->compile($path, $template).'<?php ');
+			try {
+				$outputStr = eval('?>'.$this->compile($path, $template).'<?php ');
+			} catch (Exception $e) {
+				$this->doError("A PHP Error Occured: ".$e->getMessage()." on line ".$e->getLine()." in ".$e->getFile()."<br /> - Please check your pegParse syntax!");	
+			}
 		}
 		
 		//Cache the output as HTML
@@ -378,7 +390,7 @@ class pegParse {
 
 		$templateFile = $path . $template;
 		if($this->cachePHP) {
-			$compiledFile = $this->tmp . md5($templateFile) . '.php';
+			$compiledFile = $this->tmp . $this->hash($templateFile) . '.php';
 			if(!is_writable($this->tmp)) {
 				$this->doError('I don\'t have permission to create '.$compiledFile.', please chmod the dir to 777');
 			}
@@ -402,9 +414,18 @@ class pegParse {
 			if($num > 0) {
 				if(strpos($line,'{!}') === false) {
 					for($i = 0; $i < $num; $i++) {
-						$match = $matches[0][$i];
-						$new = $this->transformSyntax($matches[1][$i]);
-						$line = str_replace($match, $new, $line);
+						if($this->ignoreComments && is_int(strpos($line,'<!--')) && is_int(strpos($line,'-->'))) { //If there is a one line comment
+							if((strpos($line, $matches[0][$i]) < strpos($line,'<!--')
+											|| strpos($line, $matches[0][$i]) > strpos($line,'-->'))) { //if before or after comment
+								$match = $matches[0][$i];
+								$new = $this->transformSyntax($matches[1][$i]);
+								$line = str_replace($match, $new, $line);
+							}
+						} else {
+							$match = $matches[0][$i];
+							$new = $this->transformSyntax($matches[1][$i]);
+							$line = str_replace($match, $new, $line);	
+						}
 					}
 				} else {
 					$line = preg_replace('/{!}/', '', $line, 1);	
@@ -453,7 +474,7 @@ class pegParse {
 				break;
 			case 'elseif':
 			case 'elif':
-				$string .= 'elseif('.preg_replace($from, $to, $parts[1]).') {';
+				$string .= '} elseif('.preg_replace($from, $to, $parts[1]).') {';
 				break;
 			case 'switch':
 				$string .= $parts[0] . '(' . preg_replace($from, $to, $parts[1]) . ') { ' . ($parts[0] == 'switch' ? 'default: ' : '');
