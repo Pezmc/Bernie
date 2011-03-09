@@ -20,7 +20,8 @@ function parse($template, $extra = "") {
 	
 	/* Create new instance, set up vars */
 	$t = new pegParse();
-	$t->config("rootDir", $_SERVER['DOCUMENT_ROOT']."/Bernie/");
+	//$t->config("rootDir", $_SERVER['DOCUMENT_ROOT']."/Bernie/");
+	$t->config("rootDir", getCurrentDirectory());
 	$t->config("templateDir", "templates/");
 	$t->config("compileDir", "tmp/");
 	if($CONFIG['debug']) {

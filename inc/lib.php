@@ -126,4 +126,14 @@ function isGenderUnknown() {
 	}
 }
 
+/*
+ * Returns the dir of the currently running file... here becaue Soba sucks
+ */
+function getCurrentDirectory() {
+	$path = dirname($_SERVER['PHP_SELF']);
+	$position = strrpos($path,'/') + 1;
+	return substr($path,$position);
+}
+
+
 ?>
