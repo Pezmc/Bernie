@@ -24,7 +24,7 @@ $PAGE['title'] = "Bernie";
 $suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugAuthor"=>"Cat writer","sugYear"=>"1990","sugLength"=>"Long","sugSubTItle"=>"cat the cat cat is a cat which shat","sugDescription"=>"cattycattycatty");
 
 
-$PAGE['content'] = parse("Bernie.html");
+$PAGE['content'] = parse("Bernie.html", $suggestion);
 
 
 
