@@ -17,7 +17,7 @@
 
 /* Thinking Code */
 
-include_once('inc/bernie.php');
+include_once('inc/lib.php');
 
 $PAGE['title'] = "Bernie";
 
