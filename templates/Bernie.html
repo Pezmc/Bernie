@@ -6,8 +6,8 @@
 	<!-- The top two lines -->
 	<div id="head">
 		<!--  The category type will change -->
-		<p>some book <b class="{category}">{ucwords(category)}</b></p>
-		<p>click on something i dont care what</p>
+		<p>You are now Bernying <b class="{category}">{ucwords(category)}.</b></p>
+		<p>Click on the {ucwords(category)} tab or the button at the bottom of the page to Bernie more {ucwords(category)} ! </p>
 	</div> <!--  end of head -->
 	
 	<!-- The subcontainer for the left and right parts  -->
@@ -20,14 +20,13 @@
 			<div id="bio">
 				
 				<!--  This image will change for each suggestion -->
-				<img src="./udhfsdhif"></img>
+				<img src={sugImage}></img>
 				
 				<!-- The part to the right of the image  -->
 				<div id="picturestuff">				
 				
 					<!--  The title of the suggestion -->
-					<p class ="item_title">Guess how soppy this is -- reaching
-					the border on the right</p>
+					<p class ="item_title"> {sugTitle} </p>
 					<p class = orange>Rate this item:</p>
 					
 					<!--  The rating buttons, these will be interactive -->
@@ -41,9 +40,9 @@
 					<br> <br> <br>  <br>
 					<section class="text">
 					<ul>
-						<li><font color="green">Author</font> Author</li>				
-						<li><font color="green">Year</font> Year</li>				
-						<li><font color="green">Length</font> Length</li>
+						<li><font color="green">Author</font> {sugAuthor}</li>				
+						<li><font color="green">Year</font> {sugYear} </li>				
+						<li><font color="green">Length</font> {sugLength} </li>
 					</ul>
 					</section>
 					
@@ -51,11 +50,8 @@
 						
 				<!-- The description of the suggestion  -->
 				<div id="biotext">
-					<p> <span class="subtitle"> The summary of the book
-					which should span across until the border on the
-					right</p>
-					<p> <section class="text">The description of the book which should also
-					span until the border</section></p>
+					<p> <span class="subtitle"> {sugSubTitle}</p>
+					<p> <section class="text"> {sugDescription} </section></p>
 				</div> <!-- End of description  -->
 				
 			</div> <!--  End of the suggestion -->
@@ -105,14 +101,14 @@
 				<!-- 3 alternate suggestions, just repeated code three times -->
 				<div class ="altSug">				
 					<div class ="altPic">
-					<img src="./udhfsdhif"></img>					
+					<img src={altImage1}></img>					
 					</div>
 										
 					<div class ="altText">
-					<text class="green"> Alt Title </text>
-					<img src="http://server.pezcuckow.com/Bernie/images/icon_books_small.png" />
+					<text class="green"> {altTitle1} </text>
+					<img src={smallAlt1} />
 					<section class="text">
-					<p> short description of alternate suggestion which doesnt fit insi... <br>
+					<p> {altDisc1} <br>
 					<text class="orange"> Go to item! </text></p>
 					</section>
 					</div>
@@ -120,14 +116,14 @@
 				
 				<div class ="altSug">				
 					<div class ="altPic">
-					<img src="./udhfsdhif"></img>					
+					<img src={altImage2}></img>					
 					</div>
 										
 					<div class ="altText">
-					<text class="green"> Alt Title </text>
-					<img src="http://server.pezcuckow.com/Bernie/images/icon_books_small.png" />
+					<text class="green"> {altTitle2} </text>
+					<img src={smallAlt2} />
 					<section class="text">
-					<p> short description of alternate suggestion which doesnt fit insi... <br>
+					<p> {altDisc2} <br>
 					<text class="orange"> Go to item! </text></p>
 					</section>
 					</div>
@@ -135,14 +131,14 @@
 				
 				<div class ="altSug">				
 					<div class ="altPic">
-					<img src="./udhfsdhif"></img>					
+					<img src={altImage3}></img>					
 					</div>
 										
 					<div class ="altText">
-					<text class="green"> Alt Title </text>
-					<img src="http://server.pezcuckow.com/Bernie/images/icon_books_small.png" />
+					<text class="green"> {altTitle3} </text>
+					<img src={smallAlt3} />
 					<section class="text">
-					<p> short description of alternate suggestion which doesnt fit insi... <br>
+					<p> {altDisc3} <br>
 					<text class="orange"> Go to item! </text></p>
 					</section>
 					</div>
