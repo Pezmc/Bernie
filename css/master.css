@@ -426,6 +426,14 @@ color: #FFFFFF;
 border: 0px;
 }
 
+/* A large button used on logged in front page */ 
+input[type="submit"].large {
+width: 128px;
+height: 31px;
+background-image: url("button_large.png");
+background-repeat: no-repeat;
+}
+
 /* A medium sized button used in the sign up steps */ 
 input[type="submit"].medium {
 width: 78px;
