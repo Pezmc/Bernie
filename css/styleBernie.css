@@ -35,7 +35,7 @@ padding: 0;
 	border-right: 1px solid silver;
 }
 #rightcontainer {
-	width: 280px;
+	width: auto;
 	float: left;
 }
 
