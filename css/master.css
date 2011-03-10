@@ -220,11 +220,9 @@ td.title {
 padding-bottom: 22px;
 }
 
-/* Specifies the width of a dominant left content area (eg front page, suggestion 	  
- * page), and provides a right border;
+/* Provides a right border and padding for a left content area (eg front page, suggestion page)
  */
 td.left {
-width: 568px;
 border-right: 1px solid #CBDBC4;
 padding-right: 12px;
 }
