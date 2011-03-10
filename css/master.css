@@ -358,6 +358,13 @@ background-color: #F3F3F3;
 background-image: url("/Bernie/images/login_textarea_error.png");
 }
 
+/* Don't display the spin buttons next to the field. */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
 /* Day and month textarea */
 input[type=number].date {
 padding-left: 10px;
