@@ -251,18 +251,25 @@ background-color: #CBDBC4;
 height: 1px;
 }
 
+/* Don't indent lists */
+ul {
+margin: 0;
+padding: 0;
+}
+
 /* All lists have hoofs as bullets */
 li {
-margin: ;
 padding: 0px 25px;
 list-style: none;
-background: url('/Bernie/images/bullet.png') no-repeat top left;
+background: url('bullet.png') no-repeat 0px 5px;
 }
 
 /* List on the front page with green <li> items */
-ul.interests {
-color: #94C05B;
-line-height: 24pt;
+ul.interests li {
+padding-left: 25px;
+color: #5EA109;
+font-size: 11pt;
+line-height: 27px;
 }
 
 /* Ignore these, only used on the front page... */
