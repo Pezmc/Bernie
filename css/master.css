@@ -251,6 +251,20 @@ background-color: #CBDBC4;
 height: 1px;
 }
 
+/* All lists have hoofs as bullets */
+li {
+margin: ;
+padding: 0px 25px;
+list-style: none;
+background: url('/Bernie/images/bullet.png') no-repeat top left;
+}
+
+/* List on the front page with green <li> items */
+ul.interests {
+color: #94C05B;
+line-height: 24pt;
+}
+
 /* Ignore these, only used on the front page... */
 #toBernie {
 font-size: 16px;
