@@ -59,7 +59,8 @@ padding: 0;
 }
 
 #bio #picturestuff{
-	width: 270px;
+	width: 260px;
+        padding-top: 10px;
 	min-height: 200px;
 	float: left;
 	
