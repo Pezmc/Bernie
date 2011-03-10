@@ -320,7 +320,7 @@ color: #D95D3A;
 /* Form elements */
 
 /* Regular textarea */
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password], input[type=email], input[type=number] {
 margin: 0px;
 padding: 0px;
 padding-left: 20px;
@@ -359,28 +359,28 @@ background-image: url("/Bernie/images/login_textarea_error.png");
 }
 
 /* Day and month textarea */
-input[type=text].date {
+input[type=number].date {
 padding-left: 10px;
 width: 36px;
 background-image: url("/Bernie/images/textarea_date.png");
 }
 
 /* Day and month textarea error */
-input[type=text].date_error {
+input[type=number].date_error {
 padding-left: 10px;
 width: 36px;
 background-image: url("/Bernie/images/textarea_date_error.png");
 }
 
 /* Year textarea */
-input[type=text].year {
+input[type=number].year {
 padding-left: 10px;
 width: 70px;
 background-image: url("/Bernie/images/textarea_year.png");
 }
 
 /* Year textarea error*/
-input[type=text].year_error {
+input[type=number].year_error {
 width: 70px;
 background-image: url("/Bernie/images/textarea_year_error.png");
 }
