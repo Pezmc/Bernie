@@ -11,7 +11,7 @@ Use this page to edit your profile information.
 		 	<!-- To display error, add class="error" as tag attribute -->
 		 	<form action="" method="">
 
-			<table width="450px">
+			<table width="500px">
 				<tr>
 					<td>
 					I am a
@@ -48,9 +48,9 @@ Use this page to edit your profile information.
 					</td>
 					<td class="date">
 
-					<input type="number" name="day" value="{day_of_birth}" class="date" maxlength="2" min="1" max="31">
-					<input type="number" name="month" value="{month_of_birth}"  class="date" maxlength="2" min="1" max="12">
-					<input type="number" name="year" value="{year_of_birth}" class="year" maxlength="4" min="1900" max="2011">
+					<input type="number" name="day" value="<!--{day_of_birth}-->" class="date" maxlength="2" min="1" max="31">
+					<input type="number" name="month" value="<!--{month_of_birth}-->"  class="date" maxlength="2" min="1" max="12">
+					<input type="number" name="year" value="<!--{year_of_birth}-->" class="year" maxlength="4" min="1900" max="2011">
 
 					</td>
 				</tr>
@@ -59,7 +59,7 @@ Use this page to edit your profile information.
 					Parent's name
 					</td>
 					<td>
-					<input type="text" name="parentsname" value="{parents_name}" maxlength="16">
+					<input type="text" name="parentsname" value="<!--{parents_name}-->" maxlength="16">
 					</td>
 				</tr>
 				<tr>
@@ -72,10 +72,10 @@ Use this page to edit your profile information.
 				</tr>
 			</table>
 
-			<p>
+			<p />
 			<input type="checkbox" name="newpassword">
                         Tick this box if you want a new password to be sent to the provided e-mail address.
-			</p>
+			<p />
 
 			<p align="center">
 			<input type="submit" value="SUBMIT" class="medium">
