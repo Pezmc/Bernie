@@ -430,7 +430,7 @@ border: 0px;
 input[type="submit"].large {
 width: 128px;
 height: 31px;
-background-image: url("button_large.png");
+background-image: url("/Bernie/images/button_large.png");
 background-repeat: no-repeat;
 }
 
