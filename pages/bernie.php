@@ -14,15 +14,17 @@
  *
 /*/
 
+
 /* Thinking Code */
-//include_once('inc/bernie.php');
+
+include_once('inc/bernie.php');
 
 $PAGE['title'] = "Bernie";
 
 $PAGE['content'] = parse("Bernie.html");
 
 //For the moment just send them home...
-die();
+
 
 
 
