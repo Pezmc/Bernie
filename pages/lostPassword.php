@@ -18,7 +18,18 @@ include_once('inc/lib.php');
 
 $PAGE['title'] = "Lost password";
 
-$PAGE['content'] .= parse(lostPassword.php);
+$PAGE['content'] .= 
+'
+<b>Lost password?</b>
+<p />
+Not to worry, just enter your e-mail address below and we will send you a new one!
+<p />
+
+<form action="" method="" name="">
+<input type="text" placeholder="E-mail address" name="email" maxlength="16">
+<input type="submit" class="small" value="GO">
+</form>
+';
 
 
 ?>
