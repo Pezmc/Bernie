@@ -22,7 +22,6 @@ $PAGE['title'] = "Bernie";
 $PAGE['content'] = parse("Bernie.html");
 
 //For the moment just send them home...
-header('Location: ?p=home');
 die();
 
 
