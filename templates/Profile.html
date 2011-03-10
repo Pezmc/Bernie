@@ -48,9 +48,9 @@ Use this page to edit your profile information.
 					</td>
 					<td class="date">
 
-					<input type="number" name="day" <!-value="{day_of_birth}"--> class="date" maxlength="2" min="1" max="31">
-					<input type="number" name="month" <!-value="{month_of_birth}"-->  class="date" maxlength="2" min="1" max="12">
-					<input type="number" name="year" <!-value="-{year_of_birth}"--> class="year" maxlength="4" min="1900" max="2011">
+					<input type="number" name="day" value="{!}{day_of_birth}" class="date" maxlength="2" min="1" max="31">
+					<input type="number" name="month" value="{!}{month_of_birth}"-->  class="date" maxlength="2" min="1" max="12">
+					<input type="number" name="year" value="{!}{year_of_birth}" class="year" maxlength="4" min="1900" max="2011">
 
 					</td>
 				</tr>
@@ -59,7 +59,7 @@ Use this page to edit your profile information.
 					Parent's name
 					</td>
 					<td>
-					<input type="text" name="parentsname" <!--value="{parents_name}"--> maxlength="16">
+					<input type="text" name="parentsname" value="{!}{parents_name}" maxlength="16">
 					</td>
 				</tr>
 				<tr>
@@ -67,7 +67,7 @@ Use this page to edit your profile information.
 					Parent's email
 					</td>
 					<td>
-					<input type="email" name="parentsemail" value="{parents_email}" maxlength="16">
+					<input type="email" name="parentsemail" value="{parents_email}" maxlength="">
 					</td>
 				</tr>
 			</table>
