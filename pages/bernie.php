@@ -17,7 +17,15 @@
 /* Thinking Code */
 //include_once('inc/bernie.php');
 
-$PAGE['content'] = parse("Bernie.html");
+$PAGE['title'] = "Bernie";
+
+$PAGE['content'] = parse("SignUp.html");
+
+//For the moment just send them home...
+header('Location: ?p=home');
+die();
+
+
 
 /* Rest of document just deals with displaying information not getting it */
 ?>
