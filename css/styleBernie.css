@@ -3,12 +3,7 @@ ul.hoof {
 margin: 0;
 padding: 0;
 }
-ul.hoof li {
-margin: ;
-padding: 0px 25px;
-list-style: none;
-background: url('/Bernie/images/bullet.png') no-repeat top left;
-}
+
 .green {color: green;}
 .orange {color: orange;}
 
