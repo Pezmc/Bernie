@@ -261,7 +261,7 @@ padding: 0;
 li {
 padding: 0px 25px;
 list-style: none;
-background: url('bullet.png') no-repeat 0px 5px;
+background: url('/Bernie/images/bullet.png') no-repeat 0px 5px;
 }
 
 /* List on the front page with green <li> items */
