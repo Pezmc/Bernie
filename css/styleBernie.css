@@ -93,13 +93,13 @@ padding: 0;
 }
 
 #list {
-	width: 100px;	
+	width: 90px;	
 	padding-top: 20px;
 	float: left;
 }
 
 #parcel {
-	width: 100px;
+	width: 90px;
 	margin: 30px 62px 0 0;
 	float: right;
 }
