@@ -1,20 +1,36 @@
 <html>
 
+<!-- The whole section container -->
 <div id="container">
+
+	<!-- The top two lines -->
 	<div id="head">
+		<!--  The category type will change -->
 		<p>some book <b class="{category}">{ucwords(category)}</b></p>
 		<p>click on something i dont care what</p>
-	</div>
+	</div> <!--  end of head -->
+	
+	<!-- The subcontainer for the left and right parts  -->
 	<div id="subcontainer">
+	
+		<!-- The left part, containing the suggestion and comments -->
 		<div id="leftcontainer">
 		
+			<!-- The top part, the suggestion -->
 			<div id="bio">
 				
+				<!--  This image will change for each suggestion -->
 				<img src="./udhfsdhif"></img>
-				<div id="picturestuff">
+				
+				<!-- The part to the right of the image  -->
+				<div id="picturestuff">				
+				
+					<!--  The title of the suggestion -->
 					<p class ="item_title">Guess how soppy this is -- reaching
 					the border on the right</p>
 					<p class = orange>Rate this item:</p>
+					
+					<!--  The rating buttons, these will be interactive -->
 					<img style="WIDTH: 60px; HEIGHT: 60px"
 					src="/Bernie/images/rate_up.png" 
 					/>
@@ -22,7 +38,7 @@
 					src="/Bernie/images/rate_down.png"
 					/>
 					<!-- how do I fix this without <br> -->
-					<br> <br> <br> 
+					<br> <br> <br> <br>
 					<section class="text">
 					<ul>
 						<li><font color="green">Author</font> Author</li>				
@@ -31,31 +47,40 @@
 					</ul>
 					</section>
 					
-				</div>	
+				</div> <!-- End of the stuff to the right of the image  -->	
 						
+				<!-- The description of the suggestion  -->
 				<div id="biotext">
 					<p> <span class="subtitle"> The summary of the book
 					which should span across until the border on the
 					right</p>
 					<p> <section class="text">The description of the book which should also
 					span until the border</section></p>
-				</div>
+				</div> <!-- End of description  -->
 				
-			</div>
+			</div> <!--  End of the suggestion -->
 		
-		       	<div id="comments">
+		       	<!-- The comments  STEPHENS PART I THINK-->
+			<div id="comments">
 			<img src="http://server.pezcuckow.com/Bernie/images/comments.png"></img>
+			
 			<br> <br>
 			<p> Add yours: </p>
 			<br> 
 			<p> Html form on this line </p>
-			</div>
+			</div> <!--  end of comments  -->
+			
 		
 		
-		</div>
+		</div> <!--  End of the left container -->
+		
+		<!-- Start of the right side, purchasing links and similar items  -->
 		<div id="rightcontainer">
+		
+			<!--  The purchasing links to ebay and amazon -->
 			<div id="purchase">
-				
+						
+				<!-- The list of sites being linked  -->
 				<div id ="list">
 			
 					<img src="http://server.pezcuckow.com/Bernie/images/get_this_item.png"></img>
@@ -64,16 +89,20 @@
 								<li><img src="http://server.pezcuckow.com/Bernie/images/ebay_logo.png" /></li>				
 								<li><img src="http://server.pezcuckow.com/Bernie/images/amazon_logo.png" /></li>	
 					</ul>
-				</div>
+				</div> <!--  End of this list  -->
+				
+				<!--  Just an image of a parcel -->
 				<div id ="parcel">
 			        <img src="http://server.pezcuckow.com/Bernie/images/parcel.png" />
-				</div>
+				</div> <!-- end of parcel  -->
 				
-			</div>
+			</div> <!--  End of purchase section -->
 			
+			<!--  Similar items -->
 			<div id="similar">
 				<img src="http://server.pezcuckow.com/Bernie/images/similar_items.png" />
 				
+				<!-- 3 alternate suggestions, just repeated code three times -->
 				<div class ="altSug">				
 					<div class ="altPic">
 					<img src="./udhfsdhif"></img>					
@@ -117,17 +146,20 @@
 					<text class="orange"> Go to item! </text></p>
 					</section>
 					</div>
-				</div>		
-				
-			</div>
+				</div>	<!--  End of the three alt suggestions -->
 			
-		</div>
-	</div>
+			</div> <!-- End of similar items  -->
+			
+		</div> <!-- End of right container  -->
+		
+	</div> <!-- End of the subcontainer  -->
+	
+	<!-- The footer containing the image of the pig and a button to bernie the same category -->
 	<div id="footer" align="center">
 	<img src="http://server.pezcuckow.com/Bernie/images/button_bernie.png" />
 	<img src="http://server.pezcuckow.com/Bernie/images/bernie_head.png" />	
-	</div>
-<div>
+	</div> <!-- End of footer  -->
+</div> <!--  End of main container  -->
 
 </html>
 
