@@ -14,7 +14,11 @@
 /*/
 
 /* Thinking Code */
-include_once('inc/profile.php');
+include_once('inc/lib.php');
+
+$PAGE['title'] = "Edit Profile";
+
+$PAGE['content'] = parse("Profile.html");
 
 /* Rest of document just deals with displaying information not getting it */
 
