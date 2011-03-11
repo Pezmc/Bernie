@@ -348,11 +348,10 @@ color: #D95D3A;
 /* Regular textarea */
 input[type=text], input[type=password], input[type=email], input[type=number] {
 margin: 0px;
-padding: 0px;
-padding-left: 20px;
+padding: 4px 20px 0px 20px; /* top right bottom left */
 border: 0px;
-width: 185px;
-height: 46px;
+width: 145px;
+height: 42px;
 vertical-align: middle;
 background-image: url("/Bernie/images/textarea.png");
 background-repeat: no-repeat;
@@ -370,16 +369,14 @@ background-image: url("/Bernie/images/textarea_error.png");
 
 /* Login textarea */
 input[type=text].login, input[type=password].login {
-padding-top: 4px;
-width: 180px;
+width: 160px;
 background-color: #F3F3F3;
 background-image: url("/Bernie/images/login_textarea.png");
 }
 
 /* Login textarea error */
 input[type=text].login_error, input[type=password].login_error {
-padding-top: 4px;
-width: 180px;
+width: 160px;
 background-color: #F3F3F3;
 background-image: url("/Bernie/images/login_textarea_error.png");
 }
