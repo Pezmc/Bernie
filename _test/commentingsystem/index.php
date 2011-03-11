@@ -1,4 +1,4 @@
-hgfhfg	
+
 <?php
 include_once("../connect.php");
 $commenting_form = '<form action = "addcomment.php" method = "post">
@@ -35,7 +35,7 @@ if ($comments_count > 0)
 }
 else
 {
-   $comment = 'There are no comments at the moment.<br />'.commenting_form;
+   $comment = 'There are no comments at the moment.<br />'.$commenting_form;
    $page_title = 'No Comments';
 }
 ?>
