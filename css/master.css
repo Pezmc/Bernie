@@ -1,8 +1,18 @@
+@import url("signup.css");
+@import url("styleBernie.css");
+
 /* Master CSS stylesheet to be used with all pages
  * Will add styles as we go along
  * Do not edit existing styles, as the changes that look ok with your HTML might not 
  * look good with someone else's. 
+ *
  * Feel free to add new styles though.
+ * You may want to make your own style sheet in a separate file, in which case you should add 
+ * @import url("stylesheetname.css"); 
+ * to the beginning of this file. 
+ * Make sure the imported stylesheet does not contain styles with the same name, 
+ * or they will be overriden by master.css
+ *
  * Will do my best to think of all required styles.
  */
 
@@ -19,28 +29,35 @@ font-family: "Helvetica";
 header {
 background-image: url(/Bernie/images/header_bg.png);
 background-repeat: no-repeat;
+background-position:center 5px;
 height: 189px;
 margin-bottom: 1px;
 }
 
+section.header table {
+	margin: 0 auto;	
+}
+
 section.header {
-margin-left: 295px;
-width: 530px;
 height: 189px;
 /*border: 1px solid #000000;*/
 }
 
 section.content {
-margin-left: 175px;
-width: 789px;
+/*margin-left: 175px;*/
+margin: 0 auto;
+width: 800px;
 min-height: 400px;
 padding-top: 40px;
 padding-bottom: 40px;
+height: auto;
+overflow:auto;
 /*border: 1px solid #000000;*/
 }
 
 section.footer {
 background-image: url(/Bernie/images/footer_bg.png);
+background-position:top center;
 background-repeat: no-repeat;
 padding-bottom: 15px;
 padding-top: 27px;
@@ -54,15 +71,137 @@ width: 100%;
 height: 57px;
 color: #BABABA;
 font-size: 13px;
+text-align:center;
 }
 
 table {
 border: 0px;
+padding: 0px;
+margin: 0px;
 }
 /* End master HTML */
 
-/* The blue text used on the front page and as an item subtitle */
-section.subtitle {
+
+/* Begin header element styles */
+/* The login and welcome area */
+
+td.logo {
+max-width: 272px;
+padding-left: 19px;
+}
+
+
+td.topbar {
+height: 71px;
+vertical-align: middle;
+}
+
+/* The login box */
+td.loginbox {
+max-width: 180px;
+}
+
+/* The cell that accommodates the four main categories */
+td.maincats {
+max-width: 350px;
+height: 119px;
+vertical-align: bottom;
+}
+
+/* A cell that accommodates a category */
+#cat_books, #cat_tv, #cat_music, #cat_web, #cat_open {
+min-width: 86px;
+height: 110px;
+vertical-align: bottom;
+text-align: center;
+background:url(/Bernie/images/header_tab_bg.png);
+background-repeat: no-repeat;
+background-position: bottom left;
+}
+
+/* All the cat links... */
+.maincats a {
+	cursor: pointer;
+	display: block;
+	min-width: 86px;
+	height: 110px;
+	position:relative;
+	top:0;
+	left:0;
+}
+
+/* All the cat images */
+.maincats a img {
+	position:absolute;
+	bottom:5px;
+	left:50%;
+	margin-left:-18px;
+}
+
+/* A cell that accommodates the chosen category */
+#cat_open {
+background-image: url("/Bernie/images/cat_open.png");
+}
+
+/* The cell that accommodates either the bernie button or the sign up button */
+td.button {
+vertical-align: top;
+}
+
+/* Error message bubble */
+#username_error, #passw_error {
+position: absolute;
+top: 63px;
+left: 336px;
+min-height: 61px;
+min-width: 275px;
+padding-top: 30px;
+padding-left: 20px;
+background-repeat: no-repeat;
+}
+
+#username_error {
+background-image: url("/Bernie/images/error_message_bubble_1.png");
+}
+
+#passw_error {
+background-image: url("/Bernie/images/error_message_bubble_2.png");
+}
+
+/* Error message text style */
+#error_message {
+color: #DD7150;
+font-size: 13px;
+width: 240px;
+text-align: center;
+}
+
+/* Welcome message cell */
+#welcome {
+width: 330px;
+vertical-align: middle;
+}
+
+/* Change profile information and logout cell */
+#usernavi {
+width: 190px;
+text-align: right;
+vertical-align: middle;
+}
+
+/* Small welcome message text under Welcome, user! */
+#welcome_text {
+color: #898989;
+font-size: 12px;
+}
+
+/* End header element styles */
+
+/* The blue text used on the front page,
+ * as an item subtitle, 
+ * and in the tabs on the sign up page
+ */
+.subtitle {
 color: #1778AF;
 font-size: 16px;
 line-height: 24px;
@@ -81,13 +220,12 @@ td.title {
 padding-bottom: 22px;
 }
 
-/* Specifies the width of a dominant left content area (eg front page, suggestion 	  
- * page), and provides a right border;
+/* Provides a right border and padding for a left content area (eg front page, suggestion page)
  */
 td.left {
-width: 568px;
 border-right: 1px solid #CBDBC4;
 padding-right: 12px;
+vertical-align: top;
 }
 
 /* The right side of the content area (front page and suggestion page) */
@@ -112,6 +250,27 @@ width: 100%;
 border: 0px;
 background-color: #CBDBC4;
 height: 1px;
+}
+
+/* Don't indent lists */
+ul {
+margin: 0;
+padding: 0;
+}
+
+/* All lists have hoofs as bullets */
+li {
+padding: 0px 25px;
+list-style: none;
+background: url('/Bernie/images/bullet.png') no-repeat 0px 5px;
+}
+
+/* List on the front page with green <li> items */
+ul.interests li {
+padding-left: 25px;
+color: #5EA109;
+font-size: 11pt;
+line-height: 27px;
 }
 
 /* Ignore these, only used on the front page... */
@@ -142,22 +301,6 @@ text-align: center;
 width: 25px;
 }
 
-b.books {
-color: #5B860A;
-}
-
-b.tv {
-color: #0F567C;
-}
-
-b.music {
-color: #32A1E5;
-}
-
-b.web {
-color: #B22B38;
-}
-
 #tip {
 background-image: url(/Bernie/images/tip.png);
 background-repeat: no-repeat;
@@ -172,6 +315,28 @@ height: 240px;
 
 /* End ignore*/
 
+
+/* Category names on frontpage and bernie page */
+b.books {
+color: #5B860A;
+text-transform: uppercase;
+}
+
+b.tv {
+color: #0F567C;
+text-transform: uppercase;
+}
+
+b.music {
+color: #32A1E5;
+text-transform: uppercase;
+}
+
+b.web {
+color: #B22B38;
+text-transform: uppercase;
+}
+
 /* Any link */
 a {
 text-decoration: underline;
@@ -179,28 +344,131 @@ color: #D95D3A;
 }
 
 /* Form elements */
-input.textfield {
+
+/* Regular textarea */
+input[type=text], input[type=password], input[type=email], input[type=number] {
+margin: 0px;
+padding: 0px;
+padding-left: 20px;
+border: 0px;
+width: 185px;
+height: 46px;
+vertical-align: middle;
+background-image: url("/Bernie/images/textarea.png");
+background-repeat: no-repeat;
+background-position: top left;
+color: #C8C7C9;
+font-family: "Arial";
+font-size: 17px;
+font-weight: bold;
 }
 
-input.textfield.error {
+/* Regular textarea error */
+input[type=text].error, input[type=email].error {
+background-image: url("/Bernie/images/textarea_error.png");
 }
 
-button {
+/* Login textarea */
+input[type=text].login, input[type=password].login {
+padding-top: 4px;
+width: 180px;
+background-color: #F3F3F3;
+background-image: url("/Bernie/images/login_textarea.png");
+}
+
+/* Login textarea error */
+input[type=text].login_error, input[type=password].login_error {
+padding-top: 4px;
+width: 180px;
+background-color: #F3F3F3;
+background-image: url("/Bernie/images/login_textarea_error.png");
+}
+
+/* Don't display the spin buttons next to the field. */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Day and month textarea */
+input[type=number].date {
+padding-left: 10px;
+width: 36px;
+background-image: url("/Bernie/images/textarea_date.png");
+}
+
+/* Day and month textarea error */
+input[type=number].date_error {
+padding-left: 10px;
+width: 36px;
+background-image: url("/Bernie/images/textarea_date_error.png");
+}
+
+/* Year textarea */
+input[type=number].year {
+padding-left: 10px;
+width: 70px;
+background-image: url("/Bernie/images/textarea_year.png");
+}
+
+/* Year textarea error*/
+input[type=number].year_error {
+width: 70px;
+background-image: url("/Bernie/images/textarea_year_error.png");
+}
+
+/* Don't show a border when click inside textfield */
+input:focus {
+border: 0px;
+outline-width: 0px;
+}
+
+/* All buttons */ 
+input[type="submit"] {
+font-size: 13px;
+font-weight: bold;
+cursor:pointer;
+color: #FFFFFF;
+border: 0px;
+}
+
+/* A large button used on logged in front page */ 
+input[type="submit"].large {
+width: 128px;
+height: 31px;
+background-image: url("/Bernie/images/button_large.png");
+background-repeat: no-repeat;
+}
+
+/* A medium sized button used in the sign up steps */ 
+input[type="submit"].medium {
+width: 78px;
+height: 31px;
+background-image: url("/Bernie/images/button_medium.png");
+background-repeat: no-repeat;
+}
+
+/* A small button used in the login */ 
+input[type="submit"].small {
+width: 49px;
+height: 31px;
+background-image: url("/Bernie/images/button_small.png");
+background-repeat: no-repeat;
+}
+
+/* A really large button to Bernie another category */ 
+input[type="submit"].bernie {
+width: 248px;
+height: 40px;
+background-image: url("/Bernie/images/button_bernie.png");
+background-repeat: no-repeat;
 }
 
 /* Different colours for boy and girl comments and welcome message */
 .welcome_girl, .welcome_boy {
 font-size: 18px;
 font-weight: bold;
-color: #E66709;
-}
-
-.welcome_boy {
-color: #3EB7BA;
-}
-
-.welcome_girl {
-color: #E66709;
 }
 
 .comment_girl, .comment_boy {
@@ -208,11 +476,11 @@ font-size: 14px;
 font-weight: bold;
 }
 
-.comment_boy {
+.welcome_boy, .comment_boy {
 color: #3EB7BA;
 }
 
-.comment_girl {
+.welcome_girl, .comment_girl {
 color: #E66709;
 }
 
@@ -240,6 +508,3 @@ color: #32AA1B;
 .item_title_small {
 font-size: 16px;
 }
-
-
-

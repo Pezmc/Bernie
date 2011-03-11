@@ -19,8 +19,8 @@ $GLOBAL['db']['con'] = null; //Current Connection
 $GLOBAL['db']['queries'] = 0; //Total queries so far
 
 /* Page Requested */
-$GLOBAL['page'] = tidy($_GET['p']);
-$GLOBAL['catagory'] = tidy($_GET['c']);
-$GLOBAL['id'] = tidy($_GET['id']);
+$GLOBAL['page'] = tidy((isset($_GET['p']) ? $_GET['p'] : ""),2);
+$GLOBAL['category'] = tidy((isset($_GET['c']) ? $_GET['c'] : ""),2);
+$GLOBAL['id'] = tidy((isset($_GET['id']) ? $_GET['id'] : ""),2);
 
 ?>

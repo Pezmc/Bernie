@@ -1,0 +1,52 @@
+<!--        
+FILE/PATH.PHP
+The sign up page
+Code here for the title and tabs, forms for changing profile information and editing interests are included.
+
+Usage: HOW IT IS USED
+
+Devs: Elise, Florin
+-->
+
+<table width="729px">
+    <tr>
+    		<td class="title" colspan="3">
+    		<!-- Sign Up -->
+			<img src="/Bernie/images/sign_up_text.png" alt="Sign Up" />
+    		</td>
+    	</tr>
+    	<tr>
+    		<td class="tabs" colspan="3">
+    		<!-- Cell for tabs with two sign up steps -->
+
+			<table>
+				<tr class="subtitle">
+					<td class="spacer"></td>
+					<td class="tab_open">
+					<b>STEP 1:</b> User info
+					</td>
+					<td class="tab_closed">
+					<b>STEP 2:</b> Interests
+					</td>
+				</tr>
+			</table>
+			
+    		</td>
+    	</tr>
+    	<tr>
+        <td>
+
+        <!-- Code here for php include form1 and form2 -->
+        
+        <!-------------------- NEEDS LOGIC: When to display which step of the sign up? -------------------->
+        <!-- {!}{if:user is on step one} (function for this...) -->
+                    {include:includes/Form1.html}
+        <!---{!}{elseif:user is on step 2} (function...) -->
+        <!----------{!}{include:includes/Form2.html} -->
+        <!-- {!}{else} -->
+        <!----------{!}{include:includes/Confirmation.html} -->
+                    
+
+	</td>
+    	</tr>
+	</table>

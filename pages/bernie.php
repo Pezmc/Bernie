@@ -14,8 +14,22 @@
  *
 /*/
 
+
 /* Thinking Code */
-include_once('inc/bernie.php');
+
+include_once('inc/lib.php');
+
+$PAGE['title'] = "Bernie";
+
+$suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugAuthor"=>"Cat writer","sugYear"=>"1990","sugLength"=>"Long","sugSubTItle"=>"cat the cat cat is a cat which shat","sugDescription"=>"cattycattycatty");
+
+
+$PAGE['content'] = parse("Bernie.html", $suggestion);
+
+
+
+
+
 
 /* Rest of document just deals with displaying information not getting it */
 ?>

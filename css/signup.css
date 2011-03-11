@@ -1,0 +1,42 @@
+td.tabs {
+height: 37px;
+width: 100%;
+padding: 0px;
+padding-bottom: 20px;
+background-image: url("/Bernie/images/signup_tabs_bg.png");
+background-position: top left;
+background-repeat: no-repeat;
+}
+
+td.spacer {
+width: 58px;
+padding: 0px;
+}
+
+.tab_open, .tab_closed {
+text-align: center;
+height: 37px;
+width: 177px;
+padding: 0px;
+line-height: 10px;
+}
+
+.tab_open {
+background-image: url("/Bernie/images/signup_tab_open.png");
+background-repeat: no-repeat;
+background-position: 0px 33px;
+}
+
+td.date {
+padding-left: 5px;
+max-width: 180px;
+}
+
+/* The left side of the table is 450px wide, smaller than the left area of the front page */
+td.formarea {
+max-width: 450px;
+border-right: 1px solid #CBDBC4;
+padding-right: 12px;
+}
+
+

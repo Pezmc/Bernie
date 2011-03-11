@@ -15,8 +15,29 @@
 /*/
 
 /* Thinking Code */
-include_once('inc/signup.php');
+/* include_once('inc/signup.php'); */
 
 /* Rest of document just deals with displaying information not getting it */
+
+$PAGE['title'] = "Sign Up";
+
+if(!isLoggedIn()) {
+	$PAGE['content'] = parse("SignUp.html");
+} else {
+	/*$PAGE['content'] = parse("ErrorPage.html"); /* They shouldn't be on the sign up page if they're logged in right? */
+	//For the moment just send them home...
+	header('Location: ?p=home');
+	die();
+	
+}
+
+
+
+/***** HELP FROM PEZ *****/
+/* When you give them username or password
+/* use randomStr(3) to create a random three letter string
+/* Then when you hash the password do something like md5(randomStr(3).md5($password))
+/* Store that value in the database, along with the random string (the SALT)
+/* Makes it much harder to hack the website */
 
 ?>

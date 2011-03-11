@@ -1,0 +1,167 @@
+<section class="text">
+
+<!-- The whole section container -->
+<div id="container">
+
+	<!-- The top two lines -->
+	<div id="head">
+		<!--  The category type will change -->
+		<p>You are now Bernying <b class="{category}">{ucwords(category)}.</b></p>
+		<p>Click on the {ucwords(category)} tab or the button at the bottom of the page to Bernie more {ucwords(category)} ! </p>
+	</div> <!--  end of head -->
+	
+	<!-- The subcontainer for the left and right parts  -->
+	<div id="subcontainer">
+	
+		<!-- The left part, containing the suggestion and comments -->
+		<div id="leftcontainer">
+		
+			<!-- The top part, the suggestion -->
+			<div id="bio">
+				
+				<!--  This image will change for each suggestion -->
+				<img src={sugImage}></img>
+				
+				<!-- The part to the right of the image  -->
+				<div id="picturestuff">				
+				
+					<!--  The title of the suggestion -->
+					<p class ="item_title"> {sugTitle} </p>
+					<p class = orange>Rate this item:</p>
+					
+					<!--  The rating buttons, these will be interactive -->
+					<img style="WIDTH: 60px; HEIGHT: 60px"
+					src="/Bernie/images/rate_up.png" 
+					/>
+					<img style="WIDTH: 60px; HEIGHT: 60px"
+					src="/Bernie/images/rate_down.png"
+					/>
+					<!-- how do I fix this without <br> -->
+					<br> <br> <br>  <br>
+					<section class="text">
+					<ul>
+						<li><font color="green">Author</font> {sugAuthor}</li>				
+						<li><font color="green">Year</font> {sugYear} </li>				
+						<li><font color="green">Length</font> {sugLength} </li>
+					</ul>
+					</section>
+					
+				</div> <!-- End of the stuff to the right of the image  -->	
+						
+				<!-- The description of the suggestion  -->
+				<div id="biotext">
+					<p> <span class="subtitle"> {sugSubTitle}</p>
+					<p> <section class="text"> {sugDescription} </section></p>
+				</div> <!-- End of description  -->
+				
+			</div> <!--  End of the suggestion -->
+		
+		       	<!-- The comments  STEPHENS PART I THINK-->
+			<div id="comments">
+			<img src="http://server.pezcuckow.com/Bernie/images/comments.png"></img>
+			
+			<br> <br> <br>
+			<p> Add yours: </p>
+			<br> 
+			<p> Html form on this line </p>
+			</div> <!--  end of comments  -->
+			
+		
+		
+		</div> <!--  End of the left container -->
+		
+		<!-- Start of the right side, purchasing links and similar items  -->
+		<div id="rightcontainer">
+		
+			<!--  The purchasing links to ebay and amazon -->
+			<div id="purchase">
+						
+				<!-- The list of sites being linked  -->
+				<div id ="list">
+			
+					<img src="http://server.pezcuckow.com/Bernie/images/get_this_item.png"></img>
+					<br>
+					<ul class="hoof">
+								<li><img src="http://server.pezcuckow.com/Bernie/images/ebay_logo.png" /></li>				
+								<li><img src="http://server.pezcuckow.com/Bernie/images/amazon_logo.png" /></li>	
+					</ul>
+				</div> <!--  End of this list  -->
+				
+				<!--  Just an image of a parcel -->
+				<div id ="parcel">
+			        <img src="http://server.pezcuckow.com/Bernie/images/parcel.png" />
+				</div> <!-- end of parcel  -->
+				
+			</div> <!--  End of purchase section -->
+			
+			<!--  Similar items -->
+			<div id="similar">
+				<img src="http://server.pezcuckow.com/Bernie/images/similar_items.png" />
+				
+				<!-- 3 alternate suggestions, just repeated code three times -->
+				<div class ="altSug">				
+					<div class ="altPic">
+					<img src={altImage1}></img>					
+					</div>
+										
+					<div class ="altText">
+					<text class="green"> {altTitle1} </text>
+					<img src={smallAlt1} />
+					<section class="text">
+					<p> {altDisc1} <br>
+					<text class="orange"> Go to item! </text></p>
+					</section>
+					</div>
+				</div>
+				
+				<div class ="altSug">				
+					<div class ="altPic">
+					<img src={altImage2}></img>					
+					</div>
+										
+					<div class ="altText">
+					<text class="green"> {altTitle2} </text>
+					<img src={smallAlt2} />
+					<section class="text">
+					<p> {altDisc2} <br>
+					<text class="orange"> Go to item! </text></p>
+					</section>
+					</div>
+				</div>
+				
+				<div class ="altSug">				
+					<div class ="altPic">
+					<img src={altImage3}></img>					
+					</div>
+										
+					<div class ="altText">
+					<text class="green"> {altTitle3} </text>
+					<img src={smallAlt3} />
+					<section class="text">
+					<p> {altDisc3} <br>
+					<text class="orange"> Go to item! </text></p>
+					</section>
+					</div>
+				</div>	<!--  End of the three alt suggestions -->
+			
+			</div> <!-- End of similar items  -->
+			
+		</div> <!-- End of right container  -->
+		
+	</div> <!-- End of the subcontainer  -->
+	
+	<!-- The footer containing the image of the pig and a button to bernie the same category -->
+	<div id="bottom" align="center">
+
+        <form name="" action="" method="">
+	<input type="submit" class="bernie" value="Bernie more {ucwords(category)}">
+        <img src="http://server.pezcuckow.com/Bernie/images/bernie_head.png" />	
+	</form>
+
+	<!-- <img src="http://server.pezcuckow.com/Bernie/images/button_bernie.png" /> -->
+	
+	</div> <!-- End of footer  -->
+</div> <!--  End of main container  -->
+
+</sectionl>
+

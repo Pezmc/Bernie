@@ -1,31 +1,32 @@
 <?php
 
 /*/ 
- * inc/PegParse.class.php
- *
  * Peg Template Parsing Helper
  *
  * Works by reading template files with a predefined syntax, creating PHP files from them and then running that PHP.
- * Provides HTML & PHP caching
+ * In the long run aims to cache these files etc...
  *
- * Copyright © 2011 Pez Cuckow - Peg Productions - None of this code may be reproduced or modified without prior written permission.
+ * Usage: See index.php
  *
- * Usage: See README or index.php - Not included in group project.
- *
- * Version: 1.1b
+ * Version: 1.6b
  *
  * Changelog:
+ *   1.6b - Added else if, ignoring html comments and some try/catch statements
+ *   1.5 - Added the option to disable checking include files
+ *   1.4 - Added hash function for old PHP users + error fix
+ *   1.3 - General Improvements
+ *   1.2b - Improved if statement parsing, fixed some bugs
  *   1.1b - Caching of the HTML
  *   1.0b - Various bug fixes
  *   0.9b - Added info boxes for errors, basic if/else parsing, use printvalue instead of echo to display contents
  * 	 Pre 0.9 Trimmed
  *
  * Ideas:
- *   - Improve if/else to support things like variable > variable
- *   - Add option to strip PHP from HTML first
- *   - Allow use of functions in the page
+ *   - Prevent served by message on includes
+ *   - Recognise html comments...
  *
- * Devs: Pez Cuckow
+ * Devs: Pez Cuckow - email@pezcuckow.com
+ * If you are interested in helping dev PegParse please get in contact
 /*/
 
 class pegParse {
@@ -33,14 +34,17 @@ class pegParse {
 	private $tmp; // Where to store compiled temp files
 	private $templates; //Where are the template files stored?
 	private $warning; //Are we outputting warnings	
-	private $version = '1.1b'; //Current version
+	private $version = '1.6b'; //Current version
 	private $stripPHP; //Do we want php removed?
 	private $cachePHP; //Cache the PHP?
 	private $cacheHTML; //Cache the HTML?
+	private $checkIncludes; //Check the includes for changes on every load
+	private $ignoreComments; //Ignore HTML comments
 	
 	private $data; // a stdClass object to hold the data passed to the template
 	private $servedBy; //What was most recently served
-
+	private $debugOn; //Is debug on?
+	
 	/* 
 	 * Sets all the defaults 
 	 */
@@ -56,6 +60,9 @@ class pegParse {
 		$this->stripPHP = false;
 		$this->cachePHP = true;
 		$this->cacheHTML = true;
+		$this->debugOn = false;
+		$this->checkIncludes = true;
+		$this->ignoreComments = true;
 	}
 	
 	/*
@@ -73,13 +80,20 @@ class pegParse {
 	}
 	
 	/*
+	 * Output a debug message if debug is on
+	 */
+	private function debug($message) {
+		if($this->debugOn) $this->doWarning($message);
+	}
+	
+	/*
 	 * Returns a pretty information box either red or yellow
 	 */
 	private function infoBox($error = true, $message) {
 		return "\n".'<div style="display:block">'
 			. "\n\t".'<div style="background-color:#'.($error ? 'ffebe8' : 'fff9d7').';display:inline-block;margin:1px;'
 			. "\n\t\t\t".'border:1px solid #'.($error ? 'dd3c10' : 'e2c822').';color:#333333;padding:10px;font-size:14px;font-weight:normal;">'
-			. "\n\t\t".'<b>Peg Template '.($error ? 'Error' : 'Warning').'</b><br />'
+			. "\n\t\t".'<b>pegParse '.($error ? 'Error' : 'Warning').'</b><br />'
 			. "\n\t\t".$message
 			. "\n\t".'</div>'
 			. "\n".'</div>'."\n";
@@ -92,14 +106,40 @@ class pegParse {
 	 */
 	public function config($key, $value) {
 		switch ($key) {
-			case "rootDir": $this->root = $this->setPath($value); break;
+			case "rootDir": $this->root = $this->setPath($value); $this->templates = $this->root.'templates/'; break; //Reload Templates
 			case "templateDir": $this->templates = $this->setPath($value); break;
 			case "compileDir": $this->tmp = $this->setPath($value); break;
 			case "warning": $this->warning = (boolean) $value; break;
 			case "stripPHP": $this->stripPHP = (boolean) $value; break;
 			case "cachePHP": $this->cachePHP = (boolean) $value; break;
 			case "cacheHTML": $this->cacheHTML = (boolean) $value; break;
+			case "debug": $this->debugOn = (boolean) $value; break;
+			case "checkIncludes": $this->checkIncludes = (boolean) $value; break;
+			case "ignoreComments": $this->ignoreComments = (boolean) $value; break;
 			default: $this->doError('Unknown config value '.$key.' set');	
+		}
+	}
+	
+	/*
+	 * Hash using the best alg the user has
+	 */
+	private function hash($string) {
+		if(in_array("salsa10", hash_algos())) {
+			return hash('salsa10', $string);
+		} elseif(in_array("salsa20", hash_algos())) {
+			return hash('salsa20', $string);
+		} elseif(in_array("ripemd256", hash_algos())) {
+			return hash('ripemd256', $string);
+		} elseif(in_array("ripemd320", hash_algos())) {
+			return hash('ripemd320', $string);
+		} elseif(in_array("haval256,3", hash_algos())) {
+			return hash('haval256,3', $string);
+		} elseif(in_array("sha256", hash_algos())) {
+			return hash('sha256', $string);
+		} elseif(in_array("md5", hash_algos())) {
+			return hash('md5', $string);
+		} else {
+			return $string;
 		}
 	}
 	
@@ -145,9 +185,7 @@ class pegParse {
 	 * Can be a key and value or array of key => values
 	 */
 	public function assign($key, $value = '') {
-		if(empty($key)) {
-			do_error("You are giving me empty keys?!?");
-		} elseif(is_array($key)) { //Create lots of new keys
+		if(is_array($key)) { //Create lots of new keys
 			foreach($key as $name=>$value) {
 				$this->data->$name = $value;
 			}
@@ -197,10 +235,14 @@ class pegParse {
 	 * Print the value asked for, or error
 	 */
 	public function printValue($key) {
-		if(isset($this->data->$key)) {
-			echo $this->data->$key;
-		} elseif ($this->warning) {
-			$this->doWarning($key.' doesn\'t exist, but is being requested?');	
+		try {
+			if(isset($this->data->$key)) {
+				echo $this->data->$key;
+			} elseif ($this->warning) {
+				$this->doWarning($key.' doesn\'t exist, but is being requested?');	
+			}
+		} catch (Exception $e) {
+			$this->doError("A PHP error occured while trying to parse '".$key."':<br />".$e->getMessage());	
 		}
 	}
 	
@@ -229,31 +271,35 @@ class pegParse {
 		if(!is_array($template))
 			$template = explode('|',$template); //More than one requested?
 			
-		$output = '';
+		$outputStr = "";
 		
 		foreach($template as $t) { //For every template given
 			$path = $this->appendSeparator($this->templates); //The tmp dir
 			
 			if(file_exists($path . $t)) { //Does the template exist?
 				$this->setServedBy();
-				$output .= $this->cachedOutput($path, $t).$this->getServedBy();
+				$outputStr .= $this->cachedOutput($path, $t).$this->getServedBy();
 			} else {
 				$this->doError('Template (' . $t . ') not found in ' . $path);
 			}
 		}	
 			
-		return $output;
+		return $outputStr;
 	}
 	
 	/*
 	 * Returns cached HTML or bufferedOutput
 	 */
 	function cachedOutput($path, $template) {
-		$dataHash = hash('salsa10', $template.serialize($this));
+		$dataHash = $this->hash($template.serialize($this));
 		$cachedHTML = $this->tmp . $dataHash.'.html';
 		if(file_exists($cachedHTML)&&filemtime($cachedHTML) >= filemtime($path.$template)) { //Is the HTML cached?
-			$this->setServedBy('Cached HTML');
-			return file_get_contents($cachedHTML); //Load from the HTML cache
+			if($this->timestampIncludes($path, $template, filemtime($cachedHTML))) { //Have any includes been changed?!?
+				$this->setServedBy('Cached HTML');
+				return file_get_contents($cachedHTML); //Load from the HTML cache
+			} else {
+				return $this->bufferedOutput($path, $template);
+			}
 		} else {
 			return $this->bufferedOutput($path, $template);
 		}
@@ -265,9 +311,12 @@ class pegParse {
 	 * Passes the file to the compile method to be created if it doesn't exists
 	 */
 	private function bufferedOutput($path, $template) {
+		//Declare output
+		$outputStr = "";
+		
 		//Get hash before compile changes things
 		if($this->cacheHTML) {
-			$dataHash = hash('salsa10', $template.serialize($this));
+			$dataHash = $this->hash($template.serialize($this));
 			$compiledHTML = $this->tmp . $dataHash.'.html';
 		}
 		
@@ -276,15 +325,23 @@ class pegParse {
 			$this->compile($path, $template); //Compile the page PHP if needed
 	
 			ob_start(); //Buffer everything
-			$cachedPHP = $this->tmp . md5($path.$template) . '.php';
+			$cachedPHP = $this->tmp . $this->hash($path.$template) . '.php';
 			if(file_exists($cachedPHP)) {
-				include($cachedPHP); //Show the page
+				try {
+					include($cachedPHP); //Show the page
+				} catch (Exception $e) {
+					$this->doError("A PHP Error Occured: ".$e->getMessage()." on line ".$e->getLine()." in ".$e->getFile()."<br /> - Please check your pegParse syntax!");	
+				}
 			} else {
 				$this->doError('The PHP cache file '.$cachedPHP.' coudln\'t be found, try reloading or check permissions');
 			}
-			$output = ob_get_clean(); //Clear the buffer
+			$outputStr = ob_get_clean(); //Clear the buffer
 		} else {
-			$output = eval('?>'.$this->compile($path, $template).'<?php ');
+			try {
+				$outputStr = eval('?>'.$this->compile($path, $template).'<?php ');
+			} catch (Exception $e) {
+				$this->doError("A PHP Error Occured: ".$e->getMessage()." on line ".$e->getLine()." in ".$e->getFile()."<br /> - Please check your pegParse syntax!");	
+			}
 		}
 		
 		//Cache the output as HTML
@@ -293,12 +350,30 @@ class pegParse {
 				$this->doError('I don\'t have permission to create '.$compiledHTML.', please chmod the dir to 777');
 			} else {
 				$f = fopen($compiledHTML, 'w');
-				fwrite($f, $output);
+				fwrite($f, $outputStr);
 				fclose($f);
 			}
 		}
 		
-		return $output;
+		return $outputStr;
+	}
+	
+	/*
+	 * Checks a templates includes against a timestamp
+	 * Returns false if any of them are newer than the timestamp
+	 */
+	private function timestampIncludes($path, $template, $cache) {
+		if(!$this->checkIncludes)
+			return true;
+			
+		$num = preg_match_all('/\{include:([^{}]*)\}/', file_get_contents($path.$template), $matches);
+		if($num > 0) {
+			for($i = 0; $i < $num; $i++) {
+				if(file_exists($this->templates.$matches[1][$i])&&filemtime($this->templates.$matches[1][$i])>=$cache)
+						return false;
+			}
+		}
+		return true;
 	}
 
 	/*
@@ -315,7 +390,7 @@ class pegParse {
 
 		$templateFile = $path . $template;
 		if($this->cachePHP) {
-			$compiledFile = $this->tmp . md5($templateFile) . '.php';
+			$compiledFile = $this->tmp . $this->hash($templateFile) . '.php';
 			if(!is_writable($this->tmp)) {
 				$this->doError('I don\'t have permission to create '.$compiledFile.', please chmod the dir to 777');
 			}
@@ -335,13 +410,22 @@ class pegParse {
 		$newLines[] = '<?php if(!isset($this)) die("You can\'t run these files"); ?>'; //Stop access of the PHP files
 		$matches = null;
 		foreach($lines as $line)  {
-			$num = preg_match_all('/\{([^{}]+)\}/', $line, &$matches);
+			$num = preg_match_all('/\{([^{}]+)\}/', $line, $matches);
 			if($num > 0) {
 				if(strpos($line,'{!}') === false) {
 					for($i = 0; $i < $num; $i++) {
-						$match = $matches[0][$i];
-						$new = $this->transformSyntax($matches[1][$i]);
-						$line = str_replace($match, $new, $line);
+						if($this->ignoreComments && is_int(strpos($line,'<!--')) && is_int(strpos($line,'-->'))) { //If there is a one line comment
+							if((strpos($line, $matches[0][$i]) < strpos($line,'<!--')
+											|| strpos($line, $matches[0][$i]) > strpos($line,'-->'))) { //if before or after comment
+								$match = $matches[0][$i];
+								$new = $this->transformSyntax($matches[1][$i]);
+								$line = str_replace($match, $new, $line);
+							}
+						} else {
+							$match = $matches[0][$i];
+							$new = $this->transformSyntax($matches[1][$i]);
+							$line = str_replace($match, $new, $line);	
+						}
 					}
 				} else {
 					$line = preg_replace('/{!}/', '', $line, 1);	
@@ -364,12 +448,14 @@ class pegParse {
 	private function transformSyntax($input) {
 		/* Searches for nested variables */
 		$from = array(
+			'/(\b(?<![\'"\(\)$])[a-zA-Z_][a-zA-Z_0-9]*\b(?![\'"\(\)$]))/', //New regex
 			'/(^|\[|,|\(|\+| )([a-zA-Z_][a-zA-Z0-9_]*)($|\.|\)|\[|\]|\+)/',
 			'/(^|\[|,|\(|\+| )([a-zA-Z_][a-zA-Z0-9_]*)($|\.|\)|\[|\]|\+)/', // again to catch those bypassed by overlapping start/end characters 
-			'/(^")([a-zA-Z_][a-zA-Z0-9_]*)(^")/',
+			'/(^")([a-zA-Z_][a-zA-Z0-9_]*)(^")/',	
 			'/\./',
 		);
 		$to = array(
+			'$this->data->$0',
 			'$1$this->data->$2$3',
 			'$1$this->data->$2$3',
 			'$1$this->data->$2$3',
@@ -385,6 +471,10 @@ class pegParse {
 			case 'if':
 				//$string .= 'if(eval("return ('.preg_replace($from, $to, $parts[1]).');")) {';
 				$string .= 'if('.preg_replace($from, $to, $parts[1]).') {';
+				break;
+			case 'elseif':
+			case 'elif':
+				$string .= '} elseif('.preg_replace($from, $to, $parts[1]).') {';
 				break;
 			case 'switch':
 				$string .= $parts[0] . '(' . preg_replace($from, $to, $parts[1]) . ') { ' . ($parts[0] == 'switch' ? 'default: ' : '');
@@ -414,6 +504,8 @@ class pegParse {
 				break;
 			default:
 				if(preg_match('/\[.*\]|\./', $parts[0])) //if it's array or object
+					$string .= 'echo '.preg_replace($from, $to, $parts[0]).';';
+				elseif(!$this->stripPHP&&preg_match('/\(.*\)/', $parts[0])) //if it's a function
 					$string .= 'echo '.preg_replace($from, $to, $parts[0]).';';
 				else
 					$string .= '$this->printValue("' . $parts[0] . '");';

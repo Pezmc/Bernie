@@ -11,8 +11,11 @@
 /*/
 
 /* Thinking Code */
-include_once('inc/logout.php');
 
-/* Rest of document just deals with displaying information not getting it */
+
+//Log them out and then send them home
+logout();
+header('Location: ?p=home');
+die();
 
 ?>
