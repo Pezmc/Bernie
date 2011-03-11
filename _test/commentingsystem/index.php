@@ -1,3 +1,4 @@
+hgfhfg	
 <?php
 include_once("../connect.php");
 $commenting_form = '<form action = "addcomment.php" method = "post">
@@ -39,9 +40,8 @@ else
 }
 ?>
 
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhmtl1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
    <title><?php echo $page_title; ?></title>
 </head>
