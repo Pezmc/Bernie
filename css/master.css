@@ -391,27 +391,32 @@ margin: 0;
 /* Day and month textarea */
 input[type=number].date {
 padding-left: 10px;
-width: 16px;
+padding-right: 10px;
+width: 26px;
 background-image: url("/Bernie/images/textarea_date.png");
 }
 
 /* Day and month textarea error */
 input[type=number].date_error {
 padding-left: 10px;
-width: 16px;
+padding-right: 10px;
+width: 26px;
 background-image: url("/Bernie/images/textarea_date_error.png");
 }
 
 /* Year textarea */
 input[type=number].year {
 padding-left: 10px;
-width: 50px;
+padding-right: 10px;
+width: 60px;
 background-image: url("/Bernie/images/textarea_year.png");
 }
 
 /* Year textarea error*/
 input[type=number].year_error {
-width: 50px;
+padding-left: 10px;
+padding-right: 10px;
+width: 60px;
 background-image: url("/Bernie/images/textarea_year_error.png");
 }
 
