@@ -41,7 +41,7 @@ connectMe('11_COMP10120_D1'); //We always need a database connection
 /* If the user isn't logged in yet */
 if(!isLoggedIn()) {
 	//If they are trying to access something they are not allowed to
-	if($GLOBAL['page']!="login"&&$GLOBAL['page']!="signup"&&$GLOBAL['page']!="lostPassword"&&$GLOBAL['page']!="demoPegParse") {
+	if($GLOBAL['page']!="login"&&$GLOBAL['page']!="signup"&&$GLOBAL['page']!="lostpassword"&&$GLOBAL['page']!="demoPegParse") {
 		$GLOBAL['page']="home"; //Send them home	
 	}
 } else { //They are logged in
@@ -56,7 +56,7 @@ switch ($GLOBAL['page']) {
 	case "logout": include_once('pages/logout.php'); break;	
 	case "likes": include_once('pages/likes.php'); break;
 	case "profile": include_once('pages/profile.php'); break;	
-	case "lostPassword": include_once('pages/lostPassword.php'); break;
+	case "lostpassword": include_once('pages/lostPassword.php'); break;
 	case "signup": include_once('pages/signup.php'); break;
         case "editInterests": include_once('pages/editInterests.php'); break;
 	case "demopegparse": include_once('pages/demoPegParse.php'); break;
