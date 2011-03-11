@@ -319,18 +319,22 @@ height: 240px;
 /* Category names on frontpage and bernie page */
 b.books {
 color: #5B860A;
+text-transform: uppercase;
 }
 
 b.tv {
 color: #0F567C;
+text-transform: uppercase;
 }
 
 b.music {
 color: #32A1E5;
+text-transform: uppercase;
 }
 
 b.web {
 color: #B22B38;
+text-transform: uppercase;
 }
 
 /* Any link */
