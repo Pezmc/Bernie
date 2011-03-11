@@ -18,7 +18,7 @@
 /* Thinking Code */
 
 include_once('inc/lib.php');
-include_once("inc/database.php");
+/* include_once("inc/database.php"); /*
 /* $connection = connectMe("11_COMP10120_D1"); */
 
 /* $connection = mysql_connect("ramen.cs.man.ac.uk", "11_COMP10120_D1", "ztDsBWSMqDny80BR")
