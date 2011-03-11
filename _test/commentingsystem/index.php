@@ -11,7 +11,7 @@ $commenting_form = '<form action = "addcomment.php" method = "post">
           <td width = "205"><input type="text" name="msg_title" id="msg_title style=width:200px;" /></td>
         </tr>
         <tr>
-          <td colspan = "2"><textarea name="msg_message" id="msg_message" style="width:100;height:200px;font-family:Courier New"> 
+          <td colspan = "2"><textarea name="msg_message" id="msg_message" style="width:310;height:200px;font-family:Courier New"> 
           Message</textarea></td>
         </tr>
         <tr>
