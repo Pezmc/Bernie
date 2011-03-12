@@ -300,6 +300,11 @@ font-size: 11pt;
 line-height: 27px;
 }
 
+/* List on the suggestion page and my likes page  */
+ul.key_info li {
+line-height: 24px;
+}
+
 /* Ignore these, only used on the front page... */
 #toBernie {
 font-size: 16px;
