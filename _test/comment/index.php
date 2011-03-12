@@ -1,12 +1,20 @@
 <?php
+require('connect.php');
+$name=$_POST('name');
+$comment=$_POST('comment');
+$submit=$_POST('submit');
 
-
-
-
-
-
-
-
+if($submit)
+{
+	if($name&&$comment)
+	{
+		$insert=mysql_query("INSERT INTO comment (name,comment) VALUES ('$name','$comment')");
+	}
+	else
+	{
+		echo "Please fill out all fields";
+	}
+}
 ?>
 
 <html>
