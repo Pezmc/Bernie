@@ -40,7 +40,7 @@ $f=1;
 $g=2;
 $h=3;
 
-$suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '1'");
+$suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$f'");
 $row = mysql_fetch_row($suggestion1);
 /* echo $row[2]; */
 
