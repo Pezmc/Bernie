@@ -60,8 +60,7 @@ $suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
 "sugDescription"=>"$row[7]",
 "altImage1"=>"$row2[1]","smallAlt1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 100),
 "altImage2"=>"$row3[1]","smallAlt1"=>strtolower("$row3[8]"),"altTitle1"=>"$row3[2]","altDisc1"=>truncate("$row3[7]", 100),
-"altImage3"=>"$row4[1]","smallAlt1"=>strtolower("$row4[8]"),"altTitle1"=>"$row4[2]","altDisc1"=>truncate("$row4[7]", 100),
-;
+"altImage3"=>"$row4[1]","smallAlt1"=>strtolower("$row4[8]"),"altTitle1"=>"$row4[2]","altDisc1"=>truncate("$row4[7]", 100);
 
 
 /* Rest of document just deals with displaying information not getting it */
