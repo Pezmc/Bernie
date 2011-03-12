@@ -36,7 +36,7 @@ mysql_select_db("11_COMP10120_D1", $connection)
 /* Main suggestion is i, f g h are alternate suggestions */
 
 $i=1;
-$f=2;
+$f=1;
 $g=3;
 $h=4;
 
