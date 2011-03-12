@@ -51,12 +51,11 @@ $row3 = mysql_fetch_row($suggestion3);
 $suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
 
 
-$suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
-"sugAuthor"=>"$row[3]","sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]", "sugDescription"=>"$row[7]","altImage1"=>"$row2[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 200),
-"altImage2"=>"$row3[1]","smallAlt2"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle2"=>"$row3[2]","altDisc2"=>"$row3[7]",
-"altImage3"=>"$row4[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle3"=>"$row4[2]","altDisc3"=>"$row4[7]");
+$suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]","sugAuthor"=>"$row[3]",
+"sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]","sugDescription"=>"$row[7]",
+"altImage1"=>"$row2[1]","smallAlt1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 85),
+"altImage2"=>"$row3[1]","smallAlt2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
+"altImage3"=>"$row4[1]","smallAlt3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
 
 /* Pez - This could be done like
 
@@ -69,16 +68,6 @@ etc...
 
 /* $suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugTitle"=>"The cat book",
 "sugAuthor"=>"Cat writer","sugYear"=>"1990","sugLength"=>"Long","sugSubTitle"=>"cat the cat cat is a cat which shat","sugDescription"=>"cattycattycatty","altImage1"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt1"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"more cats","altDisc1"=>"oh they are so fluffy","altImage2"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt2"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle2"=>"more cats","altDisc2"=>"oh they are so fluffy","altImage3"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt3"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle3"=>"more cats","altDisc3"=>"oh they are so fluffy"); */
-
-
-
-=======
-$suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]","sugAuthor"=>"$row[3]",
-"sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]","sugDescription"=>"$row[7]",
-"altImage1"=>"$row2[1]","smallAlt1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 85),
-"altImage2"=>"$row3[1]","smallAlt2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
-"altImage3"=>"$row4[1]","smallAlt3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
->>>>>>> 578b8d61cba0a02eddb6755b44b7258c5c5e4265
 
 
 /* Rest of document just deals with displaying information not getting it */
