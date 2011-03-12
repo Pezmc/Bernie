@@ -59,6 +59,7 @@ p { margin: 0; padding: 0; }
 	width: 260px;
         padding-left: 10px;
 	min-height: 200px;
+        overflow: visible;
 	float: left;
 	
 }
