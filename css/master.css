@@ -305,6 +305,11 @@ ul.key_info li {
 line-height: 24px;
 }
 
+/* Bold text in a key_info list*/
+b.key_info {
+color: #32AA1B;
+}
+
 /* Ignore these, only used on the front page... */
 #toBernie {
 font-size: 16px;
