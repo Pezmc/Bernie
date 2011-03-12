@@ -20,18 +20,17 @@ $PAGE['title'] = "Lost password";
 
 $PAGE['content'] .= 
 '
-
-<section class="text">
 <b>Lost password?</b>
-<p style="padding-top: 15px; padding-bottom: 15px;">
+<section class="text" style="padding-top: 15px; padding-bottom: 15px;">
+<p>
 Not to worry, just enter your e-mail address below and we will send you a new one!
 </p>
-
+</section>
 <form action="" method="" name="">
 <input type="text" placeholder="E-mail address" name="email" maxlength="16">
 <input type="submit" class="small" value="GO">
 </form>
-</section>
+
 ';
 
 
