@@ -48,9 +48,9 @@ Use this page to edit your profile information.
 					</td>
 					<td class="date">
 
-					<input type="number" name="day" value='{date("D", dob}' class="date" maxlength="2" min="1" max="31">
-					<input type="number" name="month" value='{date("m", dob}'  class="date" maxlength="2" min="1" max="12">
-					<input type="number" name="year" value='{date("Y", dob}' class="year" maxlength="4" min="1900" max="2011">
+					<input type="number" name="day" value='{!}{date("D", dob}' class="date" maxlength="2" min="1" max="31">
+					<input type="number" name="month" value='{!}{date("m", dob}'  class="date" maxlength="2" min="1" max="12">
+					<input type="number" name="year" value='{!}{date("Y", dob}' class="year" maxlength="4" min="1900" max="2011">
 
 					</td>
 				</tr>
