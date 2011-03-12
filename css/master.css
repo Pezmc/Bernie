@@ -114,6 +114,10 @@ min-width: 86px;
 height: 110px;
 vertical-align: bottom;
 text-align: center;
+}
+
+/* A cell that accommodates a closed category */
+#cat_books, #cat_tv, #cat_music, #cat_web {
 background:url(/Bernie/images/header_tab_bg.png);
 background-repeat: no-repeat;
 background-position: bottom left;
@@ -136,11 +140,6 @@ background-position: bottom left;
 	bottom:5px;
 	left:50%;
 	margin-left:-18px;
-}
-
-/* A cell that accommodates the chosen category */
-#cat_open {
-background-image: url("/Bernie/images/cat_open.png");
 }
 
 /* The cell that accommodates either the bernie button or the sign up button */
