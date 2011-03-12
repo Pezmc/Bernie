@@ -139,7 +139,7 @@ function getCurrentDirectory() {
  * Gets and returns the day of birth of the user from the timestamp
  */
 function getDayOfBirth() {
-	$dayOfBirth = date("d", $USER['dob'];
+	$dayOfBirth = date("d", $USER['dob']);
 	return $dayOfBirth;
 }
 
@@ -147,7 +147,7 @@ function getDayOfBirth() {
  * Gets and returns the month of birth of the user from the timestamp
  */
 function getMonthOfBirth() {
-	$monthOfBirth = date("m", $USER['dob'];
+	$monthOfBirth = date("m", $USER['dob']);
 	return $monthOfBirth;
 }
 
@@ -155,7 +155,7 @@ function getMonthOfBirth() {
  * Gets and returns the year of birth of the user from the timestamp
  */
 function getYearOfBirth() {
-	$yearOfBirth = date("Y", $USER['dob'];
+	$yearOfBirth = date("Y", $USER['dob']);
 	return $yearOfBirth;
 }
 
