@@ -42,8 +42,8 @@ $h=3;
 
 $suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = 'i'");
 $row = mysql_fetch_row($suggestion1);
-$echo $row[2];
-$echo $row[title];
+echo $row[2];
+echo $row[title];
 
 /*
 $sugImage=mysql_result($suggestions,$i,"image_med");
