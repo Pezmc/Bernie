@@ -73,7 +73,7 @@ See comments for explanations.
 					<!-------------------- NEEDS LOGIC: which cat is open, if any? needs links -------------------->
 					     
 					<!-- Books -->
-					<td{if:isOpen({category})} id="cat_open" style="background-image: url('mouseover_{category}.png')"{else} id="cat_books" onmouseover="catMouseover('/Bernie/images/mouseover_books.png', 'cat_books')" onmouseout="catMouseout('cat_books')"{end}>
+					<td{if:isOpen('books')} id="cat_open" style="background-image: url('mouseover_{category}.png')"{else} id="cat_books" onmouseover="catMouseover('/Bernie/images/mouseover_books.png', 'cat_books')" onmouseout="catMouseout('cat_books')"{end}>
                     <a href="?p=bernie&c=books" alt="Bernie Books!">
 					<img src="/Bernie/images/icon_books.png" alt="Bernie books!" /></a>
 					</td>
