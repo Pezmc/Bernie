@@ -162,5 +162,16 @@ function getYearOfBirth() {
 	return $yearOfBirth;
 }
 
+/*
+ * Returns true if the given category is currently open
+ */
+function isOpen($cat) {
+        global $GLOBAL;
+	if($GLOBAL['category']==$cat) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 ?>
