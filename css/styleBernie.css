@@ -3,7 +3,7 @@ p { margin: 0; padding: 0; }
 .green {color: #32AA1B;}
 .orange {color: #C25B3F; padding: 7px 0px 7px 0px}
 
-.truncating { max-width:20px; }
+.truncating {max-width:100px;}
 
 
 #container {
