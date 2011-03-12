@@ -70,9 +70,9 @@ $altDisc3=mysql_result($suggestions,$h,"description"); */
 $suggestion= array("sugImage"=>"$suggestion1[1]","sugTitle"=>"$suggestion1[2]",
 "sugAuthor"=>"$suggestion1[3]","sugYear"=>"$suggestion1[4]","sugLength"=>"$suggestion1[5]","sugSubTitle"=>"$suggestion1[6]", "sugDescription"=>"$suggestion1[7]","altImage1"=>"$suggestion1[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$suggestion1[1]","altDisc1"=>"$suggestion1[1]",
 "altImage2"=>"$suggestion1[1]","smallAlt2"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle2"=>"$suggestion1[2]","altDisc1"=>"$suggestion1[7]",
+"altTitle2"=>"$suggestion1[2]","altDisc2"=>"$suggestion1[7]",
 "altImage3"=>"$suggestion1[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle3"=>"$suggestion1[2]","altDisc1"=>"$suggestion1[7]");
+"altTitle3"=>"$suggestion1[2]","altDisc3"=>"$suggestion1[7]");
 
 
 /* $suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugTitle"=>"The cat book",
