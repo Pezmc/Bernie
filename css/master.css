@@ -261,6 +261,19 @@ padding-left: 12px;
 vertical-align: top;
 }
 
+/* The cell for one like item (my likes page) */
+td.like {
+border-bottom: 1px solid #CBDBC4;
+padding: 20px 0px 20px 0px;
+}
+
+/* The cell for one like item description */
+td.like_item_desc {
+padding: 0px 20px 0px 20px;
+vertical-align: top;
+width: 60%;
+}
+
 /* Bold and italic text is a certain hue*/
 b {
 color: #47C3B0;
