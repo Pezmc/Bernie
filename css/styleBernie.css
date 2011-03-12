@@ -1,11 +1,7 @@
 p { margin: 0; padding: 0; }
-ul.hoof {
-margin: 0;
-padding: 0;
-}
 
-.green {color: green;}
-.orange {color: orange;}
+.green {color: #32AA1B;}
+.orange {color: #C25B3F; padding: 7px 0px 7px 0px}
 
 
 #container {
@@ -16,7 +12,7 @@ padding: 0;
 #head {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	border-bottom: 1px solid silver;
+	border-bottom: 1px solid #CBDBC4;
 }
 .highlight {
 	color: blue;
@@ -32,7 +28,7 @@ padding: 0;
 	width: 475px;
 	float: left;
 	padding-right: 20px;
-	border-right: 1px solid silver;
+	border-right: 1px solid #CBDBC4;
 }
 #rightcontainer {
 	width: 280px;
@@ -45,11 +41,11 @@ padding: 0;
 	float: left;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	border-top: 1px solid silver;
+	border-top: 1px solid #CBDBC4;
 }
 
 #bio {
-	border-bottom: 1px solid silver;
+	border-bottom: 1px solid #CBDBC4;
 	padding-bottom: 20px;
 }
 
@@ -66,8 +62,6 @@ padding: 0;
 	float: left;
 	
 }
-
-#bio #picturestuff h3 { colour: red; } 
 
 #bio #biotext {
 	width: 100%;	
@@ -88,7 +82,7 @@ padding: 0;
 	width: 280px;
 	height: auto;	
 	padding-bottom: 20px;
-        border-bottom: 1px solid silver;	
+        border-bottom: 1px solid #CBDBC4;	
 	float: left;
 
 }
@@ -133,4 +127,3 @@ padding: 0;
 	padding-top: 20px;
         padding-left: 30px;
 }	
-
