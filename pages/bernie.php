@@ -17,10 +17,6 @@
 
 /* Thinking Code */
 
-include_once('inc/lib.php');
-/* include_once("inc/database.php"); /*
-/* $connection = connectMe("11_COMP10120_D1"); */
-
 /* Go through current users likes, adding every tag and every time it appears to an array */
 /* Random number from 0 to 1, times the number of items in this array  --> to give the tag which is going to be bernied */
 /* For this tag, go through suggestions and add the id off all which contain this tag to an array */
@@ -29,27 +25,27 @@ include_once('inc/lib.php');
 /* change the content of the suggestion array to contain details this. */
 /* SELECT tags FROM suggestions */
 
-$connection = mysql_connect("ramen.cs.man.ac.uk", "11_COMP10120_D1", "ztDsBWSMqDny80BR")
-    or die('Could not connect: ' . mysql_error());
-mysql_select_db("11_COMP10120_D1", $connection)
-    or die('Could not select database'); 
 /* Main suggestion is i, f g h are alternate suggestions */
 
-$i=1;
+/*$i=rand(1,);
 $f=1;
 $g=3;
-$h=4;
+$h=4;*/
 
-$suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$i'");
+/*/
+ * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).
+ * Also the queries just choose a random row atm
+/*/
+$suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
 $row = mysql_fetch_row($suggestion1);
 
-$suggestion2 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$f'");
+$suggestion2 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
 $row2 = mysql_fetch_row($suggestion2);
 
-$suggestion3 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$g'");
+$suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
 $row3 = mysql_fetch_row($suggestion3);
 
-$suggestion4 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$h'");
+$suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
 $row4 = mysql_fetch_row($suggestion4);
 
 
@@ -61,6 +57,14 @@ $suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
 "altTitle2"=>"$row3[2]","altDisc2"=>"$row3[7]",
 "altImage3"=>"$row4[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
 "altTitle3"=>"$row4[2]","altDisc3"=>"$row4[7]");
+
+/* Pez - This could be done like
+
+$suggestion = array();
+$suggestion['sugImage'] = $row[1];
+$suggestion['sugTitle'] = $row[2];
+etc...
+*/
 
 
 /* $suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugTitle"=>"The cat book",
