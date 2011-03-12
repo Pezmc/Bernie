@@ -122,17 +122,18 @@ padding: 0;
 }
 
 .altPic {
-	width: 100px;
-	height: 100px;	
+	width: 103px;
+	height: 103px;	
 	padding-top: 20px;
 	float: left;
 	
 }
 
 .altText {
-	width: 150px;
+	width: 170px;
 	height: 100px;
 	padding-top: 20px;
+        padding-left: 20px;
 	float: left;
 }	
 
