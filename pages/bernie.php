@@ -56,7 +56,7 @@ $row4 = mysql_fetch_row($suggestion4);
 
 
 $suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
-"sugAuthor"=>"$row[3]","sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]", "sugDescription"=>"$row[7]","altImage1"=>"$row2[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 200),
+"sugAuthor"=>"$row[3]","sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]", "sugDescription"=>"$row[7]","altImage1"=>"$row2[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 100),
 "altImage2"=>"$row3[1]","smallAlt2"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
 "altTitle2"=>"$row3[2]","altDisc2"=>"$row3[7]",
 "altImage3"=>"$row4[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
