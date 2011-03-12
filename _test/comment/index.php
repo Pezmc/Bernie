@@ -27,7 +27,7 @@ if($submit)
 
 <body>
 
-<form action="index.php" method="POST".
+<form action="index.php" method="POST">
 <table>
 
 <tr><td>Name: </td><td><input type="text" name="name" /></td></tr>
@@ -35,9 +35,21 @@ if($submit)
 <tr><td colspan="2"><textarea name="comment"></textarea></td></tr>
 <tr><td colspan="2"><input type="submit" name="submit" value="Comment" /></td></tr>
 
-
 </table>
+</form>
+<?php
+$getquery=mysql_query("SELECT = FROM comment ORDER BY id DESC");
+while($rows=mysql_fetch_assoc($getquery))
+{
+	$id=$rows['id'];
+	$name=$rows['name'];
+	$comment=$rows['comment'];
+
+	echo $name . '<br />' . $comment . '<br />' . '<br />';
+}
 
 
+
+?>
 </body>
 </html>
