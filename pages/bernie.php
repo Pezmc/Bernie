@@ -67,7 +67,7 @@ $smallAlt3=mysql_result($suggestions,$h,"category");
 $altTitle3=mysql_result($suggestions,$h,"title");
 $altDisc3=mysql_result($suggestions,$h,"description"); */
 
-$suggestion= array("sugImage"=>$row[1],"Cat"=>"_","sugTitle"=>"$row[2]",
+$suggestion= array("sugImage"=>$suggestion1[1],"Cat"=>"_","sugTitle"=>"$suggestion1[2]",
 "sugAuthor"=>$sugAuthor,"sugYear"=>$sugYear,"sugLength"=>$sugLength,"sugSubTitle"=>$sugSubTitle, "sugDescription"=>$sugDescription,"altImage1"=>$altImage1,"smallAlt1"=>$smallAlt1,"altTitle1"=>$altTitle1,"altDisc1"=>$altDisc1,
 "altImage2"=>$altImage2,"smallAlt2"=>$smallAlt2,"altTitle2"=>$altTitle2,"altDisc1"=>$altDisc2,
 "altImage3"=>$altImage3,"smallAlt3"=>$smallAlt3,"altTitle3"=>$altTitle3,"altDisc1"=>$altDisc3);
