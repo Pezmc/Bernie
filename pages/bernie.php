@@ -37,9 +37,9 @@ mysql_select_db("11_COMP10120_D1", $connection)
 /* Main suggestion is i, f g h are alternate suggestions */
 
 $i=0;
-$f=1
-$g=2
-$h=3
+$f=1;
+$g=2;
+$h=3;
 
 $sugImage=mysql_result($suggestions,$i,"image_med");
 $sugTitle=mysql_result($suggestions,$i,"title");
