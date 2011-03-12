@@ -11,7 +11,7 @@
 /*/
 
 /* Thinking Code */
-/*include_once('inc/likes.php');*/
+include_once('inc/lib.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
