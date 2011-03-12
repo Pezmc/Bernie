@@ -21,20 +21,24 @@ include_once('inc/lib.php');
 /* include_once("inc/database.php"); /*
 /* $connection = connectMe("11_COMP10120_D1"); */
 
-/* Go through current users likes, adding every tag and every time it appears to an array */
-/* Random number from 0 to 1, times the number of items in this array  --> to give the tag which is going to be bernied */
-/* For this tag, go through suggestions and add the id off all which contain this tag to an array */
-/* Random number from 0 to 1, times the number of items in this array --> gives the id of the suggestion which is the result */
-
-/* change the content of the suggestion array to contain details this. */
-/* SELECT tags FROM suggestions */
-
 $connection = mysql_connect("ramen.cs.man.ac.uk", "11_COMP10120_D1", "ztDsBWSMqDny80BR")
     or die('Could not connect: ' . mysql_error());
 mysql_select_db("11_COMP10120_D1", $connection)
     or die('Could not select database'); 
-/* Main suggestion is i, f g h are alternate suggestions */
 
+/* Go through current users likes, adding every tag and every time it appears to an array */
+
+/* Random number from 0 to 1, times the number of items in this array  --> to give the tag which is going to be bernied */
+
+/* For this tag, go through suggestions and add the id off all which contain this tag to an array */
+
+/* Random number from 0 to 1, times the number of items in this array --> gives the id of the suggestion which is the result */
+
+
+/* change the content of the suggestion array to contain details this. */
+
+
+/* Main suggestion is i, f g h are alternate suggestions */
 $i=1;
 $f=1;
 $g=3;
@@ -55,9 +59,8 @@ $row4 = mysql_fetch_row($suggestion4);
 
 
 
-$suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
-"sugAuthor"=>"$row[3]","sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]",
-"sugDescription"=>"$row[7]",
+$suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]","sugAuthor"=>"$row[3]",
+"sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]","sugDescription"=>"$row[7]",
 "altImage1"=>"$row2[1]","smallAlt1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 85),
 "altImage2"=>"$row3[1]","smallAlt2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
 "altImage3"=>"$row4[1]","smallAlt3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
