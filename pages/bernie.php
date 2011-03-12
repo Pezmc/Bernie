@@ -42,13 +42,13 @@ $h=4;*/
 $suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
 $row = mysql_fetch_row($suggestion1);
 
-$suggestion2 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
+$suggestion2 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions ORDER BY rand() LIMIT 1");
 $row2 = mysql_fetch_row($suggestion2);
 
-$suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
+$suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions ORDER BY rand() LIMIT 1");
 $row3 = mysql_fetch_row($suggestion3);
 
-$suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
+$suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions ORDER BY rand() LIMIT 1");
 $row4 = mysql_fetch_row($suggestion4);
 
 
