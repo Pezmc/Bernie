@@ -49,6 +49,7 @@ $suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,sum
 $row3 = mysql_fetch_row($suggestion3);
 
 $suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
+$row4 = mysql_fetch_row($suggestion4);
 
 
 $suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]","sugAuthor"=>"$row[3]",
