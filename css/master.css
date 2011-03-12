@@ -114,33 +114,41 @@ min-width: 86px;
 height: 110px;
 vertical-align: bottom;
 text-align: center;
-background-repeat: no-repeat;
-background-position: bottom left;
 }
 
 /* A cell that accommodates a closed category */
 #cat_books, #cat_tv, #cat_music, #cat_web {
 background:url(/Bernie/images/header_tab_bg.png);
+background-repeat: no-repeat;
+background-position: bottom left;
 }
 
 /* bg img for open books tab */
 #cat_books_open {
 background:url(/Bernie/images/mouseover_books.png);
+background-repeat: no-repeat;
+background-position: bottom left;
 }
 
 /* bg img for open tv tab */
 #cat_tv_open {
 background:url(/Bernie/images/mouseover_tv.png);
+background-repeat: no-repeat;
+background-position: bottom left;
 }
 
 /* bg img for open music tab */
 #cat_music_open {
 background:url(/Bernie/images/mouseover_music.png);
+background-repeat: no-repeat;
+background-position: bottom left;
 }
 
 /* bg img for open books tab */
 #cat_web_open {
 background:url(/Bernie/images/mouseover_web.png);
+background-repeat: no-repeat;
+background-position: bottom left;
 }
 
 /* All the cat links... */
