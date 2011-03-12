@@ -35,45 +35,32 @@ mysql_select_db("11_COMP10120_D1", $connection)
     or die('Could not select database'); 
 /* Main suggestion is i, f g h are alternate suggestions */
 
-$i=0;
-$f=1;
-$g=2;
-$h=3;
+$i=1;
+$f=2;
+$g=3;
+$h=4;
 
-$suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$f'");
+$suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$i'");
 $row = mysql_fetch_row($suggestion1);
-/* echo $row[2]; */
 
-/*
-$sugImage=mysql_result($suggestions,$i,"image_med");
-$sugTitle=mysql_result($suggestions,$i,"title");
-$sugAuthor=mysql_result($suggestions,$i,"author");
-$sugYear=mysql_result($suggestions,$i,"release_year");
-$sugLength=mysql_result($suggestions,$i,"length");
-$sugSubTitle=mysql_result($suggestions,$i,"summary");
-$sugDescription=mysql_result($suggestions,$i,"description");
+$suggestion2 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$f'");
+$row2 = mysql_fetch_row($suggestion2);
 
-$altImage1=mysql_result($suggestions,$f,"image_med");
-$smallAlt1=mysql_result($suggestions,$f,"category");
-$altTitle1=mysql_result($suggestions,$f,"title");
-$altDisc1=mysql_result($suggestions,$f,"description");
+$suggestion3 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$g'");
+$row3 = mysql_fetch_row($suggestion3);
 
-$altImage2=mysql_result($suggestions,$g,"image_med");
-$smallAlt2=mysql_result($suggestions,$g,"category");
-$altTitle2=mysql_result($suggestions,$g,"title");
-$altDisc2=mysql_result($suggestions,$g,"description");
+$suggestion4 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$h'");
+$row4 = mysql_fetch_row($suggestion4);
 
-$altImage3=mysql_result($suggestions,$h,"image_med");
-$smallAlt3=mysql_result($suggestions,$h,"category");
-$altTitle3=mysql_result($suggestions,$h,"title");
-$altDisc3=mysql_result($suggestions,$h,"description"); */
+
+
 
 $suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
-"sugAuthor"=>"$row[3]","sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]", "sugDescription"=>"$row[7]","altImage1"=>"$row[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$row[1]","altDisc1"=>"$row[1]",
-"altImage2"=>"$row[1]","smallAlt2"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle2"=>"$row[2]","altDisc2"=>"$row[7]",
-"altImage3"=>"$row[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle3"=>"$row[2]","altDisc3"=>"$row[7]");
+"sugAuthor"=>"$row[3]","sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]", "sugDescription"=>"$row[7]","altImage1"=>"$row2[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$row2[1]","altDisc1"=>"$row2[1]",
+"altImage2"=>"$row3[1]","smallAlt2"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
+"altTitle2"=>"$row3[2]","altDisc2"=>"$row3[7]",
+"altImage3"=>"$row4[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
+"altTitle3"=>"$row4[2]","altDisc3"=>"$row4[7]");
 
 
 /* $suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugTitle"=>"The cat book",
