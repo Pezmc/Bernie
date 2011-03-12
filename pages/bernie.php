@@ -30,11 +30,51 @@ mysql_select_db("11_COMP10120_D1", $connection)
 /* Random number from 0 to 1, times the number of items in this array  --> to give the tag which is going to be bernied */
 /* For this tag, go through suggestions and add the id off all which contain this tag to an array */
 /* Random number from 0 to 1, times the number of items in this array --> gives the id of the suggestion which is the result */
+
 /* change the content of the suggestion array to contain details this. */
 /* SELECT tags FROM suggestions */
 
-$suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugTitle"=>"The cat book",
-"sugAuthor"=>"Cat writer","sugYear"=>"1990","sugLength"=>"Long","sugSubTitle"=>"cat the cat cat is a cat which shat", "sugDescription"=>"cattycattycatty","altImage1"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt1"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"more cats","altDisc1"=>"oh they are so fluffy","altImage2"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt2"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle2"=>"more cats","altDisc2"=>"oh they are so fluffy","altImage3"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt3"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle3"=>"more cats","altDisc3"=>"oh they are so fluffy");
+/* Main suggestion is i, f g h are alternate suggestions */
+
+$i=0;
+$f=1
+$g=2
+$h=3
+
+$sugImage=mysql_result($suggestions,$i,"image_med");
+$sugTitle=mysql_result($suggestions,$i,"title");
+$sugAuthor=mysql_result($suggestions,$i,"author");
+$sugYear=mysql_result($suggestions,$i,"release_year");
+$sugLength=mysql_result($suggestions,$i,"length");
+$sugSubTitle=mysql_result($suggestions,$i,"summary");
+$sugDescription=mysql_result($suggestions,$i,"description");
+
+$altImage1=mysql_result($suggestions,$f,"image_med");
+$smallAlt1=mysql_result($suggestions,$f,"category");
+$altTitle1=mysql_result($suggestions,$f,"title");
+$altDisc1=mysql_result($suggestions,$f,"description");
+
+$altImage2=mysql_result($suggestions,$g,"image_med");
+$smallAlt2=mysql_result($suggestions,$g,"category");
+$altTitle2=mysql_result($suggestions,$g,"title");
+$altDisc2=mysql_result($suggestions,$g,"description");
+
+$altImage3=mysql_result($suggestions,$h,"image_med");
+$smallAlt3=mysql_result($suggestions,$h,"category");
+$altTitle3=mysql_result($suggestions,$h,"title");
+$altDisc3=mysql_result($suggestions,$h,"description");
+
+$suggestion= array("sugImage"=>$sugImage,"Cat"=>"_","sugTitle"=>$sugTitle,
+"sugAuthor"=>$sugAuthor,"sugYear"=>$sugYear,"sugLength"=>$sugLength,"sugSubTitle"=>$sugSubTitle, "sugDescription"=>$sugDescription,"altImage1"=>$altImage1,"smallAlt1"=>$smallAlt1,"altTitle1"=>$altTitle1,"altDisc1"=>$altDisc1,
+"altImage2"=>$altImage2,"smallAlt2"=>$smallAlt2,"altTitle2"=>$altTitle2,"altDisc1"=>$altDisc2,
+"altImage3"=>$altImage3,"smallAlt3"=>$smallAlt3,"altTitle3"=>$altTitle3,"altDisc1"=>$altDisc3);
+
+
+/* $suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugTitle"=>"The cat book",
+"sugAuthor"=>"Cat writer","sugYear"=>"1990","sugLength"=>"Long","sugSubTitle"=>"cat the cat cat is a cat which shat", "sugDescription"=>"cattycattycatty","altImage1"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt1"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"more cats","altDisc1"=>"oh they are so fluffy","altImage2"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt2"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle2"=>"more cats","altDisc2"=>"oh they are so fluffy","altImage3"=>"http://www.cats.org.uk/images/cat_silhouette_news.jpg","smallAlt3"=>"https://github.com/Pezmc/Bernie/raw/master/old/Original%20Files/icon_books_small.png","altTitle3"=>"more cats","altDisc3"=>"oh they are so fluffy"); */
+
+
+
 
 
 /* Rest of document just deals with displaying information not getting it */
