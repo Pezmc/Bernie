@@ -42,7 +42,7 @@ $h=3;
 
 $suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '1'");
 $row = mysql_fetch_row($suggestion1);
-echo $row[2];
+/* echo $row[2]; */
 
 /*
 $sugImage=mysql_result($suggestions,$i,"image_med");
@@ -68,12 +68,12 @@ $smallAlt3=mysql_result($suggestions,$h,"category");
 $altTitle3=mysql_result($suggestions,$h,"title");
 $altDisc3=mysql_result($suggestions,$h,"description"); */
 
-$suggestion= array("sugImage"=>"$suggestion1[1]","sugTitle"=>"$row[2]",
-"sugAuthor"=>"$suggestion1[3]","sugYear"=>"$suggestion1[4]","sugLength"=>"$suggestion1[5]","sugSubTitle"=>"$suggestion1[6]", "sugDescription"=>"$suggestion1[7]","altImage1"=>"$suggestion1[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$suggestion1[1]","altDisc1"=>"$suggestion1[1]",
-"altImage2"=>"$suggestion1[1]","smallAlt2"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle2"=>"$suggestion1[2]","altDisc2"=>"$suggestion1[7]",
-"altImage3"=>"$suggestion1[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
-"altTitle3"=>"$suggestion1[2]","altDisc3"=>"$suggestion1[7]");
+$suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
+"sugAuthor"=>"$row[3]","sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]", "sugDescription"=>"$row[7]","altImage1"=>"$row[1]","smallAlt1"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png","altTitle1"=>"$row[1]","altDisc1"=>"$row[1]",
+"altImage2"=>"$row[1]","smallAlt2"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
+"altTitle2"=>"$row[2]","altDisc2"=>"$row[7]",
+"altImage3"=>"$row[1]","smallAlt3"=>"https://github.com/Pezmc/Bernie/blob/master/old/Original%20Files/icon_books_small.png",
+"altTitle3"=>"$row[2]","altDisc3"=>"$row[7]");
 
 
 /* $suggestion= array("sugImage"=>"http://cvcl.mit.edu/hybrid/cat2.jpg","Cat"=>"_","sugTitle"=>"The cat book",
