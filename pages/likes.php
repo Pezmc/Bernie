@@ -10,9 +10,10 @@
  *
 /*/
 
-/* Thinking Code */
-include_once('inc/likes.php');
-
 /* Rest of document just deals with displaying information not getting it */
+
+$PAGE['title'] = "My Likes";
+
+$PAGE['content'] = parse("MyLikes.html");
 
 ?>

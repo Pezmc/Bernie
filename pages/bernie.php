@@ -18,12 +18,15 @@
 /* Thinking Code */
 
 /* Go through current users likes, adding every tag and every time it appears to an array */
+
 /* Random number from 0 to 1, times the number of items in this array  --> to give the tag which is going to be bernied */
+
 /* For this tag, go through suggestions and add the id off all which contain this tag to an array */
+
 /* Random number from 0 to 1, times the number of items in this array --> gives the id of the suggestion which is the result */
 
+
 /* change the content of the suggestion array to contain details this. */
-/* SELECT tags FROM suggestions */
 
 /* Main suggestion is i, f g h are alternate suggestions */
 
@@ -46,9 +49,6 @@ $suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,sum
 $row3 = mysql_fetch_row($suggestion3);
 
 $suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions ORDER BY rand() LIMIT 1");
-$row4 = mysql_fetch_row($suggestion4);
-
-
 
 
 $suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]",
@@ -72,6 +72,13 @@ etc...
 
 
 
+=======
+$suggestion= array("sugImage"=>"$row[1]","sugTitle"=>"$row[2]","sugAuthor"=>"$row[3]",
+"sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]","sugDescription"=>"$row[7]",
+"altImage1"=>"$row2[1]","smallAlt1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 85),
+"altImage2"=>"$row3[1]","smallAlt2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
+"altImage3"=>"$row4[1]","smallAlt3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
+>>>>>>> 578b8d61cba0a02eddb6755b44b7258c5c5e4265
 
 
 /* Rest of document just deals with displaying information not getting it */
