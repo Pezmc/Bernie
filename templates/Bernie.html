@@ -39,10 +39,10 @@
 					<!-- how do I fix this without <br> -->
 					<br> <br> <br>  <br>
 					<section class="text">
-					<ul class="key_info">
-						<li><b class="key_info">Author</b> {sugAuthor}</li>				
-						<li><b class="key_info">Year</b> {sugYear} </li>				
-						<li><b class="key_info">Length</b> {sugLength} </li>
+					<ul>
+						<li><font color="green">Author</font> {sugAuthor}</li>				
+						<li><font color="green">Year</font> {sugYear} </li>				
+						<li><font color="green">Length</font> {sugLength} </li>
 					</ul>
 					</section>
 					
@@ -114,7 +114,7 @@
 					<text class="item_title_small"> {altTitle1} </text>
 					<img src={smallAlt1} />
 					<section class="text">
-					<p>  <!-- {altDisc1} --> "{altDisc1}">{truncate(altDisc1, 30)} <br>
+					<p> {altDisc1} <br>
 					<a href="" alt="Go to this item!">Go to item!</a></p>
 					</section>
 					</div>
@@ -157,7 +157,7 @@
 	</div> <!-- End of the subcontainer  -->
 	
 	<!-- The footer containing the image of the pig and a button to bernie the same category -->
-	<div id="bottom" align="center" style="vertical-align:middle">
+	<div id="bottom" align="center">
 
         <form name="" action="" method="">
 	<input type="submit" class="bernie" value="Bernie more {ucwords(category)}">
