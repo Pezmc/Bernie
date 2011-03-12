@@ -127,4 +127,5 @@ p { margin: 0; padding: 0; }
 	height: 100px;
 	padding-top: 20px;
         padding-left: 30px;
+	float: left;
 }	
