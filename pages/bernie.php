@@ -39,10 +39,10 @@ mysql_select_db("11_COMP10120_D1", $connection)
 
 
 /* Main suggestion is i, f g h are alternate suggestions */
-$i=1;
-$f=1;
-$g=3;
-$h=4;
+$i=2;
+$f=4;
+$g=6;
+$h=10;
 
 $suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = '$i'");
 $row = mysql_fetch_row($suggestion1);
