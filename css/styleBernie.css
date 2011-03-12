@@ -116,19 +116,6 @@ p { margin: 0; padding: 0; }
 	float: left;
 }
 
-.altTitle {
-	width: 240px;
-	height: auto;	
-	float: left;
-}
-
-.smallIcon {
-	width: 20px;
-	height: auto;
-	padding-left: 10px;
-	float: left;
-}
-
 .altPic {
 	width: 103px;
 	height: 103px;	
@@ -144,3 +131,16 @@ p { margin: 0; padding: 0; }
         padding-left: 10px;
 	float: left;
 }	
+
+#similar .altText .altTitle {
+	width: 119px;
+	height: auto;	
+	float: left;
+}
+
+#similar .altText .smallIcon {
+	width: 20px;
+	height: auto;
+	padding-left: 10px;
+	float: left;
+}
