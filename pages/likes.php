@@ -10,9 +10,6 @@
  *
 /*/
 
-/* Thinking Code */
-include_once('inc/lib.php');
-
 /* Rest of document just deals with displaying information not getting it */
 
 $PAGE['title'] = "My Likes";
