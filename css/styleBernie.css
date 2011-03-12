@@ -101,14 +101,14 @@ p { margin: 0; padding: 0; }
 
 #similar {
 	width: 278px;
-	height: 450px;
+	height: auto;
 	padding-top: 20px;
 	float: right;	
 }
 
 .altSug {
 	width: 277px;
-	height: 105px;
+	height: auto;
 	padding-top: 20px;
 	float: left;
 }
