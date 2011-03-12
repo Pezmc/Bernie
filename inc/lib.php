@@ -135,9 +135,6 @@ function getCurrentDirectory() {
 	return substr($path,$position);
 }
 
-
-?>
-
 /*
  * Gets and returns the day of birth of the user from the timestamp
  */
