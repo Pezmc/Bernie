@@ -40,6 +40,10 @@ $f=1;
 $g=2;
 $h=3;
 
+$suggestion1 = mysql_query("SELECT id,image_med,title,author,release_year,length,summary,description FROM suggestions WHERE id = 'i'");
+$row = mysql_fetch_row($suggestion1);
+
+/*
 $sugImage=mysql_result($suggestions,$i,"image_med");
 $sugTitle=mysql_result($suggestions,$i,"title");
 $sugAuthor=mysql_result($suggestions,$i,"author");
@@ -61,9 +65,9 @@ $altDisc2=mysql_result($suggestions,$g,"description");
 $altImage3=mysql_result($suggestions,$h,"image_med");
 $smallAlt3=mysql_result($suggestions,$h,"category");
 $altTitle3=mysql_result($suggestions,$h,"title");
-$altDisc3=mysql_result($suggestions,$h,"description");
+$altDisc3=mysql_result($suggestions,$h,"description"); */
 
-$suggestion= array("sugImage"=>$sugImage,"Cat"=>"_","sugTitle"=>$sugTitle,
+$suggestion= array("sugImage"=>$row[1],"Cat"=>"_","sugTitle"=>$sugTitle,
 "sugAuthor"=>$sugAuthor,"sugYear"=>$sugYear,"sugLength"=>$sugLength,"sugSubTitle"=>$sugSubTitle, "sugDescription"=>$sugDescription,"altImage1"=>$altImage1,"smallAlt1"=>$smallAlt1,"altTitle1"=>$altTitle1,"altDisc1"=>$altDisc1,
 "altImage2"=>$altImage2,"smallAlt2"=>$smallAlt2,"altTitle2"=>$altTitle2,"altDisc1"=>$altDisc2,
 "altImage3"=>$altImage3,"smallAlt3"=>$smallAlt3,"altTitle3"=>$altTitle3,"altDisc1"=>$altDisc3);
