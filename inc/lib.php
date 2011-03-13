@@ -191,7 +191,7 @@ function randCat() {
               return "?p=bernie&c=web";
               break;
         default:
-             return: "?p=bernie&c=books";
+             return "?p=bernie&c=books";
         }
 }
 
