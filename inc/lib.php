@@ -174,4 +174,26 @@ function isOpen($cat) {
 	}
 }
 
+function randCat() {
+        $randomC = rand(1, 4);
+        switch ($randomC) 
+        {
+        case 1:
+             return "?p=bernie&c=books";
+             break;
+        case 2:
+             return "?p=bernie&c=tv";
+             break;
+        case 3:
+             return "?p=bernie&c=music";
+             break;
+        case 4:
+              return "?p=bernie&c=web";
+              break;
+        default:
+             return: "?p=bernie&c=books";
+        }
+}
+
+
 ?>
