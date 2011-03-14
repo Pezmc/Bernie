@@ -70,32 +70,38 @@ See comments for explanations.
 							 onmouseout="catMouseout('cat_CATEGORYNAME')"
 						 	 -->
 
-					<!-------------------- NEEDS LOGIC: which cat is open, if any? needs links -------------------->
-					     
-					<!-- Books -->
-					<td id="cat_books" onmouseover="catMouseover('/Bernie/images/mouseover_books.png', 'cat_books')"    
-												 onmouseout="catMouseout('cat_books')">
+                         		<!-- Books -->
+					<td{if:isOpen('books')} id="cat_{category}_open"
+                                             {else} id="cat_books" 
+                                                      onmouseover="catMouseover('/Bernie/images/mouseover_books.png', 'cat_books')"        
+                                                      onmouseout="catMouseout('cat_books')"{end}>
                     <a href="?p=bernie&c=books" alt="Bernie Books!">
 					<img src="/Bernie/images/icon_books.png" alt="Bernie books!" /></a>
 					</td>
 
 					<!-- TV -->
-					<td id="cat_tv" onmouseover="catMouseover('/Bernie/images/mouseover_tv.png', 'cat_tv')"    
-												 onmouseout="catMouseout('cat_tv')">
+					<td{if:isOpen('tv')} id="cat_{category}_open"
+                                             {else} id="cat_tv" 
+                                                      onmouseover="catMouseover('/Bernie/images/mouseover_tv.png', 'cat_tv')"        
+                                                      onmouseout="catMouseout('cat_tv')"{end}>
 					<a href="?p=bernie&c=tv" alt="Bernie TV!">
 					<img src="/Bernie/images/icon_tv.png" alt="Bernie TV!" /></a>
 					</td>
 
 					<!-- Music -->
-					<td id="cat_music" onmouseover="catMouseover('/Bernie/images/mouseover_music.png', 'cat_music')"    
-														onmouseout="catMouseout('cat_music')">
+					<td{if:isOpen('music')} id="cat_{category}_open"
+                                             {else} id="cat_music" 
+                                                      onmouseover="catMouseover('/Bernie/images/mouseover_music.png', 'cat_music')"        
+                                                      onmouseout="catMouseout('cat_music')"{end}>
 					<a href="?p=bernie&c=music" alt="Bernie music!">
 					<img src="/Bernie/images/icon_music.png" alt="Bernie music!" /></a>
 					</td>
 
 					<!-- Web -->
-					<td id="cat_web" onmouseover="catMouseover('/Bernie/images/mouseover_web.png', 'cat_web')"    
-													onmouseout="catMouseout('cat_web')">
+					<td{if:isOpen('web')} id="cat_{category}_open"
+                                             {else} id="cat_web" 
+                                                      onmouseover="catMouseover('/Bernie/images/mouseover_web.png', 'cat_web')"        
+                                                      onmouseout="catMouseout('cat_web')"{end}>
 					<a href="?p=bernie&c=web" alt="Bernie the web!">
 					<img src="/Bernie/images/icon_web.png" alt="Bernie the web!" /></a>
 					</td>
@@ -109,7 +115,7 @@ See comments for explanations.
 			<!-- The cell for the link on the right -->
 
 			<!-- Bernie a random category --> 
-			<a href="?p=bernie" alt="Bernie a random category!">
+			<a href={randCat()} alt="Bernie a random category!">
 			<img src="/Bernie/images/bernie_random.png" alt="Bernie a random category!" /></a>
 			
 			</td>

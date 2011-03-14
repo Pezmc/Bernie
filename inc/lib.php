@@ -135,5 +135,65 @@ function getCurrentDirectory() {
 	return substr($path,$position);
 }
 
+/*
+ * Gets and returns the day of birth of the user from the timestamp
+ */
+function getDayOfBirth() {
+        global $USER;
+	$dayOfBirth = date("d", $USER['dob']);
+	return $dayOfBirth;
+}
+
+/*
+ * Gets and returns the month of birth of the user from the timestamp
+ */
+function getMonthOfBirth() {
+        global $USER;
+	$monthOfBirth = date("m", $USER['dob']);
+	return $monthOfBirth;
+}
+
+/*
+ * Gets and returns the year of birth of the user from the timestamp
+ */
+function getYearOfBirth() {
+        global $USER;
+	$yearOfBirth = date("Y", $USER['dob']);
+	return $yearOfBirth;
+}
+
+/*
+ * Returns true if the given category is currently open
+ */
+function isOpen($cat) {
+        global $GLOBAL;
+	if($GLOBAL['category']==$cat) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function randCat() {
+        $randomC = rand(1, 4);
+        switch ($randomC) 
+        {
+        case 1:
+             return "?p=bernie&c=books";
+             break;
+        case 2:
+             return "?p=bernie&c=tv";
+             break;
+        case 3:
+             return "?p=bernie&c=music";
+             break;
+        case 4:
+              return "?p=bernie&c=web";
+              break;
+        default:
+             return "?p=bernie&c=books";
+        }
+}
+
 
 ?>

@@ -6,8 +6,8 @@
 	<!-- The top two lines -->
 	<div id="head">
 		<!--  The category type will change -->
-		<p>You are now Bernying <b class="{category}">{ucwords(category)}.</b></p>
-		<p>Click on the {ucwords(category)} tab or the button at the bottom of the page to Bernie more {ucwords(category)} ! </p>
+		<p>You are now Bernying <b class="{category}">{strtoupper(category)}</b></p>
+		<p>Click on the {strtoupper(category)} tab or the button at the bottom of the page to Bernie more {strtoupper(category)}! </p>
 	</div> <!--  end of head -->
 	
 	<!-- The subcontainer for the left and right parts  -->
@@ -39,10 +39,10 @@
 					<!-- how do I fix this without <br> -->
 					<br> <br> <br>  <br>
 					<section class="text">
-					<ul>
-						<li><font color="green">Author</font> {sugAuthor}</li>				
-						<li><font color="green">Year</font> {sugYear} </li>				
-						<li><font color="green">Length</font> {sugLength} </li>
+					<ul class="key_info">
+						<li><b class="key_info">Author</b> {sugAuthor}</li>				
+						<li><b class="key_info">Year</b> {sugYear} </li>				
+						<li><b class="key_info">Length</b> {sugLength} </li>
 					</ul>
 					</section>
 					
@@ -111,49 +111,55 @@
 				<!-- 3 alternate suggestions, just repeated code three times -->
 				<div class ="altSug">				
 					<div class ="altPic">
-					<img src="{altImage1}" width="90px" height="90px" style="border: 1px solid #2F84B3" />						
+					<img src="{altImage1}" width="75px" height="75px" style="border: 1px solid #2F84B3" />						
 					</div>
 										
 					<div class ="altText">
-					<text class="item_title_small"> {altTitle1} </text>
-					<img src={smallAlt1} />
-					<section class="text">
+                                        	<div class ="altTitle">								
+						<text class="item_title_small"> {altTitle1} </text>
+						</div>
+                                        	<div class ="smallIcon">
+						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{smallAlt1}_small.png />
+						</div>
 					<p> {altDisc1} <br>
-					<a href="" alt="Go to this item!">Go to item!</a></p>
-					</section>
+					<a href="" alt="Go to this item!">Go to item!</a></p>					
 					</div>
 				</div>
 				
 				<div class ="altSug">				
 					<div class ="altPic">
-					<img src="{altImage2}" width="90px" height="90px" style="border: 1px solid #2F84B3" />					
+					<img src="{altImage2}" width="75px" height="75px" style="border: 1px solid #2F84B3" />					
 					</div>
 										
 					<div class ="altText">
-					<text class="item_title_small"> {altTitle2} </text>
-					<img src={smallAlt2} />
-					<section class="text">
-					<p> {altDisc2} <br>
+                                        	<div class ="altTitle">								
+						<text class="item_title_small"> {altTitle2} </text>
+						</div>
+                                        	<div class ="smallIcon">
+						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{smallAlt2}_small.png />
+						</div>					
+					<p>  {altDisc2} <br>
 					<a href="" alt="Go to this item!">Go to item!</a></p>
-					</section>
 					</div>
 				</div>
 				
 				<div class ="altSug">				
 					<div class ="altPic">
-                                        <img src="{altImage3}" width="90px" height="90px" style="border: 1px solid #2F84B3" />									
+                                        <img src="{altImage3}" width="75px" height="75px" style="border: 1px solid #2F84B3" />									
 					</div>
 										
 					<div class ="altText">
-					<text class="item_title_small"> {altTitle3} </text>
-					<img src={smallAlt3}>
-					<section class="text">
-					<p> {altDisc3} <br>
-					<a href="" alt="Go to this item!">Go to item!</a></p>
-					</section>
+                                        	<div class ="altTitle">								
+						<text class="item_title_small"> {altTitle3} </text>
+						</div>
+                                        	<div class ="smallIcon">
+						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{smallAlt3}_small.png />
+						</div>
+					<p>  {altDisc3} <br>
+					<a href="" alt="Go to this item!">Go to item!</a></p>					
 					</div>
-				</div>	<!--  End of the three alt suggestions -->
-			
+				</div>   <!--  End of the three alt suggestions -->
+			      
 			</div> <!-- End of similar items  -->
 			
 		</div> <!-- End of right container  -->
@@ -174,4 +180,6 @@
 </div> <!--  End of main container  -->
 
 </section>
+
+<!-- <object type="application/x-shockwave-flash" data="http://www.youtube.com/v/nZCZ7M_lifM?f=videos&amp;d=AUZtJKg_DJaXnkBYzAS36AUO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata&amp;autoplay=1" width="100%" height="100%" id="mpf0_hmlvControl_001_video_player" style="visibility: visible; "><param name="wmode" value="transparent"><param name="allowFullScreen" value="true"></object> -->
 
