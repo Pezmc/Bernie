@@ -476,6 +476,18 @@ border: 0px;
 outline-width: 0px;
 }
 
+/* Textarea for comment */
+input[type=text].comment {
+width: 360px;
+background-image: url("/Bernie/images/textarea_comment.png");
+}
+
+/* Textarea for comment error */
+input[type=text].comment_error {
+width: 360px;
+background-image: url("/Bernie/images/textarea_comment_error.png");
+}
+
 /* All buttons */ 
 input[type="submit"] {
 font-size: 13px;
