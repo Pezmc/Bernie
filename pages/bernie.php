@@ -33,11 +33,12 @@
 /*$i=rand(1,);
 $f=1;
 $g=3;
-$h=4;*/
+$h=4;
 
 $f=1;
 $g=3;
-$h=4;*/
+$h=4;
+*/
 
 $suggestionID = $_GET['id'];
 $category = $_GET['c'];
