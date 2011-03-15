@@ -24,8 +24,9 @@
 
 		 	<!-- The form -->
 		 	<!-------------------- NEEDS PHP: make the form work -------------------->
+		 	<!-------------------- NEEDS JAVASCRIPT: form validation -------------------->
 		 	<!-- To display error, add class="error" as tag attribute -->
-		 	<form action="" method="">
+		 	<form name="signup_form" action="/Bernie/inc/signup.php" method="POST" onsubmit="">
 		 	
 			<table width="450px">
 				<tr>
@@ -55,7 +56,7 @@
 					My name is
 					</td>
 					<td>
-					<input type="text" name="name" maxlength="32">
+					<input type="text" name="first_name" maxlength="32">
 					</td>
 				</tr>
 				<tr>
@@ -83,7 +84,7 @@
 					Parent's name
 					</td>
 					<td>
-					<input type="text" name="parentsname" maxlength="32">
+					<input type="text" name="parents_name" maxlength="32">
 					</td>
 				</tr>
 				<tr>
@@ -91,7 +92,7 @@
 					Parent's email
 					</td>
 					<td>
-					<input type="email" name="parentsemail" maxlength="128">
+					<input type="email" name="parents_email" maxlength="128">
 					</td>
 				</tr>
 			</table>

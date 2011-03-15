@@ -15,7 +15,7 @@
 /*/
 
 /* Thinking Code */
-/* include_once('inc/signup.php'); */
+include_once('inc/signup.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
