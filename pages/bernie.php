@@ -35,6 +35,17 @@ $f=1;
 $g=3;
 $h=4;*/
 
+$f=1;
+$g=3;
+$h=4;*/
+
+$suggestionID = $_GET['id'];
+$category = $_GET['c'];
+if (suggestionID < 1) {
+	echo "suggestion id is 0"
+}
+	
+
 /*/
  * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).
  * Also the queries just choose a random row atm
