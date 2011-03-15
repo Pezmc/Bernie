@@ -40,6 +40,7 @@ $g=3;
 $h=4;
 */
 
+$suggestionID = 0;
 $suggestionID = $_GET['id'];
 $category = $_GET['c'];
 if ($suggestionID < 1) {
