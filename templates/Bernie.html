@@ -43,10 +43,10 @@
 	                                <li><b class="key_info">Author</b> {sugAuthor}</li>				
 	                                <li><b class="key_info">Year</b> {sugYear} </li>
                                 	{if:isOpen('web')} 		
-	                             	<li> <a href="{url}"> View website! </a> </li>
+	                             	<li> <a href="{url}" target="_blank"> View website! </a> </li>
 
 	                               	{elseif:isOpen('music')} 
-	                               	<li> <a href="{url}"> View on Youtube! </a> </li>
+	                               	<li> <a href="{url}" target="_blank"> View on Youtube! </a> </li>
 	                               	{else}	
 	                               	<li><b class="key_info">Length</b> {sugLength} </li>
 	                               	{end}
