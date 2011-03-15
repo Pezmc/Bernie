@@ -572,3 +572,8 @@ color: #32AA1B;
 .item_title_small {
 font-size: 16px;
 }
+
+/* Don\t show a border around an images with firefox */
+img {
+border: 0px;
+}
