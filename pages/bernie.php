@@ -42,7 +42,7 @@ $h=4;
 
 $suggestionID = $_GET['id'];
 $category = $_GET['c'];
-if (suggestionID < 1) {
+if ($suggestionID < 1) {
 	echo "suggestion id is 0";
 }
 	
