@@ -76,7 +76,7 @@ $usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='books'");
 
 while($row = mysql_fetch_array($usersLikes))
 {
-echo "$row['tags']";
+echo $row['tags'];
 /* $currentsuggestiontags =   unserialize{"$row['tags']"}
 echo "$currentsuggestiontags"; */
 echo "this is doing something";
