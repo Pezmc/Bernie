@@ -70,8 +70,8 @@ $rand = array_rand($likedTags);
 
 echo "$likedTags[$rand]"; 
 }
-/*
-$usersLikes = mysql_query(SELECT id,tags FROM suggestions WHERE category='$category');
+
+$usersLikes = dbQuery(SELECT id,tags FROM suggestions WHERE category='$category');
 
 while($row = mysql_fetch_array( $usersLikes )
 {
@@ -79,7 +79,7 @@ $currentsuggestiontags =   unserialize{$row['tags]}
 echo "$currentsuggestiontags";
 echo "this is doing something";
 }
-
+/*
 
 } 
  
