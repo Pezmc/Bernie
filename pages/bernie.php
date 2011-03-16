@@ -77,6 +77,7 @@ for now lets just make an array with some numbers in */
 		$abc = unserialize($row['tags']);
 		/* echo $abc[0]; */
 		foreach($abc as $someTag) {
+			echo $someTag;
 			if ($someTag = 14) {
                        		$i=0;
 				$potentialSuggestions[$i] = $row['id'];
@@ -86,7 +87,7 @@ for now lets just make an array with some numbers in */
 		}
 	}
 	echo $potentialSuggestions[0];
-	echo $potentialSuggestions[1];
+	/* echo $potentialSuggestions[1]; */
 }
 /*
 
