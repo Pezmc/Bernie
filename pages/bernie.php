@@ -81,7 +81,7 @@ for now lets just make an array with some numbers in */
 		foreach($abc as $someTag) {
 			echo "The tag is " .$someTag . " ";
 			echo "<br>";			
-			if ($someTag = 14) {                       		
+			if ($someTag=="14") {                       		
 				$potentialSuggestions[$i] = $row['id'];
 				echo "this is doing something"; 
 				$i+= 1;
