@@ -19,6 +19,9 @@ include_once('database.php');
 
 // I dont know what im doing
 
+// Don't send anything to the database if the form has not been filled in
+if (!empty($_POST)){
+
 // CODE HERE to convert users date, month and year of birth into a timestamp
 $dob = "98790870"; // Use random one for now
 
@@ -37,6 +40,8 @@ echo "Gender: ".$gender;
 // Create the user
 dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
 				 VALUES ('.$gender.', '.$first_name.', '.$username.', '$dob', '.$parents_name.', '.$parents_email.', '.$password.')");
+
+}
 
 ?>
 
