@@ -79,7 +79,7 @@ for now lets just make an array with some numbers in */
 		/* echo $abc[0]; */
 		echo "The row id is " . $row['id'] . " ";
 		foreach($abc as $someTag) {
-			echo "The tag is " .$someTag; . " ";
+			echo "The tag is " .$someTag . " ";
 			echo "<br>";			
 			if ($someTag = 14) {                       		
 				$potentialSuggestions[$i] = $row['id'];
