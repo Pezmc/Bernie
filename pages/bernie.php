@@ -76,16 +76,16 @@ while($row = mysql_fetch_array( $usersLikes )
 $currentsuggestiontags =   unserialize{$row['tags]}
 echo "$currentsuggestiontags";
 echo "this is doing something";
+} /*
  
-/* $suggestionsTags = unserialize($string); 
+$suggestionsTags = unserialize($string); 
 if tags contains $rand
 
 add its id to an array 
 
 
 return  $tagToBernie; */
-
-}	
+	
 
 /*/
  * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).
