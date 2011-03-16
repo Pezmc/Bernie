@@ -63,9 +63,9 @@ leaving us with a array of tag ids to choose a random tag id from.
 
 for now lets just make an array with some numbers in */
 
-	$likedTags = array(1,2,3);
+	$likedTags = array(14,14,14);
 
-	$chosenTag = array_rand($likedTags);
+	$chosenTag = $likedTags[array_rand($likedTags)];
 
         $potentialSuggestions = array();
 	$i=0;
@@ -80,7 +80,7 @@ for now lets just make an array with some numbers in */
 		foreach($abc as $someTag) {
 			echo "The tag is " .$someTag . " ";
 			echo "<br>";			
-			if ($someTag=="14") {                       		
+			if ($someTag=="$chosenTag") {                       		
 				$potentialSuggestions[$i] = $row['id'];				
 				$i+= 1;
 			}
