@@ -71,7 +71,7 @@ $rand = array_rand($likedTags);
 echo "$likedTags[$rand]"; 
 }
 
-$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
+$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='books'");
 echo "$usersLikes[1]";
 /*
 while($row = mysql_fetch_array( $usersLikes )
