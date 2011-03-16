@@ -84,9 +84,7 @@ for now lets just make an array with some numbers in */
 		}
 	}
 	
-	$chosenSuggestion = $potentialSuggestions[array_rand($potentialSuggestions)];
-	echo $chosenSuggestion;
-	
+	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
 }
 /*
 
@@ -105,7 +103,7 @@ return  $tagToBernie; */
  * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).
  * Also the queries just choose a random row atm
 /*/
-$suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE category='music' ORDER BY rand() LIMIT 1");
+$suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
 $row = mysql_fetch_row($suggestion1);
 
 $suggestion2 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions ORDER BY rand() LIMIT 1");
