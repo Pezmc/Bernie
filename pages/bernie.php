@@ -67,7 +67,7 @@ $likedTags = array(1,2,3);
 
 $rand = array_rand($likedTags);
 
-echo "$rand"; /*
+echo "$likedTags[$rand]"; /*
 
 $tagToBernie = tagsArray[(Math.random () * (tagsArray.length - 1))]; 
 
