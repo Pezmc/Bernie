@@ -63,9 +63,9 @@ leaving us with a array of tag ids to choose a random tag id from.
 
 for now lets just make an array with some numbers in */
 
-$likedTags = array("1"=>"3","2"=>"2","3"=>"6");
+$likedTags = array(1,2,3);
 
-$rand = rand(0,likedTags.length);
+$rand = array_rand($likedTags);
 
 echo "$rand"; /*
 
@@ -78,9 +78,9 @@ while($row = mysql_fetch_array( $usersLikes )
 if tags contains $tagToBernie 
 
 add its id to an array
-*/
 
-return  $tagToBernie;
+
+return  $tagToBernie; */
 
 }	
 
