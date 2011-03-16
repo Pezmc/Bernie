@@ -78,6 +78,7 @@ for now lets just make an array with some numbers in */
 		/* echo $abc[0]; */
 		foreach($abc as $someTag) {
 			echo $someTag;
+			echo "<br>";
 			if ($someTag = 14) {
                        		$i=0;
 				$potentialSuggestions[$i] = $row['id'];
