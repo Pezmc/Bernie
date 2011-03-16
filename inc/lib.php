@@ -219,7 +219,7 @@ leaving us with a array of tag ids to choose a random tag id from.
 
 for now lets just make an array with some numbers in */
 
-	$likedTags = array(14,14,14);
+	$likedTags = array(13,14,14);
 
 	$chosenTag = $likedTags[array_rand($likedTags)];
 
@@ -239,8 +239,10 @@ for now lets just make an array with some numbers in */
 			}
 		}
 	}
-	
-	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
+	if  (count($potentialSuggestions)="0") 
+		getNewSuggestion($category);
+		
+	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
 	return $suggestionID;	
 }
 
