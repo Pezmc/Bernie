@@ -14,6 +14,9 @@
  *
 /*/
 
+// Get sanitise function
+include_once('database.php');
+
 // I dont know what im doing
 
 // CODE HERE to convert users date, month and year of birth into a timestamp
