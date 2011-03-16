@@ -47,9 +47,7 @@ if ($suggestionID < 1) {
 	
 	$suggestionID = getNewSuggestion($category);
 	
-        
 }
-
 
 
 /*

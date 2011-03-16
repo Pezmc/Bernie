@@ -220,25 +220,29 @@ leaving us with a array of tag ids to choose a random tag id from.
 for now lets just make an array with some numbers in */
 
 	$likedTags = array(13,14,14);
-
-	$chosenTag = $likedTags[array_rand($likedTags)];
-
+	
         $potentialSuggestions = array();
 	$i=0;
+	
+	do {
+		$chosenTag = $likedTags[array_rand($likedTags)];
 
-	$allSuggestionsOfCategory = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
+
+		$allSuggestionsOfCategory = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
 
 
-	while($row = mysql_fetch_array($allSuggestionsOfCategory))
-	{
-		$abc = unserialize($row['tags']);	
-		foreach($abc as $someTag) {		
-			if ($someTag=="$chosenTag") {                       		
-				$potentialSuggestions[$i] = $row['id'];				
-				$i+= 1;
+		while($row = mysql_fetch_array($allSuggestionsOfCategory))
+		{
+			$abc = unserialize($row['tags']);	
+			foreach($abc as $someTag) {		
+				if ($someTag=="$chosenTag") {                       		
+					$potentialSuggestions[$i] = $row['id'];				
+					$i+= 1;
+				}
 			}
 		}
 	}
+	while (sizeof($potentialSuggestions)="0");
 		
 	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
 	return $suggestionID;	
