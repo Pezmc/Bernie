@@ -242,7 +242,7 @@ for now lets just make an array with some numbers in */
 			}
 		}
 	}
-	while (sizeof($potentialSuggestions)="0");
+	while (sizeof($potentialSuggestions)=="0");
 		
 	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
 	return $suggestionID;	
