@@ -253,8 +253,7 @@ function getAltSuggestions($mainSuggestionID) {
 	
 	while($row = mysql_fetch_array($mainSuggestions)) 
 		$mainTags = unserialize($row['tags']);
-	echo $mainTags[0];  /     
-	
+		
 	do {
 		$chosenTag = $mainTags[array_rand($mainTags)];
 		echo $chosenTag;
