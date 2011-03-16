@@ -16,11 +16,11 @@
 
 // I dont know what im doing
 
-include_once('database.php');
+// Right now works with just one sign up step
+// Until someone has made the interests selection page
+// Just to have a working sign up form..
 
-// Do I need to connect to the database? 
-// I know it already does in index.php but i can reduce the number of errors if i do connect
-// connectMe('11_COMP10120_D1');
+include_once('database.php');
 
 // CODE HERE to convert users date, month and year of birth into a timestamp
 $dob = 98790870; // Use random one for now
@@ -29,15 +29,15 @@ $dob = 98790870; // Use random one for now
 $password = "password"; // Use random one for now
 
 // Other inputs from form
-$gender = $_POST['gender'];
-$first_name = $_POST['first_name'];
-$username = $_POST['username'];
-$parents_name = $_POST['parents_name'];
-$parents_email = $_POST['parents_email'];
+$gender = sanitise($_POST['gender'], 1);
+$first_name = sanitise($_POST['first_name'], 1);
+$username = sanitise($_POST['username'], 1);
+$parents_name = sanitise($_POST['parents_name'], 1);
+$parents_email = sanitise($_POST['parents_email'], 1);
 
 // Create the user
 dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
-				 VALUES (gender, first_name, username, dob, parents_name, parents_email, password)");
+				 VALUES ('gender', 'first_name', 'username', 'dob', 'parents_name', 'parents_email', 'password')");
 
 ?>
 
