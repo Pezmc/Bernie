@@ -75,23 +75,21 @@ for now lets just make an array with some numbers in */
 
 	while($row = mysql_fetch_array($usersLikes))
 	{
-		$abc = unserialize($row['tags']);
-		/* echo $abc[0]; */
+		$abc = unserialize($row['tags']);		
 		echo "The row id is " . $row['id'] . " ";
 		foreach($abc as $someTag) {
 			echo "The tag is " .$someTag . " ";
 			echo "<br>";			
 			if ($someTag=="14") {                       		
-				$potentialSuggestions[$i] = $row['id'];
-				echo "this is doing something"; 
+				$potentialSuggestions[$i] = $row['id'];				
 				$i+= 1;
 			}
 		}
 	}
-	echo $potentialSuggestions[0] . " ";
-	echo $potentialSuggestions[1] . " "; 
-	echo $potentialSuggestions[2] . " ";
-	echo $potentialSuggestions[3] . " "; 
+	
+	$chosenSuggestion = array_rand($potentialSuggestions);
+	echo $chosenSuggestion;
+	
 }
 /*
 
