@@ -63,9 +63,9 @@ leaving us with a array of tag ids to choose a random tag id from.
 
 for now lets just make an array with some numbers in */
 
-$likedTags = tagsArray(1,2,2,3,3,4,4,5,5,6);
+$likedTags = array("1"=>"3","2"=>"2","3"=>"6");
 
-$rand = rand(0,tagsArray.length);
+$rand = rand(0,likedTags.length);
 
 echo "$rand"; /*
 
