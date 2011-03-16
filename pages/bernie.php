@@ -69,16 +69,17 @@ $rand = array_rand($likedTags);
 
 echo "$likedTags[$rand]"; /*
 
-$tagToBernie = tagsArray[(Math.random () * (tagsArray.length - 1))]; 
-
- $usersLikes = mysql_query(SELECT id,tags FROM suggestions WHERE category='$category');
+$usersLikes = mysql_query(SELECT id,tags FROM suggestions WHERE category='$category');
 
 while($row = mysql_fetch_array( $usersLikes )
+{
+$currentsuggestiontags =   unserialize{$row['tags]}
+echo "$currentsuggestiontags";
+/* $suggestionsTags = unserialize($string); 
+if tags contains $rand
 
-if tags contains $tagToBernie 
-
-add its id to an array
-
+add its id to an array */
+}
 
 return  $tagToBernie; */
 
