@@ -87,8 +87,8 @@ for now lets just make an array with some numbers in */
 		}
 	}
 	
-	$chosenSuggestion = array_rand($potentialSuggestions);
-	echo $potentialSuggestions[$chosenSuggestion];
+	$chosenSuggestion = $potentialSuggestions[array_rand($potentialSuggestions)];
+	echo $chosenSuggestion;
 	
 }
 /*
