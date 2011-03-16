@@ -194,7 +194,7 @@ function randCat() {
              return "?p=bernie&c=books";
         }
 }
-/*/
+/*
 getNewSuggestion($category) {
 
  Go through current users likes, adding every tag and every time it appears to an array 
@@ -225,6 +225,6 @@ add its id to an array
 
 return  $tagToBernie;
 
-}	/*/
+}	*/
 
 ?>
