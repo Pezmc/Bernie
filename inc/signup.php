@@ -31,7 +31,7 @@ $parents_email = sanitise($_POST['parents_email'], 1);
 
 // Create the user
 dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
-				 VALUES ($gender, $first_name, $username, $dob, $parents_name, $parents_email, $password)");
+				 VALUES (gender, first_name, username, dob, parents_name, parents_email, password)");
 
 ?>
 
