@@ -36,7 +36,7 @@ echo "Gender: ".$gender;
 
 // Create the user
 dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
-				 VALUES ('$gender', '$first_name', '$username', '$dob', '$parents_name', '$parents_email', '$password')");
+				 VALUES ('.$gender.', '.$first_name.', '.$username.', '$dob', '.$parents_name.', '.$parents_email.', '.$password.')");
 
 ?>
 
