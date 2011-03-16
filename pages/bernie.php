@@ -68,6 +68,7 @@ for now lets just make an array with some numbers in */
 	$chosenTag = array_rand($likedTags);
 
         $potentialSuggestions = array();
+	$i=0;
 
 	$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='books'");
 
@@ -78,8 +79,7 @@ for now lets just make an array with some numbers in */
 		/* echo $abc[0]; */
 		foreach($abc as $someTag) {
 			echo $someTag;
-			echo "<br>";
-			$i=0;
+			echo "<br>";			
 			if ($someTag = 14) {                       		
 				$potentialSuggestions[$i] = $row['id'];
 				/* echo "this is doing something"; */
