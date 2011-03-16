@@ -79,8 +79,8 @@ for now lets just make an array with some numbers in */
 		foreach($abc as $someTag) {
 			echo $someTag;
 			echo "<br>";
-			if ($someTag = 14) {
-                       		$i=0;
+			$i=0;
+			if ($someTag = 14) {                       		
 				$potentialSuggestions[$i] = $row['id'];
 				/* echo "this is doing something"; */
 				$i+= 1;
@@ -88,7 +88,7 @@ for now lets just make an array with some numbers in */
 		}
 	}
 	echo $potentialSuggestions[0];
-	/* echo $potentialSuggestions[1]; */
+	echo $potentialSuggestions[1]; 
 }
 /*
 
