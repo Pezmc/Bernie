@@ -65,7 +65,9 @@ for now lets just make an array with some numbers in */
 
 $likedTags = tagsArray(1,2,2,3,3,4,4,5,5,6);
 
-$tagToBernie = tagsArray[1]; /*
+$rand = rand(0,tagsArray.length);
+
+echo "$rand"; /*
 
 $tagToBernie = tagsArray[(Math.random () * (tagsArray.length - 1))]; 
 
