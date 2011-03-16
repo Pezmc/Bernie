@@ -223,6 +223,8 @@ if tags contains $tagToBernie
 
 add its id to an array/*/
 
+return  $tagToBernie;
+
 }	
 
 ?>
