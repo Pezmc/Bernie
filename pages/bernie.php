@@ -40,17 +40,17 @@ $g=3;
 $h=4;
 */
 
-/* $suggestionID = 0;
+$suggestionID = 0;
 $suggestionID = $_GET['id'];
 $category = $_GET['c'];
-if ($suggestionID < 1) {
-	getNewSuggestion($category);
-}
-*/
-$category = $_GET['c'];
-getNewSuggestion($category);
+if ($suggestionID < 1) 
+	$suggestionID = getNewSuggestion($category);
 
-function getNewSuggestion($category) { /*
+
+
+
+/*
+function getNewSuggestion($category) { 
 
  Go through current users likes, adding every tag and every time it appears to an array 
 
@@ -64,7 +64,7 @@ initial interests does something too.
 
 leaving us with a array of tag ids to choose a random tag id from.
 
-for now lets just make an array with some numbers in */
+for now lets just make an array with some numbers in 
 
 	$likedTags = array(14,14,14);
 
@@ -89,8 +89,8 @@ for now lets just make an array with some numbers in */
 	
 	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
 	echo $suggestionID;	
-}
-echo $suggestionID;	
+} */
+	
 
 /*/
  * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).

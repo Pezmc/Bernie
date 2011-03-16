@@ -203,4 +203,45 @@ function threeLetterWord() {
 	return $str;
 }
 
+function getNewSuggestion($category) { /*
+
+ Go through current users likes, adding every tag and every time it appears to an array 
+
+in the user_interests in the database which record the id's of likes and id's of dislikes.
+
+HAS TO GO THROUGH LIKES FIRST.
+
+then dislikes removes tag id's from the array.
+
+initial interests does something too. 
+
+leaving us with a array of tag ids to choose a random tag id from.
+
+for now lets just make an array with some numbers in */
+
+	$likedTags = array(14,14,14);
+
+	$chosenTag = $likedTags[array_rand($likedTags)];
+
+        $potentialSuggestions = array();
+	$i=0;
+
+	$allSuggestionsOfCategory = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
+
+
+	while($row = mysql_fetch_array($allSuggestionsOfCategory))
+	{
+		$abc = unserialize($row['tags']);	
+		foreach($abc as $someTag) {		
+			if ($someTag=="$chosenTag") {                       		
+				$potentialSuggestions[$i] = $row['id'];				
+				$i+= 1;
+			}
+		}
+	}
+	
+	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
+	return $suggestionID;	
+}
+
 ?>
