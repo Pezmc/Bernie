@@ -70,16 +70,13 @@ for now lets just make an array with some numbers in */
         $potentialSuggestions = array();
 	$i=0;
 
-	$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='Books'");
+	$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
 
 
 	while($row = mysql_fetch_array($usersLikes))
 	{
-		$abc = unserialize($row['tags']);		
-		echo "The row id is " . $row['id'] . " ";
-		foreach($abc as $someTag) {
-			echo "The tag is " .$someTag . " ";
-			echo "<br>";			
+		$abc = unserialize($row['tags']);	
+		foreach($abc as $someTag) {		
 			if ($someTag=="$chosenTag") {                       		
 				$potentialSuggestions[$i] = $row['id'];				
 				$i+= 1;
