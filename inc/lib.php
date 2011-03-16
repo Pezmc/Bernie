@@ -219,7 +219,7 @@ leaving us with a array of tag ids to choose a random tag id from.
 
 for now lets just make an array with some numbers in */
 
-	$likedTags = array(13,14,14);
+	$likedTags = array(13,5,14);
 	
         $potentialSuggestions = array();
 	$i=0;
