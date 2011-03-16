@@ -276,7 +276,7 @@ function getAltSuggestions($mainSuggestionID) {
 	}
 	while (sizeof($potentialSuggestions) < 3);
 		
-	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions), 3];	
+	$suggestionID = array_rand($potentialSuggestions, 3);	
 	return $suggestionID;	
 }
 ?>
