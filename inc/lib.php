@@ -251,15 +251,14 @@ function getAltSuggestions($mainSuggestionID) {
 	
         $mainSuggestion= dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
 	
-	while($row = mysql_fetch_array($mainSuggestion)) 
+	while($row = mysql_fetch_array($mainSuggestions)) 
 		$mainTags = unserialize($row['tags']);
-	echo $mainTags[0];  /*      
-	$row = mysql_fetch_row($mainSuggestion);
-	$mainTags = unserialize($row['tags']);
-	echo $mainTags[0]; 
+	echo $mainTags[0];  /     
+	
 	do {
 		$chosenTag = $mainTags[array_rand($mainTags)];
-		$echo chosenTag
+		echo $chosenTag;
+
 
 		$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 
@@ -278,6 +277,6 @@ function getAltSuggestions($mainSuggestionID) {
 	while (sizeof($potentialSuggestions) < 3);
 		
 	$suggestionID = array_rand($potentialSuggestions, 3);	
-	return $suggestionID;	*/
+	return $suggestionID;	
 }
 ?>
