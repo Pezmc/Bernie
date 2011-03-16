@@ -87,18 +87,7 @@ for now lets just make an array with some numbers in */
 	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
 	echo $suggestionID;	
 }
-/*
-
-} 
- 
-$suggestionsTags = unserialize($string); 
-if tags contains $rand
-
-add its id to an array 
-
-
-return  $tagToBernie; */
-	
+echo $suggestionID;	
 
 /*/
  * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).
