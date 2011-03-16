@@ -77,6 +77,7 @@ for now lets just make an array with some numbers in */
 	{
 		$abc = unserialize($row['tags']);
 		/* echo $abc[0]; */
+		echo $row['id'] . " ";
 		foreach($abc as $someTag) {
 			echo $someTag;
 			echo "<br>";			
