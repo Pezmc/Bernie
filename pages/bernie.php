@@ -47,7 +47,7 @@ if ($suggestionID < 1) {
 	do {
 	$suggestionID = getNewSuggestion($category);
 	}
-        while ($suggestionID=="0")
+        while ($suggestionID=="0");
 }
 
 
