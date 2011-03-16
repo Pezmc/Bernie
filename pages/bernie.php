@@ -75,10 +75,11 @@ while($row = mysql_fetch_array( $usersLikes )
 {
 $currentsuggestiontags =   unserialize{$row['tags]}
 echo "$currentsuggestiontags";
+}
 /* $suggestionsTags = unserialize($string); 
 if tags contains $rand
 
-add its id to an array */
+add its id to an array 
 }
 
 return  $tagToBernie; */
