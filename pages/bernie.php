@@ -81,7 +81,7 @@ for now lets just make an array with some numbers in */
                        		$i=0;
 				$arraySuggestions[i] = $row['id'];
 				echo "this is doing something";
-				i++;
+				$i+= 1;
 			}
 		}
 	}
