@@ -194,8 +194,8 @@ function randCat() {
              return "?p=bernie&c=books";
         }
 }
-/*
-getNewSuggestion($category) {
+
+getNewSuggestion($category) { /*
 
  Go through current users likes, adding every tag and every time it appears to an array 
 
@@ -209,11 +209,11 @@ initial interests does something too.
 
 leaving us with a array of tag ids to choose a random tag id from.
 
-for now lets just make an array with some numbers in
+for now lets just make an array with some numbers in */
 
 $likedTags = tagsArray(1,2,2,3,3,4,4,5,5,6);
 
-$tagToBernie = tagsArray[(Math.random () * (tagsArray.length - 1))];
+$tagToBernie = tagsArray[(Math.random () * (tagsArray.length - 1))]; */
 
  $usersLikes = mysql_query(SELECT id,tags FROM suggestions WHERE category='$category');
 
@@ -222,9 +222,10 @@ while($row = mysql_fetch_array( $usersLikes )
 if tags contains $tagToBernie 
 
 add its id to an array
+*/
 
 return  $tagToBernie;
 
-}	*/
+}	
 
 ?>
