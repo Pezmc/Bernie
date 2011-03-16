@@ -77,14 +77,15 @@ for now lets just make an array with some numbers in */
 		$abc = unserialize($row['tags']);
 		echo $abc[0]; 
 		foreach($abc as $someTag) {
-			if ($someTag = $chosenTag) {
+			if ($someTag = 1) {
                        		$i=0;
-				$arraySuggestions[i] = $row['id'];
+				$arraySuggestions[$i] = $row['id'];
 				echo "this is doing something";
 				$i+= 1;
 			}
 		}
 	}
+	echo $arraySuggestions[0];
 }
 /*
 
