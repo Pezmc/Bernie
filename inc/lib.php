@@ -256,17 +256,10 @@ function getAltSuggestions($mainSuggestionID) {
 	echo $mainTags[0];  /*      
 	$row = mysql_fetch_row($mainSuggestion);
 	$mainTags = unserialize($row['tags']);
-	echo $mainTags[0]; */
-	
-	$potentialSuggestions = array();
-	$i=0;
-	
-	$asd = array(2,3,4);
-	return $asd;
-	/*
+	echo $mainTags[0]; 
 	do {
 		$chosenTag = $mainTags[array_rand($mainTags)];
-
+		$echo chosenTag
 
 		$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 
