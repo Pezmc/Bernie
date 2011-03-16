@@ -195,6 +195,57 @@ function randCat() {
         }
 }
 
+/* Generate a three letter word in the format consonant-vowel-consonant */
+function threeLetterWord() {
+	$consonants = array("b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z");
+	$vowels = array('a', 'e', 'i', 'o', 'u');
+	$str = $consonants[array_rand($consonants)].$vowels[array_rand($vowels)].$consonants[array_rand($consonants)];
+	return $str;
+}
 
+function getNewSuggestion($category) { /*
+
+ Go through current users likes, adding every tag and every time it appears to an array 
+
+in the user_interests in the database which record the id's of likes and id's of dislikes.
+
+HAS TO GO THROUGH LIKES FIRST.
+
+then dislikes removes tag id's from the array.
+
+initial interests does something too. 
+
+leaving us with a array of tag ids to choose a random tag id from.
+
+for now lets just make an array with some numbers in */
+
+	$likedTags = array(13,5,14);
+	
+        $potentialSuggestions = array();
+	$i=0;
+	
+	do {
+		$chosenTag = $likedTags[array_rand($likedTags)];
+
+
+		$allSuggestionsOfCategory = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
+
+
+		while($row = mysql_fetch_array($allSuggestionsOfCategory))
+		{
+			$abc = unserialize($row['tags']);	
+			foreach($abc as $someTag) {		
+				if ($someTag=="$chosenTag") {                       		
+					$potentialSuggestions[$i] = $row['id'];				
+					$i+= 1;
+				}
+			}
+		}
+	}
+	while (sizeof($potentialSuggestions)=="0");
+		
+	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
+	return $suggestionID;	
+}
 
 ?>
