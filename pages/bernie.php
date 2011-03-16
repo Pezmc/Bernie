@@ -70,7 +70,7 @@ for now lets just make an array with some numbers in */
         $potentialSuggestions = array();
 	$i=0;
 
-	$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='books'");
+	$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='Books'");
 
 
 	while($row = mysql_fetch_array($usersLikes))
