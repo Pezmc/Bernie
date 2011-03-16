@@ -26,11 +26,11 @@ $dob = "98790870"; // Use random one for now
 $password = "randompass"; // Use random one for now
 
 // Other inputs from form
-if (isset($_POST['gender'])) {$gender = sanitise($_POST['gender'], "1");} else $gender = "";
-if (isset($_POST['first_name'])) $first_name = sanitise($_POST['first_name'], "1"); else $first_name = "";
-if (isset($_POST['username'])) $username = sanitise($_POST['username'], "1"); else $username = "";
-if (isset($_POST['parents_name'])) $parents_name = sanitise($_POST['parents_name'], "1"); else $parents_name = "";
-if (isset($_POST['parents_email'])) $parents_email = sanitise($_POST['parents_email'], "1"); else $parents_email = "";
+if (isset($_POST['gender'])) {$gender = sanitise($_POST['gender'], 1);} else $gender = "";
+if (isset($_POST['first_name'])) $first_name = sanitise($_POST['first_name'], 1); else $first_name = "";
+if (isset($_POST['username'])) $username = sanitise($_POST['username'], 1); else $username = "";
+if (isset($_POST['parents_name'])) $parents_name = sanitise($_POST['parents_name'], 1); else $parents_name = "";
+if (isset($_POST['parents_email'])) $parents_email = sanitise($_POST['parents_email'], 1); else $parents_email = "";
 
 echo "Gender: ".$gender;
 
