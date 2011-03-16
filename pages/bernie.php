@@ -67,7 +67,7 @@ for now lets just make an array with some numbers in */
 
 	$chosenTag = array_rand($likedTags);
 
-        $arraySuggestions = array();
+        $potentialSuggestions = array();
 
 	$usersLikes = dbQuery("SELECT id,tags FROM suggestions WHERE category='books'");
 
@@ -75,17 +75,18 @@ for now lets just make an array with some numbers in */
 	while($row = mysql_fetch_array($usersLikes))
 	{
 		$abc = unserialize($row['tags']);
-		echo $abc[0]; 
+		/* echo $abc[0]; */
 		foreach($abc as $someTag) {
-			if ($someTag = 1) {
+			if ($someTag = 14) {
                        		$i=0;
-				$arraySuggestions[$i] = $row['id'];
-				echo "this is doing something";
+				$potentialSuggestions[$i] = $row['id'];
+				/* echo "this is doing something"; */
 				$i+= 1;
 			}
 		}
 	}
-	echo $arraySuggestions[0];
+	echo $potentialSuggestions[0];
+	echo $potentialSuggestions[1];
 }
 /*
 
