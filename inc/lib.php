@@ -239,8 +239,6 @@ for now lets just make an array with some numbers in */
 			}
 		}
 	}
-	if  (count($potentialSuggestions)=="0") 
-		getNewSuggestion($category);
 		
 	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
 	return $suggestionID;	

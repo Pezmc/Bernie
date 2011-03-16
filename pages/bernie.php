@@ -43,9 +43,12 @@ $h=4;
 $suggestionID = 0;
 $suggestionID = $_GET['id'];
 $category = $_GET['c'];
-if ($suggestionID < 1) 
+if ($suggestionID < 1) {
+	do {
 	$suggestionID = getNewSuggestion($category);
-
+	}
+        while ($suggestionID=="0")
+}
 
 
 
