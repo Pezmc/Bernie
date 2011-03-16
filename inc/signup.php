@@ -32,6 +32,8 @@ if (isset($_POST['username'])) $username = sanitise($_POST['username'], "1"); el
 if (isset($_POST['parents_name'])) $parents_name = sanitise($_POST['parents_name'], "1"); else $parents_name = "";
 if (isset($_POST['parents_email'])) $parents_email = sanitise($_POST['parents_email'], "1"); else $parents_email = "";
 
+echo "Gender: ".$gender;
+
 // Create the user
 dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
 				 VALUES ('$gender', '$first_name', '$username', '$dob', '$parents_name', '$parents_email', '$password')");
