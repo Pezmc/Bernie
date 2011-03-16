@@ -195,6 +195,12 @@ function randCat() {
         }
 }
 
-
+/* Generate a three letter word in the format consonant-vowel-consonant */
+function threeLetterWord() {
+	$consonants = array("b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z");
+	$vowels = array('a', 'e', 'i', 'o', 'u');
+	$str = $consonants[array_rand($consonants)].$vowels[array_rand($vowels)].$consonants[array_rand($consonants)];
+	return $str;
+}
 
 ?>
