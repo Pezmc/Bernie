@@ -194,7 +194,7 @@ class pegParse {
 				$this->data->$name = $value;
 			}
 		} else {
-			$this->data->$key = $value;
+			$this->data->key = $value;
 		}
 	}
 
