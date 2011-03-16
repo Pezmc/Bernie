@@ -33,7 +33,64 @@
 /*$i=rand(1,);
 $f=1;
 $g=3;
-$h=4;*/
+$h=4;
+
+$f=1;
+$g=3;
+$h=4;
+*/
+
+$suggestionID = 0;
+$suggestionID = $_GET['id'];
+$category = $_GET['c'];
+if ($suggestionID < 1) {
+	getNewSuggestion($category);
+}
+
+function getNewSuggestion($category) { /*
+
+ Go through current users likes, adding every tag and every time it appears to an array 
+
+in the user_interests in the database which record the id's of likes and id's of dislikes.
+
+HAS TO GO THROUGH LIKES FIRST.
+
+then dislikes removes tag id's from the array.
+
+initial interests does something too. 
+
+leaving us with a array of tag ids to choose a random tag id from.
+
+for now lets just make an array with some numbers in */
+
+$likedTags = array(1,2,3);
+
+$rand = array_rand($likedTags);
+
+
+echo "$likedTags[$rand]"; 
+}
+/*
+$usersLikes = mysql_query(SELECT id,tags FROM suggestions WHERE category='$category');
+
+while($row = mysql_fetch_array( $usersLikes )
+{
+$currentsuggestiontags =   unserialize{$row['tags]}
+echo "$currentsuggestiontags";
+echo "this is doing something";
+}
+
+
+} 
+ 
+$suggestionsTags = unserialize($string); 
+if tags contains $rand
+
+add its id to an array 
+
+
+return  $tagToBernie; */
+	
 
 /*/
  * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).

@@ -16,12 +16,6 @@
 
 // I dont know what im doing
 
-// Right now works with just one sign up step
-// Until someone has made the interests selection page
-// Just to have a working sign up form..
-
-include_once('database.php');
-
 // CODE HERE to convert users date, month and year of birth into a timestamp
 $dob = 98790870; // Use random one for now
 
@@ -37,7 +31,7 @@ $parents_email = sanitise($_POST['parents_email'], 1);
 
 // Create the user
 dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
-				 VALUES ('gender', 'first_name', 'username', 'dob', 'parents_name', 'parents_email', 'password')");
+				 VALUES (gender, first_name, username, dob, parents_name, parents_email, password)");
 
 ?>
 
