@@ -45,8 +45,8 @@ $suggestionID = $_GET['id'];
 $category = $_GET['c'];
 if ($suggestionID < 1) 
 	$suggestionID = getNewSuggestion($category);
-/* $altSuggestionIDs = getAltSuggestions($suggestionID) */
-$altSuggestionIDs = array(4,5,6);
+$altSuggestionIDs = getAltSuggestions($suggestionID);
+/* $altSuggestionIDs = array(4,5,6); */
 
 
 

@@ -247,5 +247,36 @@ for now lets just make an array with some numbers in */
 	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
 	return $suggestionID;	
 }
+function getAltSuggestions($mainSuggestionID) { 
+	
+        $allSuggestionsOfCategory = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
+	$row = mysql_fetch_row($allSuggestionsOfCategory);
+	$mainTags = unserialize($row['tags']);
+	
+	$potentialSuggestions = array();
+	$i=0;
+	
+	do {
+		$chosenTag = $mainTags[array_rand($mainTags)];
 
+
+		$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+
+
+		while($row = mysql_fetch_array($allSuggestions))
+		{
+			$abc = unserialize($row['tags']);	
+			foreach($abc as $someTag) {		
+				if ($someTag=="$chosenTag") {                       		
+					$potentialSuggestions[$i] = $row['id'];				
+					$i+= 1;
+				}
+			}
+		}
+	}
+	while (sizeof($potentialSuggestions) < 3);
+		
+	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions), 3];	
+	return $suggestionID;	
+}
 ?>
