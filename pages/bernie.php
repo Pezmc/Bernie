@@ -76,6 +76,9 @@ while($row = mysql_fetch_array( $usersLikes )
 $currentsuggestiontags =   unserialize{$row['tags]}
 echo "$currentsuggestiontags";
 echo "this is doing something";
+}
+
+
 } /*
  
 $suggestionsTags = unserialize($string); 
