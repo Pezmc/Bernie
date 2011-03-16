@@ -87,7 +87,7 @@ for now lets just make an array with some numbers in */
 			}
 		}
 	}
-	echo $potentialSuggestions[0];
+	echo $potentialSuggestions[0] . " ";
 	echo $potentialSuggestions[1]; 
 }
 /*
