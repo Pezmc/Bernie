@@ -252,7 +252,7 @@ function getAltSuggestions($mainSuggestionID) {
         $allSuggestionsOfCategory = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
 	$row = mysql_fetch_row($allSuggestionsOfCategory);
 	$mainTags = unserialize($row['tags']);
-	$echo mainTags[0];
+	$echo "mainTags[0]";
 	
 	$potentialSuggestions = array();
 	$i=0;
