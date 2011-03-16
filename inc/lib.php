@@ -249,10 +249,14 @@ for now lets just make an array with some numbers in */
 }
 function getAltSuggestions($mainSuggestionID) { 
 	
-        $allSuggestionsOfCategory = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
-	$row = mysql_fetch_row($allSuggestionsOfCategory);
+        $mainSuggestion= dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
+	
+	while($row = mysql_fetch_array($mainSuggestions)) 
+		$mainTags = unserialize($row['tags']);
+	echo $mainTags[0];  /*      
+	$row = mysql_fetch_row($mainSuggestion);
 	$mainTags = unserialize($row['tags']);
-	echo $mainTags[0];
+	echo $mainTags[0]; */
 	
 	$potentialSuggestions = array();
 	$i=0;
