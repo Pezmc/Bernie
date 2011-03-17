@@ -26,7 +26,6 @@ if(!empty($GLOBAL['id'])) {
   header("Location: ".getFullUrl()."&id=$suggestionID");
 }
 $altSuggestionIDs = getAltSuggestions($suggestionID);
-/* $altSuggestionIDs = array(4,5,6); */
 
 
 $suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
