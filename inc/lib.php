@@ -183,7 +183,7 @@ function isDisliked() {
 			if(!$currentDislikes) {
 		    $currentDislikes = array();
       }
-      for(each($currentDislikes as $thisDisliked) {
+      foreach($currentDislikes as $thisDisliked) {
         if ($thisDisliked==$id)
           return true;
        }
@@ -202,7 +202,7 @@ function isLiked() {
 			if(!$currentLikes) {
 		    $currentLikes = array();
       }
-     for(each($currentLikes as $thisLiked) {
+     foreach($currentLikes as $thisLiked) {
         if ($thisLiked==$id)
           return true;
       }

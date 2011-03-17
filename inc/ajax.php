@@ -17,7 +17,7 @@ switch($_GET['msg']) {
 		      $currentDislikes = array();
         }
       $currentLikes[] = '$id';
-      for(each($currentDislikes as $thisDisliked) {
+      foreach($currentDislikes as $thisDisliked) {
         if ($thisDisliked==$id)
           unset($currentDislikes[$thisDisliked]);
       }    
@@ -40,7 +40,7 @@ switch($_GET['msg']) {
 		      $currentDislikes = array();
        }
      $currentDislikes[] = '$id';
-     for(each($currentLikes as $thisLiked) {
+     foreach($currentLikes as $thisLiked) {
        if ($thisLiked==$id)
          unset($currentLikes[$thisLiked]); 
      }   
@@ -58,7 +58,7 @@ switch($_GET['msg']) {
 			  if(!$currentLikes {
 		      $currentLikes = array();
         }
-      for(each($currentLikes as $thisLiked) {
+      foreach($currentLikes as $thisLiked) {
         if ($thisLiked==$id)
           unset($currentLikes[$thisLiked]);    
       $usersLikedSuggestions = serialize($currentLikes);    
@@ -74,7 +74,7 @@ switch($_GET['msg']) {
 			  if(!$currentDislikes {
 		      $currentDislikes = array();
         }
-      for(each($currentDislikes as $thisDisliked) {
+      foreach($currentDislikes as $thisDisliked) {
         if ($thisDisliked==$id)
           unset($currentDislikes[$thisDisliked]);    
       $usersDislikedSuggestions = serialize($currentDislikes);    
