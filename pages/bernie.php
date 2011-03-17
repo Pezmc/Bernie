@@ -17,28 +17,6 @@
 
 /* Thinking Code */
 
-/* Go through current users likes, adding every tag and every time it appears to an array */
-
-/* Random number from 0 to 1, times the number of items in this array  --> to give the tag which is going to be bernied */
-
-/* For this tag, go through suggestions and add the id off all which contain this tag to an array */
-
-/* Random number from 0 to 1, times the number of items in this array --> gives the id of the suggestion which is the result */
-
-
-/* change the content of the suggestion array to contain details this. */
-
-/* Main suggestion is i, f g h are alternate suggestions */
-
-/*$i=rand(1,);
-$f=1;
-$g=3;
-$h=4;
-
-$f=1;
-$g=3;
-$h=4;
-*/
 
 $category = $GLOBAL['category'];
 if(!empty($GLOBAL['id'])) {
@@ -51,14 +29,6 @@ $altSuggestionIDs = getAltSuggestions($suggestionID);
 /* $altSuggestionIDs = array(4,5,6); */
 
 
-
-
-	
-
-/*/
- * Edit Pez: Removed all the include files (they are already included), changed your * queries to use the already connected database (see inc/database.php).
- * Also the queries just choose a random row atm
-/*/
 $suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
 $row = mysql_fetch_row($suggestion1);
 
@@ -89,7 +59,7 @@ etc...
 
 /* Rest of document just deals with displaying information not getting it */
 
-$PAGE['title'] = "Bernie";
+$PAGE['title'] = "Bernie has suggested you, '$row[2]'";
 $PAGE['content'] = parse("Bernie.html", $suggestion);
 
  ?>
