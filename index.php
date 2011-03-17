@@ -47,6 +47,10 @@ if(!isLoggedIn()) {
 } else { //They are logged in
 	//Lets grab that users information
 	include_once("inc/getUserInfo.php");
+	if($GLOBAL['page']=="ajax") {
+	  include_once("inc/ajax.php");
+          die();
+	}
 }
 
 /* What page has the user requested? */
