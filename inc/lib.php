@@ -223,59 +223,94 @@ for now lets just make an array with some numbers in */
 	
         $potentialSuggestions = array();
 	$i=0;
+	$z=0;
 	
 	do {
 		$chosenTag = $likedTags[array_rand($likedTags)];
 
-
 		$allSuggestionsOfCategory = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
 
-
-		while($row = mysql_fetch_array($allSuggestionsOfCategory))
+    while($row = mysql_fetch_array($allSuggestionsOfCategory))
 		{
-			$abc = unserialize($row['tags']);	
+			$abc = @unserialize($row['tags']);	
+			if(!$abc) {
+		    $abc = array();
+			}
 			foreach($abc as $someTag) {		
-				if ($someTag=="$chosenTag") {                       		
+				if ($someTag==$chosenTag) {                		
 					$potentialSuggestions[$i] = $row['id'];				
 					$i+= 1;
 				}
 			}
 		}
+		$z++;
 	}
-	while (sizeof($potentialSuggestions)=="0");
+	while (sizeof($potentialSuggestions)==0&&$z<50);
+	
+	if($z>=50) {
+    $suggestion = dbQuery("SELECT id,tags FROM suggestions ORDER BY rand() LIMIT 1");
+    $row = mysql_fetch_array($suggestion);
+    $potentialSuggestions[$i] = $row['id'];	
+	}
 		
 	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
 	return $suggestionID;	
 }
-function getAltSuggestions($mainSuggestionID) { 
+
+
+function getAltSuggestions($mainSuggestionID) { 	
+  $mainSuggestion = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID' LIMIT 1");
+  $potentialSuggestions = array();  
 	
-        $mainSuggestion= dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
+	while($row = mysql_fetch_array($mainSuggestion)) {
+		$mainTags = @unserialize($row['tags']);
+  }
 	
-	while($row = mysql_fetch_array($mainSuggestions)) 
-		$mainTags = unserialize($row['tags']);
-		
+	$i = 0;	
+	$z = 0;
 	do {
 		$chosenTag = $mainTags[array_rand($mainTags)];
-		echo $chosenTag;
+		//echo $chosenTag;
 
-
-		$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
-
+		$allSuggestions = dbQuery("SELECT id,tags FROM suggestions WHERE `id` != '$mainSuggestionID'");
 
 		while($row = mysql_fetch_array($allSuggestions))
 		{
-			$abc = unserialize($row['tags']);	
+			$abc = @unserialize($row['tags']);	
+			if(!$abc) {
+		    $abc = array();
+			}
 			foreach($abc as $someTag) {		
-				if ($someTag=="$chosenTag") {                       		
+				if ($someTag==$chosenTag) {                       		
 					$potentialSuggestions[$i] = $row['id'];				
 					$i+= 1;
 				}
 			}
 		}
+		$z++;
 	}
-	while (sizeof($potentialSuggestions) < 3);
+	while (sizeof($potentialSuggestions) < 3&&$z<20);
+	
+	if(sizeof($potentialSuggestions)<3) {
+	   //echo "I cheated";
+     $allSuggestions = dbQuery("SELECT id FROM suggestions ORDER BY rand() LIMIT 3");
+     
+     $potentialSuggestions = array();
+     while($row = mysql_fetch_array($allSuggestions,MYSQL_ASSOC)) {
+        $potentialSuggestions[] = $row['id'];
+     }
+	}
+			
+	shuffle($potentialSuggestions);
+	$suggestionID = array_splice($potentialSuggestions, 0, 3);
 		
-	$suggestionID = array_rand($potentialSuggestions, 3);	
+	//print_r($suggestionID);
 	return $suggestionID;	
 }
+
+/* Get the FULL URL - http://www.phpro.org/examples/Get-Full-URL.html */
+ function getFullUrl() {
+    /*** check for https ***/    /*** return the full address ***/
+    return 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+ }
 ?>

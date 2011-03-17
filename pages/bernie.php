@@ -40,11 +40,13 @@ $g=3;
 $h=4;
 */
 
-$suggestionID = 0;
-$suggestionID = $_GET['id'];
-$category = $_GET['c'];
-if ($suggestionID < 1) 
-	$suggestionID = getNewSuggestion($category);
+$category = $GLOBAL['category'];
+if(!empty($GLOBAL['id'])) {
+  $suggestionID = $GLOBAL['id'];
+} else {
+  $suggestionID = getNewSuggestion($category);
+  header("Location: ".getFullUrl()."&id=$suggestionID");
+}
 $altSuggestionIDs = getAltSuggestions($suggestionID);
 /* $altSuggestionIDs = array(4,5,6); */
 
