@@ -14,40 +14,41 @@
  *
 /*/
 
-// Get sanitise function
+/*// Get sanitise function
 include_once("database.php");
 
 // I get errors unless I include this
-include_once("lib.php");
+include_once("lib.php");*/
 
 // I dont know what im doing
 
 // Don"t send anything to the database if the form has not been filled in
 if (!empty($_POST)){
+  echo "I posted...";
 
-// Convert users date, month and year of birth into a timestamp
-$usersinput = sanitise($_POST["day"], 1);
-$usersinput .= "/";
-$usersinput .= sanitise($_POST["month"], 1);
-$usersinput .= "/";
-$usersinput .= sanitise($_POST["year"], 1);
-$dob = strtotime($usersinput);
-
-// CODE HERE to generate a nine letter password that will be emailed to the user
-$password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
-
-
-// Other inputs from form
-if (isset($_POST["gender"])) {$gender = sanitise($_POST["gender"], 1);} else $gender = "";
-if (isset($_POST["first_name"])) $first_name = sanitise($_POST["first_name"], 1); else $first_name = "";
-if (isset($_POST["username"])) $username = sanitise($_POST["username"], 1); else $username = "";
-if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
-if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
-
-// Create the user
-dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
-				 VALUES ('.$gender.', '.$first_name.', '.$username.', '$dob', '.$parents_name.', '.$parents_email.', '.$password.')");
-
+  // Convert users date, month and year of birth into a timestamp
+  $usersinput = sanitise($_POST["day"], 1);
+  $usersinput .= "/";
+  $usersinput .= sanitise($_POST["month"], 1);
+  $usersinput .= "/";
+  $usersinput .= sanitise($_POST["year"], 1);
+  $dob = strtotime($usersinput);
+  
+  // CODE HERE to generate a nine letter password that will be emailed to the user
+  $password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
+  
+  
+  // Other inputs from form
+  if (isset($_POST["gender"])) {$gender = sanitise($_POST["gender"], 1);} else $gender = "";
+  if (isset($_POST["first_name"])) $first_name = sanitise($_POST["first_name"], 1); else $first_name = "";
+  if (isset($_POST["username"])) $username = sanitise($_POST["username"], 1); else $username = "";
+  if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
+  if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
+  
+  // Create the user
+  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
+  				 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."', '".$parents_email."', '".$password."')");
+  
 }
 
 ?>

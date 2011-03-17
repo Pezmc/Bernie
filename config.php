@@ -11,7 +11,7 @@
 
 /* Other */
 $CONFIG['debug'] = true;
-$CONFIG['printqueries'] = false;
+$CONFIG['printqueries'] = true;
 
 /* Website Config */
 $CONFIG['name'] = "Bernie";

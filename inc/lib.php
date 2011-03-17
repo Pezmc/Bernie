@@ -200,6 +200,11 @@ function threeLetterWord() {
 	$consonants = array("b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z");
 	$vowels = array('a', 'e', 'i', 'o', 'u');
 	$str = $consonants[array_rand($consonants)].$vowels[array_rand($vowels)].$consonants[array_rand($consonants)];
+	$badWords = array("bum", "tit", "cum", "dic", "dik", "pot", "fap", "fat", "coc", "cok", "jew",
+	                  "fuk", "fuc", "jiz", "fag", "git", "nut", "vag", "sex", "nob", "cox", "kok", "gay", "sob", "sux");
+	if (in_array($str, $badWords)) {
+    $str = threeLetterWord();
+	}
 	return $str;
 }
 
