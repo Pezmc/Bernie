@@ -180,7 +180,7 @@ function isDisliked() {
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE id ='2'");
     while($row = mysql_fetch_array($justTheUser)) {
       $currentDislikes = @unserialize($row['disliked']);   
-			if(!$currentDislikes {
+			if(!$currentDislikes) {
 		    $currentDislikes = array();
       }
       for(each($currentDislikes as $thisDisliked) {
@@ -199,7 +199,7 @@ function isLiked() {
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE id ='$USER['id']'");
     while($row = mysql_fetch_array($justTheUser)) {
       $currentLikes = @unserialize($row['liked']);   
-			if(!$currentLikes {
+			if(!$currentLikes) {
 		    $currentLikes = array();
       }
      for(each($currentLikes as $thisLiked) {
