@@ -27,19 +27,86 @@
 				
 					<!--  The title of the suggestion -->
 					<p class ="item_title"> {sugTitle} </p>
-					<p class = orange>Rate this item:</p>
+					<p class = "orange"> Rate this item:</p>
 					
 					<!--  The rating buttons, these will be interactive 
 					when mouseover, will change to highlighted.
 					when clicked. will always be highlighted and run some php to add the suggestionID to a database
 					also "unclicks and removes from alternate like database" if the alternate like is "highlighted"	-->
 					
-					<img style="WIDTH: 60px; HEIGHT: 60px"
-					src="/Bernie/images/rate_up.png" 
-					/>
-					<img style="WIDTH: 60px; HEIGHT: 60px"
-					src="/Bernie/images/rate_down.png"
-					/>
+					<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+					<script type="text/javascript">
+					alert("Js Working");
+
+					$(document).ready(function() {
+
+					 {if:isLiked()}
+					 $("#likeButton").toggle(function() {
+						alert("You unclicked me");
+						sendMessage("{id}", "like", this, "/Bernie/images/rate_up.png");
+					 }, function() {
+						alert("You clicked me");
+						sendMessage("{id}", "unlike", this, "/Bernie/images/rate_up_done.png");
+           }
+					 
+
+				 	{else}
+					 $("#likeButton").toggle(function() {
+						alert("You clicked me");
+						sendMessage("{id}", "unlike", this, "/Bernie/images/rate_up_done.png");
+					 }, function() {
+						alert("You unclicked me");
+						sendMessage("{id}", "like", this, "/Bernie/images/rate_up.png");
+					 }
+					{end}
+					
+           {if:isDisliked()}
+					 $("#dislikeButton").toggle(function() {
+						alert("You unclicked me");
+						sendMessage("{id}", "dislike", this, "/Bernie/images/rate_down.png");
+					 }, function() {
+						alert("You clicked me");
+						sendMessage("{id}", "undislike", this, "/Bernie/images/rate_down_done.png");
+					 }
+
+				 	{else}
+					 $("#dislikeButton").toggle(function() {
+						alert("You clicked me");
+						sendMessage("{id}", "undislike", this, "/Bernie/images/rate_down_done.png");
+					 }, function() {
+						alert("You unclicked me");
+						sendMessage("{id}", "dislike", this, "/Bernie/images/rate_down.png");					 
+					{end}
+          });
+
+
+					function sendMessage(id, msg, button, imgsrc) {
+						var dataString = 'p=ajax&id='+ id + '&msg=' + msg;
+						 //alert (dataString);return false;
+						 $.ajax({
+						    type: "GET",
+						    url: "index.php",
+						    data: dataString,
+						    success: function() {
+							$(button).attr("src",imgsrc);
+						    },
+						    error: function() {
+							alert("Failed");
+						    }
+						  });
+						return false;
+					}
+
+					});
+					</script>
+
+					<img id="likeButton" style="WIDTH: 60px; HEIGHT: 60px"
+					{if:isLiked()} src="/Bernie/images/rate_up_done.png"
+          {else} src="/Bernie/images/rate_up.png" {end}/img>
+					<img id="dislikeButton" style="WIDTH: 60px; HEIGHT: 60px"
+					{if:isDisliked()} src="/Bernie/images/rate_down_done.png"
+          {else} src="/Bernie/images/rate_down.png" {end}/img>
+          
 					<!-- how do I fix this without <br> -->
 					<br> <br> <br>  <br>
 					<section class="text">
