@@ -210,17 +210,20 @@ function threeLetterWord() {
 
 function getNewSuggestion($category) { /*
 
- Go through current users likes, adding every tag and every time it appears to an array 
+Go through current users likes, adding every tag and every time it appears to an array 
 
-in the user_interests in the database which record the id's of likes and id's of dislikes.
+in the user_interests in the database which record the id's of likes and id's of dislikes. 
 
-HAS TO GO THROUGH LIKES FIRST.
+It creats an array called likedTags. then goes through the users database.
 
-then dislikes removes tag id's from the array.
+finds users row and gets all that shit
 
-initial interests does something too. 
+for every liked "tag" add that X ammount of times to the likedTags array
 
-leaving us with a array of tag ids to choose a random tag id from.
+for every liked suggestion, extract the tags from that suggestion, and adds the tags to the likedTags array
+
+for every disliked suggestion, extract the tags from that suggestion, and for every tag, go through the likedTags array until it finds an occurance of that tag, if it does, it removes that []entry from the
+array
 
 for now lets just make an array with some numbers in */
 
