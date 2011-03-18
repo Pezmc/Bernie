@@ -43,39 +43,39 @@
 					 {if:isLiked()}
 					 $("#likeButton").toggle(function() {
 						alert("You unclicked me");
-						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up.png");
+						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png");
 					 }, function() {
 						alert("You clicked me");
-						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up_done.png");
+						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up_done.png");
            });
 					 
 
 				 	{else}
 					 $("#likeButton").toggle(function() {
 						alert("You clicked me");
-						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up_done.png");
+						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up_done.png");
 					 }, function() {
 						alert("You unclicked me");
-						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up.png");
+						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png");
 					 });
 					{end}
 					
            {if:isDisliked()}
 					 $("#dislikeButton").toggle(function() {
 						alert("You unclicked me");
-						sendMessage({sugId}, "dislike", this, "/Bernie/images/rate_down.png");
+						sendMessage({sugId}, "undislike", this, "/Bernie/images/rate_down.png");
 					 }, function() {
 						alert("You clicked me");
-						sendMessage({sugId}, "undislike", this, "/Bernie/images/rate_down_done.png");
+						sendMessage({sugId}, "dislike", this, "/Bernie/images/rate_down_done.png");
 					 });
 
 				 	{else}
 					 $("#dislikeButton").toggle(function() {
 						alert("You clicked me");
-						sendMessage({sugId}, "undislike", this, "/Bernie/images/rate_down_done.png");
+						sendMessage({sugId}, "dislike", this, "/Bernie/images/rate_down_done.png");
 					 }, function() {
 						alert("You unclicked me");
-						sendMessage({sugId}, "dislike", this, "/Bernie/images/rate_down.png");	
+						sendMessage({sugId}, "undislike", this, "/Bernie/images/rate_down.png");	
           });				 
 					{end}
 
