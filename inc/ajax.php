@@ -4,7 +4,7 @@ $id = $_GET['id'];
 $id = $_GET['msg'];
 global $USER;
 
-
+primt_r($USER);
 
 switch($_GET['msg']) {
   case "like":
