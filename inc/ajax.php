@@ -4,7 +4,6 @@ $id = $_GET['id'];
 $id = $_GET['msg'];
 global $USER;
 
-primt_r($USER);
 
 switch($_GET['msg']) {
   case "like":
@@ -25,7 +24,7 @@ switch($_GET['msg']) {
       }    
       $usersLikedSuggestions = serialize($currentLikes);
       $usersDislikedSuggestions = serialize($currentDislikes);
-      mysql_query("INSERT INTO 'user_interests' ('liked','disliked')
+      dbQuery("INSERT INTO 'user_interests' ('liked','disliked')
       VALUES ('$usersLikedSuggestions','$usersDislikedSuggestions')");
     }
     break;
