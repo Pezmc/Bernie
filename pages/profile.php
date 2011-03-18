@@ -14,7 +14,7 @@
 /*/
 
 /* Thinking Code */
-include_once('inc/lib.php');
+include_once('inc/profile.php');
 
 $PAGE['title'] = "Edit Profile";
 

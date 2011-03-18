@@ -174,6 +174,41 @@ function isOpen($cat) {
 	}
 }
 
+function isDisliked() {
+    $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='2'");
+    /* $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='$USER['id']'");*/
+    while($row = mysql_fetch_array($justTheUser)) {
+      $currentDislikes = @unserialize($row['disliked']);   
+			if(!$currentDislikes) {
+		    $currentDislikes = array();
+      }
+      foreach($currentDislikes as $thisDisliked) {
+        if ($thisDisliked==$id)
+          return true;
+       }
+     }
+     return true;
+      
+}
+
+
+function isLiked() {       
+
+    $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='2'");
+    while($row = mysql_fetch_array($justTheUser)) {
+      $currentLikes = @unserialize($row['liked']);   
+			if(!$currentLikes) {
+		    $currentLikes = array();
+      }
+     foreach($currentLikes as $thisLiked) {
+        if ($thisLiked==$id)
+          return true;
+      }
+    }
+    return false;
+      
+}
+
 function randCat() {
         $randomC = rand(1, 4);
         switch ($randomC) 
