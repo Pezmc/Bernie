@@ -185,7 +185,7 @@ function isDisliked() {
       }
       foreach($currentDislikes as $thisDisliked) {
         if ($thisDisliked==$id)
-          return true;
+          return false;
        }
      }
      return false;
