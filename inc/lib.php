@@ -311,26 +311,31 @@ function getAltSuggestions($mainSuggestionID) {
 	
 	$i = 0;	
 	$z = 0;
-	do {
-		$chosenTag = $mainTags[array_rand($mainTags)];
-		//echo $chosenTag;
+  $allSuggestions = dbQuery("SELECT id,tags FROM suggestions WHERE `id` != '$mainSuggestionID'");	
+  do {
+		
+    foreach($mainTags as $chosenTag) {
+      //$chosenTag = $mainTags[array_rand($mainTags)];
+		  //echo $chosenTag;
 
-		$allSuggestions = dbQuery("SELECT id,tags FROM suggestions WHERE `id` != '$mainSuggestionID'");
+		  
 
-		while($row = mysql_fetch_array($allSuggestions))
-		{
-			$abc = @unserialize($row['tags']);	
-			if(!$abc) {
-		    $abc = array();
-			}
-			foreach($abc as $someTag) {		
-				if ($someTag==$chosenTag) {                       		
-					$potentialSuggestions[$i] = $row['id'];				
-					$i+= 1;
-				}
-			}
-		}
+		  while($row = mysql_fetch_array($allSuggestions))
+		  {
+			  $abc = @unserialize($row['tags']);	
+			  if(!$abc) {
+		      $abc = array();
+			  }
+			  foreach($abc as $someTag) {		
+				  if ($someTag==$chosenTag) {                       		
+					  $potentialSuggestions[$i] = $row['id'];				
+					  $i+= 1;
+				  }
+			  }
+		  }
+      
 		$z++;
+    }
 	}
 	while (sizeof($potentialSuggestions) < 3&&$z<20);
 	
