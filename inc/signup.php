@@ -24,7 +24,10 @@ include_once("lib.php");*/
 
 // Don"t send anything to the database if the form has not been filled in
 if (!empty($_POST)){
-  echo "I posted...";
+  //Logic to decide whether we are on page 1 or two!
+  
+  
+  //Error checking
 
   // Convert users date, month and year of birth into a timestamp
   $usersinput = sanitise($_POST["day"], 1);
@@ -45,9 +48,15 @@ if (!empty($_POST)){
   if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
   if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
   
+  $salt = randomStr(3);
+  $saltPassword = md5(md5($password).$salt);
+  
   // Create the user
-  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password) 
-  				 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."', '".$parents_email."', '".$password."')");
+  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt) 
+  				 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
+  				         '".$parents_email."', '".$saltPassword."', '".$salt."')");
+  				         
+  //mail();
   
 }
 
