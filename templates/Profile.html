@@ -9,7 +9,7 @@ Use this page to edit your profile information.
 		 	<!-- The form -->
 		 	<!-------------------- NEEDS PHP: make the form work -------------------->
 		 	<!-- To display error, add class="error" as tag attribute -->
-		 	<form action="?p=profile.php" method="POST">
+		 	<form action="/Bernie/?p=profile" method="POST">
 
 			<table width="500px">
 				<tr>
@@ -59,7 +59,7 @@ Use this page to edit your profile information.
 					Parent's name
 					</td>
 					<td>
-					<input type="text" name="parentsname" value="{parents_name}" maxlength="16">
+					<input type="text" name="parents_name" value="{parents_name}" maxlength="16">
 					</td>
 				</tr>
 				<tr>
@@ -67,13 +67,13 @@ Use this page to edit your profile information.
 					Parent's email
 					</td>
 					<td>
-					<input type="email" name="parentsemail" value="{parents_email}" maxlength="128">
+					<input type="email" name="parents_email" value="{parents_email}" maxlength="128">
 					</td>
 				</tr>
 			</table>
 
 			<p style="padding-bottom: 15px; padding-top: 15px">
-			<input type="checkbox" name="newpassword">
+			<input type="checkbox" name="password">
                         Tick this box if you want a new password to be sent to the provided e-mail address.
 			<p />
 
