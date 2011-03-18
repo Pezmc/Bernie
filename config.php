@@ -10,8 +10,8 @@
 /*/
 
 /* Other */
-$CONFIG['debug'] = true;
-$CONFIG['printqueries'] = true;
+$CONFIG['debug'] = false;
+$CONFIG['printqueries'] = false;
 
 /* Website Config */
 $CONFIG['name'] = "Bernie";
