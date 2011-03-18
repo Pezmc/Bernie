@@ -192,8 +192,7 @@ function isDisliked() {
 }
 
 
-function isLiked() {
-        global $USER;
+function isLiked() {       
 
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='2'");
     while($row = mysql_fetch_array($justTheUser)) {
