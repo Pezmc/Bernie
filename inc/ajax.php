@@ -4,9 +4,11 @@ $id = $_GET['id'];
 $id = $_GET['msg'];
 global $USER;
 
+
+
 switch($_GET['msg']) {
   case "like":
-	  $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '$USER['id']'");
+	  $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
     while($row = mysql_fetch_array($justTheUser) {
       $currentLikes = @unserialize($row['liked']);
       $currentDislikes = @unserialize($row['disliked']);
