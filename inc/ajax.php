@@ -63,9 +63,10 @@ switch($_GET['msg']) {
       foreach($currentLikes as $thisLiked) {
         if ($thisLiked==$id)
           unset($currentLikes[$thisLiked]);    
-      $usersLikedSuggestions = serialize($currentLikes);    
-      mysql_query("INSERT INTO 'user_interests' ('liked')
-      VALUES ('$usersLikedSuggestions')");	 
+        $usersLikedSuggestions = serialize($currentLikes);    
+        mysql_query("INSERT INTO 'user_interests' ('liked')
+          VALUES ('$usersLikedSuggestions')");	 
+      }
     } 
     break;
 
@@ -83,6 +84,7 @@ switch($_GET['msg']) {
       mysql_query("INSERT INTO 'user_interests' ('disliked')
       VALUES ('$usersDislikedSuggestions')");
     }	  
+    }
     break;
   
   default:
