@@ -69,7 +69,7 @@ switch($_GET['msg']) {
     } 
     break;
 
-  case "undislike";
+  case "undislike":
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
     while($row = mysql_fetch_array($justTheUser)) {
       $currentDislikes = @unserialize($row['disliked']);   
