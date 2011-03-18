@@ -55,7 +55,7 @@ switch($_GET['msg']) {
 
   case "unlike":
 	  $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
-    while($row = mysql_fetch_array($justTheUser) {
+    while($row = mysql_fetch_array($justTheUser)) {
       $currentLikes = @unserialize($row['liked']);   
 			  if(!$currentLikes) {
 		      $currentLikes = array();
@@ -71,7 +71,7 @@ switch($_GET['msg']) {
 
   case "undislike"
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
-    while($row = mysql_fetch_array($justTheUser) {
+    while($row = mysql_fetch_array($justTheUser)) {
       $currentDislikes = @unserialize($row['disliked']);   
 			  if(!$currentDislikes) {
 		      $currentDislikes = array();
