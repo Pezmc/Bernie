@@ -175,7 +175,9 @@ function isOpen($cat) {
 }
 
 function isDisliked() {
-    $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='2'");
+    global $USER, $GLOBAL;
+    $id = $GLOBAL['id'];
+    $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='".$USER['id']."'");
     /* $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='$USER['id']'");*/
     while($row = mysql_fetch_array($justTheUser)) {
       $currentDislikes = @unserialize($row['disliked']);   
@@ -193,8 +195,9 @@ function isDisliked() {
 
 
 function isLiked() {       
-
-    $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='2'");
+    global $USER, $GLOBAL;
+    $id = $GLOBAL['id'];
+    $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='".$USER['id']."'");
     while($row = mysql_fetch_array($justTheUser)) {
       $currentLikes = @unserialize($row['liked']);   
 			if(!$currentLikes) {
