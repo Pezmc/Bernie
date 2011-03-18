@@ -12,10 +12,10 @@ switch($_GET['msg']) {
     while($row = mysql_fetch_array($justTheUser)) {
       $currentLikes = @unserialize($row['liked']);
       $currentDislikes = @unserialize($row['disliked']);
-		  	if(!$currentLikes {
+		  	if(!$currentLikes) {
 		      $currentLikes = array();
         }
-        if(!$currentDislikes {
+        if(!$currentDislikes) {
 		      $currentDislikes = array();
         }
       $currentLikes[] = '$id';
