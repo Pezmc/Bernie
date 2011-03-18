@@ -18,7 +18,7 @@
 ini_set('display_errors', 1); 
 ini_set('log_errors', 1); 
 error_reporting(E_ALL);
-ini_set('mysql.connect_timeout', 3);
+ini_set('mysql.connect_timeout', 10);
 
 /* Allow tracking sessions (logins) */
 session_start();

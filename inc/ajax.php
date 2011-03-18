@@ -1,89 +1,95 @@
 <?php
 
 $id = $_GET['id'];
-$id = $_GET['msg'];
-global $USER;
+$msg = $_GET['msg'];
 
+$justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."' LIMIT 1");
+if(mysql_num_rows($justTheUser)<1) {
+  dbQuery("INSERT INTO user_interests (`user_id`) VALUES ('".$USER['id']."')");
+  $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."' LIMIT 1");
+}
+$row = mysql_fetch_array($justTheUser);
+$justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."' LIMIT 1");
+$currentLikes = @unserialize($row['liked']);
+$currentDislikes = @unserialize($row['disliked']);
+if(!$currentLikes) {
+  $currentLikes = array();
+}
+if(!$currentDislikes) {
+  $currentDislikes = array();
+}
 
-switch($_GET['msg']) {
+if(!isset($USER['id'])) {
+  die("You need to be logged in.");
+}
+if(empty($id)) {
+  die("You didn't choose something to like");
+}
+if(empty($msg)) {
+  die("No type set...");
+}
+
+switch($msg) {
   case "like":
-	  $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
-    while($row = mysql_fetch_array($justTheUser)) {
-      $currentLikes = @unserialize($row['liked']);
-      $currentDislikes = @unserialize($row['disliked']);
-		  	if(!$currentLikes) {
-		      $currentLikes = array();
-        }
-        if(!$currentDislikes) {
-		      $currentDislikes = array();
-        }
-      $currentLikes[] = '$id';
-      foreach($currentDislikes as $thisDisliked) {
-        if ($thisDisliked==$id)
-          unset($currentDislikes[$thisDisliked]);
-      }    
-      $usersLikedSuggestions = serialize($currentLikes);
-      $usersDislikedSuggestions = serialize($currentDislikes);
-      dbQuery("INSERT INTO 'user_interests' ('liked','disliked')
-      VALUES ('$usersLikedSuggestions','$usersDislikedSuggestions')");
+    while($row = mysql_fetch_array($justTheUser)) {   
+      if(!in_array($id, $currentLikes)) {
+        $currentLikes[] = $id;
+        $newCurrentDislikes = array();
+        foreach($currentDislikes as $thisDisliked) {
+          if ($thisDisliked!=$id) {
+            $newCurrentDislikes[] = $thisDisliked;
+          }
+        }    
+        $usersLikedSuggestions = serialize($currentLikes);
+        $usersDislikedSuggestions = serialize($newCurrentDislikes);
+        dbQuery("UPDATE user_interests SET `liked`='$usersLikedSuggestions', `disliked`='$usersDislikedSuggestions' WHERE user_id='".$USER['id']."'");
+      }
     }
     break;
 
   case "dislike":
-    $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
     while($row = mysql_fetch_array($justTheUser)) {
-     $currentLikes = @unserialize($row['liked']);
-     $currentDislikes = @unserialize($row['disliked']);
-		  	if(!$currentLikes) {
-		      $currentLikes = array();
-       }
-       if(!$currentDislikes) {
-		      $currentDislikes = array();
-       }
-     $currentDislikes[] = '$id';
-     foreach($currentLikes as $thisLiked) {
-       if ($thisLiked==$id)
-         unset($currentLikes[$thisLiked]); 
-     }   
-     $usersLikedSuggestions = serialize($currentLikes);
-     $usersDislikedSuggestions = serialize($currentDislikes);
-     mysql_query("INSERT INTO 'user_interests' ('liked','disliked')
-     VALUES ('$usersLikedSuggestions','$usersDislikedSuggestions')");
+      if(!in_array($id, $currentLikes)) {
+        $currentDislikes[] = $id;
+        $newCurrentLikes = array();
+        foreach($currentLikes as $thisLiked) {
+          if ($thisLiked!=$id) {
+            $newCurrentLikes[] = $thisLiked;
+          }
+        }  
+        $usersLikedSuggestions = serialize($newCurrentLikes);
+        $usersDislikedSuggestions = serialize($currentDislikes);
+        dbQuery("UPDATE user_interests SET `liked`='$usersLikedSuggestions', `disliked`='$usersDislikedSuggestions' WHERE user_id='".$USER['id']."'");
+      }
     }	  
     break;
 
   case "unlike":
 	  $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
     while($row = mysql_fetch_array($justTheUser)) {
-      $currentLikes = @unserialize($row['liked']);   
-			  if(!$currentLikes) {
-		      $currentLikes = array();
-        }
+      $newCurrentLikes = array();
       foreach($currentLikes as $thisLiked) {
-        if ($thisLiked==$id)
-          unset($currentLikes[$thisLiked]);    
-        $usersLikedSuggestions = serialize($currentLikes);    
-        mysql_query("INSERT INTO 'user_interests' ('liked')
-          VALUES ('$usersLikedSuggestions')");	 
-      }
+        if ($thisLiked!=$id) {
+          $newCurrentLikes[] = $thisLiked;
+        }
+      }  
+      $usersLikedSuggestions = serialize($newCurrentLikes);
+      dbQuery("UPDATE user_interests SET `liked`='$usersLikedSuggestions' WHERE user_id='".$USER['id']."'");
     } 
     break;
 
   case "undislike":
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id = '".$USER['id']."'");
     while($row = mysql_fetch_array($justTheUser)) {
-      $currentDislikes = @unserialize($row['disliked']);   
-			  if(!$currentDislikes) {
-		      $currentDislikes = array();
+      $newCurrentDislikes = array();
+      foreach($currentDislikes as $thisLiked) {
+        if ($thisLiked!=$id) {
+          $newCurrentDislikes[] = $thisLiked;
         }
-      foreach($currentDislikes as $thisDisliked) {
-        if ($thisDisliked==$id)
-          unset($currentDislikes[$thisDisliked]);    
-      $usersDislikedSuggestions = serialize($currentDislikes);    
-      mysql_query("INSERT INTO 'user_interests' ('disliked')
-      VALUES ('$usersDislikedSuggestions')");
+      }  
+      $usersDislikedSuggestions = serialize($newCurrentDislikes);
+      dbQuery("UPDATE user_interests SET `disliked`='$usersDislikedSuggestions' WHERE user_id='".$USER['id']."'");
     }	  
-    }
     break;
   
   default:
