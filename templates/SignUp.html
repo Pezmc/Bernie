@@ -3,7 +3,7 @@ FILE/PATH.PHP
 The sign up page
 Code here for the title and tabs, forms for changing profile information and editing interests are included.
 
-Usage: HOW IT IS USED
+Usage: User gets to sign up. Two ways to get here (two links on the front page )
 
 Devs: Elise, Florin
 -->
@@ -19,12 +19,13 @@ Devs: Elise, Florin
         <!-- Code here for php include form1 and form2 -->
         
         <!-------------------- NEEDS LOGIC: When to display which step of the sign up? -------------------->
-        <!-- {!}{if:user is on step one} (function for this...) -->
+        {if:isOnStep(1)}
                     {include:includes/Form1.html}
-        <!---{!}{elseif:user is on step 2} (function...) -->
-        <!----------{!}{include:includes/Form2.html} -->
-        <!-- {!}{else} -->
-        <!----------{!}{include:includes/Confirmation.html} -->
+        {elseif:isOnStep(2)}
+       						 {include:includes/Form2.html}
+        {elseif:isOnStep(3)}
+									 {include:includes/Confirmation.html}
+				{else}{end}
                     
 
 	</td>
