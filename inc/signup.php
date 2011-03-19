@@ -24,8 +24,9 @@ include_once("lib.php");*/
 
 // Don"t send anything to the database if the form has not been filled in
 if (!empty($_POST)){
-  //Logic to decide whether we are on page 1 or two!
-  
+  //Logic to decide whether we are on page 1 or two
+  if ($GLOBAL['id']==1)
+  {
   
   //Error checking
 
@@ -56,8 +57,16 @@ if (!empty($_POST)){
   				 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
   				         '".$parents_email."', '".$saltPassword."', '".$salt."')");
   				         
-  //mail();
-  
+  //mail(); Could this be called after step two?
+  } // step 1
+
+  else if ($GLOBAL['id']==2)
+  {
+    /* Just pseudo code.. */ 
+		// Get all of the checked interests from the form
+		// Put the tags into an array
+		// Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
+  } // step 2 
 }
 
 ?>
