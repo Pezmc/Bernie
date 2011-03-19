@@ -39,4 +39,13 @@ border-right: 1px solid #CBDBC4;
 padding-right: 12px;
 }
 
+/* An interest */
+td.tag, td.tag_selected {
+width: 33%;
+min-height: 50px;
+}
 
+/* A selected interest */
+td.tag_selected {
+background-color: #CFF8F2;
+}
