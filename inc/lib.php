@@ -364,4 +364,14 @@ function getAltSuggestions($mainSuggestionID) {
     /*** check for https ***/    /*** return the full address ***/
     return 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
  }
+
+/*
+ * Returns true if the user is on the given signup step
+ */
+function isOnStep($step) {
+        global $GLOBAL;
+	if($GLOBAL['id']==$step)
+		return true;
+}
+
 ?>
