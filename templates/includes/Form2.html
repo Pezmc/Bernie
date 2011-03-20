@@ -42,117 +42,139 @@ function toggle(it) {
       <!-------------------- NEEDS PHP: ideally the interests should be taken from the database, 
                              not hard coded -------------------->
       <!-- NOTE: Javascript bg toggle only works right when user clicks inside the checkbox, not on the label --> 
+<!--
+#<?php
+
+#	// Get the number of tags currently listed in the database
+#	$result = dbQuery("SELECT * FROM tags");
+#	$numberOfTags = mysql_num_rows($result);
+#	echo $numberOfTags; // Why does it return one too many?
+
+#	// Get the list of tags as an array
+#	// $result = dbQuery("SELECT tag FROM tags");
+#	$theTags[$numberOfTags] = mysql_fetch_array($result);
+
+#	print_r($theTags);
+
+# Dno how to make this work..
+
+#	
+#?>
+-->
+
+     
+
       <form name="interests" action="/Bernie/?p=signup&id=3" method="POST">
 
 		  <table style="width: 80%; padding-top: 20px" cellspacing="4px">
 				<tr>
 					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value="" /> Cars<br />
+						<input type="checkbox" name="tags[]" value="Cars" /> Cars<br />
 					</td>
 					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value="" /> Cats<br />
+						<input type="checkbox" name="tags[]" value="Cats" /> Cats<br />
 					</td>
 					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value="" /> Dogs<br />
+						<input type="checkbox" name="tags[]" value="Dogs" /> Dogs<br />
 					</td>
 				</tr>
 				<tr>
 					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Princesses<br />
+						<input type="checkbox" name="tags[]" value="Princesses" /> Princesses<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Monsters<br />
+						<input type="checkbox" name="tags[]" value="Monsters" /> Monsters<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Action<br />
-					</td>
-				</tr>
-				<tr>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Adventure<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Humour<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Fashion<br />
+						<input type="checkbox" name="tags[]" value="Action" /> Action<br />
 					</td>
 				</tr>
 				<tr>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Dinosaurs<br />
+						<input type="checkbox" name="tags[]" value="Adventure" /> Adventure<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Animals<br />
+						<input type="checkbox" name="tags[]" value="Humour" /> Humour<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Arts and crafts<br />
-					</td>
-				</tr>
-				<tr>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Fantasy<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Health<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Educational<br />
+						<input type="checkbox" name="tags[]" value="Fashion" /> Fashion<br />
 					</td>
 				</tr>
 				<tr>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Sports<br />
+						<input type="checkbox" name="tags[]" value="Dinosaurs" /> Dinosaurs<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Television<br />
+						<input type="checkbox" name="tags[]" value="Animals" /> Animals<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Cartoons<br />
-					</td>
-				</tr>
-				<tr>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Science<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Puzzles<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-					  <input type="checkbox" name="tag" value= /> Horses<br />
+						<input type="checkbox" name="tags[]" value="Artsandcrafts" /> Arts and crafts<br />
 					</td>
 				</tr>
 				<tr>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Celebrities<br />
+						<input type="checkbox" name="tags[]" value="Fantasy" /> Fantasy<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Pop<br />
+						<input type="checkbox" name="tags[]" value="Health" /> Health<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Nursery rhymes<br />
-					</td>
-				</tr>
-				<tr>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Love<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Beauty<br />
-					</td>
-					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Technology<br />
+						<input type="checkbox" name="tags[]" value="Educational" /> Educational<br />
 					</td>
 				</tr>
 				<tr>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Pictures<br />
+						<input type="checkbox" name="tags[]" value="Sports" /> Sports<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Friends<br />
+						<input type="checkbox" name="tags[]" value="Television" /> Television<br />
 					</td>
 					<td id="tag" onClick="toggle(this)">
-						<input type="checkbox" name="tag" value= /> Games<br />
+						<input type="checkbox" name="tags[]" value="Cartoons" /> Cartoons<br />
+					</td>
+				</tr>
+				<tr>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Science" /> Science<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Puzzles" /> Puzzles<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+					  <input type="checkbox" name="tags[]" value="Horses" /> Horses<br />
+					</td>
+				</tr>
+				<tr>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Celebrities" /> Celebrities<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Pop" /> Pop<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Nurseryrhymes" /> Nursery rhymes<br />
+					</td>
+				</tr>
+				<tr>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Love" /> Love<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Beauty" /> Beauty<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Technology" /> Technology<br />
+					</td>
+				</tr>
+				<tr>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Pictures" /> Pictures<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Friends" /> Friends<br />
+					</td>
+					<td id="tag" onClick="toggle(this)">
+						<input type="checkbox" name="tags[]" value="Games" /> Games<br />
 					</td>
 				</tr>
 				<tr>

@@ -14,14 +14,6 @@
  *
 /*/
 
-/*// Get sanitise function
-include_once("database.php");
-
-// I get errors unless I include this
-include_once("lib.php");*/
-
-// I dont know what im doing
-
 // Don"t send anything to the database if the form has not been filled in
 if (!empty($_POST)){
   //Logic to decide whether we are on page 1 or two
@@ -62,10 +54,33 @@ if (!empty($_POST)){
 
   else if ($GLOBAL['id']==2)
   {
-    /* Just pseudo code.. */ 
-		// Get all of the checked interests from the form
-		// Put the tags into an array
+		// Get all of the checked interests from the form, as an array
+		if (isset($_POST["tags[]"])) {$chosenTags[] = $_POST['tags[]'];} else $chosenTags[] = "";
+
+		// Get the id associated with each tag in chosenTags
+		// and for each item in chosenTags, append id => chosenTags[tagindex] to $unserialisedTags[] 
+		$unserialisedTags[] = array();
+		for ($index = 0; index < count($chosenTags); $index++)
+		{
+			$id = dbQuery("SELECT id FROM tags WHERE tag=$chosenTags[index]");
+			array_push($unserialisedTags, '$id => $chosenTags[index]');
+		}
+
+		// In theory we should now have an array in the format 
+		// $unserialisedTags[] = (2 => 'Dogs', 5 => 'Princesses')
+		// if the user chose the tags Dogs and Princesses, which have the ids 2 and 5 respectively
+
+		// Serialise the array
+		$serialisedTags = serialize($unserialisedTags);
+
+		// Get the current user id
+		$user_id = $USER['id'];
+		
 		// Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
+		dbQuery("INSERT INTO user_interests (tags) 
+						 VALUES ('.$serialisedTags.') 
+						 WHERE user_id=$user_id");
+		
   } // step 2 
 }
 
