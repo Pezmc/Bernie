@@ -60,10 +60,11 @@ if (!empty($_POST)){
 		// Get the id associated with each tag in chosenTags
 		// and for each item in chosenTags, append id => chosenTags[tagindex] to $unserialisedTags[] 
 		$unserialisedTags[] = array();
-		for ($index = 0; index < count($chosenTags); $index++)
+		for ($index = 0; $index < count($chosenTags); $index++)
 		{
-			$id = dbQuery("SELECT id FROM tags WHERE tag=$chosenTags[index]");
-			array_push($unserialisedTags, '$id => $chosenTags[index]');
+			$id = dbQuery("SELECT id FROM tags WHERE tag='$chosenTags[$index]'");
+			$unserialisedTags[$id] = $chosenTags[$index];
+			// array_push($unserialisedTags, '$id => $chosenTags[$index]');
 		}
 
 		// In theory we should now have an array in the format 
