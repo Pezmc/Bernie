@@ -82,9 +82,7 @@ if (!empty($_POST)){
 		
 		
 		//Need to UPDATE if it already exists, or INSERT if row doesn't exist
-		dbQuery("INSERT INTO user_interests (tags) 
-						 VALUES ('.$serialisedTags.') 
-						 WHERE user_id=$user_id");
+		dbQuery("UPDATE user_interests SET tags='$serialisedTags'");
 		
   } // step 2 
 }
