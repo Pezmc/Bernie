@@ -71,6 +71,9 @@ switch ($GLOBAL['page']) {
 disconnectMe(); //Last thing we do is close the DB
 
 /* Parse Template Here */
+//include_once("inc/htmLawed.php");
+//$out = htmLawed(parse('master.html'), array('tidy'=>'    ')); 
+//echo $out;
 echo parse('master.html');
 
 /* Short and sweet :-) */
