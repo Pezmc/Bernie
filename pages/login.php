@@ -18,7 +18,7 @@ include_once('inc/login.php');
 //Currently just let them in anyway and send them home
 //validateUser(round(rand(1,2)));
 
-$result = dbQuery("SELECT username, password, salt FROM users WHERE username = '{$_POST['login_username']}'");
+$result = dbQuery("SELECT * FROM users WHERE username = '{$_POST['login_username']}'");
 if (mysql_num_rows($result) == 1)
 {
   $row = mysql_fetch_array($result);
