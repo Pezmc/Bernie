@@ -18,7 +18,8 @@ if (!empty($_POST))
   if (mysql_num_rows($result) == 1)
   {
     $row = mysql_fetch_array($result);
-    if (md5($row['salt'].md5($_POST['login_passw'])) == $row['password'])
+    //if (md5($row['salt'].md5($_POST['login_passw'])) == $row['password'])
+    if ($_POST['login_passw'] == $row['password'])
       header('Location: ?p=home');
     else
       echo 'Error_pass';
