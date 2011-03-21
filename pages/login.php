@@ -16,21 +16,9 @@ include_once('inc/login.php');
 /* Rest of document just deals with displaying information not getting it */
 
 //Currently just let them in anyway and send them home
-//validateUser(round(rand(1,2)));
-
-$result = dbQuery("SELECT * FROM users WHERE username = '{$_POST['login_username']}'");
-if (mysql_num_rows($result) == 1)
-{
-  $row = mysql_fetch_array($result);
-  if (md5(salt.md5($_POST['login_passw'])) == $row['password'])
-    header('Location: ?p=home');
-  else
-    echo 'Error';
-}
-else
-  echo 'error';
-//header('Location: ?p=home');
-//die();
+validateUser($USER['id']);
+header('Location: ?p=home');
+die();
 
 /***** HELP FROM PEZ *****/
 /* When you check the login you need to get username, password and salt from database where username = the username they said
