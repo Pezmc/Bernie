@@ -35,46 +35,37 @@
 					also "unclicks and removes from alternate like database" if the alternate like is "highlighted"	-->
 					
 					<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-					<script type="text/javascript">
-					alert("Js Working");
+					<script type="text/javascript">					
 
 					$(document).ready(function() {
 
 					 {if:isLiked()}
-					 $("#likeButton").toggle(function() {
-						alert("You unclicked me");
+					 $("#likeButton").toggle(function() {						
 						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png");
 					 }, function() {
-						alert("You clicked me");
 						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up_done.png");
            });
 					 
 
 				 	{else}
 					 $("#likeButton").toggle(function() {
-						alert("You clicked me");
 						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up_done.png");
 					 }, function() {
-						alert("You unclicked me");
 						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png");
 					 });
 					{end}
 					
            {if:isDisliked()}
 					 $("#dislikeButton").toggle(function() {
-						alert("You unclicked me");
 						sendMessage({sugId}, "undislike", this, "/Bernie/images/rate_down.png");
 					 }, function() {
-						alert("You clicked me");
 						sendMessage({sugId}, "dislike", this, "/Bernie/images/rate_down_done.png");
 					 });
 
 				 	{else}
 					 $("#dislikeButton").toggle(function() {
-						alert("You clicked me");
 						sendMessage({sugId}, "dislike", this, "/Bernie/images/rate_down_done.png");
 					 }, function() {
-						alert("You unclicked me");
 						sendMessage({sugId}, "undislike", this, "/Bernie/images/rate_down.png");	
           });				 
 					{end}
