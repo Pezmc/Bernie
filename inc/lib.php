@@ -66,7 +66,7 @@ function validateUser($id) {
 function isLoggedIn() {
 	if(empty($_SESSION['valid'])) return false;
 	
-    elseif($_SESSION['valid'])
+    elseif($_SESSION['valid']==1)
         return true;
 
     return false;
@@ -291,7 +291,7 @@ for now lets just make an array with some numbers in */
 			}
 		       foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		         $likedTags[] = $aLikedTag;
-			 echo "tag added " . $aLikedTag
+			 echo "tag added " . $aLikedTag;
 		       }
 		     }
 		  }
