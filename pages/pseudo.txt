@@ -1,0 +1,43 @@
+/* inc/login.php
+
+Get post variables and sanitise them
+
+dbQuery the database with something along the lines of SELECT * FROM users where username = post username LIMIT 1
+
+If there is a row continue, else send the user back to login with an error message
+
+Get the salt and password from the query ($row = mysql_fetch_array), use the following method to hash the posted password md5(md5(POSTEDpassowrd).saltfromdb);
+
+Compare that hash to the password hash from the database
+
+If they match validateUser($ID of user from the query);
+
+Redirect the user to home
+
+*/
+
+/* pages/login.php 
+
+Pez's bypass login code
+
+include inc/login.php
+
+*/
+
+/* pages/logout.php
+
+Already done
+
+*/
+
+/* inc/lostPassword.php
+
+Get posted email address and find the user with that email in the DB, else display an error about the email not existing
+
+Generate a random key and store that in the DB, send the user an email with a link that includes the key
+
+Get the key and look in the DB to see if it exists, if it does let them continue, else tell them to go away
+
+Generate a new password (see signup.php) update it in the DB over the top of the old one, display the new password on the screen 
+
+*/
