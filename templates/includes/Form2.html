@@ -48,141 +48,31 @@ function toggle(it) {
 		 <form name="interests" action="/Bernie/?p=signup&id=2" method="POST">
 		 <tr>
      {foreach:getTagArray(),i,tag}
-
-       // Print one table cell with the input type=checkbox and the tag name
-       // the value of the input is the tag id
+       <section class="text">
+       <!-- Print one table cell with the input type=checkbox and the tag name -->
+       <!-- the value of the input is the tag id -->
        <td id="tag" onClick="toggle(this)" onClick="toggle(this)">
-						<input type="checkbox" name="tags[]" value="{print(tag['id'])}" /> {print(tag['tag'])}<br />
-					</td>
+						<input type="checkbox" name="tags[]" value="{print(tag['id'])}" /> {print(tag['tag'])}
+			 </td>
 
-      // While the count of the current item % 3 = 0, begin a new row in the table
-      // This will result in a 3xNumberOfTags table in the form
-      {if: (i % 3 == 0)}
+      <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
+      <!-- This will result in a 3xNumberOfTags table in the form -->
+      {if:i % 3 == 0 && i != 0}
       		</tr><tr>
-      	{end}
+      {else}{end}
+
+      </section>
      {end} 
+     </tr>
      
-
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="1" /> Cars<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="2" /> Cats<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="3" /> Dogs<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="4" /> Princesses<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="5" /> Monsters<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="6" /> Action<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="7" /> Adventure<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="8" /> Humour<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="9" /> Fashion<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="10" /> Dinosaurs<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="11" /> Animals<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="12" /> Arts and crafts<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="13" /> Fantasy<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="14" /> Health<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="15" /> Educational<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="16" /> Sports<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="17" /> Television<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="18" /> Cartoons<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="19" /> Science<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="20" /> Puzzles<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--					  <input type="checkbox" name="tags[]" value="21" /> Horses<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="22" /> Celebrities<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="23" /> Pop<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="24" /> Nursery rhymes<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="25" /> Love<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="26" /> Beauty<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="27" /> Technology<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="28" /> Pictures<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="29" /> Friends<br />-->
-<!--					</td>-->
-<!--					<td id="tag" onClick="toggle(this)">-->
-<!--						<input type="checkbox" name="tags[]" value="30" /> Games<br />-->
-<!--					</td>-->
-<!--				</tr>-->
-<!--				<tr>-->
-<!--					<td colspan="3" style="text-align: right; padding: 20px 15% 0px 0px;">-->
-
-<!--					<!-- SUBMIT button here -->
-<!--					<input type="submit" value="SUBMIT" class="medium" />-->
-<!--					</td>-->
-				</tr>
+      <!-- SUBMIT button here -->
+      <tr colspan="3">
+        <td align="right" style="text-align: right; padding: 20px 100px 0px 0px">
+		     <input type="submit" value="SUBMIT" class="medium" />
+		   </td>
+		  </tr>
+		  </form>
 		  </table>
-
-      </form>
 
       </section>
 
