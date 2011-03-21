@@ -10,13 +10,21 @@
  *
 /*/
 
+/* Special Dev Login */
+if($_GET['override']=="login") {
+validateUser(rand(1,2)); //tempory login
+header('Location: ?p=home');
+die();
+}
+
 /* Thinking Code */
 include_once('inc/login.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
 //Currently just let them in anyway and send them home
-validateUser($USER['id']);
+//validateUser($USER['id']); -if we don't know who the user is how do we know their user id?!?
+validateUser(rand(1,2)); //tempory login
 header('Location: ?p=home');
 die();
 
