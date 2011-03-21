@@ -365,10 +365,10 @@ for now lets just make an array with some numbers in */
 	  }
 	}
 	if (sizeof($notSeenPotentialSuggestions)==0) {
-	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];
+	  $suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
 	}
 	else {
-	  $suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
+	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];	
 	}
 	return $suggestionID;	
 }
