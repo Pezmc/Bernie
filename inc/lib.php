@@ -268,7 +268,7 @@ for now lets just make an array with some numbers in */
 	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 	//still need to get stuff from initial likes
-	$likedTags = array(13,5,14,7);
+	$likedTags = array();
 	$alreadyRatedSuggestions = array();
         while($row = mysql_fetch_array($thisUsersLikes)) {
 	
@@ -281,7 +281,15 @@ for now lets just make an array with some numbers in */
 		    $likedSuggestions = array();
 		if(!$dislikedSuggestions) 
 		    $dislikedSuggestions = array();
-		    
+		
+		foreach($initialTags as $thisID) {
+		  //the number, 3 here, is the weighting of initial suggestions
+		  for ($i=1; $i<=3; $i++)
+ 		 {
+ 		   $likedTags[] = $thisID;
+ 		 }		
+		}  
+		  
 		foreach($likedSuggestions as $thisID) { 
 		$alreadyRatedSuggestions[] = $thisID;
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
