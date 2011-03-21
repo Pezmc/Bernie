@@ -35,9 +35,9 @@ if (!empty($_POST)){
 		else 
 			$inputYear = getYearOfBirth();
 
-	  $userinput = $inputDay;
+	  $userinput = $inputMonth;
 	  $userinput .= "/";
-	  $userinput .= $inputMonth;
+	  $userinput .= $inputDay;
 	  $userinput .= "/";
 	  $userinput .= $inputYear;
 
