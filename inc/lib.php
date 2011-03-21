@@ -278,7 +278,7 @@ for now lets just make an array with some numbers in */
 		    $intialTags = array();
 		if(!$likedSuggestions) 
 		    $likedSuggestions = array();
-		if(!$dislikedSuggestions 
+		if(!$dislikedSuggestions) 
 		    $dislikedSuggestions = array();
 		    
 		foreach($likedSuggestion as $thisID) { 
