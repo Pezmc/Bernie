@@ -269,7 +269,7 @@ array */
 	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 	//still need to get stuff from initial likes
-	$likedTags = array();
+	$likedTags = array(1, 2, 4);
 	$alreadyRatedSuggestions = array();
         while($row = mysql_fetch_array($thisUsersLikes)) {
 	
