@@ -49,3 +49,12 @@ min-height: 50px;
 td#tag_selected {
 background-color: #CFF8F2;
 }
+
+/* Dont let the form get broken when error msgs are displayed */
+#email_availability_result, #username_availability_result {
+font-size: 10px;
+padding-left: 10px;
+color: #E06442;
+width: 130px;
+text-align: left;
+}

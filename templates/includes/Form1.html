@@ -77,8 +77,8 @@
                 $('#email_availability_result').html(checking_html).slideDown();  
                 check_email_availability();  
             } 
-						alert(validemail);
-						alert(validusername);
+						// alert(validemail);
+						// alert(validusername);
             return (validemail&&validusername); 
         });  
       });  
@@ -97,14 +97,14 @@
                 if(result == 1)
                 {  
                     // Show that the username is available  
-                    $('#username_availability_result').fadeOut().html(username + ' is available').fadeIn();
+                    $('#username_availability_result').slideUp().html(username + ' is available').slideDown();
                     $('#username').removeClass("error");   
                 }
                 else
                 {  
                     validusername = false;
                     // Show that the username is NOT available  
-                    $('#username_availability_result').fadeOut().html(username + ' is not available').fadeIn();  
+                    $('#username_availability_result').slideUp().html(username + ' is not available').slideDown();  
                     $('#username').addClass("error"); 
                 }  
         });  
