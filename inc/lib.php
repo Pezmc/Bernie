@@ -263,7 +263,7 @@ for every liked suggestion, extract the tags from that suggestion, and adds the 
 for every disliked suggestion, extract the tags from that suggestion, and for every tag, go through the likedTags array until it finds an occurance of that tag, if it does, it removes that []entry from the
 array
 
-for now lets just make an array with some numbers in */
+for now lets just make an array with some numbers in /*
 	
 	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
@@ -293,7 +293,8 @@ for now lets just make an array with some numbers in */
 		     }
 		  }
 		}
-		// At this point we have an array filled with every tag from every suggestion they like.   
+		// At this point we have an array filled with every tag from every suggestion they like. 
+		  
 		foreach($dislikedSuggestion as $thisID) { 
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
@@ -303,16 +304,16 @@ for now lets just make an array with some numbers in */
 			}
 		       foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
 			 $removeThisTag = array_search($aDislikedTag, $likedTags)
-			 if (!$removeThisTag) {
-			 $cat = "fluffy"; 
-			 } else {
+			 if (!$removeThisTag)
+			   $cat = "fluffy"; 
+			 else {
 			   unset($likedTags[$removeThisTag]);
-			 }
-		       }
-		     }
-		   } 
-		 } 
-	       } 
+			 } //else
+		       } // foreach
+		     } // if
+		   } // while
+		 }  // foreach
+	       } //  while
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
