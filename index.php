@@ -41,15 +41,32 @@ connectMe('11_COMP10120_D1'); //We always need a database connection
 /* If the user isn't logged in yet */
 if(!isLoggedIn()) {
 	//If they are trying to access something they are not allowed to
-	if($GLOBAL['page']!="login"&&$GLOBAL['page']!="signup"&&$GLOBAL['page']!="lostpassword"&&$GLOBAL['page']!="demoPegParse") {
-		$GLOBAL['page']="home"; //Send them home	
+	switch($GLOBAL['page']) {
+		case "login":
+		case "signup":
+		case "lostpassword":
+		case "demopegparse":
+		case "ajaxusername":
+		case "ajaxemail":
+		break;
+		default:
+			$GLOBAL['page']="home"; //Send them home	
+		break;
+	}
+
+	if($GLOBAL['page']=="ajaxusername") {
+	  include_once("inc/check_username_availability.php");
+    die();
+	} elseif($GLOBAL['page']=="ajaxemail") {
+	  include_once("inc/check_email_availability.php");
+    die();
 	}
 } else { //They are logged in
 	//Lets grab that users information
 	include_once("inc/getUserInfo.php");
 	if($GLOBAL['page']=="ajax") {
 	  include_once("inc/ajax.php");
-          die();
+    die();
 	}
 }
 

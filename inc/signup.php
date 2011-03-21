@@ -48,6 +48,10 @@ if (!empty($_POST)){
   dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt) 
   				 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
   				         '".$parents_email."', '".$saltPassword."', '".$salt."')");
+
+	// Check for errors
+	// If no errors, go to the next page
+  	header("Location: /Bernie/?p=signup&id=2");
   				         
   //mail(); Could this be called after step two?
   } // step 1

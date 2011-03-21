@@ -374,4 +374,17 @@ function isOnStep($step) {
 		return true;
 }
 
+/**dhsakjdhasdsad*/
+
+function getTagArray() {
+// Get the number of tags currently listed in the database
+  $result = dbQuery("SELECT tag,id FROM tags");
+	$theTags = array();
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		$theTags[] = $row;
+	}
+
+	return $theTags;
+}
+
 ?>
