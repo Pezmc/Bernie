@@ -289,7 +289,7 @@ for now lets just make an array with some numbers in */
 		          $theTagsOfThisSuggestion = array();
 			}
 		       foreach($theTagsOfThisSuggestion as $aLikedTag)
-		         likedTags[] = $aLikedTag;
+		         $likedTags[] = $aLikedTag;
 		     }
 		  }
 		// At this point we have an array filled with every tag from every suggestion they like.   
