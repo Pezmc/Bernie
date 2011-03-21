@@ -283,6 +283,7 @@ for now lets just make an array with some numbers in */
 		    $dislikedSuggestions = array();
 		    
 		foreach($likedSuggestions as $thisID) { 
+		$alreadyRatedSuggestions[] = $thisID;
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
@@ -299,6 +300,7 @@ for now lets just make an array with some numbers in */
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		  
 		foreach($dislikedSuggestions as $thisID) { 
+		$alreadyRatedSuggestions[] = $thisID;
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
@@ -307,8 +309,7 @@ for now lets just make an array with some numbers in */
 			} 
 		    foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
 			 $removeThisTag = array_search($aDislikedTag, $likedTags);
-			 if (!$removeThisTag)
-			   $cat = "fluffy"; 
+			 if (!$removeThisTag) {}
 			 else {
 			   unset($likedTags[$removeThisTag]);
 			   echo "removed tag at id " . $removeThisTag;
@@ -332,7 +333,8 @@ for now lets just make an array with some numbers in */
 		
     
     while($row = mysql_fetch_array($allSuggestions))
-		if ($row['category'] == $category)		
+		if ($row['category'] == $category)
+				
 		{
 			$abc = @unserialize($row['tags']);	
 			if(!$abc) {
@@ -354,8 +356,20 @@ for now lets just make an array with some numbers in */
     $row = mysql_fetch_array($suggestion);
     $potentialSuggestions[$i] = $row['id'];	
 	}
-		
-	$suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
+	
+	$notSeenPotentialSuggestions = array();	
+	foreach($potentialSuggestions as $aPotentialSuggestion) {
+	  $removeThisSuggestion = array_search($aPotentialSuggestion, $alreadyRatedSuggestions);
+	  if (!$removeThisSuggestion) {
+	    notSeenPotentialSuggestions[] = $aPotentialSuggestion
+	  }
+	}
+	if (sizeof($notSeenPotentialSuggestions)==0) {
+	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];
+	}
+	else {
+	  $suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];	
+	}
 	return $suggestionID;	
 }
 
