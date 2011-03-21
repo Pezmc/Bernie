@@ -276,8 +276,8 @@ array */
 		$initialTags = @unserialize($row['tags']);
 		$likedSuggestions = @unserialize($row['liked']);
 		$dislikedSuggestions = @unserialize($row['disliked']);
-		if(!$intialTags) 
-		    $intialTags = array();
+		if(!$initialTags) 
+		    $initialTags = array();
 		if(!$likedSuggestions) 
 		    $likedSuggestions = array();
 		if(!$dislikedSuggestions) 
