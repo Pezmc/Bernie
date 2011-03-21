@@ -302,7 +302,8 @@ for now lets just make an array with some numbers in */
 			}
 		       foreach($theTagsOfThisSuggestion as $aDislikedTag) {
 			 $removeThisTag = array_search($likedTags, $aDislikedTag)
-			 if ($removeThisTag > 0) {
+			 if (!$removeThisTag) {}
+			 else {
 			   unset($likedTags[$removeThisTag]);
 			 }
 		       }
