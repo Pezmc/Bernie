@@ -14,7 +14,8 @@
 
 if (!empty($_POST))
 {
-  $result = dbQuery("SELECT * FROM users WHERE username = '{$_POST['login_username']}' LIMIT 1");
+  $username = sanitise($_POST['login_username'], 1);
+  $result = dbQuery("SELECT * FROM users WHERE username = '$username' LIMIT 1");
   if (mysql_num_rows($result) == 1)
   {
     $row = mysql_fetch_array($result);
