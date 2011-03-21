@@ -21,7 +21,7 @@ $PAGE['title'] = "Home";
 // TIP OF THE DAY
 
 // SQL query
-$result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1*");
+$result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1");
 // store teh query as a result variable
 $tip = "";
 if(mysql_num_rows($result)>0) 
