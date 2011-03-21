@@ -292,6 +292,7 @@ for now lets just make an array with some numbers in */
 		         $likedTags[] = $aLikedTag;
 		     }
 		  }
+		}
 		// At this point we have an array filled with every tag from every suggestion they like.   
 		foreach($dislikedSuggestion as $thisID) { 
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
@@ -302,13 +303,16 @@ for now lets just make an array with some numbers in */
 			}
 		       foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
 			 $removeThisTag = array_search('$aDislikedTag', $likedTags)
-			 if (!$removeThisTag) {} else {
+			 if (!$removeThisTag) {} 
+			 
+			 else {
 			   unset($likedTags[$removeThisTag]);
 			 }
 		       }
 		     }
 		  } 
 		}
+}
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
 	
