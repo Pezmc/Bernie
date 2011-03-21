@@ -261,9 +261,10 @@ for every liked "tag" add that X ammount of times to the likedTags array
 for every liked suggestion, extract the tags from that suggestion, and adds the tags to the likedTags array
 
 for every disliked suggestion, extract the tags from that suggestion, and for every tag, go through the likedTags array until it finds an occurance of that tag, if it does, it removes that []entry from the
-array
-
-for now lets just make an array with some numbers in */
+array */
+	
+	global $USER;
+      
 	
 	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
