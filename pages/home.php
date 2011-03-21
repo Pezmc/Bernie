@@ -21,17 +21,18 @@ $PAGE['title'] = "Home";
 // TIP OF THE DAY
 
 // SQL query
-$result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1");
+$result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1*");
 // store teh query as a result variable
 $tip = "";
-if(mysql_num_rows($result)>0) {
+if(mysql_num_rows($result)>0) 
+{
    // output as long as rthere is still available fields we have limit 1
    while($row = mysql_fetch_row($result))
    {
       $tip=$row['tip'];
    }
 }
-//Else do nothing
+// Else do nothing
 
 if(isLoggedIn()) {
 	$PAGE['content'] = parse("FrontPageLoggedIn.html");
