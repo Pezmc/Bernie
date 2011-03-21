@@ -300,8 +300,7 @@ array */
 		          $theTagsOfThisSuggestion = array();
 			}
 		       foreach($theTagsOfThisSuggestion as $aLikedTag) {
-		         $likedTags[] = $aLikedTag;
-			 echo "tag added " . $aLikedTag;
+		         $likedTags[] = $aLikedTag;			 
 		       }
 		     }
 		  }
@@ -320,8 +319,7 @@ array */
 			 $removeThisTag = array_search($aDislikedTag, $likedTags);
 			 if (!$removeThisTag) {}
 			 else {
-			   unset($likedTags[$removeThisTag]);
-			   echo "removed tag at id " . $removeThisTag;
+			   unset($likedTags[$removeThisTag]);			   
 			 } //else
 		       } // foreach
 		     } // if
