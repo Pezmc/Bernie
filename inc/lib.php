@@ -264,8 +264,53 @@ for every disliked suggestion, extract the tags from that suggestion, and for ev
 array
 
 for now lets just make an array with some numbers in */
-
+	
+	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
+	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+	//still need to get stuff from initial likes
 	$likedTags = array(13,5,14,7);
+        while($row = mysql_fetch_array($thisUsersLikes)) {
+	
+		$initialTags = @unserialize($row['tags']);
+		$likedSuggestions = @unserialize($row['liked']);
+		$dislikedSuggestions = @unserialize($row['disliked']);
+		if(!$intialTags) 
+		    $intialTags = array();
+		if(!$likedSuggestions) 
+		    $likedSuggestions = array();
+		if(!$dislikedSuggestions 
+		    $dislikedSuggestions = array();
+		    
+		foreach($likedSuggestion as $thisID) { 
+		  while($row2 = mysql_fetch_array($allSuggestions)) {		
+		    if ($row2['id'] == $thisID ) {
+		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
+		        if(!$theTagsOfThisSuggestion) {
+		          $theTagsOfThisSuggestion = array();
+			}
+		       foreach($theTagsOfThisSuggestion as $aLikedTag)
+		         likedTags[] = $aLikedTag;
+		     }
+		  }
+		// At this point we have an array filled with every tag from every suggestion they like.   
+		foreach($dislikedSuggestion as $thisID) { 
+		  while($row2 = mysql_fetch_array($allSuggestions)) {		
+		    if ($row2['id'] == $thisID ) {
+		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
+		        if(!$theTagsOfThisSuggestion) {
+		          $theTagsOfThisSuggestion = array();
+			}
+		       foreach($theTagsOfThisSuggestion as $aDislikedTag) {
+			 $removeThisTag = array_search($likedTags, $aDislikedTag)
+			 if $removeThisTag > 0 {
+			   unset($likedTags[$removeThisTag]);
+			 }
+		       }
+		     }
+		  } 
+		}
+		// At this point for every tag in disliked suggestions is removed once from likedTags.
+		// And we have an array containing our "likedTags"
 	
         $potentialSuggestions = array();
 	$i=0;
@@ -274,9 +319,10 @@ for now lets just make an array with some numbers in */
 	do {
 		$chosenTag = $likedTags[array_rand($likedTags)];
 
-		$allSuggestionsOfCategory = dbQuery("SELECT id,tags FROM suggestions WHERE category='$category'");
+		
 
-    while($row = mysql_fetch_array($allSuggestionsOfCategory))
+    while($row = mysql_fetch_array($allSuggestions))
+		if ($row['category'] == $category)		
 		{
 			$abc = @unserialize($row['tags']);	
 			if(!$abc) {
