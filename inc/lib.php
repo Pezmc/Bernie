@@ -333,12 +333,10 @@ for now lets just make an array with some numbers in */
 		
     
     while($row = mysql_fetch_array($allSuggestions))
-		if ($row['category'] == $category)
-				
-		{
+		if ($row['category'] == $category) {
 			$abc = @unserialize($row['tags']);	
 			if(!$abc) {
-		    $abc = array();
+		          $abc = array();
 			}
 			foreach($abc as $someTag) {		
 				if ($someTag==$chosenTag) {                		
@@ -352,7 +350,8 @@ for now lets just make an array with some numbers in */
 	while (sizeof($potentialSuggestions)==0&&$z<50);
 	
 	if($z>=50) {
-    $suggestion = dbQuery("SELECT id,tags FROM suggestions ORDER BY rand() LIMIT 1");
+	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
+      // $suggestion = dbQuery("SELECT id,tags FROM suggestions WHERE ORDER BY rand() LIMIT 1");
     $row = mysql_fetch_array($suggestion);
     $potentialSuggestions[$i] = $row['id'];	
 	}
