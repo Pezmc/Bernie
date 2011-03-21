@@ -14,13 +14,15 @@
 
 if (!empty($_POST))
 {
-  $result = dbQuery("SELECT * FROM users WHERE username = '{$_POST['login_username']}'");
+  $result = dbQuery("SELECT * FROM users WHERE username = '{$_POST['login_username']}' LIMIT 1");
   if (mysql_num_rows($result) == 1)
   {
     $row = mysql_fetch_array($result);
-    //if (md5($row['salt'].md5($_POST['login_passw'])) == $row['password'])
+    // Hashed & Salted
+    // if (md5(md5($_POST['login_passw']).$row['salt']) == $row['password'])
+    // Plain
     if ($_POST['login_passw'] == $row['password'])
-      header('Location: ?p=home');
+      validateUser($row['id']);
     else
       echo 'Error_pass';
   }
