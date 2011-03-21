@@ -301,15 +301,15 @@ for now lets just make an array with some numbers in */
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
 		        if(!$theUnTagsOfThisSuggestion) {
 		          $theUnTagsOfThisSuggestion = array();
-			} /*
-		       foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
-			 $removeThisTag = array_search($aDislikedTag, $likedTags)
+			} 
+		    foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
+			 $removeThisTag = array_search($aDislikedTag, $likedTags);
 			 if (!$removeThisTag)
 			   $cat = "fluffy"; 
 			 else {
 			   unset($likedTags[$removeThisTag]);
 			 } //else
-		       } */ // foreach
+		       } // foreach
 		     } // if
 		   } // while
 		 }  // foreach
