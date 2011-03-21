@@ -269,6 +269,7 @@ for now lets just make an array with some numbers in */
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 	//still need to get stuff from initial likes
 	$likedTags = array(13,5,14,7);
+	$alreadyRatedSuggestions = array();
         while($row = mysql_fetch_array($thisUsersLikes)) {
 	
 		$initialTags = @unserialize($row['tags']);
@@ -281,21 +282,23 @@ for now lets just make an array with some numbers in */
 		if(!$dislikedSuggestions) 
 		    $dislikedSuggestions = array();
 		    
-		foreach($likedSuggestion as $thisID) { 
+		foreach($likedSuggestions as $thisID) { 
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
 		        if(!$theTagsOfThisSuggestion) {
 		          $theTagsOfThisSuggestion = array();
 			}
-		       foreach($theTagsOfThisSuggestion as $aLikedTag)
+		       foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		         $likedTags[] = $aLikedTag;
+			 echo "tag added " . $aLikedTag
+		       }
 		     }
 		  }
 		}
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		  
-		foreach($dislikedSuggestion as $thisID) { 
+		foreach($dislikedSuggestions as $thisID) { 
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
@@ -308,6 +311,7 @@ for now lets just make an array with some numbers in */
 			   $cat = "fluffy"; 
 			 else {
 			   unset($likedTags[$removeThisTag]);
+			   echo "removed tag at id " . $removeThisTag;
 			 } //else
 		       } // foreach
 		     } // if
@@ -326,7 +330,7 @@ for now lets just make an array with some numbers in */
 		$chosenTag = $likedTags[array_rand($likedTags)];
 
 		
-
+    
     while($row = mysql_fetch_array($allSuggestions))
 		if ($row['category'] == $category)		
 		{
