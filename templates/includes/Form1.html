@@ -20,6 +20,115 @@
 <td class="formarea">
       <!-- The left side -->
 
+      <!-- jQuery to check username and email availability 
+           Modified from the tutorial at 
+           http://web.enavu.com/tutorials/checking-username-availability-with-ajax-using-jquery/ 
+           -->
+
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript">
+
+      $(document).ready(function() {  
+  
+        // Username can be this many characters long  
+        var min_chars_username = 3; 
+
+        // Email can be this many characters long  
+        var min_chars_email = 8; 
+ 
+  
+        // Error messages  
+        var username_characters_error = 'The username has to be more than '.min_chars_username.' characters long.'; 
+        var email_characters_error = 'The email has to be more than '.min_chars_email.' characters long.';   
+        var checking_html = 'Checking...';  
+  
+        // When the submit button is clicked 
+
+        // Check username
+        $('#check_username_availability').click(function()
+        {  
+            // Run the character number check  
+            if($('#username').val().length < min_chars_username)
+            {  
+                // If it's below the minimum show username_characters_error text '  
+                $('#username_availability_result').html(username_characters_error);  
+            }
+            else
+            {  
+                //else show the cheking_text and run the function to check  
+                $('#username_availability_result').html(checking_html);  
+                check_availability();  
+            }  
+        });  
+
+         // Check email
+        $('#check_email_availability').click(function()
+        {  
+            // Run the character number check  
+            if($('#email').val().length < min_chars_email)
+            {  
+                // If it's below the minimum showemail_characters_error text '  
+                $('#email_availability_result').html(email_characters_error);  
+            }
+            else
+            {  
+                //else show the cheking_text and run the function to check  
+                $('#email_availability_result').html(checking_html);  
+                check_availability();  
+            }  
+        });  
+      });  
+  
+			// Function to check username availability  
+			function check_username_availability()
+			{  
+        //get the username  
+        var username = $('#username').val();  
+  
+        // Use ajax to run the check  
+        $.post("check_username_availability.php", { username: username },  
+            function(result)
+            {  
+                // If the result is 1  
+                if(result == 1)
+                {  
+                    // Show that the username is available  
+                    $('#username_availability_result').html(username + ' is available');  
+                }
+                else
+                {  
+                    // Show that the username is NOT available  
+                    $('#username_availability_result').html(username + ' is not available');  
+                }  
+        });  
+      }  
+
+      // Function to check email availability  
+			function check_email_availability()
+			{  
+        //get the username  
+        var email = $('#email').val();  
+  
+        // Use ajax to run the check  
+        $.post("check_email_availability.php", { email: email },  
+            function(result)
+            {  
+                // If the result is 1  
+                if(result == 1)
+                {  
+                    // Show that the username is available  
+                    $('#email_availability_result').html(email + ' is available');  
+                }
+                else
+                {  
+                    // Show that the username is NOT available  
+                    $('#email_availability_result').html(email + ' is not available');  
+                }  
+        });  
+      }  
+
+			</script>
+
 		 	<section class="text">
 
 		 	<!-- The form -->
@@ -64,6 +173,7 @@
 					</td>
 					<td>
 					<input type="text" name="username" maxlength="32">
+					<div id='username_availability_result'></div> 
 					</td>
 				</tr>
 				<tr>
@@ -92,6 +202,7 @@
 					</td>
 					<td>
 					<input type="email" name="parents_email" maxlength="128">
+					<div id='email_availability_result'></div> 
 					</td>
 				</tr>
 			</table>
@@ -101,7 +212,7 @@
 			</p>
 	
 			<p align="center">
-			<input type="submit" value="SUBMIT" class="medium">
+			<input type="submit" value="SUBMIT" class="medium" id="check_availability">
 			</p>	
 			
 			</form>
