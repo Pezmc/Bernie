@@ -22,11 +22,6 @@ include_once('inc/login.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
-//Currently just let them in anyway and send them home
-//validateUser($USER['id']); -if we don't know who the user is how do we know their user id?!?
-validateUser(rand(1,2)); //tempory login
-header('Location: ?p=home');
-die();
 
 /***** HELP FROM PEZ *****/
 /* When you check the login you need to get username, password and salt from database where username = the username they said
