@@ -304,7 +304,6 @@ for now lets just make an array with some numbers in */
 		       foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
 			 $removeThisTag = array_search('$aDislikedTag', $likedTags)
 			 if (!$removeThisTag) {} 
-			 
 			 else {
 			   unset($likedTags[$removeThisTag]);
 			 }
@@ -312,7 +311,7 @@ for now lets just make an array with some numbers in */
 		     }
 		  } 
 		}
-}
+
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
 	
