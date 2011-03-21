@@ -288,8 +288,10 @@ for now lets just make an array with some numbers in */
 		        if(!$theTagsOfThisSuggestion) {
 		          $theTagsOfThisSuggestion = array();
 			}
-		       foreach($theTagsOfThisSuggestion as $aLikedTag)
+		       foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		         $likedTags[] = $aLikedTag;
+			 echo "tag added " . $aLikedTag
+		       }
 		     }
 		  }
 		}
@@ -307,6 +309,7 @@ for now lets just make an array with some numbers in */
 			 if (!$removeThisTag) {}
 			 else {
 			   unset($likedTags[$removeThisTag]);
+			   echo "removed tag at id " . $removeThisTag;
 			 } //else
 		       } // foreach
 		     } // if
