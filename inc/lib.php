@@ -309,7 +309,7 @@ for now lets just make an array with some numbers in */
 			 else {
 			   unset($likedTags[$removeThisTag]);
 			 } //else
-		      */ } // foreach
+		       } */ // foreach
 		     } // if
 		   } // while
 		 }  // foreach
