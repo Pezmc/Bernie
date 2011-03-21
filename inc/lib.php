@@ -296,15 +296,14 @@ for now lets just make an array with some numbers in */
 		foreach($dislikedSuggestion as $thisID) { 
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
-		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
-		        if(!$theTagsOfThisSuggestion) {
-		          $theTagsOfThisSuggestion = array();
+		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
+		        if(!$theUnTagsOfThisSuggestion) {
+		          $theUnTagsOfThisSuggestion = array();
 			}
-		       foreach($theTagsOfThisSuggestion as $aDislikedTag) {
+		       foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
 			 $removeThisTag = array_search($likedTags, $aDislikedTag)
-			 if (!$removeThisTag) {
-			   echo "pork chops";
-			 } else {
+			 if (!$removeThisTag) {}
+			 else {
 			   unset($likedTags[$removeThisTag]);
 			 }
 		       }
