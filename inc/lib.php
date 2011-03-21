@@ -361,7 +361,7 @@ for now lets just make an array with some numbers in */
 	foreach($potentialSuggestions as $aPotentialSuggestion) {
 	  $removeThisSuggestion = array_search($aPotentialSuggestion, $alreadyRatedSuggestions);
 	  if (!$removeThisSuggestion) {
-	    notSeenPotentialSuggestions[] = $aPotentialSuggestion
+	    notSeenPotentialSuggestions[] = $aPotentialSuggestion;
 	  }
 	}
 	if (sizeof($notSeenPotentialSuggestions)==0) {
