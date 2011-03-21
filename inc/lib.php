@@ -284,7 +284,7 @@ array */
 		    $dislikedSuggestions = array();
 		
 		foreach($initialTags as $thisID) {
-		  //the number, 3 here, is the weighting of initial suggestions
+		  //the number, 3 here, is the weighting of initial interests
 		  for ($i=1; $i<=3; $i++)
  		 {
  		   $likedTags[] = $thisID;
