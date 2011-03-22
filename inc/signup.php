@@ -63,6 +63,7 @@ if (!empty($_POST)){
 		{
 			$noErrors = False;
 			$error_message .= "<li> Your name has to be at least 2 characters long and contain only letters!"."\n";
+			// $PAGE['error_location'] = "first_name"; needs to add to array
 		}
 
 		// Is the username valid
@@ -75,6 +76,7 @@ if (!empty($_POST)){
 			$noErrors = False;
 			$error_message .= "<li> This username seems to already exist! 
 												Perhaps you have <a href=&#063;p&#061;lostPassword>forgot  your password?</a>";
+			// $PAGE['error_location'] = "username"; // needs to add to array
 	  }
 		else if ( strlen($username) < 3 
 		    || empty($username)
@@ -82,6 +84,7 @@ if (!empty($_POST)){
 		{
 			$noErrors = False;
 			$error_message .= "<li> Your username has to be at least 3 characters long!"."\n";
+			// $PAGE['error_location'] = "username"; // needs to add to rray
 		}
 	
 		// Is the date OK
@@ -92,6 +95,7 @@ if (!empty($_POST)){
 			$noErrors = False;
 			$error_message .= "<li> You forgot to tell us when you were born! 
 												Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";
+
     }	
     else if ( $day < 1 || $day > 31 
               || $month < 1 || $month > 12
@@ -113,6 +117,7 @@ if (!empty($_POST)){
 		{
 			$noErrors = False;
 			$error_message .= "<li> The parent's name has to be at least 2 characters long and contain only letters!"."\n";
+			// $PAGE['error_location'] = "parents_name"; needs to add to array
 		}
 
 		// Is the email valid
@@ -127,11 +132,13 @@ if (!empty($_POST)){
 			$noErrors = False;
 			$error_message .= "<li> This e-mail address seems to be in use! 
 												Perhaps you have <a href=&#063;p&#061;lostPassword>forgot  your password?</a>";
+			// $PAGE['error_location'] = "parents_email"; needs to add to array
 	  }
 		else if(!validEmail($parents_email))
 		{
       $noErrors = False;
       $error_message .= "<li> Please enter a correct email address"."\n";
+      // $PAGE['error_location'] = "parents_email"; needs to add to array
 		}
 		
 		
@@ -145,7 +152,7 @@ if (!empty($_POST)){
 
 		  header("Location: /Bernie/?p=signup&id=2");
 		}	else {
-			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
+			$PAGE['error_message'] = nl2br(html_entity_decode($error_message)); 
 		}		
   	         
   } // step 1

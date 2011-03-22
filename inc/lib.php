@@ -502,5 +502,16 @@ function isValidTimeStamp($timestamp)
         && ($timestamp >= ~PHP_INT_MAX);
 }
 
+/*
+ * Returns true if the global contains the given string 
+ */
+function errorLocation($string) {
+        global $PAGE;
+	if($PAGE['error_location']==$string) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 ?>
