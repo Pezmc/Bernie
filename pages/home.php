@@ -22,6 +22,7 @@ $PAGE['title'] = "Home";
 
 // SQL query
 $result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1");
+$extraContent = array();
 // store teh query as a result variable
 $tip = "";
 if(mysql_num_rows($result)>0) 
@@ -30,6 +31,7 @@ if(mysql_num_rows($result)>0)
    while($row = mysql_fetch_row($result))
    {
       $tip=$row['tip'];
+      $extraContent[tip]=$row['tip'];
    }
 }
 // Else do nothing
