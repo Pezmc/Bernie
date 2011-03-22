@@ -26,7 +26,7 @@ function parse($template, $extra = "") {
 	$t->config("compileDir", "tmp/");
 	if($CONFIG['debug']) {
 		$t->config("warning", true);
-		$t->assign("random", time());
+		//$t->assign("random", time());
 	}
 	
 	/* Include out globals, but in case of overlaps, in a certain order */
