@@ -79,7 +79,7 @@
             } 
 						// alert(validemail);
 						// alert(validusername);
-            return (validemail&&validusername); 
+            // return (validemail&&validusername); 
         });  
       });  
   
@@ -97,8 +97,9 @@
                 if(result == 1)
                 {  
                     // Show that the username is available  
-                    $('#username_availability_result').slideUp().html(username + ' is available').slideDown();
+                    // $('#username_availability_result').slideUp().html(username + ' is available').slideDown();
                     $('#username').removeClass("error");   
+                    validusername = true;
                 }
                 else
                 {  
@@ -123,8 +124,9 @@
                 // If the result is 1  
                 if(result == 1)
                 {  
+                    validemail = true;
                     // Show that the username is available  
-                    $('#email_availability_result').html(email + ' is available'); 
+                    // $('#email_availability_result').html(email + ' is available'); 
                     $('#email').removeClass("error"); 
                 }
                 else

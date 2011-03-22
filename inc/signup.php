@@ -53,7 +53,6 @@ if (!empty($_POST)){
 	// If no errors, go to the next page
   header("Location: /Bernie/?p=signup&id=2");
   				         
-  //mail(); Could this be called after step two?
   } // step 1
 
   else if ($GLOBAL['id']==2)
@@ -77,6 +76,10 @@ if (!empty($_POST)){
     header("Location: /Bernie/?p=signup&id=3");
   				         
   } // step 2 
+  else if ($GLOBAL['id']==3)
+  {
+  //mail(); Could this be called after step two?
+  }
 }
 
 ?>
