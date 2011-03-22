@@ -11,7 +11,7 @@
 /*/
 
 /* Special Dev Login */
-if($_GET['override']=="login") {
+if(isset($_GET['override'])&&$_GET['override']=="login") {
 validateUser(rand(1,2)); //tempory login
 header('Location: ?p=home');
 die();
