@@ -147,7 +147,9 @@
 		 	<!-------------------- NEEDS PHP: form validation -------------------->
 		 	<!-- To display error, add class="error" as tag attribute -->
 		 	<form name="signup_form" id="signup_form" action="/Bernie/?p=signup&id=1" method="POST" onsubmit="">
-		 	
+		 	{if:!empty(error_message)}
+					{error_message}
+		 	{end}
 			<table width="450px">
 				<tr>
 					<td>

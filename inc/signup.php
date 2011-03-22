@@ -19,40 +19,86 @@ if (!empty($_POST)){
   //Logic to decide whether we are on page 1 or two
   if ($GLOBAL['id']==1)
   {
-  
-  //Error checking
 
-  // Convert users date, month and year of birth into a timestamp
-  $usersinput = sanitise($_POST["day"], 1);
-  $usersinput .= "/";
-  $usersinput .= sanitise($_POST["month"], 1);
-  $usersinput .= "/";
-  $usersinput .= sanitise($_POST["year"], 1);
-  $dob = strtotime($usersinput);
-  
-  // CODE HERE to generate a nine letter password that will be emailed to the user
-  $password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
-  
-  
-  // Other inputs from form
-  if (isset($_POST["gender"])) {$gender = sanitise($_POST["gender"], 1);} else $gender = "";
-  if (isset($_POST["first_name"])) $first_name = sanitise($_POST["first_name"], 1); else $first_name = "";
-  if (isset($_POST["username"])) $username = sanitise($_POST["username"], 1); else $username = "";
-  if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
-  if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
-  
-  $salt = randomStr(3);
-  $saltPassword = md5(md5($password).$salt);
-  
-  // Create the user
-  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt) 
-  				 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
-  				         '".$parents_email."', '".$saltPassword."', '".$salt."')");
+		// Convert users date, month and year of birth into a timestamp
+		$usersinput = sanitise($_POST["day"], 1);
+		$usersinput .= "/";
+		$usersinput .= sanitise($_POST["month"], 1);
+		$usersinput .= "/";
+		$usersinput .= sanitise($_POST["year"], 1);
+		$dob = strtotime($usersinput);
+		
+		// CODE HERE to generate a nine letter password that will be emailed to the user
+		$password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
+		
+		
+		// Other inputs from form
+		if (isset($_POST["gender"])) {$gender = sanitise($_POST["gender"], 1);} else $gender = "";
+		if (isset($_POST["first_name"])) $first_name = sanitise($_POST["first_name"], 1); else $first_name = "";
+		if (isset($_POST["username"])) $username = sanitise($_POST["username"], 1); else $username = "";
+		if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
+		if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
+		
+		$salt = randomStr(3);
+		$saltPassword = md5(md5($password).$salt);
 
-	// Check for errors
-	// If no errors, go to the next page
-  header("Location: /Bernie/?p=signup&id=2");
-  				         
+		// Error checking
+		$noErrors = True;
+
+		$error_message = "";
+
+		// Is the name valid
+		if ( strlen($first_name) < 2 
+		    || empty($first_name)
+		    || is_numeric($first_name)
+		   )
+		{
+			$noErrors = False;
+			$error_message .= "Your name has to be at least 2 characters long and contain only letters!"."\n";
+		}
+
+		// Is the username valid
+		if ( strlen($username) < 3 
+		    || empty($first_name)
+		   )
+		{
+			$noErrors = False;
+			$error_message .= "Your username has to be at least 3 characters long!"."\n";
+		}
+	
+		// Are the dates valid
+
+		// Is the parent's name valid
+		if ( strlen($parents_name) < 2 
+		    || empty($parents_name)
+		    || is_numeric($parents_name)
+		   )
+		{
+			$noErrors = False;
+			$error_message .= "The parent's name has to be at least 2 characters long and contain only letters!"."\n";
+		}
+
+		// Is the email valid
+		if(!validEmail($GIVENEMAIL))
+		{
+      $noErrors = False;
+      $error_message .= "Please enter a correct email address"."\n";
+		}
+		
+		
+		// If no errors, update the database and go to the next page
+		if ($noErrors)
+		{
+		  // Create the user
+		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt) 
+						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
+						         '".$parents_email."', '".$saltPassword."', '".$salt."')");
+
+		  header("Location: /Bernie/?p=signup&id=2");
+		}	else {
+			$PAGE['error_message'] = nl2br($error_message);
+		}		
+  	         
   } // step 1
 
   else if ($GLOBAL['id']==2)
