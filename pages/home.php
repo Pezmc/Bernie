@@ -29,7 +29,7 @@ $extraContent['tip'] = "";
 if(mysql_num_rows($result)>0) 
 {
    // output as long as rthere is still available fields we have limit 1
-   while($row = mysql_fetch_row($result))
+   while($row = mysql_fetch_array($result))
    {
       $extraContent['tip']=$row['tip'];
    }
