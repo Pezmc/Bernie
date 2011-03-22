@@ -18,16 +18,33 @@ include_once('inc/home.php');
 
 $PAGE['title'] = "Home";
 
-//This is just for demo purposes atm - should be from database
-//But this demonstrates how to add information that the parser can understand
-//In this case I have added {tip}
+// TIP OF THE DAY
+
+// SQL query
+$result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1");
 $extraContent = array();
-switch (round(rand(1,4))) {
-	case 1: $extraContent['tip'] = "Don't stab people"; break;
-	case 2: $extraContent['tip'] = "Brush your teeth before bedtime!"; break;
-	case 3: $extraContent['tip'] = "Drugs are bad!"; break;
-	default: $extraContent['tip'] = "Be nice to everyone!"; break;
+// store teh query as a result variable
+//$tip = "";
+$extraContent['tip'] = "";
+if(mysql_num_rows($result)>0) 
+{
+   // output as long as rthere is still available fields we have limit 1
+   while($row = mysql_fetch_array($result))
+   {
+      $tip=$row['tip'];
+      $extraContent['tip']=$row['tip'];
+   }
+} 
+// Else do nothing
+else
+{
+  $extraContent['tip'] = "Be nice to people";
 }
+// I think this does the same thing with less lines
+/* $theTipToGive = dbQuery("SELECT tip FROM tip ORDER BY rand() LIMIT 1");
+$row = mysql_fetch_row($theTipToGive);
+$extraContent = array("tip"=>"row[0]");
+*/
 
 if(isLoggedIn()) {
 	$PAGE['content'] = parse("FrontPageLoggedIn.html");
@@ -35,6 +52,6 @@ if(isLoggedIn()) {
 	$PAGE['content'] = parse("FrontPageLoggedOut.html", $extraContent);
 }
 
-$PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
+//$PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
 
 ?>
