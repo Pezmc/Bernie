@@ -43,53 +43,54 @@ function toggle(it) {
                              not hard coded -------------------->
       <!-- NOTE: Javascript bg toggle only works right when user clicks inside the checkbox, not on the label --> 
 		 
-		 <table style="width: 80%; padding-top: 20px" cellspacing="4px">
+		 <table style="width: 100%; padding-top: 20px" cellspacing="4px">
 
 		 <form name="interests" action="/Bernie/?p=signup&id=2" method="POST">
 		 <tr>
      {foreach:getTagArray(),i,tag}
-       <section class="text">
-       <!-- Print one table cell with the input type=checkbox and the tag name -->
-       <!-- the value of the input is the tag id -->
-       <td id="tag" onClick="toggle(this)" onClick="toggle(this)">
-						<input type="checkbox" name="tags[]" value="{print(tag['id'])}" /> {print(tag['tag'])}
-			 </td>
+       {if: i != 0}
+		     <section class="text">
+		     <!-- Print one table cell with the input type=checkbox and the tag name -->
+		     <!-- the value of the input is the tag id -->
+		     <td id="tag" onClick="toggle(this)" onClick="toggle(this)">
+							<input type="checkbox" name="tags[]" value="{tag['id']}" /> {tag['tag']}
+				 </td>
+				 
+		     <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
+		     <!-- This will result in a 3xNumberOfTags table in the form -->
+		     {if: i % 3 == 0}
+		    	 	</tr><tr>
+		     {end}
 
-       <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
-       <!-- This will result in a 3xNumberOfTags table in the form -->
-       {if:i % 3 == 0 && i != 0 && i != 1}
-      	 	</tr><tr>
-       {else}{end}
-
-       <!-- For the last tag, check how many tags are left until i % 3 == 0 -->
-       <!-- And print empty cells instead -->
-       {if: i == count(getTagArray())}
-         <!-- If the list is two tags short from the end of the row -->
-         <!-- The remainder will always be 1 -->
-         {if: i % 3 == 1}
-         <td></td><td><td>
-        
-         <!-- If the list is one tag short from the end of the row -->
-         <!-- The remainder will always be 2 -->
-         {elseif: i % 3 == 2}
-				 <td></td>
+		     <!-- For the last tag, check how many tags are left until i % 3 == 0 -->
+		     <!-- And print empty cells instead -->
+		     {if: i == count(getTagArray())}
+		       <!-- If the list is two tags short from the end of the row -->
+		       <!-- The remainder will always be 1 -->
+		       {if: i % 3 == 1}
+		       <td></td><td><td>
+		      
+		       <!-- If the list is one tag short from the end of the row -->
+		       <!-- The remainder will always be 2 -->
+		       {elseif: i % 3 == 2}
+					 <td></td>
 				
-         {end}
-       {else}{end}
+		       {end}
+		     {end}
 
-      </section>
+		    </section>
+		   {end}
      {end} 
      </tr>
-     
-      <!-- SUBMIT button here -->
-      <tr colspan="3">
-        <td align="right" style="text-align: right; padding: 20px 100px 0px 0px">
-		     <input type="submit" value="SUBMIT" class="medium" />
-		   </td>
-		  </tr>
-		  </form>
-		  </table>
+	</table>
 
+  <!-- SUBMIT button here -->
+  <p />
+  <div style="text-align: right; padding: 20px 100px 0px 0px">
+  <input type="submit" value="SUBMIT" class="medium" />
+  </div>
+		  
+      </form>
       </section>
 
       </td>
