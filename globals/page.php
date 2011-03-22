@@ -18,5 +18,6 @@ $PAGE['subtitle'] = 'Hmm..';
 $PAGE['content'] = '';
 $PAGE['footer'] = '&copy; D1 - University of Manchester / d1@lists.pezcuckow.com / By using this website you agree not to sue us';
 $PAGE['error_message'] = "";
+$PAGE['error_id'] = 0;
 
 ?>

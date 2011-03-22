@@ -79,7 +79,7 @@ if (!empty($_POST)){
 		}
 
 		// Is the email valid
-		if(!validEmail($GIVENEMAIL))
+		if(!validEmail($parents_email))
 		{
       $noErrors = False;
       $error_message .= "Please enter a correct email address"."\n";

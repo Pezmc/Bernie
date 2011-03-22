@@ -20,26 +20,9 @@ See comments for explanations.
   		 -->
   		 
 	<!-------------------- NEEDS LOGIC: when to disp which error msg, if any -------------------->
-	
-	<!-- Email address not confirmed
-  	<div id="username_error">
-		<div id="error_message">E-mail address awaiting confirmation!</div>
-  	</div>
-	  -->
 
-  	<!-- No such username 
-  	<div id="username_error">
-		<div id="error_message">This user does not exist!</div>
-  	</div>
-	  -->
 
-	<!-- Wrong password  
-  	<div id="passw_error">
-		<div id="error_message">Incorrect password!</div>
-  	</div>
-  	-->
-
-	<table cellspacing="0" cellpadding="0">
+	<table cellspacing="0" cellpadding="0"  id="loginArea">
 		<tr>
 			<td class="logo" rowspan="2">
 			<!-- Logo here -->
@@ -54,6 +37,22 @@ See comments for explanations.
 			     --->
 
 			<table>
+{if:error_id==2}
+  	<div id="username_error">
+		<div id="error_message">E-mail address awaiting confirmation!</div>
+  	</div>
+{end}
+{if:error_id==1}
+  	<div id="username_error">
+		<div id="error_message">This user does not exist!</div>
+  	</div>
+{end}
+
+{if:error_id==3}
+  	<div id="passw_error">
+		<div id="error_message">Incorrect password!</div>
+  	</div>
+{end}
 				<tr>
 
 				<!-------------------- NEEDS PHP: make form work -------------------->
@@ -62,13 +61,13 @@ See comments for explanations.
 					<td class="loginbox">
 					
 					<!-- Enter username -->
-					<input type="text" name="login_username" placeholder="Username" maxlength="16" autocomplete="off" class="login">
+					<input type="text" name="login_username" placeholder="Username" maxlength="16" autocomplete="off" class="login{if:error_id==2||error_id==1}_error{end}">
 
 					</td>
 					<td class="loginbox">
 					
 					<!-- Enter password -->
-					<input type="password" name="login_passw" placeholder="Password" maxlength="16" autocomplete="off" class="login">
+					<input type="password" name="login_passw" placeholder="Password" maxlength="16" autocomplete="off" class="login{if:error_id==3}_error{end}">
 
 					</td>
 					<td>

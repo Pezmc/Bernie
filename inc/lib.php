@@ -467,7 +467,7 @@ function getTagArray() {
 /*
  * Return an array with all of the tags in the database
  */
-function getTagArray() {
+/*function getTagArray() {
 // Get the number of tags currently listed in the database
   $result = dbQuery("SELECT tag,id FROM tags");
 	$theTags = array();
@@ -476,16 +476,21 @@ function getTagArray() {
 	}
 
 	return $theTags;
-}
+}*/
 
 /*
  * Validate an email address
  * Modified from tutorial on http://www.linuxjournal.com/article/9585
  */
 function validEmail($email) {
-  // First, we check that there's one @ symbol, 
+  if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    return true;
+	} else {
+		return false;
+	}
+  /*// First, we check that there's one @ symbol, 
   // and that the lengths are right.
-  if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) {
+  if (!eregi("^[^@]{1,64}@[^@]{1,255}$", $email)) {
     // Email invalid because wrong number of characters 
     // in one section or wrong number of @ symbols.
     return false;
@@ -495,7 +500,7 @@ function validEmail($email) {
   $local_array = explode(".", $email_array[0]);
   for ($i = 0; $i < sizeof($local_array); $i++) {
     if
-(!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&
+(!eregi("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&
 ↪'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$",
 $local_array[$i])) {
       return false;
@@ -516,7 +521,7 @@ $domain_array[$i])) {
         return false;
       }
     }
-  }
+  }*/
   return true;
 }
 

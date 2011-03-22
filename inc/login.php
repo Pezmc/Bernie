@@ -19,16 +19,26 @@ if (!empty($_POST))
   if (mysql_num_rows($result) == 1)
   {
     $row = mysql_fetch_array($result);
-    // Hashed & Salted
-    // if (md5(md5($_POST['login_passw']).$row['salt']) == $row['password'])
-    // Plain
-    if ($_POST['login_passw'] == $row['password'])
-      validateUser($row['id']);
-    else
-      echo 'Error_pass';
+    if($row['active']==1) {
+		  	// Hashed & Salted
+		  if (md5(md5($_POST['login_passw']).$row['salt']) == $row['password']) {
+				// Plain
+				//if ($_POST['login_passw'] == $row['password'])
+				  validateUser($row['id']);
+				  header("Location: /Bernie/?p=home");
+		  } else {
+		    $PAGE['error_id'] = 3;
+		    include_once("pages/home.php");
+		  }  
+		} else {
+			$PAGE['error_id'] = 2;
+			include_once("pages/home.php");
+		}
   }
-  else
-    echo 'Error_user';
+  else {
+    $PAGE['error_id'] = 1;
+    include_once("pages/home.php");
+  }
 }
 
 ?>

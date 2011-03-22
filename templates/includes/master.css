@@ -94,6 +94,10 @@ height: 71px;
 vertical-align: middle;
 }
 
+#loginArea {
+position:relative !important;
+}
+
 /* The login box */
 td.loginbox {
 max-width: 180px;
