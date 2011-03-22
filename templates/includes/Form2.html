@@ -55,11 +55,27 @@ function toggle(it) {
 						<input type="checkbox" name="tags[]" value="{print(tag['id'])}" /> {print(tag['tag'])}
 			 </td>
 
-      <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
-      <!-- This will result in a 3xNumberOfTags table in the form -->
-      {if:i % 3 == 0 && i != 0}
-      		</tr><tr>
-      {else}{end}
+       <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
+       <!-- This will result in a 3xNumberOfTags table in the form -->
+       {if:i % 3 == 0 && i != 0 && i != 1}
+      	 	</tr><tr>
+       {else}{end}
+
+       <!-- For the last tag, check how many tags are left until i % 3 == 0 -->
+       <!-- And print empty cells instead -->
+       {if: i == count(getTagArray())}
+         <!-- If the list is two tags short from the end of the row -->
+         <!-- The remainder will always be 1 -->
+         {if: i % 3 == 1}
+         <td></td><td><td>
+        
+         <!-- If the list is one tag short from the end of the row -->
+         <!-- The remainder will always be 2 -->
+         {elseif: i % 3 == 2}
+				 <td></td>
+				
+         {end}
+       {else}{end}
 
       </section>
      {end} 
