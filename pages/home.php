@@ -23,13 +23,14 @@ $PAGE['title'] = "Home";
 // SQL query
 $result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1");
 // store teh query as a result variable
-$tip = "";
+//$tip = "";
+$extraContent = array();
 if(mysql_num_rows($result)>0) 
 {
    // output as long as rthere is still available fields we have limit 1
    while($row = mysql_fetch_row($result))
    {
-      $tip=$row['tip'];
+      $extraContent['tip']=$row['tip'];
    }
 }
 // Else do nothing
@@ -40,6 +41,6 @@ if(isLoggedIn()) {
 	$PAGE['content'] = parse("FrontPageLoggedOut.html", $extraContent);
 }
 
-$PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
+//$PAGE['content'] .= '<br /><br />Congrats you found home... Would you like to see a <a href="?p=demoPegParse">pegParseDemo</a>?!?';
 
 ?>
