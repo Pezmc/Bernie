@@ -93,12 +93,13 @@ if (!empty($_POST)){
 			$error_message .= "<li> You forgot to tell us when you were born! 
 												Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";
     }	
-    else if ( ($day < 1 && $day > 31 
-              || $month < 1 && $month > 12
-              || $year < 1900 && $year > 2011)
-              || $day > 29 && $month == 02
-              || $day > 30 && ( $month == 02 || $month == 04 || $month == 06 || $month == 09 || $month == 11 ) 
-              || !isValidTimeStamp($dob))
+    else if ( $day < 1 || $day > 31 
+              || $month < 1 || $month > 12
+              || $year < 1900 || $year > 2011
+              || $day > 29 || $month == 02
+              || $day > 30 && ( $month == 02 || $month == 04 || $month == 06 || $month == 09 || $month == 11) ) 
+              //|| !isValidTimeStamp($dob)
+              )
     {
 			$noErrors = False;
 			$error_message .= "<li> Sorry, your date of birth doesn't seem to exist! 
