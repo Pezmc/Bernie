@@ -25,19 +25,14 @@ $result = dbQuery("SELECT * FROM tip ORDER BY RAND() LIMIT 1");
 $extraContent = array();
 // store teh query as a result variable
 //$tip = "";
-$extraContent = array();
 $extraContent['tip'] = "";
 if(mysql_num_rows($result)>0) 
 {
    // output as long as rthere is still available fields we have limit 1
    while($row = mysql_fetch_array($result))
    {
-<<<<<<< HEAD:pages/home.php
       $tip=$row['tip'];
-      $extraContent[tip]=$row['tip'];
-=======
       $extraContent['tip']=$row['tip'];
->>>>>>> 26922e2bc9d8dec606e97220b35b809eadc1a195:pages/home.php
    }
 } 
 // Else do nothing
