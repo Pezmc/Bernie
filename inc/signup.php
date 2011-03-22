@@ -51,7 +51,7 @@ if (!empty($_POST)){
 
 	// Check for errors
 	// If no errors, go to the next page
-  	header("Location: /Bernie/?p=signup&id=2");
+  header("Location: /Bernie/?p=signup&id=2");
   				         
   //mail(); Could this be called after step two?
   } // step 1
@@ -71,7 +71,11 @@ if (!empty($_POST)){
 		// Need to UPDATE if it already exists, or INSERT if row doesn't exist
 		// At this step the user always exists as they have just finished step 1
 		dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
-		
+
+		// Check for errors (only one possible: 0 tags chosen)
+	  // If no errors, go to the next page
+    header("Location: /Bernie/?p=signup&id=3");
+  				         
   } // step 2 
 }
 
