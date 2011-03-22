@@ -97,8 +97,8 @@ if (!empty($_POST)){
               || $month < 1 || $month > 12
               || $year < 1900 || $year > 2011
               || $day > 29 || $month == 02
-              || $day > 30 && ( $month == 02 || $month == 04 || $month == 06 || $month == 09 || $month == 11) ) 
-              //|| !isValidTimeStamp($dob)
+              || $day > 30 && ( $month == 02 || $month == 04 || $month == 06 || $month == 09 || $month == 11)  
+              || !isValidTimeStamp($dob)
               )
     {
 			$noErrors = False;
