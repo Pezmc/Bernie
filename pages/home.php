@@ -40,6 +40,12 @@ else
 {
   $extraContent['tip'] = "Be nice to people";
 }
+// I think this does the same thing with less lines
+/* $theTipToGive = dbQuery("SELECT tip FROM tip ORDER BY rand() LIMIT 1");
+$row = mysql_fetch_row($theTipToGive);
+$extraContent = array("tip"=>"row[0]");
+*/
+
 if(isLoggedIn()) {
 	$PAGE['content'] = parse("FrontPageLoggedIn.html");
 } else {
