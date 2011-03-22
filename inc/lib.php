@@ -480,7 +480,6 @@ function getTagArray() {
 
 /*
  * Validate an email address
- * Modified from tutorial on http://www.linuxjournal.com/article/9585
  */
 function validEmail($email) {
   if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -488,41 +487,19 @@ function validEmail($email) {
 	} else {
 		return false;
 	}
-  /*// First, we check that there's one @ symbol, 
-  // and that the lengths are right.
-  if (!eregi("^[^@]{1,64}@[^@]{1,255}$", $email)) {
-    // Email invalid because wrong number of characters 
-    // in one section or wrong number of @ symbols.
-    return false;
-  }
-  // Split it into sections to make life easier
-  $email_array = explode("@", $email);
-  $local_array = explode(".", $email_array[0]);
-  for ($i = 0; $i < sizeof($local_array); $i++) {
-    if
-(!eregi("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&
-↪'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$",
-$local_array[$i])) {
-      return false;
-    }
-  }
-  // Check if domain is IP. If not, 
-  // it should be valid domain name
-  if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) {
-    $domain_array = explode(".", $email_array[1]);
-    if (sizeof($domain_array) < 2) {
-        return false; // Not enough parts to domain
-    }
-    for ($i = 0; $i < sizeof($domain_array); $i++) {
-      if
-(!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|
-↪([A-Za-z0-9]+))$",
-$domain_array[$i])) {
-        return false;
-      }
-    }
-  }*/
   return true;
+}
+
+/*
+ * Validate a timestamp
+ * Modified from tutorial on http://stackoverflow.com/questions/2524680/check-whether-the-string-is-a-unix-timestamp
+ * This does not guarantee a valid date, just the format of the timestamp
+ */
+function isValidTimeStamp($timestamp)
+{
+    return ((string) (int) $timestamp === $timestamp) 
+        && ($timestamp <= PHP_INT_MAX)
+        && ($timestamp >= ~PHP_INT_MAX);
 }
 
 

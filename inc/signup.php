@@ -19,33 +19,41 @@ if (!empty($_POST)){
   //Logic to decide whether we are on page 1 or two
   if ($GLOBAL['id']==1)
   {
-
+    // Get date inputs
+    if (isset($_POST["day"])) $day = sanitise($_POST["day"], 1); else $day = "";
+		if (isset($_POST["month"])) $month = sanitise($_POST["month"], 1); else $month = "";
+		if (isset($_POST["year"])) $year = sanitise($_POST["year"], 1); else $year = "";
+		
 		// Convert users date, month and year of birth into a timestamp
-		$usersinput = sanitise($_POST["day"], 1);
-		$usersinput .= "/";
-		$usersinput .= sanitise($_POST["month"], 1);
-		$usersinput .= "/";
-		$usersinput .= sanitise($_POST["year"], 1);
-		$dob = strtotime($usersinput);
+		$dobString = $day;
+		$dobString .= "/";
+		$dobString .= $month;
+		$dobString .= "/";
+		$dobString .= $year;
+		$dob = strtotime($dobString);
 		
-		// CODE HERE to generate a nine letter password that will be emailed to the user
+		// Generate a nine letter password that will be emailed to the user
 		$password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
-		
+		$salt = randomStr(3);
+		$saltPassword = md5(md5($password).$salt);
 		
 		// Other inputs from form
-		if (isset($_POST["gender"])) {$gender = sanitise($_POST["gender"], 1);} else $gender = "";
+		if (isset($_POST["gender"])) $gender = sanitise($_POST["gender"], 1); else $gender = "";
 		if (isset($_POST["first_name"])) $first_name = sanitise($_POST["first_name"], 1); else $first_name = "";
 		if (isset($_POST["username"])) $username = sanitise($_POST["username"], 1); else $username = "";
 		if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
 		if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
-		
-		$salt = randomStr(3);
-		$saltPassword = md5(md5($password).$salt);
 
 		// Error checking
 		$noErrors = True;
-
 		$error_message = "";
+
+		// Is there a gender
+		if ( !isset($_POST['gender']) )
+		{
+			$noErrors = False;
+			$error_message .= "<li> Are you a boy or a girl?"."\n";
+		}
 
 		// Is the name valid
 		if ( strlen($first_name) < 2 
@@ -54,19 +62,48 @@ if (!empty($_POST)){
 		   )
 		{
 			$noErrors = False;
-			$error_message .= "Your name has to be at least 2 characters long and contain only letters!"."\n";
+			$error_message .= "<li> Your name has to be at least 2 characters long and contain only letters!"."\n";
 		}
 
 		// Is the username valid
-		if ( strlen($username) < 3 
-		    || empty($first_name)
+
+		// Query the database to find a field that has the same value username as $username
+	  $resultuser = dbQuery('SELECT username FROM users WHERE username = "'. $username .'"');  
+	
+		if(mysql_num_rows($resultuser)>0)
+	  {
+			$noErrors = False;
+			$error_message .= "<li> This username seems to already exist! 
+												Perhaps you have <a href=&#063;p&#061;lostPassword>forgot  your password?</a>";
+	  }
+		else if ( strlen($username) < 3 
+		    || empty($username)
 		   )
 		{
 			$noErrors = False;
-			$error_message .= "Your username has to be at least 3 characters long!"."\n";
+			$error_message .= "<li> Your username has to be at least 3 characters long!"."\n";
 		}
 	
-		// Are the dates valid
+		// Is the date OK
+		if ( empty($day) || empty($month) || empty($year) ||
+						 !ctype_digit($day) || !ctype_digit($month) || !ctype_digit($year) ||
+						 !strlen($dobString) == 10 )
+    {
+			$noErrors = False;
+			$error_message .= "<li> You forgot to tell us when you were born! 
+												Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";
+    }	
+    else if ( ($day < 1 && $day > 31 
+              || $month < 1 && $month > 12
+              || $year < 1900 && $year > 2011)
+              || $day > 29 && $month == 02
+              || $day > 30 && ( $month == 02 || $month == 04 || $month == 06 || $month == 09 || $month == 11 ) 
+              || !isValidTimeStamp($dob))
+    {
+			$noErrors = False;
+			$error_message .= "<li> Sorry, your date of birth doesn't seem to exist! 
+												Are you sure this is when you were born?"."\n";
+    }
 
 		// Is the parent's name valid
 		if ( strlen($parents_name) < 2 
@@ -75,14 +112,26 @@ if (!empty($_POST)){
 		   )
 		{
 			$noErrors = False;
-			$error_message .= "The parent's name has to be at least 2 characters long and contain only letters!"."\n";
+			$error_message .= "<li> The parent's name has to be at least 2 characters long and contain only letters!"."\n";
 		}
 
 		// Is the email valid
-		if(!validEmail($parents_email))
+
+		// Query the database to find a field that has the same value username as $username
+	  $resultemail = dbQuery('SELECT parents_email FROM users WHERE parents_email = "'. $parents_email .'"');  
+		
+	  // We use a function to find how many rows correspond to $result
+	  // If there exists at least one, that means that the username is already taken
+	  if(mysql_num_rows($resultemail)>0)
+	  {
+			$noErrors = False;
+			$error_message .= "<li> This e-mail address seems to be in use! 
+												Perhaps you have <a href=&#063;p&#061;lostPassword>forgot  your password?</a>";
+	  }
+		else if(!validEmail($parents_email))
 		{
       $noErrors = False;
-      $error_message .= "Please enter a correct email address"."\n";
+      $error_message .= "<li> Please enter a correct email address"."\n";
 		}
 		
 		
@@ -96,7 +145,7 @@ if (!empty($_POST)){
 
 		  header("Location: /Bernie/?p=signup&id=2");
 		}	else {
-			$PAGE['error_message'] = nl2br($error_message);
+			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
 		}		
   	         
   } // step 1
@@ -111,15 +160,27 @@ if (!empty($_POST)){
 
 		// Get the current user id
 		$user_id = $USER['id'];
-		
-		// Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
-		// Need to UPDATE if it already exists, or INSERT if row doesn't exist
-		// At this step the user always exists as they have just finished step 1
-		dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
-
+	
 		// Check for errors (only one possible: 0 tags chosen)
-	  // If no errors, go to the next page
-    header("Location: /Bernie/?p=signup&id=3");
+		$noErrors = True;
+		$error_message = "";
+
+		if ( count($chosenTags) < 1 )
+		{
+			$noErrors = False;
+			$error_message = "<li> Please choose at least one iterest!"; 
+		}
+
+	  // If no errors, update the database and go to the next page
+		if ($noErrors)
+		{
+		  // Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
+   		// At this step the user always exists as they have just finished step 1
+	   	dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
+		  header("Location: /Bernie/?p=signup&id=3");
+		}	else {
+			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
+		}	
   				         
   } // step 2 
   else if ($GLOBAL['id']==3)

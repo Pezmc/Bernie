@@ -31,10 +31,10 @@
       $(document).ready(function() {  
   
         // Username can be this many characters long  
-        var min_chars_username = 3; 
+        // var min_chars_username = 3; 
 
         // Email can be this many characters long  
-        var min_chars_email = 8; 
+        // var min_chars_email = 8; 
  
   
         // Error messages  
@@ -139,7 +139,7 @@
         });  
       }  
 
-			</script>
+			</script> 
 
 		 	<section class="text">
 
@@ -147,9 +147,12 @@
 		 	<!-------------------- NEEDS PHP: form validation -------------------->
 		 	<!-- To display error, add class="error" as tag attribute -->
 		 	<form name="signup_form" id="signup_form" action="/Bernie/?p=signup&id=1" method="POST" onsubmit="">
+
+			<!-- Display errors here in care there are any -->
 		 	{if:!empty(error_message)}
-					{error_message}
+			  <div id="errors"><ul>{error_message}</ul></div>
 		 	{end}
+
 			<table width="450px">
 				<tr>
 					<td>

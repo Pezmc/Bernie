@@ -35,6 +35,13 @@ function toggle(it) {
 
       So, what are you interested in? By choosing your interests on this page, Bernie will know what items to suggest to you! Pick as many as you like!
 
+			<p />
+
+			<!-- Show errors here if there are any -->
+      	{if:!empty(error_message)}
+			  <div id="errors"><ul>{error_message}</ul></div>
+		 	{end}
+
       <p />
 
       <!-- Begin interests selection form -->

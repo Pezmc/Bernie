@@ -58,3 +58,14 @@ color: #E06442;
 width: 130px;
 text-align: left;
 }
+
+/* Some of the error messages are displayed at the very top */
+#errors {
+font-size: 11px;
+/* border-left: 1px solid #E06442; */
+color: #E06442;
+margin: 10px 0px 10px 0px;
+padding: 10px;
+text-align: left;
+line-height: 24px;
+}
