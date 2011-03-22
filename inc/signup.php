@@ -61,32 +61,16 @@ if (!empty($_POST)){
 		// Get all of the checked interests from the form, as an array
 		if (isset($_POST["tags[]"])) {$chosenTags = $_POST['tags[]'];} else $chosenTags = array();
 
-		// Get the id associated with each tag in chosenTags
-		// and for each item in chosenTags, append id => chosenTags[tagindex] to $unserialisedTags[] 
-		/*$unserialisedTags = array();
-		foreach($chosenTags as $tag) {
-			$res = dbQuery("SELECT id FROM tags WHERE tag=$chosenTags[index]");
-			$res = mysql_fetch_array($res);
-			array_push($unserialisedTags, '$id => $chosenTags[index]');
-		}*/
-
-		// In theory we should now have an array in the format 
-		// $unserialisedTags[] = (2 => 'Dogs', 5 => 'Princesses')
-		// if the user chose the tags Dogs and Princesses, which have the ids 2 and 5 respectively
-
 		// Serialise the array
 		$serialisedTags = serialize($chosenTags);
-		
-		print_r($serialisedTags);
 
 		// Get the current user id
 		$user_id = $USER['id'];
 		
 		// Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
-		
-		
-		//Need to UPDATE if it already exists, or INSERT if row doesn't exist
-		dbQuery("UPDATE user_interests SET tags='$serialisedTags'");
+		// Need to UPDATE if it already exists, or INSERT if row doesn't exist
+		// At this step the user always exists as they have just finished step 1
+		dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
 		
   } // step 2 
 }
