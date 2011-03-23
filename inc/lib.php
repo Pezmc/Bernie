@@ -366,7 +366,7 @@ function getNewSuggestion($category) {
 	     }	     
 	   }
 	   $z++;
-	}  while (((sizeof($potentialSuggestions))==0)||($z<20));
+	}  while (((sizeof($potentialSuggestions))==0)||($z>20));
 	
 	if($z>=20) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
@@ -425,10 +425,10 @@ function getAltSuggestions($mainSuggestionID) {
 			  }
 		  }
       
-		$z++;
-    }
+		
+    } $z++;
 	}
-	while (((sizeof($potentialSuggestions) < 3))||($z<20));
+	while (((sizeof($potentialSuggestions) < 3))||($z>2));
 	
 	if(sizeof($potentialSuggestions)<3) {
 	   //echo "I cheated";
