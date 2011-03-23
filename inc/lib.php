@@ -333,9 +333,8 @@ array */
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		  
 		foreach($dislikedSuggestions as $thisID) { 
-		$alreadyRatedSuggestions[] = $thisID;
-    return 10;
-		  while($row2 = mysql_fetch_array($allSuggestions)) {		return 7;
+		$alreadyRatedSuggestions[] = $thisID;    
+		  while($row2 = mysql_fetch_array($allSuggestions)) {		return 10;
 		    if ($row2['id'] == $thisID ) {
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
