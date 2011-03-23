@@ -319,9 +319,9 @@ array */
 		    
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theTagsOfThisSuggestion) {
-	                $theTagsOfThisSuggestion = array();
-                  return 2;
-	       	      }		      
+	                $theTagsOfThisSuggestion = array();                  
+	       	      }		
+          else return 4;      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
 			return 3;
