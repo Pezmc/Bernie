@@ -393,11 +393,13 @@ function getNewSuggestion($category) {
 
 
 function getAltSuggestions($mainSuggestionID) { 	
-  $mainSuggestion = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID' LIMIT 1");
+  $mainSuggestion = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
   $potentialSuggestions = array();  
 	
-	while($row = mysql_fetch_row($mainSuggestion)) {
+	while($row = mysql_fetch_array($mainSuggestion)) {
 		$mainTags = @unserialize($row['tags']);
+		$abc = array(1,2,3);
+		return $abc;
   }
 	
 	$i = 0;	
