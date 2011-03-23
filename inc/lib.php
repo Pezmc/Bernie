@@ -274,26 +274,27 @@ array */
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 	
 	//creates an empty array which is edited three times. the code does work so far unless this is populated before
-	$likedTags = array(1,2,4);
+	$likedTags = array();
 	
 	// In order to know which suggestions to not suggest (if they've already been rated before).
 	$alreadyRatedSuggestions = array();
 	// This while loop only happens once.
         while($row = mysql_fetch_array($thisUsersLikes)) {
-	$suggestionID = 1;
-	return $suggestionID;
 	
 		/* The tags, liked suggestion and disliked suggestions are taken from the users interests,
 		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
 		$initialTags = @unserialize($row['tags']);
 		$likedSuggestions = @unserialize($row['liked']);
 		$dislikedSuggestions = @unserialize($row['disliked']);
-		if(!$initialTags) 
+		if(!$initialTags) {
 		    $initialTags = array();
-		if(!$likedSuggestions) 
+		}
+		if(!$likedSuggestions) {
 		    $likedSuggestions = array();
-		if(!$dislikedSuggestions) 
+		}    
+		if(!$dislikedSuggestions) {
 		    $dislikedSuggestions = array();
+		}
 		
 		// The first loop which populates the likedTags array
 		// for every tag inside initial tags
