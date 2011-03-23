@@ -305,34 +305,35 @@ function getNewSuggestion($category) {
 		      $theTagsOfThisSuggestion = unserialize($row['tags']);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
-			return 6;                  
-	       	      }		
-          else return 4;      
+									return 6;                  
+	       	      }		               
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
-			    return 3;
-									 
 		      } //foreach
 		    } //if
 		  } // while
 		} //foreach
 		// At this point we have an array filled with every tag from every suggestion they like. 
-		return $USER['id'];  
+		
+		// gets all the suggestions again.
+    $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");		  
+		
 		foreach($dislikedSuggestions as $thisID) { 
-		$alreadyRatedSuggestions[] = $thisID;    
-		  while($row2 = mysql_fetch_array($allSuggestions)) {		
-		    if ($row2['id'] == $thisID ) { return 10;
-		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
+		  $alreadyRatedSuggestions[] = $thisID;
+			   
+		  while($row = mysql_fetch_array($allSuggestionsToDislike)) {		
+		    if ($row['id'] == $thisID ) { 
+		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
 		        $theUnTagsOfThisSuggestion = array();
-            
+						return 9;           
 		      } 
-		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
-                  return 7;
-	                $removeThisTag = array_search($aDislikedTag, $likedTags);
-			if (!$removeThisTag) {}
+		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {                  
+	                $removeThisTag = array_search('$aDislikedTag', $likedTags);
+			if (!$removeThisTag) {return 10;}
 			else {
-			  unset($likedTags[$removeThisTag]);			   
+			  unset($likedTags[$removeThisTag]);	
+				return 11;		   
 		        } //else
 		      } // foreach
 		    } // if
@@ -347,28 +348,29 @@ function getNewSuggestion($category) {
 	$i=0;
 	$z=0;
 	
-  do {
+  //while (((sizeof($potentialSuggestions))==0)||($z>20)); 
+	while (sizeof($potentialSuggestions)==0) {		
     $chosenTag = $likedTags[array_rand($likedTags)];
-    while($row3 = mysql_fetch_array($allSuggestions)) {
+		
+    while($row = mysql_fetch_array($allSuggestions)) {
       return 4;
-	    if ($row3['category'] == $category) {
-	      $abc = @unserialize($row3['tags']);	
+	    if ($row['category'] == $category) {
+	      $abc = @unserialize($row['tags']);	
 	      if(!$abc) {
 	        $abc = array();
 	      return 12;
-	       }
-	       else return 10;
-               foreach($abc as $someTag) { 		
-	         if ($someTag==$chosenTag) { 
-                         		
-		   $potentialSuggestions[$i] = $row3['id'];				
-		   $i+= 1;
-		 }
-	       }
-	     }	     
-	   }
-	   $z++;
-	}  while (((sizeof($potentialSuggestions))==0)||($z>20));
+	      }
+	      else return 10;
+        foreach($abc as $someTag) { 		
+	      	if ($someTag==$chosenTag) {                          		
+		   			$potentialSuggestions[$i] = $row['id'];				
+		   			$i+= 1;
+		 			}
+	      }
+	    }	     
+	  }
+	  $z++;
+	}  
 	
 	if($z>=20) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
