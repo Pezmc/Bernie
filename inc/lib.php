@@ -178,7 +178,6 @@ function isDisliked() {
     global $USER, $GLOBAL;
     $id = $GLOBAL['id'];
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='".$USER['id']."'");
-    /* $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='$USER['id']'");*/
     while($row = mysql_fetch_array($justTheUser)) {
       $currentDislikes = @unserialize($row['disliked']);   
 			if(!$currentDislikes) {
@@ -327,8 +326,12 @@ function getNewSuggestion($category) {
 		      if(!$theUnTagsOfThisSuggestion) { 
 		        $theUnTagsOfThisSuggestion = array();						           
 		      } 
-		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {                  
-	                $removeThisTag = array_search($aDislikedTag, $likedTags);
+		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {    
+									// $found  = false              
+	                // while !$found
+									//foreach($likedTags as $aLikedTag)
+									//  if they match, remove that likedTag and set true as found
+									$removeThisTag = array_search($aDislikedTag, $likedTags);
 			if (!$removeThisTag) {return 10;}
 			else {
 			  unset($likedTags[$removeThisTag]);	
