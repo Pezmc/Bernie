@@ -317,9 +317,9 @@ array */
 		    if ($row2['id'] == $thisID ) {
 		    
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
-		      if(!$theTagsOfThisSuggestion) {
+		     /* if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
-	       	        }
+	       	        } */
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
 			$suggestionID = 1;
