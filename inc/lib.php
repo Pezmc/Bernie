@@ -371,8 +371,9 @@ array */
 			$abc = @unserialize($row3['tags']);	
 			if(!$abc) {
 		          $abc = array();
+			  return 12;
 			}
-			foreach($abc as $someTag) { return 12;		
+			foreach($abc as $someTag) { 		
 				if ($someTag==$chosenTag) { 
                          		
 					$potentialSuggestions[$i] = $row3['id'];				
