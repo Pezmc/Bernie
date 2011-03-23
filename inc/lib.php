@@ -305,12 +305,11 @@ function getNewSuggestion($category) {
 		      $theTagsOfThisSuggestion = unserialize($row['tags']);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
-			return 6;                  
-	       	      }		
-          else return 4;      
+									return 6;                  
+	       	      }		               
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
-			    return 3;
+			   	  return 3;
 									 
 		      } //foreach
 		    } //if
@@ -356,7 +355,7 @@ function getNewSuggestion($category) {
 	      if(!$abc) {
 	        $abc = array();
 	      return 12;
-	       }
+	      }
 	       else return 10;
                foreach($abc as $someTag) { 		
 	         if ($someTag==$chosenTag) { 
