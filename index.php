@@ -79,7 +79,8 @@ switch ($GLOBAL['page']) {
 	case "profile": include_once('pages/profile.php'); break;	
 	case "lostpassword": include_once('pages/lostPassword.php'); break;
 	case "signup": include_once('pages/signup.php'); break;
-        case "editInterests": include_once('pages/editInterests.php'); break;
+  case "editInterests": include_once('pages/editInterests.php'); break;
+  case "confirmation": include_once('pages/confirmation.php'); break;
 	case "demopegparse": include_once('pages/demoPegParse.php'); break;
 	default: include_once('pages/home.php'); break;
 }

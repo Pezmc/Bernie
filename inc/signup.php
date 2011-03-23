@@ -36,6 +36,9 @@ if (!empty($_POST)){
 		$password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
 		$salt = randomStr(3);
 		$saltPassword = md5(md5($password).$salt);
+
+		// Generate a random confirmation code and hash it
+		$confirmation_code = md5(uniqid(rand()));
 		
 		// Other inputs from form
 		if (isset($_POST["gender"])) $gender = sanitise($_POST["gender"], 1); else $gender = "";
@@ -155,22 +158,38 @@ if (!empty($_POST)){
       array_push( $error_location, "parents_email" );
 		}
 
-		////////////////////// END ERROR CHECKING \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		////////////////////// END ERROR CHECKING \\\\\\\\\\\\\\\\\\\\
+
+	  ////////////////////// SEND AN EMAIL \\\\\\\\\\\\\\\\\\\\
+		// Modified from tutorial on http://www.phpeasystep.com/phptu/24.html
+
+		$to = $parents_email;
+		$subject = "Welcome to Bernie! Confirm your e-mail address";
+		$header = "from: Bernie <elisehein@gmail.com>";
+
+		$message = "Thank you for registering on Bernie! You'll be sure to find new and interesting activities to do with your kids!"."\n\n";
+		$message .= "Use the details below to login to your account and begin bernying:"."\n";
+		$message .= "Username: ".$username."\n";
+		$message .= "Password: ".$password."\n\n";
+		$message .= "You will need to verify your account before you can log in. 
+								Click on the link below: "."\n";
+		$message .= "http://server.pezcuckow.com/Bernie/?p=confirmation?$confirmation_code";
+
+		$emailSent = mail($to,$subject,$message,$header);
 		
-		// If no errors, update the database and go to the next page
-		if ($noErrors)
+		// If no errors and the email was sent, update the database and go to the next page
+		if ($noErrors && $emailSent)
 		{
 		  // Create the user
-		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt) 
+		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt, confirmation_code) 
 						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
-						         '".$parents_email."', '".$saltPassword."', '".$salt."')");
+						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
 
 		  header("Location: /Bernie/?p=signup&id=2");
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message)); 
 			$PAGE['error_location'] = $error_location;
-		}		
-  	         
+		}		   
   } // step 1
 
   else if ($GLOBAL['id']==2)
@@ -206,10 +225,6 @@ if (!empty($_POST)){
 		}	
   				         
   } // step 2 
-  else if ($GLOBAL['id']==3)
-  {
-  //mail(); Could this be called after step two?
-  }
 }
 
 ?>
