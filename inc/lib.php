@@ -274,7 +274,7 @@ array */
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 	
 	//creates an empty array which is edited three times. the code does work so far unless this is populated before
-	$likedTags = array();
+	$likedTags = array(1,2,4);
 	
 	// In order to know which suggestions to not suggest (if they've already been rated before).
 	$alreadyRatedSuggestions = array();
@@ -303,6 +303,8 @@ array */
 		  for ($times=1; $times<=3; $times++)
  		 {
  		   $likedTags[] = $thisID;
+		   $suggestionID = 1;
+	           return $suggestionID;
  		 }		
 		}  
 		  
