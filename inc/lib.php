@@ -315,14 +315,15 @@ array */
 		  while($row2 = mysql_fetch_array($allSuggestions)) {	
 		    
 		    if ($row2['id'] == $thisID ) {
-		    $suggestionID = 1;
-	return $suggestionID;
+		    
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
 	       	        }
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
+			$suggestionID = 1;
+	return $suggestionID;
 						 
 		      }
 		    }
