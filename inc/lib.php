@@ -366,7 +366,7 @@ array */
 
 		
     
-           while($row3 = mysql_fetch_array($allSuggestions)) {
+           /* while($row3 = mysql_fetch_array($allSuggestions)) {
     	     return 4;
 	     if ($row3['category'] == $category) {
 	       $abc = @unserialize($row3['tags']);	
@@ -382,9 +382,9 @@ array */
 		   $i+= 1;
 		 }
 	       }
-	     }
-	     $z++;
+	     }	     
 	   }
+	   $z++;
 	}   
 	while (((sizeof($potentialSuggestions))==0)||($z<20));
 	
