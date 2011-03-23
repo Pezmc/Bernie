@@ -345,13 +345,12 @@ function getNewSuggestion($category) {
 	$i=0;
 	$z=0;
 	
-  do {
-		return 15;
+  do {		
     $chosenTag = $likedTags[array_rand($likedTags)];
-    while($row3 = mysql_fetch_array($allSuggestions)) {
+    while($row = mysql_fetch_array($allSuggestions)) {
       return 4;
-	    if ($row3['category'] == $category) {
-	      $abc = @unserialize($row3['tags']);	
+	    if ($row['category'] == $category) {
+	      $abc = @unserialize($row['tags']);	
 	      if(!$abc) {
 	        $abc = array();
 	      return 12;
@@ -359,7 +358,7 @@ function getNewSuggestion($category) {
 	      else return 10;
         foreach($abc as $someTag) { 		
 	      	if ($someTag==$chosenTag) {                          		
-		   			$potentialSuggestions[$i] = $row3['id'];				
+		   			$potentialSuggestions[$i] = $row['id'];				
 		   			$i+= 1;
 		 			}
 	      }
