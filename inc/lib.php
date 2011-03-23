@@ -386,7 +386,7 @@ array */
 	     $z++;
 	   }
 	}   
-	while (sizeof($potentialSuggestions)==0&&$z<50);
+	while (sizeof($potentialSuggestions)==0||$z<20);
 	
 	if($z>=50) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
@@ -448,7 +448,7 @@ function getAltSuggestions($mainSuggestionID) {
 		$z++;
     }
 	}
-	while (sizeof($potentialSuggestions) < 3&&$z<20);
+	while (sizeof($potentialSuggestions) < 3||$z<20);
 	
 	if(sizeof($potentialSuggestions)<3) {
 	   //echo "I cheated";
