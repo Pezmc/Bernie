@@ -367,6 +367,7 @@ array */
 		
     
     while($row3 = mysql_fetch_array($allSuggestions))
+    		return 4;
 		if ($row3['category'] == $category) {
 			$abc = @unserialize($row3['tags']);	
 			if(!$abc) {
