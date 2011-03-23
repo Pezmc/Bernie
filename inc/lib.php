@@ -372,8 +372,9 @@ array */
 			if(!$abc) {
 		          $abc = array();
 			}
-			foreach($abc as $someTag) {		
-				if ($someTag==$chosenTag) {                		
+			foreach($abc as $someTag) { return 12;		
+				if ($someTag==$chosenTag) { 
+                         		
 					$potentialSuggestions[$i] = $row3['id'];				
 					$i+= 1;
 				}
