@@ -362,29 +362,30 @@ array */
 	$z=0;
 	
 	do {
-		$chosenTag = $likedTags[array_rand($likedTags)];
+	   $chosenTag = $likedTags[array_rand($likedTags)];
 
 		
     
-    while($row3 = mysql_fetch_array($allSuggestions))
-    		return 4;
-		if ($row3['category'] == $category) {
-			$abc = @unserialize($row3['tags']);	
-			if(!$abc) {
-		          $abc = array();
-			  return 12;
-			}
-			else return 10;
-			foreach($abc as $someTag) { 		
-				if ($someTag==$chosenTag) { 
+           while($row3 = mysql_fetch_array($allSuggestions)) {
+    	     return 4;
+	     if ($row3['category'] == $category) {
+	       $abc = @unserialize($row3['tags']);	
+	       if(!$abc) {
+	         $abc = array();
+	         return 12;
+	       }
+	       else return 10;
+               foreach($abc as $someTag) { 		
+	         if ($someTag==$chosenTag) { 
                          		
-					$potentialSuggestions[$i] = $row3['id'];				
-					$i+= 1;
-				}
-			}
-		}
-		$z++;
-	}
+		   $potentialSuggestions[$i] = $row3['id'];				
+		   $i+= 1;
+		 }
+	       }
+	     }
+	     $z++;
+	   }
+	}   
 	while (sizeof($potentialSuggestions)==0&&$z<50);
 	
 	if($z>=50) {
