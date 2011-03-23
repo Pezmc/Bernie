@@ -301,7 +301,8 @@ function getNewSuggestion($category) {
 		  while($row2 = mysql_fetch_array($allSuggestions)) {
 		  	
 		    
-		    if ($row2['id'] == $thisID ) {		    
+		    if ($row2['id'] == $thisID ) {
+		      return 5;		    
 		      $theTagsOfThisSuggestion = unserialize($row2['tags']);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
