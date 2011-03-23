@@ -147,6 +147,9 @@
 		 	<!-------------------- NEEDS PHP: form validation -------------------->
 		 	<!-- To display error, add class="error" as tag attribute -->
 		 	<form name="signup_form" id="signup_form" action="/Bernie/?p=signup&id=1" method="POST" onsubmit="">
+
+			{print_r(error_location)}
+			<p />
 			
 			<!-- Display errors here in care there are any -->
 		 	{if:!empty(error_message)}
