@@ -317,7 +317,7 @@ function getNewSuggestion($category) {
 		
 		// gets all the suggestions again.
     $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");		  
-		return $likedTags[0];
+		return $dislikedSuggestions[0];
 		foreach($dislikedSuggestions as $thisID) { 
 		  $alreadyRatedSuggestions[] = $thisID;
 			   
