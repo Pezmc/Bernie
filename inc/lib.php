@@ -315,7 +315,7 @@ function getNewSuggestion($category) {
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		
 		// gets all the suggestions again.
-    $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
+   /* $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
 		foreach($dislikedSuggestions as $thisID) { 
 		  $alreadyRatedSuggestions[] = $thisID;
 			   
@@ -342,17 +342,17 @@ function getNewSuggestion($category) {
 					} return 15;
 						
 									
-									/* $removeThisTag = array_search("7", $likedTags);
-			if (!$removeThisTag) {return $theUnTagsOfThisSuggestion[0];}
-			else {
-			  unset($likedTags[$removeThisTag]);	
-				return 11;		   
-		        } */ //else 
+									// $removeThisTag = array_search("7", $likedTags);
+			//if (!$removeThisTag) {return $theUnTagsOfThisSuggestion[0];}
+			//else {
+			 // unset($likedTags[$removeThisTag]);	
+				//return 11;		   
+		    //    } */ //else 
 						
 		      
 		    } // if
 		  } // while
-		}  // foreach
+		}  */ // foreach 
 	
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
