@@ -299,17 +299,15 @@ function getNewSuggestion($category) {
 		  //marks the tags id as already rated
 		  $alreadyRatedSuggestions[] = $thisID;
 		  // for every suggestion
-		  while($row = mysql_fetch_array($allSuggestions)) {
-		  	
+		  while($row = mysql_fetch_array($allSuggestions)) {		  	
 		    
-		    if ($row['id'] == $thisID ) {
-		      return 5;		    
+		    if ($row['id'] == $thisID ) {		      		    
 		      $theTagsOfThisSuggestion = unserialize($row['tags']);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
 			return 6;                  
 	       	      }		
-          else return 3;      
+          else return 4;      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
 			    return 3;
