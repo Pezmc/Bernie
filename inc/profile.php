@@ -35,7 +35,7 @@ if (!empty($_POST)){
 	$dob = strtotime($dobString);
 	
 	// Other inputs from form
-	if (isset($_POST["gender"])) $gender = sanitise($_POST["gender"], 1); else $gender = "";
+	if (isset($_POST["gender"])) $gender = $_POST["gender"]; else $gender = "";
 	if (isset($_POST["first_name"])) $first_name = sanitise($_POST["first_name"], 1); else $first_name = "";
 	if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
 	if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
@@ -47,6 +47,12 @@ if (!empty($_POST)){
 	$error_location = array("");
 
 	// There is always a gender chosen as they could not have registered otherwise
+  // Still perform check just in case..
+  	if ( !isset($_POST['gender']) )
+		{
+			$noErrors = False;
+			$error_message .= "<li> Are you a boy or a girl?"."\n";
+		}
 
 	// IS THE NAME VALID
 	if ( strlen($first_name) < 2 
@@ -107,7 +113,7 @@ if (!empty($_POST)){
 
 	// Query the database to find a field that has the same value username as $username
 	$resultemail = dbQuery('SELECT parents_email FROM users WHERE parents_email = "'. $parents_email .'" 
-																												AND user_id != $id');  
+																												AND id != "'.$id.'"');  
 		
 	// We use a function to find how many rows correspond to $result
 	// If there exists at least one, that means that the username is already taken
@@ -140,7 +146,7 @@ if (!empty($_POST)){
 		// Modified from tutorial on http://www.phpeasystep.com/phptu/24.html
 
 		$ccto = 'elisehein@gmail.com';
-		$to = $parents_email.','.$ccto;
+		$to = $parents_email;
 		$subject = "Your new password";
 		$header = 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -150,7 +156,7 @@ if (!empty($_POST)){
 		$message .= "You can now use the details below to login to your account:"."\n";
 		$message .= "Username: ".$username."\n";
 		$message .= "Password: ".$password."\n\n";
-		$message .= "Have fun!"
+		$message .= "Have fun!";
 
 		$emailSent = mail($to, $subject, $message, $header);
 		
