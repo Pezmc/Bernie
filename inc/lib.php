@@ -373,6 +373,7 @@ array */
 		          $abc = array();
 			  return 12;
 			}
+			else return 10;
 			foreach($abc as $someTag) { 		
 				if ($someTag==$chosenTag) { 
                          		
