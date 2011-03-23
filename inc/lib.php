@@ -330,7 +330,7 @@ function getNewSuggestion($category) {
 					  $tc=0;
 					  $found = false;
 					  while (!found) {
-					    if $likedTags[$tc] == $aDislikedTag {
+					    if ($likedTags[$tc] == $aDislikedTag) {
 				        unset($likedTags[$tc]);
 								$found = true;
 							}
