@@ -327,17 +327,28 @@ function getNewSuggestion($category) {
 		        $theUnTagsOfThisSuggestion = array();						           
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {    
-									// $found  = false              
-	                // 
-									//foreach($likedTags as $aLikedTag)
-									//  
-									//  if they match, remove that likedTag and set true as found
-									$removeThisTag = array_search("7", $likedTags);
+					  $tc=0;
+					  $found = false;
+					  while (!found) {
+					    if $likedTags[$tc] == $aDislikedTag {
+				        unset($likedTags[$tc]);
+								$found = true;
+							}
+							$tc++ ;
+							if ($tc = sizeof(likedTags))
+							  found = true;
+						}
+					  
+					} return 15;
+						
+									
+									/* $removeThisTag = array_search("7", $likedTags);
 			if (!$removeThisTag) {return $theUnTagsOfThisSuggestion[0];}
 			else {
 			  unset($likedTags[$removeThisTag]);	
 				return 11;		   
-		        } //else
+		        } //else */
+						
 		      } // foreach
 		    } // if
 		  } // while
