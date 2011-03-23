@@ -328,15 +328,15 @@ function getNewSuggestion($category) {
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {    
 					  $tc=0;
-					  $found = false;
-					  while (!found) {
+					  $found = 0;
+					  while (found = 0) {
 					    if ($likedTags[$tc] == $aDislikedTag) {
 				        unset($likedTags[$tc]);
-								$found = true;
+								$found = 1;
 							}
 							$tc++ ;
 							if ($tc = sizeof(likedTags))
-							  found = true;
+							  found = 1;
 						}
 					  
 					} return 15;
