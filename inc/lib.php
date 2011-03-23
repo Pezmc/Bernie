@@ -347,7 +347,7 @@ function getNewSuggestion($category) {
 			//else {
 			 // unset($likedTags[$removeThisTag]);	
 				//return 11;		   
-		    //    } */ //else 
+		    //    }  //else 
 						
 		      
 		    } // if
