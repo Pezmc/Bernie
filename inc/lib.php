@@ -386,7 +386,7 @@ array */
 	     $z++;
 	   }
 	}   
-	while (sizeof($potentialSuggestions)==0||$z<20);
+	while (((sizeof($potentialSuggestions))==0)||($z<20));
 	
 	if($z>=50) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
