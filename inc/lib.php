@@ -346,7 +346,7 @@ function getNewSuggestion($category) {
 	
   do {
 	  $chosenTag = $likedTags[array_rand($likedTags)];
-    return 1;
+    
     while($row3 = mysql_fetch_array($allSuggestions)) {
       return 4;
 	    if ($row3['category'] == $category) {
