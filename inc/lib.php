@@ -247,7 +247,154 @@ function threeLetterWord() {
 }
 
 /* Given the category needed, this function returns a new suggestion ID */
+function getNewSuggestion($category) { 
+	
+// The user is needed so we know which id to get from the first dbQuery
+global $USER;
+	
+	// Returns from the user interests database our users row.
+	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
+	
+	// gets all the suggestions.
+	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+	
+	//creates an empty array which is edited three times. the code does work so far unless this is populated before
+	$likedTags = array(1,2,4);
+	
+	// In order to know which suggestions to not suggest (if they've already been rated before).
+	$alreadyRatedSuggestions = array();
+	// This while loop only happens once.
+        while($row = mysql_fetch_array($thisUsersLikes)) {
+	
+		/* The tags, liked suggestion and dcaisliked suggestions are taken from the users interests,
+		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
+		$initialTags = @unserialize($row['tags']);
+		$likedSuggestions = @unserialize($row['liked']);
+		$dislikedSuggestions = @unserialize($row['disliked']);
+		if(!$initialTags) {
+		    $initialTags = array();
+		}
+		if(!$likedSuggestions) {
+		    $likedSuggestions = array();
+		}    
+		if(!$dislikedSuggestions) {
+		    $dislikedSuggestions = array();
+		}
+		
+		// The first loop which populates the likedTags array
+		// for every tag inside initial tags
+		foreach($initialTags as $thisID) {
+		  //Adds the id of this tag X times to the liked tags ( $times is the 'weighting')
+		  for ($times=1; $times<=3; $times++)
+ 		 {
+ 		   $likedTags[] = $thisID;
+ 		 }		
+		}  
+		  
+		// The second loop which populates the likedTags array
+		// every tag inside every suggestion that is liked
+		foreach($likedSuggestions as $thisID) { 
+		  //marks the tags id as already rated
+		  $alreadyRatedSuggestions[] = $thisID;
+		  // for every suggestion
+		  while($row2 = mysql_fetch_array($allSuggestions)) {	
+		    
+		    if ($row2['id'] == $thisID ) {
+		      
+		    
+		      $theTagsOfThisSuggestion = @unserialize($row2[1]);
+		      if(!$theTagsOfThisSuggestion) {
+	                $theTagsOfThisSuggestion = array();                  
+	       	      }		
+          else return 4;      
+		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
+		        $likedTags[] = $aLikedTag;
+			return 3;
+									 
+		      }
+		    }
+		  }
+		}
+		// At this point we have an array filled with every tag from every suggestion they like. 
+		  
+		foreach($dislikedSuggestions as $thisID) { 
+		$alreadyRatedSuggestions[] = $thisID;    
+		  while($row2 = mysql_fetch_array($allSuggestions)) {		
+		    if ($row2['id'] == $thisID ) { return 10;
+		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
+		      if(!$theUnTagsOfThisSuggestion) {
+		        $theUnTagsOfThisSuggestion = array();
+            
+		      } 
+		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
+                  return 7;
+	                $removeThisTag = array_search($aDislikedTag, $likedTags);
+			if (!$removeThisTag) {}
+			else {
+			  unset($likedTags[$removeThisTag]);			   
+		        } //else
+		      } // foreach
+		    } // if
+		  } // while
+		}  // foreach
+	} //  while
 
+		// At this point for every tag in disliked suggestions is removed once from likedTags.
+		// And we have an array containing our "likedTags"
+	
+        $potentialSuggestions = array();
+	$i=0;
+	$z=0;
+	
+        do {
+	   $chosenTag = $likedTags[array_rand($likedTags)];
+
+		
+    
+           /* while($row3 = mysql_fetch_array($allSuggestions)) {
+    	     return 4;
+	     if ($row3['category'] == $category) {
+	       $abc = @unserialize($row3['tags']);	
+	       if(!$abc) {
+	         $abc = array();
+	         return 12;
+	       }
+	       else return 10;
+               foreach($abc as $someTag) { 		
+	         if ($someTag==$chosenTag) { 
+                         		
+		   $potentialSuggestions[$i] = $row3['id'];				
+		   $i+= 1;
+		 }
+	       }
+	     }	     
+	   }
+	   $z++;
+	}   
+	while (((sizeof($potentialSuggestions))==0)||($z<20));
+	
+	if($z>=20) {
+	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
+      // $suggestion = dbQuery("SELECT id,tags FROM suggestions WHERE ORDER BY rand() LIMIT 1");
+    $row = mysql_fetch_array($suggestion);
+    $potentialSuggestions[$i] = $row['id'];	
+	}
+	
+	$notSeenPotentialSuggestions = array();	
+	foreach($potentialSuggestions as $aPotentialSuggestion) {
+	  $removeThisSuggestion = array_search($aPotentialSuggestion, $alreadyRatedSuggestions);
+	  if (!$removeThisSuggestion) {
+	    $notSeenPotentialSuggestions[] = $aPotentialSuggestion;
+	  }
+	}
+	if (sizeof($notSeenPotentialSuggestions)==0) {
+	  $suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
+	}
+	else {
+	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];	
+	}
+	return $suggestionID;		
+}
 
 
 function getAltSuggestions($mainSuggestionID) { 	
