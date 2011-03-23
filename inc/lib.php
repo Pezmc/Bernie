@@ -396,7 +396,7 @@ function getAltSuggestions($mainSuggestionID) {
   $mainSuggestion = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID' LIMIT 1");
   $potentialSuggestions = array();  
 	
-	while($row = mysql_fetch_array($mainSuggestion)) {
+	while($row = mysql_fetch_row($mainSuggestion)) {
 		$mainTags = @unserialize($row['tags']);
   }
 	
