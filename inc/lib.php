@@ -347,16 +347,13 @@ function getNewSuggestion($category) {
   do {
 	  $chosenTag = $likedTags[array_rand($likedTags)];
     return 1;
-
-		
-    
-           while($row3 = mysql_fetch_array($allSuggestions)) {
-    	     return 4;
-	     if ($row3['category'] == $category) {
-	       $abc = @unserialize($row3['tags']);	
-	       if(!$abc) {
-	         $abc = array();
-	         return 12;
+    while($row3 = mysql_fetch_array($allSuggestions)) {
+      return 4;
+	    if ($row3['category'] == $category) {
+	      $abc = @unserialize($row3['tags']);	
+	      if(!$abc) {
+	        $abc = array();
+	      return 12;
 	       }
 	       else return 10;
                foreach($abc as $someTag) { 		
@@ -431,7 +428,7 @@ function getAltSuggestions($mainSuggestionID) {
 		$z++;
     }
 	}
-	while (sizeof($potentialSuggestions) < 3||$z<20);
+	while (((sizeof($potentialSuggestions) < 3))||($z<20));
 	
 	if(sizeof($potentialSuggestions)<3) {
 	   //echo "I cheated";
