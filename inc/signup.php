@@ -163,9 +163,12 @@ if (!empty($_POST)){
 	  ////////////////////// SEND AN EMAIL \\\\\\\\\\\\\\\\\\\\
 		// Modified from tutorial on http://www.phpeasystep.com/phptu/24.html
 
-		$to = $parents_email;
+		$ccto = 'elisehein@gmail.com';
+		$to = $parents_email.','.$ccto;
 		$subject = "Welcome to Bernie! Confirm your e-mail address";
-		$header = "from: Bernie <elisehein@gmail.com>";
+		$header = 'MIME-Version: 1.0' . "\r\n";
+		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$header .= "From: Bernie <elisehein@gmail.com>";
 
 		$message = "Thank you for registering on Bernie! You'll be sure to find new and interesting activities to do with your kids!"."\n\n";
 		$message .= "Use the details below to login to your account and begin bernying:"."\n";
@@ -173,9 +176,9 @@ if (!empty($_POST)){
 		$message .= "Password: ".$password."\n\n";
 		$message .= "You will need to verify your account before you can log in. 
 								Click on the link below: "."\n";
-		$message .= "http://server.pezcuckow.com/Bernie/?p=confirmation?$confirmation_code";
+		$message .= "http://server.pezcuckow.com/Bernie/?p=confirmation&$confirmation_code";
 
-		$emailSent = mail($to,$subject,$message,$header);
+		$emailSent = mail($to, $subject, $message, $header);
 		
 		// If no errors and the email was sent, update the database and go to the next page
 		if ($noErrors && $emailSent)
@@ -186,6 +189,7 @@ if (!empty($_POST)){
 						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
 
 		  header("Location: /Bernie/?p=signup&id=2");
+		  //$GLOBAL["id"] = 2;
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message)); 
 			$PAGE['error_location'] = $error_location;
@@ -220,6 +224,7 @@ if (!empty($_POST)){
    		// At this step the user always exists as they have just finished step 1
 	   	dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
 		  header("Location: /Bernie/?p=signup&id=3");
+		  //$GLOBAL['id'] = 3;
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
 		}	
