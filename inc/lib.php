@@ -322,11 +322,11 @@ function getNewSuggestion($category) {
 		  $alreadyRatedSuggestions[] = $thisID;
 			   
 		  while($row = mysql_fetch_array($allSuggestionsToDislike)) {		
-		    if ($row['id'] == $thisID ) { return 10;
+		    if ($row['id'] == $thisID ) { 
 		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
 		        $theUnTagsOfThisSuggestion = array();
-            
+            return 10;
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
                   return 7;
