@@ -332,7 +332,7 @@ function getNewSuggestion($category) {
 									//foreach($likedTags as $aLikedTag)
 									//  if they match, remove that likedTag and set true as found
 									$removeThisTag = array_search($aDislikedTag, $likedTags);
-			if (!$removeThisTag) {return 10;}
+			if (!$removeThisTag) {return $likedTags[0];}
 			else {
 			  unset($likedTags[$removeThisTag]);	
 				return 11;		   
