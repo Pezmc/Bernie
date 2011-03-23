@@ -322,6 +322,7 @@ array */
 	       	      }		      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
+			return 3;
 			
 						 
 		      }
