@@ -76,7 +76,7 @@ if (!empty($_POST)){
 		// Query the database to find a field that has the same value username as $username
 	  $resultuser = dbQuery('SELECT username FROM users WHERE username = "'. $username .'"');  
 	
-		if(mysql_num_rows($resultuser)>0)
+		if ( mysql_num_rows($resultuser)>0 )
 	  {
 			$noErrors = False;
 			$error_message .= "<li> This username seems to already exist! 
@@ -188,8 +188,8 @@ if (!empty($_POST)){
 						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
 						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
 
-		  header("Location: /Bernie/?p=signup&id=2");
-		  //$GLOBAL["id"] = 2;
+		  header("Location: /Bernie/?p=signup&id=2"); exit;
+		  $GLOBAL["id"] = 2;
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message)); 
 			$PAGE['error_location'] = $error_location;
@@ -223,8 +223,8 @@ if (!empty($_POST)){
 		  // Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
    		// At this step the user always exists as they have just finished step 1
 	   	dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
-		  header("Location: /Bernie/?p=signup&id=3");
-		  //$GLOBAL['id'] = 3;
+		  header("Location: /Bernie/?p=signup&id=3"); exit;
+		  $GLOBAL['id'] = 3;
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
 		}	
