@@ -346,6 +346,7 @@ function getNewSuggestion($category) {
 	
   do {
 	  $chosenTag = $likedTags[array_rand($likedTags)];
+    return 1;
 
 		
     
