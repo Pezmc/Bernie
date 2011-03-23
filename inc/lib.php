@@ -278,10 +278,10 @@ array */
 	
 	// In order to know which suggestions to not suggest (if they've already been rated before).
 	$alreadyRatedSuggestions = array();
-	echo "<!-- THIS IS DOING THE WHILE LOOP FOR THISUSERSLIKES -->";
 	// This while loop only happens once.
         while($row = mysql_fetch_array($thisUsersLikes)) {
-	
+	$suggestionID = 1;
+	return $suggestionID;
 	
 		/* The tags, liked suggestion and disliked suggestions are taken from the users interests,
 		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
