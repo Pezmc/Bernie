@@ -316,13 +316,13 @@ function getNewSuggestion($category) {
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		
 		// gets all the suggestions again.
-    $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");		  
-		return $dislikedSuggestions[0];
+    $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
 		foreach($dislikedSuggestions as $thisID) { 
 		  $alreadyRatedSuggestions[] = $thisID;
 			   
 		  while($row = mysql_fetch_array($allSuggestionsToDislike)) {		
 		    if ($row['id'] == $thisID ) { 
+				  return $thisID;
 		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theUnTagsOfThisSuggestion) { 
 		        $theUnTagsOfThisSuggestion = array();
