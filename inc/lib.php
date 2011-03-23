@@ -362,7 +362,7 @@ function getNewSuggestion($category) {
 	        $abc = array();
 	      return 12;
 	      }
-	      else return 10;
+	      else return 13;
         foreach($abc as $someTag) { 		
 	      	if ($someTag==$chosenTag) {                          		
 		   			$potentialSuggestions[$i] = $row['id'];				
