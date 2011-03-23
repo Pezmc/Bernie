@@ -304,7 +304,8 @@ function getNewSuggestion($category) {
 		    if ($row2['id'] == $thisID ) {		    
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theTagsOfThisSuggestion) {
-	                $theTagsOfThisSuggestion = array();                  
+	                $theTagsOfThisSuggestion = array();
+			return 6;                  
 	       	      }		
           else return 3;      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
