@@ -317,7 +317,7 @@ array */
 		    if ($row2['id'] == $thisID ) {
 		      
 		    
-		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
+		      $theTagsOfThisSuggestion = @unserialize($row2[1]);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();                  
 	       	      }		
@@ -553,6 +553,7 @@ function getInterests() {
 /*
  * Prints the users chosen interests in two columns
  */
+	if($z>=50) {
 function printColumns() {
 // First get the array containing the interests
 global $USER;
