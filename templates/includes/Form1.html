@@ -162,13 +162,13 @@
 					<!-- Boy or girl -->
 					<table><tr>
 						<td>
-							<img src="/Bernie/images/boy.png" alt="I'm a boy" />
+							<img src="/Bernie/images/boy.png" alt="I'm a boy"{if: !empty(error_message)} value=<?php if ($_POST['gender'] == 'm') echo "checked"; ?>{else}{end} />
 							<input type="radio" name="gender" value="m">
 							boy
 						</td>
 						<td>
 							<img src="/Bernie/images/girl.png" alt="I'm a girl" />
-							<input type="radio" name="gender" value="f">
+							<input type="radio" name="gender" value="f"{if: !empty(error_message)} value=<?php if ($_POST['gender'] == 'f') echo "checked"; ?>{else}{end} >
 							girl
 						</td>
 					</tr></table>
@@ -180,7 +180,7 @@
 					My name is
 					</td>
 					<td>
-					<input type="text" name="first_name" maxlength="32"{if: errorLocation("first_name")} class="error"{else}{end}>
+					<input type="text" name="first_name" maxlength="32"{if: errorLocation("first_name")} class="error"{else}{end}{if: !empty(error_message)} value=<?php echo $_POST['first_name']; ?>{else}{end}>
 					</td>
 				</tr>
 				<tr>
@@ -188,7 +188,7 @@
 					Choose a username
 					</td>
 					<td>
-					<input type="text" name="username" id="username" maxlength="32"{if: errorLocation("username")} class="error"{else}{end}>
+					<input type="text" name="username" id="username" maxlength="32"{if: errorLocation("username")} class="error"{else}{end}{if: !empty(error_message)} value=<?php echo $_POST['username']; ?>{else}{end}>
 					<div id='username_availability_result'></div> 
 					</td>
 				</tr>
@@ -198,9 +198,9 @@
 					</td>
 					<td class="date">
 
-					<input type="number" name="day" placeholder="DD" {if: errorLocation("day")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="31">
-					<input type="number" name="month" placeholder="MM" {if: errorLocation("month")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="12">
-					<input type="number" name="year" placeholder="YYYY" {if: errorLocation("year")}class="year_error"{else}class="year"{end} maxlength="4" min="1900" max="2011">
+					<input type="number" name="day" placeholder="DD" {if: errorLocation("day")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="31"{if: !empty(error_message)} value=<?php echo $_POST['day']; ?>{else}{end}>
+					<input type="number" name="month" placeholder="MM" {if: errorLocation("month")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="12"{if: !empty(error_message)} value=<?php echo $_POST['month']; ?>{else}{end}>
+					<input type="number" name="year" placeholder="YYYY" {if: errorLocation("year")}class="year_error"{else}class="year"{end} maxlength="4" min="1900" max="2011"{if: !empty(error_message)} value=<?php echo $_POST['year']; ?>{else}{end}>
 								
 					</td>
 				</tr>
@@ -209,7 +209,7 @@
 					Parent's name
 					</td>
 					<td>
-					<input type="text" name="parents_name" maxlength="32"{if: errorLocation("parents_name")} class="error"{end}>
+					<input type="text" name="parents_name" maxlength="32"{if: errorLocation("parents_name")} class="error"{end}{if: !empty(error_message)} value=<?php echo $_POST['parents_name']; ?>{else}{end}>
 					</td>
 				</tr>
 				<tr>
@@ -217,7 +217,7 @@
 					Parent's email
 					</td>
 					<td>
-					<input type="email" name="parents_email" id="email" maxlength="128"{if: errorLocation("parents_email")} class="error"{end}>
+					<input type="email" name="parents_email" id="email" maxlength="128"{if: errorLocation("parents_email")} class="error"{end}{if: !empty(error_message)} value=<?php echo $_POST['parents_email']; ?>{else}{end}>
 					<div id='email_availability_result'></div> 
 					</td>
 				</tr>
