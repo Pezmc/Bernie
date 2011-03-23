@@ -544,7 +544,6 @@ function errorLocation($string) {
 /*
  * Prints the users chosen interests in two columns
  */
-	if($z>=50) {
 function printColumns() {
 	global $USER;
 	
