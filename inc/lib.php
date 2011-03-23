@@ -346,6 +346,7 @@ function getNewSuggestion($category) {
 	$z=0;
 	
   do {
+		return 15;
     $chosenTag = $likedTags[array_rand($likedTags)];
     while($row3 = mysql_fetch_array($allSuggestions)) {
       return 4;
@@ -355,17 +356,16 @@ function getNewSuggestion($category) {
 	        $abc = array();
 	      return 12;
 	      }
-	       else return 10;
-               foreach($abc as $someTag) { 		
-	         if ($someTag==$chosenTag) { 
-                         		
-		   $potentialSuggestions[$i] = $row3['id'];				
-		   $i+= 1;
-		 }
-	       }
-	     }	     
-	   }
-	   $z++;
+	      else return 10;
+        foreach($abc as $someTag) { 		
+	      	if ($someTag==$chosenTag) {                          		
+		   			$potentialSuggestions[$i] = $row3['id'];				
+		   			$i+= 1;
+		 			}
+	      }
+	    }	     
+	  }
+	  $z++;
 	}  while (((sizeof($potentialSuggestions))==0)||($z>20));
 	
 	if($z>=20) {
