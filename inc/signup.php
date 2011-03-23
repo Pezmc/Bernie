@@ -173,7 +173,7 @@ if (!empty($_POST)){
 		$message .= "Password: ".$password."\n\n";
 		$message .= "You will need to verify your account before you can log in. 
 								Click on the link below: "."\n";
-		$message .= "http://server.pezcuckow.com/Bernie/?p=confirmation?$confirmation_code";
+		$message .= "http://server.pezcuckow.com/Bernie/?p=confirmation&$confirmation_code";
 
 		$emailSent = mail($to,$subject,$message,$header);
 		

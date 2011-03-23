@@ -9,19 +9,6 @@ See comments for explanations.
 
 <table cellspacing="0" cellpadding="0">
 
-<!-- Am using a div position absolute to display login error messages. 
-  		 This is prob very bad coding - Pez let me know if you can think of a less ugly way of doing 
-  		 this... 
-
-		 Use the appropriate id for different error messages (username_error or passw_error). 
-		 If error messag is displayed, the appropriate input needs to be given the class login_error
-		 instead of login
-		 atm all are commented out
-  		 -->
-  		 
-	<!-------------------- NEEDS LOGIC: when to disp which error msg, if any -------------------->
-
-
 	<table cellspacing="0" cellpadding="0"  id="loginArea">
 		<tr>
 			<td class="logo" rowspan="2">
@@ -37,25 +24,34 @@ See comments for explanations.
 			     --->
 
 			<table>
-{if:error_id==2}
-  	<div id="username_error">
-		<div id="error_message">E-mail address awaiting confirmation!</div>
-  	</div>
-{end}
-{if:error_id==1}
-  	<div id="username_error">
-		<div id="error_message">This user does not exist!</div>
-  	</div>
-{end}
 
-{if:error_id==3}
-  	<div id="passw_error">
-		<div id="error_message">Incorrect password!</div>
-  	</div>
-{end}
+			<!-- Am using a div position absolute to display login error messages. 
+  		 This is prob very bad coding - Pez let me know if you can think of a less ugly way of doing 
+  		 this... 
+
+		 Use the appropriate id for different error messages (username_error or passw_error). 
+		 If error messag is displayed, the appropriate input needs to be given the class login_error
+		 instead of login
+		 atm all are commented out
+  		 -->
+		{if:error_id==2}
+				<div id="username_error">
+				<div id="error_message">E-mail address awaiting confirmation!</div>
+				</div>
+		{end}
+		{if:error_id==1}
+				<div id="username_error">
+				<div id="error_message">This user does not exist!</div>
+				</div>
+		{end}
+
+		{if:error_id==3}
+				<div id="passw_error">
+				<div id="error_message">Incorrect password!</div>
+				</div>
+		{end}
 				<tr>
 
-				<!-------------------- NEEDS PHP: make form work -------------------->
 				<form name="login" action="?p=login" method="POST">
 				
 					<td class="loginbox">
