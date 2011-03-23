@@ -328,8 +328,8 @@ function getNewSuggestion($category) {
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {    
 					  $tc=0;
-					  $found = 0;
-					  while (found = 0) {
+					  $found == 0;
+					  while (found == 0) {
 					    if ($likedTags[$tc] == $aDislikedTag) {
 				        unset($likedTags[$tc]);
 								$found = 1;
