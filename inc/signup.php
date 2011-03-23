@@ -76,7 +76,7 @@ if (!empty($_POST)){
 		// Query the database to find a field that has the same value username as $username
 	  $resultuser = dbQuery('SELECT username FROM users WHERE username = "'. $username .'"');  
 	
-		if(mysql_num_rows($resultuser)>0)
+		if ( mysql_num_rows($resultuser)>0 )
 	  {
 			$noErrors = False;
 			$error_message .= "<li> This username seems to already exist! 
