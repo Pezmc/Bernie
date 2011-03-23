@@ -348,7 +348,7 @@ function getNewSuggestion($category) {
   //while (((sizeof($potentialSuggestions))==0)||($z>20)); 
 	while (sizeof($potentialSuggestions)==0) {		
     $chosenTag = $likedTags[array_rand($likedTags)];
-		return 1;
+		
     while($row = mysql_fetch_array($allSuggestions)) {
       return 4;
 	    if ($row['category'] == $category) {
