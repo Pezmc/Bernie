@@ -11,6 +11,11 @@ Use this page to edit your profile information.
 		 	<!-- To display error, add class="error" as tag attribute -->
 		 	<form action="/Bernie/?p=profile" method="POST">
 
+		 	<!-- Display errors here in care there are any -->
+		 	{if:!empty(error_message)}
+			  <div id="errors"><ul>{error_message}</ul></div>
+		 	{end}
+
 			<table width="500px">
 				<tr>
 					<td>
@@ -39,7 +44,7 @@ Use this page to edit your profile information.
 					My name is
 					</td>
 					<td>
-					<input type="text" name="name"value="{first_name}"  maxlength="32">
+					<input type="text" name="name"value="{first_name}"  maxlength="32"{if: errorLocation("first_name")} class="error"{end}>
 					</td>
 				</tr>
 				<tr>
@@ -48,9 +53,9 @@ Use this page to edit your profile information.
 					</td>
 					<td class="date">
 
-					<input type="number" name="day" value={getDayOfBirth()} class="date" maxlength="2" min="1" max="31">
-					<input type="number" name="month" value={getMonthOfBirth()}  class="date" maxlength="2" min="1" max="12">
-					<input type="number" name="year" value={getYearOfBirth()} class="year" maxlength="4" min="1900" max="2011">
+					<input type="number" name="day" value={getDayOfBirth()} {if: errorLocation("day")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="31">
+					<input type="number" name="month" value={getMonthOfBirth()} {if: errorLocation("month")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="12">
+					<input type="number" name="year" value={getYearOfBirth()} {if: errorLocation("year")}class="year_error"{else}class="date"{end} maxlength="4" min="1900" max="2011">
 
 					</td>
 				</tr>
@@ -59,7 +64,7 @@ Use this page to edit your profile information.
 					Parent's name
 					</td>
 					<td>
-					<input type="text" name="parents_name" value="{parents_name}" maxlength="16">
+					<input type="text" name="parents_name" value="{parents_name}" maxlength="16"{if: errorLocation("parents_name")} class="error"{end} />
 					</td>
 				</tr>
 				<tr>
@@ -67,7 +72,7 @@ Use this page to edit your profile information.
 					Parent's email
 					</td>
 					<td>
-					<input type="email" name="parents_email" value="{parents_email}" maxlength="128">
+					<input type="email" name="parents_email" value="{parents_email}" maxlength="128"{if: errorLocation("parents_email")} class="error"{end} />
 					</td>
 				</tr>
 			</table>
