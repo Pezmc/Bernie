@@ -339,6 +339,7 @@ array */
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
 		        $theUnTagsOfThisSuggestion = array();
+            return 7;
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
 	                $removeThisTag = array_search($aDislikedTag, $likedTags);
