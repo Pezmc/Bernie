@@ -305,7 +305,7 @@ function getNewSuggestion($category) {
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();                  
 	       	      }		
-          else return $USER['id'];      
+          else return 3;      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
 			    return 3;
@@ -315,7 +315,7 @@ function getNewSuggestion($category) {
 		  } // while
 		} //foreach
 		// At this point we have an array filled with every tag from every suggestion they like. 
-		return 14;  
+		return $USER['id'];  
 		foreach($dislikedSuggestions as $thisID) { 
 		$alreadyRatedSuggestions[] = $thisID;    
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
