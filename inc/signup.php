@@ -44,18 +44,20 @@ if (!empty($_POST)){
 		if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
 		if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
 
-		// Error checking
+		///////////////////// ERROR CHECKING \\\\\\\\\\\\\\\\\\\\\\\
+		
 		$noErrors = True;
 		$error_message = "";
+		$error_location = array("");
 
-		// Is there a gender
+		// IS THERE A GENDER
 		if ( !isset($_POST['gender']) )
 		{
 			$noErrors = False;
 			$error_message .= "<li> Are you a boy or a girl?"."\n";
 		}
 
-		// Is the name valid
+		// IS THE NAME VALID
 		if ( strlen($first_name) < 2 
 		    || empty($first_name)
 		    || is_numeric($first_name)
@@ -63,10 +65,10 @@ if (!empty($_POST)){
 		{
 			$noErrors = False;
 			$error_message .= "<li> Your name has to be at least 2 characters long and contain only letters!"."\n";
-			// $PAGE['error_location'] = "first_name"; needs to add to array
+			array_push($error_location, "first_name");
 		}
 
-		// Is the username valid
+		// IS THE USERNAME VALID
 
 		// Query the database to find a field that has the same value username as $username
 	  $resultuser = dbQuery('SELECT username FROM users WHERE username = "'. $username .'"');  
@@ -76,7 +78,7 @@ if (!empty($_POST)){
 			$noErrors = False;
 			$error_message .= "<li> This username seems to already exist! 
 												Perhaps you have <a href=&#063;p&#061;lostPassword>forgot  your password?</a>";
-			// $PAGE['error_location'] = "username"; // needs to add to array
+			array_push($error_location, "username");
 	  }
 		else if ( strlen($username) < 3 
 		    || empty($username)
@@ -84,10 +86,10 @@ if (!empty($_POST)){
 		{
 			$noErrors = False;
 			$error_message .= "<li> Your username has to be at least 3 characters long!"."\n";
-			// $PAGE['error_location'] = "username"; // needs to add to rray
+			array_push($error_location, "username");
 		}
 	
-		// Is the date OK
+		// IS THE DATE OK
 		if ( empty($day) || empty($month) || empty($year) ||
 						 !ctype_digit($day) || !ctype_digit($month) || !ctype_digit($year) ||
 						 !strlen($dobString) == 10 )
@@ -95,6 +97,10 @@ if (!empty($_POST)){
 			$noErrors = False;
 			$error_message .= "<li> You forgot to tell us when you were born! 
 												Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";
+
+			if ( empty($day) || !ctype_digit($day)) { array_push($error_location, "day"); }
+			if ( empty($month) || !ctype_digit($month)) { array_push($error_location, "month"); }
+			if ( empty($year) || !ctype_digit($year)) { array_push($error_location, "year"); }
 
     }	
     else if ( $day < 1 || $day > 31 
@@ -107,9 +113,17 @@ if (!empty($_POST)){
 			$noErrors = False;
 			$error_message .= "<li> Sorry, your date of birth doesn't seem to exist! 
 												Are you sure this is when you were born?"."\n";
+
+			if ( $day < 1 || $day > 31 ) { array_push($error_location, "day"); }
+			if ( $month < 1 || $month > 12 ) { array_push($error_location, "month"); }
+			if ( $year < 1900 || $year > 2011 ) { array_push($error_location, "year"); }
+			if ( $day > 29 || $month == 02 
+					 || $day > 30 && ( $month == 02 || $month == 04 || $month == 06 || $month == 09 || $month == 11)  ) 
+			{ array_push($error_location, "day", "month"); }
+			
     }
 
-		// Is the parent's name valid
+		// IS THE PARENT'S NAME VALID
 		if ( strlen($parents_name) < 2 
 		    || empty($parents_name)
 		    || is_numeric($parents_name)
@@ -117,10 +131,10 @@ if (!empty($_POST)){
 		{
 			$noErrors = False;
 			$error_message .= "<li> The parent's name has to be at least 2 characters long and contain only letters!"."\n";
-			// $PAGE['error_location'] = "parents_name"; needs to add to array
+			array_push($error_location, "parents_name");
 		}
 
-		// Is the email valid
+		// IS THE EMAIL VALID
 
 		// Query the database to find a field that has the same value username as $username
 	  $resultemail = dbQuery('SELECT parents_email FROM users WHERE parents_email = "'. $parents_email .'"');  
@@ -132,15 +146,17 @@ if (!empty($_POST)){
 			$noErrors = False;
 			$error_message .= "<li> This e-mail address seems to be in use! 
 												Perhaps you have <a href=&#063;p&#061;lostPassword>forgot  your password?</a>";
-			// $PAGE['error_location'] = "parents_email"; needs to add to array
+			array_push($error_location, "parents_email");
 	  }
 		else if(!validEmail($parents_email))
 		{
       $noErrors = False;
       $error_message .= "<li> Please enter a correct email address"."\n";
-      // $PAGE['error_location'] = "parents_email"; needs to add to array
+			$error_location[] = "parents_email";
+      //array_push($error_location, "parents_email");
 		}
-		
+
+		////////////////////// END ERROR CHECKING \\\\\\\\\\\\\\\\\\\\\\\\\\\\
 		
 		// If no errors, update the database and go to the next page
 		if ($noErrors)
@@ -153,6 +169,7 @@ if (!empty($_POST)){
 		  header("Location: /Bernie/?p=signup&id=2");
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message)); 
+			$PAGE['error_location'] = $error_location;
 		}		
   	         
   } // step 1

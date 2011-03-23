@@ -507,7 +507,7 @@ function isValidTimeStamp($timestamp)
  */
 function errorLocation($string) {
         global $PAGE;
-	if($PAGE['error_location']==$string) {
+	if(in_array($string, $PAGE['error_location'])) {
 		return true;
 	} else {
 		return false;
