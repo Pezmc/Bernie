@@ -255,9 +255,6 @@ function getNewSuggestion($category) {
   // Returns from the user interests database our users row.
   $thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
 	
-  // gets all the suggestions.
-  $allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
-	
   //creates an empty array which is edited three times. the code does work so far unless this is populated before
   $likedTags = array(1,2,4);
 	
@@ -282,6 +279,7 @@ function getNewSuggestion($category) {
 		    $dislikedSuggestions = array();
 		}
 		
+		
 		// The first loop which populates the likedTags array
 		// for every tag inside initial tags
 		foreach($initialTags as $thisID) {
@@ -292,18 +290,20 @@ function getNewSuggestion($category) {
  		  }		
 	  }  
 		  
+		// gets all the suggestions.
+                $allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 		// The second loop which populates the likedTags array
 		// every tag inside every suggestion that is liked
 		foreach($likedSuggestions as $thisID) { 
 		  //marks the tags id as already rated
 		  $alreadyRatedSuggestions[] = $thisID;
 		  // for every suggestion
-		  while($row2 = mysql_fetch_array($allSuggestions)) {
+		  while($row = mysql_fetch_row($allSuggestions)) {
 		  	
 		    
-		    if ($row2['id'] == $thisID ) {
+		    if ($row['id'] == $thisID ) {
 		      return 5;		    
-		      $theTagsOfThisSuggestion = unserialize($row2['tags']);
+		      $theTagsOfThisSuggestion = unserialize($row['tags']);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
 			return 6;                  
