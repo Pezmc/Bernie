@@ -271,6 +271,7 @@ function getNewSuggestion($category) {
     $initialTags = @unserialize($row['tags']);
     $likedSuggestions = @unserialize($row['liked']);
     $dislikedSuggestions = @unserialize($row['disliked']);
+  }
 		if(!$initialTags) {
 		    $initialTags = array();
 		}
@@ -336,7 +337,7 @@ function getNewSuggestion($category) {
 		    } // if
 		  } // while
 		}  // foreach
-	} //  while
+	
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
