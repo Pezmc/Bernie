@@ -246,6 +246,7 @@ function threeLetterWord() {
 	return $str;
 }
 
+/* Given the category needed, this function returns a new suggestion ID */
 function getNewSuggestion($category) { /*
 
 Go through current users likes, adding every tag and every time it appears to an array 
@@ -263,16 +264,26 @@ for every liked suggestion, extract the tags from that suggestion, and adds the 
 for every disliked suggestion, extract the tags from that suggestion, and for every tag, go through the likedTags array until it finds an occurance of that tag, if it does, it removes that []entry from the
 array */
 	
+	// The user is needed so we know which id to get from the first dbQuery
 	global $USER;
-      
 	
+	// Returns from the user interests database our users row.
 	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
+	
+	// gets all the suggestions.
 	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
-	//still need to get stuff from initial likes
+	
+	//creates an empty array which is edited three times. the code does work so far unless this is populated before
 	$likedTags = array(1, 2, 4);
+	
+	// In order to know which suggestions to not suggest (if they've already been rated before).
 	$alreadyRatedSuggestions = array();
+	
+	// This while loop only happens once.
         while($row = mysql_fetch_array($thisUsersLikes)) {
 	
+		/* The tags, liked suggestion and disliked suggestions are taken from the users interests,
+		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
 		$initialTags = @unserialize($row['tags']);
 		$likedSuggestions = @unserialize($row['liked']);
 		$dislikedSuggestions = @unserialize($row['disliked']);
@@ -283,26 +294,32 @@ array */
 		if(!$dislikedSuggestions) 
 		    $dislikedSuggestions = array();
 		
+		// The first loop which populates the likedTags array
+		// for every tag inside initial tags
 		foreach($initialTags as $thisID) {
-		  //the number, 3 here, is the weighting of initial interests
-		  for ($i=1; $i<=3; $i++)
+		  //Adds the id of this tag X times to the liked tags ( $times is the 'weighting')
+		  for ($times=1; $times<=3; $times++)
  		 {
  		   $likedTags[] = $thisID;
  		 }		
 		}  
 		  
+		// The second loop which populates the likedTags array
+		// every tag inside every suggestion that is liked
 		foreach($likedSuggestions as $thisID) { 
-		$alreadyRatedSuggestions[] = $thisID;
+		  //marks the tags id as already rated
+		  $alreadyRatedSuggestions[] = $thisID;
+		  // for every suggestion
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
-		        if(!$theTagsOfThisSuggestion) {
-		          $theTagsOfThisSuggestion = array();
-			}
-		       foreach($theTagsOfThisSuggestion as $aLikedTag) {
-		         $likedTags[] = $aLikedTag;			 
-		       }
-		     }
+		      if(!$theTagsOfThisSuggestion) {
+	                $theTagsOfThisSuggestion = array();
+	       	        }
+		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
+		        $likedTags[] = $aLikedTag;			 
+		      }
+		    }
 		  }
 		}
 		// At this point we have an array filled with every tag from every suggestion they like. 
@@ -312,20 +329,20 @@ array */
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
 		    if ($row2['id'] == $thisID ) {
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
-		        if(!$theUnTagsOfThisSuggestion) {
-		          $theUnTagsOfThisSuggestion = array();
-			} 
-		    foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
-			 $removeThisTag = array_search($aDislikedTag, $likedTags);
-			 if (!$removeThisTag) {}
-			 else {
-			   unset($likedTags[$removeThisTag]);			   
-			 } //else
-		       } // foreach
-		     } // if
-		   } // while
-		 }  // foreach
-	       } //  while
+		      if(!$theUnTagsOfThisSuggestion) {
+		        $theUnTagsOfThisSuggestion = array();
+		      } 
+		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
+	                $removeThisTag = array_search($aDislikedTag, $likedTags);
+			if (!$removeThisTag) {}
+			else {
+			  unset($likedTags[$removeThisTag]);			   
+		        } //else
+		      } // foreach
+		    } // if
+		  } // while
+		}  // foreach
+	} //  while
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
