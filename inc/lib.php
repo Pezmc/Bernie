@@ -249,28 +249,28 @@ function threeLetterWord() {
 /* Given the category needed, this function returns a new suggestion ID */
 function getNewSuggestion($category) { 
 	
-// The user is needed so we know which id to get from the first dbQuery
-global $USER;
+ // The user is needed so we know which id to get from the first dbQuery
+  global $USER;
 	
-	// Returns from the user interests database our users row.
-	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
+  // Returns from the user interests database our users row.
+  $thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
 	
-	// gets all the suggestions.
-	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+  // gets all the suggestions.
+  $allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 	
-	//creates an empty array which is edited three times. the code does work so far unless this is populated before
-	$likedTags = array(1,2,4);
+  //creates an empty array which is edited three times. the code does work so far unless this is populated before
+  likedTags = array(1,2,4);
 	
-	// In order to know which suggestions to not suggest (if they've already been rated before).
-	$alreadyRatedSuggestions = array();
-	// This while loop only happens once.
-        while($row = mysql_fetch_array($thisUsersLikes)) {
+  // In order to know which suggestions to not suggest (if they've already been rated before).
+  $alreadyRatedSuggestions = array();
+  // This while loop only happens once.
+  while($row = mysql_fetch_array($thisUsersLikes)) {
 	
-		/* The tags, liked suggestion and dcaisliked suggestions are taken from the users interests,
-		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
-		$initialTags = @unserialize($row['tags']);
-		$likedSuggestions = @unserialize($row['liked']);
-		$dislikedSuggestions = @unserialize($row['disliked']);
+    /* The tags, liked suggestion and dcaisliked suggestions are taken from the users interests,
+    if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
+    $initialTags = @unserialize($row['tags']);
+    $likedSuggestions = @unserialize($row['liked']);
+    $dislikedSuggestions = @unserialize($row['disliked']);
 		if(!$initialTags) {
 		    $initialTags = array();
 		}
@@ -286,10 +286,10 @@ global $USER;
 		foreach($initialTags as $thisID) {
 		  //Adds the id of this tag X times to the liked tags ( $times is the 'weighting')
 		  for ($times=1; $times<=3; $times++)
- 		 {
+ 		  {
  		   $likedTags[] = $thisID;
- 		 }		
-		}  
+ 		  }		
+	  }  
 		  
 		// The second loop which populates the likedTags array
 		// every tag inside every suggestion that is liked
@@ -299,9 +299,7 @@ global $USER;
 		  // for every suggestion
 		  while($row2 = mysql_fetch_array($allSuggestions)) {	
 		    
-		    if ($row2['id'] == $thisID ) {
-		      
-		    
+		    if ($row2['id'] == $thisID ) {		    
 		      $theTagsOfThisSuggestion = @unserialize($row2[1]);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();                  
@@ -309,12 +307,12 @@ global $USER;
           else return 4;      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
-			return 3;
+			    return 3;
 									 
-		      }
-		    }
-		  }
-		}
+		      } //foreach
+		    } //if
+		  } // while
+		} //foreach
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		  
 		foreach($dislikedSuggestions as $thisID) { 
@@ -346,12 +344,12 @@ global $USER;
 	$i=0;
 	$z=0;
 	
-        do {
-	   $chosenTag = $likedTags[array_rand($likedTags)];
+  do {
+	  $chosenTag = $likedTags[array_rand($likedTags)];
 
 		
     
-           /* while($row3 = mysql_fetch_array($allSuggestions)) {
+           while($row3 = mysql_fetch_array($allSuggestions)) {
     	     return 4;
 	     if ($row3['category'] == $category) {
 	       $abc = @unserialize($row3['tags']);	
@@ -370,8 +368,7 @@ global $USER;
 	     }	     
 	   }
 	   $z++;
-	}   
-	while (((sizeof($potentialSuggestions))==0)||($z<20));
+	}  while (((sizeof($potentialSuggestions))==0)||($z<20));
 	
 	if($z>=20) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
