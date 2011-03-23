@@ -309,19 +309,18 @@ function getNewSuggestion($category) {
 	       	      }		               
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
-			   	  return 3;
-									 
 		      } //foreach
 		    } //if
 		  } // while
 		} //foreach
 		// At this point we have an array filled with every tag from every suggestion they like. 
-		return $USER['id'];  
+		
+				  
 		foreach($dislikedSuggestions as $thisID) { 
-		$alreadyRatedSuggestions[] = $thisID;    
-		  while($row2 = mysql_fetch_array($allSuggestions)) {		
-		    if ($row2['id'] == $thisID ) { return 10;
-		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
+		  $alreadyRatedSuggestions[] = $thisID;    
+		  while($row = mysql_fetch_array($allSuggestions)) {		
+		    if ($row['id'] == $thisID ) { return 10;
+		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
 		        $theUnTagsOfThisSuggestion = array();
             
