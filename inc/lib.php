@@ -305,7 +305,7 @@ function getNewSuggestion($category) {
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();                  
 	       	      }		
-          else return 4;      
+          else return $USER['id'];      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
 			    return 3;
