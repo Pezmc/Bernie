@@ -313,6 +313,8 @@ array */
 		  $alreadyRatedSuggestions[] = $thisID;
 		  // for every suggestion
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
+		    $suggestionID = 1;
+	return $suggestionID;
 		    if ($row2['id'] == $thisID ) {
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theTagsOfThisSuggestion) {
@@ -320,8 +322,7 @@ array */
 	       	        }
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
-			$suggestionID = 1;
-	return $suggestionID;			 
+						 
 		      }
 		    }
 		  }
