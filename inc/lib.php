@@ -539,4 +539,51 @@ function errorLocation($string) {
 	}
 }
 
+
+/*
+ * Returns the array with all of the users chosen interests
+ */
+function getInterests() {
+
+	
+}
+
 ?>
+
+/*
+ * Prints the users chosen interests in two columns
+ */
+function printColumns() {
+// First get the array containing the interests
+global $USER;
+	$id = $USER('id');
+	$interests = array("");
+	$query = dbQuery("SELECT tags FROM user_interests WHERE user_id =
+'$id'");
+	while($row = mysql_fetch_array($query)) {
+	  $interests .= $row['tags'];
+	}//while
+	//for($i = 0; $i < sizeof($interests); $i++) {
+ 		//while($interests[$i] < (sizeof($interests) / 2)) {
+   return $interests;
+//}//while
+//}//for
+
+	for($i = 0; $i < sizeof($interests); $i++) {
+ while($interests[$i] < (sizeof($interests) / 2)) {
+   echo "<li> getInterests()[$i]";
+}//while
+}//for
+
+   
+   // Begin the second column
+   echo "</td><td width="50%" style="vertical-align: top">";
+   
+   // Print the second column
+   for($i = 0; $i < sizeof($interests); $i++) {
+ while($interests[$i] >= (sizeof($interests) / 2)) {
+   echo "<li> $interests[$i]";
+}//while
+}//for
+
+}
