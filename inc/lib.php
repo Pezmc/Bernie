@@ -361,7 +361,7 @@ function getNewSuggestion($category) {
         $potentialSuggestions = array();
 	$i=0;
 	$z=0;
-	
+	return 12;
   //while (((sizeof($potentialSuggestions))==0)||($z>20)); 
 	while (sizeof($potentialSuggestions)==0) {		
     $chosenTag = $likedTags[array_rand($likedTags)];
