@@ -345,7 +345,8 @@ function getNewSuggestion($category) {
 	$i=0;
 	$z=0;
 	
-  do {		
+  //while (((sizeof($potentialSuggestions))==0)||($z>20)); 
+	while (sizeof($potentialSuggestions)==0) {		
     $chosenTag = $likedTags[array_rand($likedTags)];
 		return 1;
     while($row = mysql_fetch_array($allSuggestions)) {
@@ -366,7 +367,7 @@ function getNewSuggestion($category) {
 	    }	     
 	  }
 	  $z++;
-	}  while (((sizeof($potentialSuggestions))==0)||($z>20));
+	}  
 	
 	if($z>=20) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
