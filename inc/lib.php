@@ -325,15 +325,14 @@ function getNewSuggestion($category) {
 		    if ($row['id'] == $thisID ) { 
 		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
-		        $theUnTagsOfThisSuggestion = array();
-            return 10;
+		        $theUnTagsOfThisSuggestion = array();           
 		      } 
-		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
-                  return 7;
+		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {                  
 	                $removeThisTag = array_search($aDislikedTag, $likedTags);
-			if (!$removeThisTag) {}
+			if (!$removeThisTag) {return 10;}
 			else {
-			  unset($likedTags[$removeThisTag]);			   
+			  unset($likedTags[$removeThisTag]);	
+				return 11;		   
 		        } //else
 		      } // foreach
 		    } // if
