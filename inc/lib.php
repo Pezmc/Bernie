@@ -315,7 +315,7 @@ function getNewSuggestion($category) {
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		
 		// gets all the suggestions again.
-    $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
+   /* $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
 		foreach($dislikedSuggestions as $thisID) { 
 		  $alreadyRatedSuggestions[] = $thisID;
 			   
@@ -327,21 +327,32 @@ function getNewSuggestion($category) {
 		        $theUnTagsOfThisSuggestion = array();						           
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {    
-									// $found  = false              
-	                // 
-									//foreach($likedTags as $aLikedTag)
-									//  
-									//  if they match, remove that likedTag and set true as found
-									$removeThisTag = array_search("7", $likedTags);
-			if (!$removeThisTag) {return $theUnTagsOfThisSuggestion[0];}
-			else {
-			  unset($likedTags[$removeThisTag]);	
-				return 11;		   
-		        } //else
-		      } // foreach
+					  $tc=0;
+					  $found == 0;
+					  while (found == 0) {
+					    if ($likedTags[$tc] == $aDislikedTag) {
+				        unset($likedTags[$tc]);
+								$found = 1;
+							}
+							$tc++ ;
+							if ($tc == sizeof(likedTags))
+							  $found = 1;
+						}
+					  
+					} return 15;
+						
+									
+									// $removeThisTag = array_search("7", $likedTags);
+			//if (!$removeThisTag) {return $theUnTagsOfThisSuggestion[0];}
+			//else {
+			 // unset($likedTags[$removeThisTag]);	
+				//return 11;		   
+		    //    }  //else 
+						
+		      
 		    } // if
 		  } // while
-		}  // foreach
+		}  */ // foreach 
 	
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
@@ -350,7 +361,7 @@ function getNewSuggestion($category) {
         $potentialSuggestions = array();
 	$i=0;
 	$z=0;
-	
+	return 12;
   //while (((sizeof($potentialSuggestions))==0)||($z>20)); 
 	while (sizeof($potentialSuggestions)==0) {		
     $chosenTag = $likedTags[array_rand($likedTags)];
