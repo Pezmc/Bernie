@@ -326,9 +326,9 @@ function getNewSuggestion($category) {
 		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theUnTagsOfThisSuggestion) { 
 		        $theUnTagsOfThisSuggestion = array();						           
-		      } return $theUnTagsOfThisSuggestion[0];
+		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {                  
-	                $removeThisTag = array_search('$aDislikedTag', $likedTags);
+	                $removeThisTag = array_search($aDislikedTag, $likedTags);
 			if (!$removeThisTag) {return 10;}
 			else {
 			  unset($likedTags[$removeThisTag]);	
