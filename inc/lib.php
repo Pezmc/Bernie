@@ -281,6 +281,7 @@ array */
 	
 	// This while loop only happens once.
         while($row = mysql_fetch_array($thisUsersLikes)) {
+	echo "<!-- $THIS IS DOING THE WHILE LOOP FOR THISUSERSLIKES -->";
 	
 		/* The tags, liked suggestion and disliked suggestions are taken from the users interests,
 		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
