@@ -297,7 +297,8 @@ function getNewSuggestion($category) {
 		  //marks the tags id as already rated
 		  $alreadyRatedSuggestions[] = $thisID;
 		  // for every suggestion
-		  while($row2 = mysql_fetch_array($allSuggestions)) {	
+		  while($row2 = mysql_fetch_array($allSuggestions)) {
+		  return 14;	
 		    
 		    if ($row2['id'] == $thisID ) {		    
 		      $theTagsOfThisSuggestion = @unserialize($row2[1]);
@@ -345,8 +346,7 @@ function getNewSuggestion($category) {
 	$z=0;
 	
   do {
-	  $chosenTag = $likedTags[array_rand($likedTags)];
-    
+    $chosenTag = $likedTags[array_rand($likedTags)];
     while($row3 = mysql_fetch_array($allSuggestions)) {
       return 4;
 	    if ($row3['category'] == $category) {
