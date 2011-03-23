@@ -334,14 +334,15 @@ array */
 		  
 		foreach($dislikedSuggestions as $thisID) { 
 		$alreadyRatedSuggestions[] = $thisID;
-		  while($row2 = mysql_fetch_array($allSuggestions)) {		
+		  while($row2 = mysql_fetch_array($allSuggestions)) {		return 7;
 		    if ($row2['id'] == $thisID ) {
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
 		        $theUnTagsOfThisSuggestion = array();
-            return 7;
+            
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
+                  return 7;
 	                $removeThisTag = array_search($aDislikedTag, $likedTags);
 			if (!$removeThisTag) {}
 			else {
