@@ -335,8 +335,8 @@ function getNewSuggestion($category) {
 								$found = 1;
 							}
 							$tc++ ;
-							if ($tc = sizeof(likedTags))
-							  found = 1;
+							if ($tc == sizeof(likedTags))
+							  $found = 1;
 						}
 					  
 					} return 15;
