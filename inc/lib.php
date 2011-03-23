@@ -302,7 +302,7 @@ function getNewSuggestion($category) {
 		  	
 		    
 		    if ($row2['id'] == $thisID ) {		    
-		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
+		      $theTagsOfThisSuggestion = unserialize($row2['tags']);
 		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
 			return 6;                  
