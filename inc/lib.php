@@ -256,7 +256,7 @@ function getNewSuggestion($category) {
   $thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
 	
   //creates an empty array which is edited three times. the code does work so far unless this is populated before
-  $likedTags = array(1,2,4);
+  $likedTags = array();
 	
   // In order to know which suggestions to not suggest (if they've already been rated before).
   $alreadyRatedSuggestions = array();
@@ -324,7 +324,7 @@ function getNewSuggestion($category) {
 		  while($row = mysql_fetch_array($allSuggestionsToDislike)) {		
 		    if ($row['id'] == $thisID ) { 
 		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
-		      if(!$theUnTagsOfThisSuggestion) {
+		      if(!$theUnTagsOfThisSuggestion) { 
 		        $theUnTagsOfThisSuggestion = array();
 						return 9;           
 		      } 
