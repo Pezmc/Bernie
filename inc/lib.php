@@ -264,7 +264,7 @@ function getNewSuggestion($category) {
   while($row = mysql_fetch_array($thisUsersLikes)) {
 	
     /* The tags, liked suggestion and dcaisliked suggestions are taken from the users interests,
-    if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
+  retur  if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
     $initialTags = @unserialize($row['tags']);
     $likedSuggestions = @unserialize($row['liked']);
     $dislikedSuggestions = @unserialize($row['disliked']);
@@ -299,7 +299,7 @@ function getNewSuggestion($category) {
 		  $alreadyRatedSuggestions[] = $thisID;
 		  // for every suggestion
 		  while($row = mysql_fetch_row($allSuggestions)) {
-		  	
+		  return 11;	
 		    
 		    if ($row['id'] == $thisID ) {
 		      return 5;		    
