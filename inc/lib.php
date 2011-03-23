@@ -317,13 +317,13 @@ array */
 		    if ($row2['id'] == $thisID ) {
 		    
 		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
-		     /* if(!$theTagsOfThisSuggestion) {
+		      if(!$theTagsOfThisSuggestion) {
 	                $theTagsOfThisSuggestion = array();
-	       	        } */
+	       	      }
+		      return $theTagsOfThisSuggestion[0]; 
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
-			$suggestionID = 1;
-	return $suggestionID;
+			
 						 
 		      }
 		    }
