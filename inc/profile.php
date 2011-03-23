@@ -154,7 +154,7 @@ if (!empty($_POST)){
 
 		$message = "You have requested a new password to be sent to this email address."."\n\n";
 		$message .= "You can now use the details below to login to your account:"."\n";
-		$message .= "Username: ".$username."\n";
+		$message .= "Username: ".$USER['username']."\n";
 		$message .= "Password: ".$password."\n\n";
 		$message .= "Have fun!";
 
