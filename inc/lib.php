@@ -329,7 +329,7 @@ function getNewSuggestion($category) {
 						return 9;           
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {                  
-	                $removeThisTag = array_search($aDislikedTag, $likedTags);
+	                $removeThisTag = array_search('$aDislikedTag', $likedTags);
 			if (!$removeThisTag) {return 10;}
 			else {
 			  unset($likedTags[$removeThisTag]);	
