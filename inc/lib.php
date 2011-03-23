@@ -292,14 +292,15 @@ function getNewSuggestion($category) {
 		  
 		// gets all the suggestions.
                 $allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+		
 		// The second loop which populates the likedTags array
 		// every tag inside every suggestion that is liked
 		foreach($likedSuggestions as $thisID) { 
 		  //marks the tags id as already rated
 		  $alreadyRatedSuggestions[] = $thisID;
 		  // for every suggestion
-		  while($row = mysql_fetch_row($allSuggestions)) {
-		  return 11;	
+		  while($row = mysql_fetch_array($allSuggestions)) {
+		  	
 		    
 		    if ($row['id'] == $thisID ) {
 		      return 5;		    
