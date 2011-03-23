@@ -334,8 +334,8 @@ array */
 		  
 		foreach($dislikedSuggestions as $thisID) { 
 		$alreadyRatedSuggestions[] = $thisID;    
-		  while($row2 = mysql_fetch_array($allSuggestions)) {		return 10;
-		    if ($row2['id'] == $thisID ) {
+		  while($row2 = mysql_fetch_array($allSuggestions)) {		
+		    if ($row2['id'] == $thisID ) { return 10;
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
 		        $theUnTagsOfThisSuggestion = array();
