@@ -361,7 +361,7 @@ array */
 	$i=0;
 	$z=0;
 	
-	do {
+        do {
 	   $chosenTag = $likedTags[array_rand($likedTags)];
 
 		
@@ -408,7 +408,7 @@ array */
 	else {
 	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];	
 	}
-	return $suggestionID;	
+	return $suggestionID;		
 }
 
 
