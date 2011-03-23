@@ -303,8 +303,6 @@ array */
 		  for ($times=1; $times<=3; $times++)
  		 {
  		   $likedTags[] = $thisID;
-		   $suggestionID = 1;
-	           return $suggestionID;
  		 }		
 		}  
 		  
@@ -321,7 +319,9 @@ array */
 	                $theTagsOfThisSuggestion = array();
 	       	        }
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
-		        $likedTags[] = $aLikedTag;			 
+		        $likedTags[] = $aLikedTag;
+			$suggestionID = 1;
+	return $suggestionID;			 
 		      }
 		    }
 		  }
