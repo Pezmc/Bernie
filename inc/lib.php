@@ -317,11 +317,11 @@ array */
 		    if ($row2['id'] == $thisID ) {
 		      
 		    
-		      $theTagsOfThisSuggestion = @unserialize($row2['tags']);
+		      $theTagsOfThisSuggestion = @unserialize($row2[1]);
 		      if(!$theTagsOfThisSuggestion) {
-	                $theTagsOfThisSuggestion = array();
-                  return 2;
-	       	      }		      
+	                $theTagsOfThisSuggestion = array();                  
+	       	      }		
+          else return 4;      
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
 			return 3;
@@ -333,14 +333,16 @@ array */
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		  
 		foreach($dislikedSuggestions as $thisID) { 
-		$alreadyRatedSuggestions[] = $thisID;
+		$alreadyRatedSuggestions[] = $thisID;    
 		  while($row2 = mysql_fetch_array($allSuggestions)) {		
-		    if ($row2['id'] == $thisID ) {
+		    if ($row2['id'] == $thisID ) { return 10;
 		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
 		      if(!$theUnTagsOfThisSuggestion) {
 		        $theUnTagsOfThisSuggestion = array();
+            
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
+                  return 7;
 	                $removeThisTag = array_search($aDislikedTag, $likedTags);
 			if (!$removeThisTag) {}
 			else {
@@ -542,6 +544,7 @@ function errorLocation($string) {
 /*
  * Prints the users chosen interests in two columns
  */
+	if($z>=50) {
 function printColumns() {
 	global $USER;
 	
