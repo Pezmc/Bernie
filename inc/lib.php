@@ -281,7 +281,7 @@ array */
 	// This while loop only happens once.
         while($row = mysql_fetch_array($thisUsersLikes)) {
 	
-		/* The tags, liked suggestion and disliked suggestions are taken from the users interests,
+		/* The tags, liked suggestion and dcaisliked suggestions are taken from the users interests,
 		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
 		$initialTags = @unserialize($row['tags']);
 		$likedSuggestions = @unserialize($row['liked']);
@@ -362,15 +362,15 @@ array */
 
 		
     
-    while($row = mysql_fetch_array($allSuggestions))
-		if ($row['category'] == $category) {
-			$abc = @unserialize($row['tags']);	
+    while($row3 = mysql_fetch_array($allSuggestions))
+		if ($row3['category'] == $category) {
+			$abc = @unserialize($row3['tags']);	
 			if(!$abc) {
 		          $abc = array();
 			}
 			foreach($abc as $someTag) {		
 				if ($someTag==$chosenTag) {                		
-					$potentialSuggestions[$i] = $row['id'];				
+					$potentialSuggestions[$i] = $row3['id'];				
 					$i+= 1;
 				}
 			}
