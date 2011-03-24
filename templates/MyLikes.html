@@ -16,32 +16,31 @@
 					<td class="like">
 
 					{foreach:bigList,i,onelike}
-                 
           <table width="100%">
 						<tr>
 							<td width="103px">
-							<img src="" width="103px" height="103px" style="border: 1px solid #2F84B3">
+							<img src="simages/{onelike['image_med']}" width="103px" height="103px" style="border: 1px solid #2F84B3">
 							</td>
 							<td class="like_item_desc">
 
 							<table><tr><td>
 							<div class="item_title_small">{onelike['title']}</div>
 							</td><td>
-							<img src="/Bernie/images/icon_web_small.png" alt="Category name">
+							<img src="/Bernie/images/icon_{strtolower({oneline['category']})}_small.png" alt="Category name">
 							</td></tr></table>
 
 							<section class="text">
 							<!-- Use truncate function here (in inc/lib.php)-->
-							Short description of item here. Short description of item here. Short description of item here...
-							<br /><a href="" alt="Go to this item!">Go to item!</a>
+							{onelike['description']}
+							<br /><a href="?p=bernie&c={onelike['category']}&id={onelike}"" alt="Go to this item!">Go to item!</a>
 							</section
 
 							</td>
 							<td style="vertical-align:middle">
 							<ul class="key_info">
-								<li><b class="key_info">Author</b> person</li>				
-								<li><b class="key_info">Year</b> year </li>				
-								<li><b class="key_info">Length</b> length </li>
+								<li><b class="key_info">Author</b> {onelike['author']} </li>				
+								<li><b class="key_info">Year</b> {onelike['release_year']} </li>				
+								<li><b class="key_info">Length</b> {onelike['length']} </li>
 							</ul>
 							</td>
 						</tr>
