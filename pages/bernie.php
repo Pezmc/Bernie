@@ -55,7 +55,7 @@ if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 		
 
 $badWords = array("knob", "dick");
-$comment = str_replace($badWords, '****' , comment); 
+$comment = str_replace($badWords, '****' , $comment); 
 
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
 	$time = date("m/d/Y");
