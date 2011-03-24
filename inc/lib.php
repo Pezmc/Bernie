@@ -607,16 +607,16 @@ function checkTagLike($tagId){
 /*
  * Is the comment author a girl?
  */
-#function isCommentAuthorGirl() {
-#	$result = dbQuery("SELECT gender FROM users WHERE username = '$comment['username']'");
-#	$row = mysql_fetch_array($result);
-#	
-#	if($result) return false; //If we don't know guess they aren't
-#    if($row['gender']=="f") {
-#		return true;
-#	} else {
-#		return false;
-#	}
-#}
+function isCommentAuthorGirl($user) {
+	$result = dbQuery("SELECT gender FROM users WHERE username = '$user'");
+	$row = mysql_fetch_array($result);
+	
+	if($result) return false; //If we don't know guess they aren't
+    if($row['gender']=="f") {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 ?>

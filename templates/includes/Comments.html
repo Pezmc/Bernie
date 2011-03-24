@@ -18,9 +18,9 @@
 					<table style="padding-top: 20px">
 						<tr>
 							<td>
-							<img src="/Bernie/images/{if: isCommentAuthorGirl()}girl.png{else}boy.png{end}">
+							<img src="/Bernie/images/{if: isGirl()}girl.png{else}boy.png{end}">
 
-							<span class="{if: isCommentAuthorGirl()}comment_girl{else}comment_boy{end}">{comment['username']}</span> 	said:
+							<span class="{if: isGirl()}comment_girl{else}comment_boy{end}">{comment['username']}</span> 	said:
 
 							<br />{comment['content']}
 							<br /><span class="comment_time">{comment['time']}</span>
