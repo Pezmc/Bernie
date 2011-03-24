@@ -160,7 +160,17 @@ if (!empty($_POST)){
 
 		////////////////////// END ERROR CHECKING \\\\\\\\\\\\\\\\\\\\
 
-	  ////////////////////// SEND AN EMAIL \\\\\\\\\\\\\\\\\\\\
+		
+		// If no errors and the email was sent, update the database and go to the next page
+		if ($noErrors)
+		{
+		  // Create the user
+		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt, confirmation_code) 
+						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
+						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
+		  $_SESSION['newid'] = mysql_insert_id();
+
+		 	  ////////////////////// SEND AN EMAIL \\\\\\\\\\\\\\\\\\\\
 		// Modified from tutorial on http://www.phpeasystep.com/phptu/24.html
 
 		$ccto = 'elisehein@gmail.com';
@@ -179,16 +189,6 @@ if (!empty($_POST)){
 		$message .= "    http://server.pezcuckow.com/Bernie/?p=confirmation&passkey=$confirmation_code";
 
 		$emailSent = mail($to, $subject, nl2br($message), $header);
-		
-		// If no errors and the email was sent, update the database and go to the next page
-		if ($noErrors && $emailSent)
-		{
-		  // Create the user
-		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt, confirmation_code) 
-						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
-						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
-		  $_SESSION['newid'] = mysql_insert_id();
-		 
 
 		  header("Location: /Bernie/?p=signup&id=2"); die();
 		  $GLOBAL["id"] = 2;
