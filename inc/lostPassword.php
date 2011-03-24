@@ -28,7 +28,7 @@ if (!empty($_POST))
   		{
   			$noErrors = False;
 			$error_message = '<li> Sorry - this email does not seem to exist!';
-    		$error_message .= "Have you <a href='?p=signup'>signed up</a>?"
+    		$error_message .= "Have you <a href='?p=signup'>signed up</a>?";
  		}
 
 		// Check whether the email address is valid
