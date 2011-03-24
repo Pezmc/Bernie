@@ -85,4 +85,9 @@ etc...
 $PAGE['title'] = " has suggested you, '$row[2]'";
 $PAGE['content'] = parse("Bernie.html", $suggestion);
 
+/* swear filter */
+
+$badWords = array("knob", "dick");
+$filteredShout = str_replace($badWords, '****' , $shout); 
+
  ?>
