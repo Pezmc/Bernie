@@ -20,7 +20,12 @@ Here are your chosen interests. Click on the button below to edit them.
 		<!--		{!}{foreach:interests,interest} while interest index < interests / 2 ) -->
 		<!--			   {!}<li> {interest} -->
 		<!--		{!}{end} -->
-			<li> Adventure
+    {foreach:interest,i,value}
+      {if:i <= 3}
+      <li>{value}</li>
+      {end}
+    {end}
+			<!-- <li> Adventure
 			<li> Puppies
 			<li> Fantasy
 			<li> Monsters
@@ -33,9 +38,9 @@ Here are your chosen interests. Click on the button below to edit them.
 		<!--		{!}{foreach:interests,interest} while interest index >= interests / 2 ) -->
 		<!--			   {!}<li> {interest} -->
 		<!--		{!}{end} -->
-			<li> Princesses
+			<!-- <li> Princesses
 			<li> Arts and crafts
-			<li> Superheros
+			<li> Superheros -->
 		</td>
 	</tr>
 </table>

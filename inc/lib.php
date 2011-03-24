@@ -359,7 +359,7 @@ function getNewSuggestion($category) {
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
 	
-        $potentialSuggestions = array();
+  $potentialSuggestions = array();
 	$i=0;
 	$z=0;
 	return 12;
@@ -391,7 +391,7 @@ function getNewSuggestion($category) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
       // $suggestion = dbQuery("SELECT id,tags FROM suggestions WHERE ORDER BY rand() LIMIT 1");
     $row = mysql_fetch_array($suggestion);
-    $potentialSuggestions[$i] = $row['id'];	
+    $potentialSuggestions[$i] = $row['id'];	 
 	}
 	
 	$notSeenPotentialSuggestions = array();	
@@ -555,13 +555,16 @@ function printColumns() {
 	
 	// First get the array containing the interests
 	$id = $USER['id'];
-	$interests = array();
-	$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
-	while($row = mysql_fetch_array($query)) {
-	  $interests .= $row['tags'];
-	}
+		$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
 
-  // Unserialise the interests
+	while($row = mysql_fetch_array($query)) {
+	  $interests = unserialize['tags'];
+	}
+  if (!$interests)
+    $interests = array();
+  return $interests;
+
+  /* // Unserialise the interests
   $unserialisedInterests = unserialize($interests);
 
 	for($i = 0; $i < count($unserialisedInterests); $i++) {
@@ -576,9 +579,10 @@ function printColumns() {
   // Print the second column
   for($i = 0; $i < count($unserialisedInterests); $i++) {
   		while($unserialisedInterests[$i] >= (count($unserialisedInterests) / 2)) {
-  			echo "<li> $unserialisedIinterests[$i]";
+  			echo "<li> $unserialisedIinterests[$i]"; 
+
 		}//while
-	}//for
+	}//for */
 }
 
 ?>
