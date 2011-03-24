@@ -62,7 +62,7 @@ if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 	$comment = sanitise($_POST['comment'],1);
 		
 
-$badWords = array("/knob/", "/dick(s)(ed)/", "/fuck(e)(d)/"); //"/shit(s)/" , "/cunt(s)/" , "wanker(s)/" , "/arse(s)/" , "/tit(s)/" , "/bellend/" , "/twat(s)/" );
+$badWords = array("/knob/", "/dick/", "/fuck/" , "/shit/" , "/cunt(s)/" , "/wanker/" , "/arse/" , "/tit/" , "/bellend/" , "/twat/" );
 $comment = preg_replace($badWords, '****' , $comment); 
 
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
