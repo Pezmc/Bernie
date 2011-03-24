@@ -290,30 +290,31 @@ function getNewSuggestion($category) {
 	  }  
 		  
 		// gets all the suggestions.
-                $allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+    $allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
 		
 		// The second loop which populates the likedTags array
 		// every tag inside every suggestion that is liked
-		foreach($likedSuggestions as $thisID) { 
+		//foreach($likedSuggestions as $thisID) { 
 		  //marks the tags id as already rated
 		  $alreadyRatedSuggestions[] = $thisID;
 		  // for every suggestion
 		  while($row = mysql_fetch_array($allSuggestions)) {		  	
 		    
-		    if ($row['id'] == $thisID ) {		      		    
-		      $theTagsOfThisSuggestion = unserialize($row['tags']);
+		    if (in_array($row['id'],$likedSuggestions) {		      		    
+		      $theTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theTagsOfThisSuggestion) {
-	                $theTagsOfThisSuggestion = array();
-									return 6;                  
-	       	      }		               
+	          $theTagsOfThisSuggestion = array();
+					  return 6;                  
+	       	}		               
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
 		      } //foreach
 		    } //if
 		  } // while
-		} //foreach
+		//} //foreach
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		
+
 		// gets all the suggestions again.
    $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
 		foreach($dislikedSuggestions as $thisID) { 
