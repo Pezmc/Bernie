@@ -1,0 +1,101 @@
+<!-- Check whether the checbox is checked. If yes, use a different style for the label -->
+<script type="text/javascript">
+
+function toggle(it) {
+	it = it.parentNode;
+  if (it.id == 'tag')
+    it.id = 'tag_selected';
+  else
+    it.id = 'tag';
+}
+
+</script>
+
+
+<tr>
+    		<td class="tabs" colspan="3">
+    		<!-- Cell for tabs with two sign up steps -->
+
+			<table>
+				<tr class="subtitle">
+					<td class="spacer"></td>
+					<td class="tab_closed">
+					<b>STEP 1:</b> User info
+					</td>
+					<td class="tab_open">
+					<b>STEP 2:</b> Interests
+					</td>
+				</tr>
+			</table>
+			
+    		</td>
+    	</tr>
+    	<tr>
+      <td class="interestsform">
+      <section class="text">
+
+      So, what are you interested in? By choosing your interests on this page, Bernie will know what items to suggest to you! Pick as many as you like!
+
+			<p />
+
+			<!-- Show errors here if there are any -->
+      	{if:!empty(error_message)}
+			  <div id="errors"><ul>{error_message}</ul></div>
+		 	{end}
+
+      <p />
+
+      <!-- Begin interests selection form -->
+      <!-- NOTE: Javascript bg toggle only works right when user clicks inside the checkbox, not on the label --> 
+		 
+		 <table style="width: 100%; padding-top: 20px" cellspacing="4px">
+
+		 <form name="interests" action="/Bernie/?p=signup&id=2" method="POST">
+		 <tr>
+     {foreach:getTagArray(),i,tag}
+       {if: i != 0}
+		     <section class="text">
+		     <!-- Print one table cell with the input type=checkbox and the tag name -->
+		     <!-- the value of the input is the tag id -->
+		     <td id="tag">
+							<input id="{i}" type="checkbox" name="tags[]" onChange="toggle(this)" {if:in_array(i,$likedInterest)} checked {end} value="{tag['id']}" /> <label for="{i}">{tag['tag']}</label>
+				 </td>
+				 
+		     <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
+		     <!-- This will result in a 3xNumberOfTags table in the form -->
+		     {if: i % 3 == 0}
+		    	 	</tr><tr>
+		     {end}
+
+		     <!-- For the last tag, check how many tags are left until i % 3 == 0 -->
+		     <!-- And print empty cells instead -->
+		     {if: i == count(getTagArray())}
+		       <!-- If the list is two tags short from the end of the row -->
+		       <!-- The remainder will always be 1 -->
+		       {if: i % 3 == 1}
+		       <td></td><td><td>
+		      
+		       <!-- If the list is one tag short from the end of the row -->
+		       <!-- The remainder will always be 2 -->
+		       {elseif: i % 3 == 2}
+					 <td></td>
+				
+		       {end}
+		     {end}
+
+		    </section>
+		   {end}
+     {end} 
+     </tr>
+	</table>
+
+  <!-- SUBMIT button here -->
+  <p />
+  <div style="text-align: right; padding: 20px 100px 0px 0px">
+  <input type="submit" value="SUBMIT" class="medium" />
+  </div>
+		  
+      </form>
+      </section>
+
+      </td>

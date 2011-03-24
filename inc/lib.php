@@ -596,4 +596,8 @@ function getLast3Liked(){
   return $last3;
 }
 
+function checkTagLike($tagId){
+  
+}
+
 ?>
