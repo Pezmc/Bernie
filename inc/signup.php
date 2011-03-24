@@ -176,9 +176,9 @@ if (!empty($_POST)){
 		$message .= "Password: ".$password."\n\n";
 		$message .= "You will need to verify your account before you can log in. 
 								Click on the link below: "."\n";
-		$message .= "    http://server.pezcuckow.com/Bernie/?p=confirmation&$confirmation_code";
+		$message .= "    http://server.pezcuckow.com/Bernie/?p=confirmation&passkey=$confirmation_code";
 
-		$emailSent = mail($to, $subject, $message, $header);
+		$emailSent = mail($to, $subject, nl2br($message), $header);
 		
 		// If no errors and the email was sent, update the database and go to the next page
 		if ($noErrors && $emailSent)
@@ -229,7 +229,8 @@ if (!empty($_POST)){
 		{
 		  // Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
    		// At this step the user always exists as they have just finished step 1
-	   	dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
+	   	dbQuery("INSERT INTO user_interests (tags, user_id) 
+	   					 VALUES ('".$serialisedTags."', '".$user_id."')");
 		  header("Location: /Bernie/?p=signup&id=3"); exit;
 		  $GLOBAL['id'] = 3;
 		}	else {
