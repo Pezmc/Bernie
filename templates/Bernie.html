@@ -138,17 +138,26 @@
 		       	<!-- The comments  STEPHENS PART I THINK-->
 			<div id="comments">
 			<img src="http://server.pezcuckow.com/Bernie/images/comments.png"></img>
-			
+			{foreach:comments,comment}
+				<table border='1'>
+				<tr><td><small>{comment['username']} said:</small>{comment['content']}<br /><small>on: {comment['time']}</small></td></tr>
+				</table>
+			{end}
 			<br><br>
-			<p> Add yours: </p>
-			<p><form name="" action="" method="">
-                              <table>
-                               <tr><td width="380px"><input type="text" class="comment" name="msg_message" placeholder="Write here" id="msg_message"/></td>
-                                   <td style="text-align:left"><input type="submit" class=medium name="msg_submit" value="POST" id="msg_submit"/></td>
-                               </tr>   
-                              </table>
-                           </form>
-                        </p>
+<form action="?{$_SERVER['QUERY_STRING']}" method="post">
+<div id="comments">
+ <img src="http://server.pezcuckow.com/Bernie/images/comments.png"></img>
+ <br><br>
+ <p> Add yours: </p>
+ <p>
+     <table>
+        <tr><td><input type="text" class="comment" name="comment" id="comment"/></td></tr>
+        <tr><td><input type="hidden" name="suggestion_id" value="{sugId}" /></td><tr>
+        <td><input type="submit" class=medium name="submit" value="POST" id="submit"/></td></tr>   
+     </table>
+</p>
+</div>
+</form>
 
 			</div> <!--  end of comments  -->
 			

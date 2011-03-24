@@ -47,6 +47,30 @@ $suggestion= array("sugId"=>"$suggestionID","sugImage"=>"$row[1]","sugTitle"=>"$
 "altSugId2"=>"$altSuggestionIDs[1]","altImage2"=>"$row3[1]","altCategory2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
 "altSugId3"=>"$altSuggestionIDs[2]","altImage3"=>"$row4[1]","altCategory3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
 
+/////////////COMMMENTNSMNTS////////////////////
+if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
+
+
+	$comment = sanitise($_POST['comment'],1);
+	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
+	$time = date("m/d/Y");
+	
+	$comment = mysql_real_escape_string($comment);
+	$suggestion_id = mysql_real_escape_string($suggestion_id);
+	
+	$sql = dbQuery("INSERT INTO comments (`suggestion_id`, `username`, `content`, `time`) VALUES ('$suggestion_id', '{$USER['username']}', '$comment', '$time')");
+}
+
+
+$suggestion['comments'] = array();
+
+$sql = dbQuery("SELECT * FROM comments WHERE suggestion_id='$suggestionID' ORDER BY id DESC");
+if(mysql_num_rows($sql)>0) {
+	while($row = mysql_fetch_array($sql)){
+		$suggestion['comments'][] = array("username"=>$row['username'], "content"=>$row['content'], "time"=>$row['time']);
+	}
+}
+
 /* Pez - This could be done like
 
 $suggestion = array();
