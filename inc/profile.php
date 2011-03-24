@@ -188,7 +188,7 @@ if (!empty($_POST)){
 		{
 
   			// Update user information with new password
-			dbQuery("UPDATE users SET gender='$gender', 
+			dbQuery("UPDATE users SET gender='".($gender=="boy" ? "m" : ($gender=="girl" ? "f" : "u"))."',  
 		                          first_name='$first_name', 
 		                          parents_email='$parents_email', 
 		                          parents_name='$parents_name', 
