@@ -54,7 +54,7 @@ if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 	$comment = sanitise($_POST['comment'],1);
 		
 
-$badWords = array("/knob/", "/dick/", "/fuck(e)(d)/");
+$badWords = array("/knob/", "/dick(s)(ed)/", "/fuck(e)(d)/");
 $comment = preg_replace($badWords, '****' , $comment); 
 
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
