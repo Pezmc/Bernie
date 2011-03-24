@@ -52,6 +52,11 @@ if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 
 
 	$comment = sanitise($_POST['comment'],1);
+		
+
+$badWords = array("knob", "dick");
+$comment = str_replace($badWords, '****' , comment); 
+
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
 	$time = date("m/d/Y");
 	
@@ -87,7 +92,5 @@ $PAGE['content'] = parse("Bernie.html", $suggestion);
 
 /* swear filter */
 
-$badWords = array("knob", "dick");
-$filteredShout = str_replace($badWords, '****' , $shout); 
 
  ?>
