@@ -63,19 +63,19 @@ Here are your most recent likes. Click on the button below to see all of your li
 		<table width="100%">
 			<tr>
 				<td width="103px">
-				<img src="" width="103px" height="103px" style="border: 1px solid #2F84B3"/>
+				<img src="simages/{lastThreeLiked['recImage2']}" width="100px" height="100px" style="border: 1px solid #2F84B3"/>
 				</td>
 				<td>
 
 					<table><tr><td>
-					<div class="item_title_small">Item title here</div>
+					<div class="item_title_small">{lastThreeLiked['recTitle2']}</div>
 					</td><td>
-					<img src="/Bernie/images/icon_web_small.png" alt="Cateogyr name">
+					<img src="/Bernie/images/icon_{lastThreeLiked['recCategory2']}_small.png" alt="Cateogyr name">
 					</td></tr></table>
 
 					<!-- Use trunc{lastThreeLiked['altTitle1']}ate function here (in inc/lib.php)-->
-					Short description of item here. Short description of item here. Short description of item here...
-					<br /><a href="" alt="Go to this item!">Go to item!</a>
+					{lastThreeLiked['recDisc2']}
+					<br /><a href="?p=bernie&c={lastThreeLiked['recCategory2']}&id={lastThreeLiked['recId2']}"" alt="Go to this item!">Go to item!</a>
 						
 				</td>
 			</tr>
@@ -97,19 +97,19 @@ Here are your most recent likes. Click on the button below to see all of your li
 		<table width="100%">
 			<tr>
 				<td width="103px">
-				<img src="" width="103px" height="103px" style="border: 1px solid #2F84B3">
+				<img src="simages/{lastThreeLiked['recImage3']}" width="100px" height="100px" style="border: 1px solid #2F84B3"/>
 				</td>
 				<td>
 
 					<table><tr><td>
-					<div class="item_title_small">Item title here</div>
+					<div class="item_title_small">{lastThreeLiked['recTitle3']}</div>
 					</td><td>
-					<img src="/Bernie/images/icon_web_small.png" alt="Cateogyr name">
+					<img src="/Bernie/images/icon_{lastThreeLiked['recCategory3']}_small.png" alt="Cateogyr name">
 					</td></tr></table>
 
 					<!-- Use truncate function here (in inc/lib.php)-->
-					Short description of item here. Short description of item here. Short description of item here...
-					<br /><a href="" alt="Go to this item!">Go to item!</a>
+					{lastThreeLiked['recDisc3']}
+					<br /><a href="?p=bernie&c={lastThreeLiked['recCategory3']}&id={lastThreeLiked['recId3']}"" alt="Go to this item!">Go to item!</a>
 						
 				</td>
 			</tr>
