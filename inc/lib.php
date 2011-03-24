@@ -556,7 +556,7 @@ function errorLocation($string) {
 /*
  * Prints the users chosen interests in two columns
  */
-function printColumns() {
+function giveInterests() {
 	global $USER;
 	
 	// First get the array containing the interests
@@ -565,30 +565,23 @@ function printColumns() {
 
 	while($row = mysql_fetch_array($query)) {
 	  $interests = unserialize($row['tags']);
+ // 12 13 18
 	}
   if (!$interests)
     $interests = array();
-  return $interests;
+  $allTheTags = array();
+  
+  $query = dbQuery("SELECT id,tag FROM tags");
+  while($row = mysql_fetch_array($query)) {
+    $allTheTags[$row['id']] = $row['tag'];
+  }
+  
+  foreach($interests as $anInterest) {
+    $interestsAsWords[] = $allTheTags[$anInterest];
+  }
+ // interests = array( 2 3 4)     = array( cat dog bitch)
+  return $interestsAsWords;
 
-  /* // Unserialise the interests
-  $unserialisedInterests = unserialize($interests);
-
-	for($i = 0; $i < count($unserialisedInterests); $i++) {
- 		while($unserialisedInterests[$i] < (count($unserialisedInterests) / 2)) {
-  		  echo "<li> unserialisedInterests[$i]";
-		}//while
-	}//for
-
-  // Begin the second column
-  echo "</td><td width=50% style=vertical-align: top>";
-   
-  // Print the second column
-  for($i = 0; $i < count($unserialisedInterests); $i++) {
-  		while($unserialisedInterests[$i] >= (count($unserialisedInterests) / 2)) {
-  			echo "<li> $unserialisedIinterests[$i]"; 
-
-		}//while
-	}//for */
 }
 
 ?>
