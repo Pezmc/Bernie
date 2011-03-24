@@ -27,12 +27,12 @@ if (!empty($_POST))
   		if (mysql_num_rows($result) == 0)
   		{
   			$noErrors = False;
-			$error_message = '<li> Sorry - this email does not seem to exist!';
+			$error_message = '<li> Sorry - this email does not seem to exist! ';
     		$error_message .= "Have you <a href='?p=signup'>signed up</a>?";
  		}
 
 		// Check whether the email address is valid
-		if(!validEmail($parents_email))
+		if(!validEmail($email))
 		{
     		$noErrors = False;
     		$error_message .= "<li> Please enter a correct email address"."\n";
@@ -44,8 +44,13 @@ if (!empty($_POST))
 	  	// Generate a random passkey
 	  $passkey = md5(rand());
 
+	  
+
+	  // Get the id of the person with this email
+		$id = $row['id'];
+
     // Insert the passkey into the database
-	  dbQuery("UPDATE users SET confirmation_code = '$passkey' WHERE id = {$row['id']} ");
+	  dbQuery("UPDATE users SET confirmation_code = '$passkey' WHERE id = '$id' ");
 
 	  // Send them an email with the passkey
 		$to = $email;
@@ -110,7 +115,7 @@ if (!empty($_POST))
     		// Put this password in the database
     		dbQuery("UPDATE users SET password = '$saltPassword' WHERE confirmation_code = '$passkey'");
 
-			$confirmation_message = "Your password has been reset.";
+			$confirmation_message = "Your password has been reset. ";
     		$confirmation_message = "Your new password is <b>".$password."</b>";
     		$PAGE['confirmation_message'] = nl2br(html_entity_decode($confirmation_message));
 		}
