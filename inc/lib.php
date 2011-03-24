@@ -296,15 +296,15 @@ function getNewSuggestion($category) {
 		// every tag inside every suggestion that is liked
 		//foreach($likedSuggestions as $thisID) { 
 		  //marks the tags id as already rated
-		  $alreadyRatedSuggestions[] = $thisID;
+		 
 		  // for every suggestion
 		  while($row = mysql_fetch_array($allSuggestions)) {		  	
 		    
-		    if (in_array($row['id'],$likedSuggestions) {		      		    
+		    if (in_array($row['id'],$likedSuggestions)) {
+		      $alreadyRatedSuggestions[] = $row['id'];    		    
 		      $theTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theTagsOfThisSuggestion) {
-	          $theTagsOfThisSuggestion = array();
-					  return 6;                  
+	          $theTagsOfThisSuggestion = array();              
 	       	}		               
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
@@ -314,33 +314,34 @@ function getNewSuggestion($category) {
 		//} //foreach
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		
+		//print_r($likedTags);
 
 		// gets all the suggestions again.
-   $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
-		foreach($dislikedSuggestions as $thisID) { 
-		  $alreadyRatedSuggestions[] = $thisID;
+   		$allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
+		//foreach($dislikedSuggestions as $thisID) { 
+		  
 			   
 		  while($row = mysql_fetch_array($allSuggestionsToDislike)) {		
-		    if ($row['id'] == $thisID ) { 
-				  
+		    if (in_array($row['id'],$dislikedSuggestions)) { 
+			  $alreadyRatedSuggestions[] = $row['id'];
 		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theUnTagsOfThisSuggestion) { 
 		        $theUnTagsOfThisSuggestion = array();						           
 		      } 
 		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {    
 					  $tc=0;
-					  $found == 0;
-					  while (found == 0) {
-					    if ($likedTags[$tc] == $aDislikedTag) {
-				        unset($likedTags[$tc]);
+					  $found = 0;
+					  while ($found == 0) {
+					   		if ($likedTags[$tc] == $aDislikedTag) {
+				        		unset($likedTags[$tc]);
 								$found = 1;
 							}
 							$tc++ ;
-							if ($tc == sizeof(likedTags))
+							if ($tc == sizeof($likedTags)-1)
 							  $found = 1;
 						}
 					  
-					} return 15;
+					}
 						
 									
 									// $removeThisTag = array_search("7", $likedTags);
@@ -353,7 +354,7 @@ function getNewSuggestion($category) {
 		      
 		    } // if
 		  } // while
-		}   // foreach 
+		//}   // foreach 
 	
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
@@ -362,30 +363,29 @@ function getNewSuggestion($category) {
         $potentialSuggestions = array();
 	$i=0;
 	$z=0;
-	return 12;
-  //while (((sizeof($potentialSuggestions))==0)||($z>20)); 
-	while (sizeof($potentialSuggestions)==0) {		
-    $chosenTag = $likedTags[array_rand($likedTags)];
-		
-    while($row = mysql_fetch_array($allSuggestions)) {
-      return 4;
-	    if ($row['category'] == $category) {
-	      $abc = @unserialize($row['tags']);	
-	      if(!$abc) {
-	        $abc = array();
-	      return 12;
-	      }
-	      else return 13;
-        foreach($abc as $someTag) { 		
-	      	if ($someTag==$chosenTag) {                          		
-		   			$potentialSuggestions[$i] = $row['id'];				
-		   			$i+= 1;
+	while (sizeof($potentialSuggestions)==0&&$z<20) {
+	    $chosenTags = array();		
+	    $chosenTags[] = $likedTags[array_rand($likedTags)];
+	    $chosenTags[] = $likedTags[array_rand($likedTags)];
+	    $chosenTags[] = $likedTags[array_rand($likedTags)];
+			
+	    while($row = mysql_fetch_array($allSuggestions)) {
+		    if ($row['category'] == $category) {
+		      $abc = @unserialize($row['tags']);	
+		      if(!$abc) {
+		        $abc = array();
+		      }
+		        foreach($abc as $someTag) { 		
+			      	if (in_array($someTag,$chosenTags)&&(empty($_SESSION['lastID'])||$row['id']!=$_SESSION['lastID'])) {                          		
+				   			$potentialSuggestions[] = $row['id'];				
 		 			}
-	      }
-	    }	     
-	  }
-	  $z++;
+		        }
+		    }	     
+		  }
+		  $z++;
 	}  
+	
+	print_r($potentialSuggestions);
 	
 	if($z>=20) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
@@ -395,18 +395,20 @@ function getNewSuggestion($category) {
 	}
 	
 	$notSeenPotentialSuggestions = array();	
-	foreach($potentialSuggestions as $aPotentialSuggestion) {
-	  $removeThisSuggestion = array_search($aPotentialSuggestion, $alreadyRatedSuggestions);
-	  if (!$removeThisSuggestion) {
+	foreach($potentialSuggestions as $aPotentialSuggestion) {  //$alreadyRatedSuggestions[] 
+	  if (!in_array($aPotentialSuggestion, $alreadyRatedSuggestions)) {
 	    $notSeenPotentialSuggestions[] = $aPotentialSuggestion;
 	  }
 	}
 	if (sizeof($notSeenPotentialSuggestions)==0) {
 	  $suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
+	  //echo "Chose one at random";
 	}
 	else {
-	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];	
+	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];
+	   //echo "Used logic";
 	}
+	$_SESSION['lastID'] = $suggestionID;
 	return $suggestionID;		
 }
 
