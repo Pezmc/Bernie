@@ -584,7 +584,8 @@ function giveInterests() {
 }
 
 function getLast3Liked(){
-  $query = dbQuery("SELECT liked FROM user_interests WHERE user_id = '$id'");
+  global $USER;
+  $query = dbQuery("SELECT liked FROM user_interests WHERE user_id= '".$USER['id']."'");
 
   while($row = mysql_fetch_array($query)){
     $allLikes = unserialize($row['liked']);
