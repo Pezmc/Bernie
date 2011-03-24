@@ -172,6 +172,7 @@ if (!empty($_POST)){
 		                          dob='$dob', 
 		                          password='saltedPassword'
              WHERE id=$id");
+             header("Location: ?p=profile");
     } // no errors
     else
     {
@@ -194,6 +195,7 @@ if (!empty($_POST)){
 		                          parents_name='$parents_name', 
 		                          dob='$dob'
              WHERE id=$id");
+      header("Location: ?p=profile");
     } // no errors
     else
     {
