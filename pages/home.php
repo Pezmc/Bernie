@@ -51,8 +51,25 @@ if(isLoggedIn()) {
   $extra = array();
   $extra['interests'] = giveInterests();
   // also needs to get the last three liked suggestions
-  // . . . . . 
-	$PAGE['content'] = parse("FrontPageLoggedIn.html", $extra);
+  $last3Liked = getLast3Liked();
+  $firstQuery = dbQuery("SELECT id,image_thumb,title,description,category FROM suggestions WHERE id='$last3Liked[0]'");
+  $row = mysql_fetch_row($firstQuery);
+
+  $secondQuery = dbQuery("SELECT id,image_thumb,title,description,category FROM suggestions WHERE id='$last3Liked[1]'");
+  $row2 = mysql_fetch_row($secondQuery);
+
+  $thirdQuery = dbQuery("SELECT id,image_thumb,title,description,category FROM suggestions WHERE id='$last3Liked[2]'");
+  $row3 = mysql_fetch_row($thirdQuery);
+  
+  $lastThreeLiked = array(
+  "altSugId1"=>"$last3Liked[0]","altImage1"=>"$row[1]","category1"=>strtolower("$row[4]"),
+  "altTitle1"=>"$row[2]","altDisc1"=>truncate("$row[3]", 85),
+  "altSugId1"=>"$last3Liked[0]","altImage1"=>"$row[1]","category1"=>strtolower("$row[4]"),
+  "altTitle1"=>"$row[2]","altDisc1"=>truncate("$row[3]", 85),
+  "altSugId1"=>"$last3Liked[0]","altImage1"=>"$row[1]","category1"=>strtolower("$row[4]"),
+  "altTitle1"=>"$row[2]","altDisc1"=>truncate("$row[3]", 85));
+
+	$PAGE['content'] = parse("FrontPageLoggedIn.html", $extra, $lastThreeLiked);
 } else {
 	$PAGE['content'] = parse("FrontPageLoggedOut.html", $extraContent);
 }

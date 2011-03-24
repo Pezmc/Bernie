@@ -583,4 +583,16 @@ function giveInterests() {
 
 }
 
+function getLast3Liked(){
+  $query = dbQuery("SELECT liked FROM user_interests WHERE user_id = '$id'");
+
+  while($row = mysql_fetch_array($query)){
+    $allLikes = unserialize($row['liked']);
+  }
+  if (!$allLikes)
+    $allLikes = array();
+   $last3 = array_splice($allLikes, -3, 3);
+  return $last3;
+}
+
 ?>
