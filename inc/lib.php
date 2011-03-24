@@ -424,6 +424,9 @@ function getAltSuggestions($mainSuggestionID) {
 	
 	while($row = mysql_fetch_array($mainSuggestion)) {
 		$mainTags = @unserialize($row['tags']);
+     if(!$mainTags) {
+		      $mainTags = array();
+     }
 		//$abc = array(1,2,3);
 		//return $abc;
   	}
