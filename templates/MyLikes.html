@@ -15,7 +15,9 @@
 				<tr>
 					<td class="like">
 
-					<table width="100%">
+					{foreach:biglist,i,onelike}
+                    
+          <table width="100%">
 						<tr>
 							<td width="103px">
 							<img src="" width="103px" height="103px" style="border: 1px solid #2F84B3">
@@ -23,7 +25,7 @@
 							<td class="like_item_desc">
 
 							<table><tr><td>
-							<div class="item_title_small">Item title here</div>
+							<div class="item_title_small">{onelike['title']}</div>
 							</td><td>
 							<img src="/Bernie/images/icon_web_small.png" alt="Category name">
 							</td></tr></table>
@@ -44,7 +46,7 @@
 							</td>
 						</tr>
 					</table>
-
+          {end}
 					</td>
 				</tr>
 
