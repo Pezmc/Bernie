@@ -20,10 +20,10 @@
 			<div id="bio">
 				
 				<!--  This image will change for each suggestion -->
-				<img src="simages/{sugImage}"></img>
+				<img src="simages/{sugImage}" style="border: 1px solid #2F84B3"></img>
 				
 				<!-- The part to the right of the image  -->
-				<div id="picturestuff">				
+				<div id="picturestuff" style="padding-bottom: 20px">				
 				
 					<!--  The title of the suggestion -->
 					<p class ="item_title"> {sugTitle} </p>
@@ -128,7 +128,7 @@
 				</div> <!-- End of the stuff to the right of the image  -->	
 						
 				<!-- The description of the suggestion  -->
-				<div id="biotext">
+				<div id="biotext" style="padding-top: 20px">
 					<p> <span class="subtitle"> {sugSubTitle}</p>
 					<p>  {sugDescription} </p>
 				</div> <!-- End of description  -->
@@ -253,9 +253,9 @@
 
         <form name="xxx" action="?p=bernie&c={category}" method="POST">
 	<input type="submit" class="bernie" value="Bernie more {ucwords(category)}">
-        <img src="http://server.pezcuckow.com/Bernie/images/bernie_head.png" />	
-	</form>
-
+	
+	  <img src="http://server.pezcuckow.com/Bernie/images/bernie_head.png" style="position:relative; top: 20px; left: 10px"/>	
+</form>
 	<!-- <img src="http://server.pezcuckow.com/Bernie/images/button_bernie.png" /> -->
 	
 	</div> <!-- End of footer  -->
