@@ -20,5 +20,6 @@ $PAGE['footer'] = '&copy; D1 - University of Manchester / d1@lists.pezcuckow.com
 $PAGE['error_message'] = "";
 $PAGE['error_id'] = 0;
 $PAGE['error_location'] = array(""); // used in the signup form 
+$PAGE['system_info'] = "";
 
 ?>
