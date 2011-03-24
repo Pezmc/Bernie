@@ -6,7 +6,7 @@
 <body>
 <h3> <?php echo $suggestion_id; ?></h3>
 <?php
-include("dp.php");
+//include("dp.php");
 dbQuery("SELECT * FROM comment WHERE suggestion_id='$suggestion_id' ORDER BY id DESC");
 while($row = mysql_fetch_array($sql)){
 ?>
