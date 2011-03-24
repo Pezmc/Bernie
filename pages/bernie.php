@@ -39,13 +39,13 @@ $altSuggestionIDs = getAltSuggestions($suggestionID);
 $suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
 $row = mysql_fetch_row($suggestion1);
 
-$suggestion2 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[0]'");
+$suggestion2 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[0]'");
 $row2 = mysql_fetch_row($suggestion2);
 
-$suggestion3 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[1]'");
+$suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[1]'");
 $row3 = mysql_fetch_row($suggestion3);
 
-$suggestion4 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[2]'");
+$suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[2]'");
 $row4 = mysql_fetch_row($suggestion4);
 
 
@@ -62,7 +62,7 @@ if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 	$comment = sanitise($_POST['comment'],1);
 		
 
-$badWords = array("/knob/", "/dick/", "/fuck(e)(d)/");
+$badWords = array("/knob/", "/dick(s)(ed)/", "/fuck(e)(d)/" , "/shit(s)/" , "/cunt(s)/" , "wanker(s)/" , "/arse(s)/" , "/tit(s)/" , "/bellend/" , "/twat(s)/" );
 $comment = preg_replace($badWords, '****' , $comment); 
 
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
