@@ -10,12 +10,12 @@ global $USER;
 	  $likedInterests = unserialize($row['tags']);  
 	}
 	
-	if (!$interests)
-    $interests = array();
-  $allTheTags = array();
-  
-  $liked = array();
-  $liked['likedInterests'] = $likedInterests;
+	if (!$likedInterests)
+    $likedInterests = array();
+
+ 
+  //$liked = array();
+  //$liked['likedInterests'] = $likedInterests;
 
 $PAGE['content'] = parse("includes/EditInterests.html", $liked);
 ?>
