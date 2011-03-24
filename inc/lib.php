@@ -150,6 +150,7 @@ function getDayOfBirth() {
 function getMonthOfBirth() {
         global $USER;
 	$monthOfBirth = date("m", $USER['dob']);
+	//echo $monthOfBirth;
 	return $monthOfBirth;
 }
 
@@ -594,6 +595,10 @@ function getLast3Liked(){
     $allLikes = array();
    $last3 = array_splice($allLikes, -3, 3);
   return $last3;
+}
+
+function checkTagLike($tagId){
+  
 }
 
 ?>

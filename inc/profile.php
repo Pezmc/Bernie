@@ -35,7 +35,7 @@ if (!empty($_POST)){
 	$dob = strtotime($dobString);
 	
 	// Other inputs from form
-	if (isset($_POST["gender"])) $gender = $_POST["gender"]; else $gender = "";
+	if (isset($_POST["gender"])) $gender = $_POST["gender"]; else $gender = "u";
 	if (isset($_POST["first_name"])) $first_name = sanitise($_POST["first_name"], 1); else $first_name = "";
 	if (isset($_POST["parents_name"])) $parents_name = sanitise($_POST["parents_name"], 1); else $parents_name = "";
 	if (isset($_POST["parents_email"])) $parents_email = sanitise($_POST["parents_email"], 1); else $parents_email = "";
@@ -165,13 +165,14 @@ if (!empty($_POST)){
 		{
 
   		// Update user information with new password
-		dbQuery("UPDATE users SET gender='$gender', 
+		dbQuery("UPDATE users SET gender='".($gender=="boy" ? "m" : ($gender=="girl" ? "f" : "u"))."', 
 		                          first_name='$first_name', 
 		                          parents_email='$parents_email', 
 		                          parents_name='$parents_name', 
 		                          dob='$dob', 
 		                          password='saltedPassword'
              WHERE id=$id");
+             header("Location: ?p=profile");
     } // no errors
     else
     {
@@ -188,12 +189,13 @@ if (!empty($_POST)){
 		{
 
   			// Update user information with new password
-			dbQuery("UPDATE users SET gender='$gender', 
+			dbQuery("UPDATE users SET gender='".($gender=="boy" ? "m" : ($gender=="girl" ? "f" : "u"))."',  
 		                          first_name='$first_name', 
 		                          parents_email='$parents_email', 
 		                          parents_name='$parents_name', 
 		                          dob='$dob'
              WHERE id=$id");
+      header("Location: ?p=profile");
     } // no errors
     else
     {
