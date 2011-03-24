@@ -564,7 +564,7 @@ function printColumns() {
 		$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
 
 	while($row = mysql_fetch_array($query)) {
-	  $interests = unserialize['tags'];
+	  $interests = unserialize($row['tags']);
 	}
   if (!$interests)
     $interests = array();
