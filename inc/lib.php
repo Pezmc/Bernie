@@ -252,9 +252,9 @@ function getNewSuggestion($category) {
   global $USER;
 	
   // Returns from the user interests database our users row.
-  $thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
+  $thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."' LIMIT 1");
 	
-  //creates an empty array which is edited three times. the code does work so far unless this is populated before
+  //creates an empty array which is edited three times.
   $likedTags = array();
 	
   // In order to know which suggestions to not suggest (if they've already been rated before).
@@ -315,7 +315,7 @@ function getNewSuggestion($category) {
 		// At this point we have an array filled with every tag from every suggestion they like. 
 		
 		// gets all the suggestions again.
-   /* $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
+   $allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
 		foreach($dislikedSuggestions as $thisID) { 
 		  $alreadyRatedSuggestions[] = $thisID;
 			   
@@ -352,7 +352,7 @@ function getNewSuggestion($category) {
 		      
 		    } // if
 		  } // while
-		}  */ // foreach 
+		}   // foreach 
 	
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.

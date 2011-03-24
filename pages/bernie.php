@@ -28,7 +28,7 @@ if(!empty($GLOBAL['id'])) {
 $altSuggestionIDs = getAltSuggestions($suggestionID);
 
 
-$suggestion1 = dbQuery("SELECT id,image_med,image_thumb,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
+$suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
 $row = mysql_fetch_row($suggestion1);
 
 $suggestion2 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[0]'");
