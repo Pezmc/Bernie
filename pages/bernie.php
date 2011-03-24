@@ -66,7 +66,7 @@ $badWords = array("/knob/", "/dick/", "/fuck/", "/shit/" , "/cunt/", "/cunts/" ,
 $comment = preg_replace($badWords, 'BERNIE' , $comment); 
 
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
-	$time = date("m/d/Y");
+	$time = date("F j, Y, g:i a");
 	
 	$comment = mysql_real_escape_string($comment);
 	$suggestion_id = mysql_real_escape_string($suggestion_id);
