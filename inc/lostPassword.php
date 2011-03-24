@@ -7,7 +7,47 @@
  *
 /*/
 
-if (!empty($_POST))
+
+if (isset($_GET['passkey']))	{
+		// Get the passkey
+		$passkey = sanitise($_GET['passkey']);
+
+		// Get the user with this passkey
+  		$result = dbQuery("SELECT id FROM users WHERE confirmation_code = '$passkey' LIMIT 1");
+
+  		// Create the variables to display errors
+		$noErrors = True;
+		$error_message = "";
+		$confirmation_message = "";
+
+  		// If this user doesn't exists
+  		if (mysql_num_rows($result) == 0)
+  		{
+			$noErrors = False;
+			$error_message .= "This user does not seem to exist!";
+  		}
+  	
+		// If there are no errors
+		if ( $noErrors )
+		{
+			// Generate a new password
+    		$password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
+    		$salt = randomStr(3);
+    		$saltPassword = md5(md5($password).$salt);
+
+    		// Put this password in the database
+    		dbQuery("UPDATE users SET password = '$saltPassword', `salt` = '$salt', `confirmation_code`='' WHERE confirmation_code = '$passkey'");
+
+			$confirmation_message = "<p style='font-size:16px'>Your password has been reset. ";
+    		$confirmation_message .= "Your new password is <b>".$password."</b>";
+    		$PAGE['confirmation_message'] = nl2br(html_entity_decode($confirmation_message));
+		}
+		else
+		{
+    		$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
+  		}
+}
+	else if (!empty($_POST))
 {
 	// If they have just entered they're email address send them a confirmation key
   	if ( isset($_POST['email']) )
@@ -84,46 +124,6 @@ if (!empty($_POST))
   		}
   	}
   	// Else if they have clicked on the link in the email
-	else if (isset($_GET['passkey']))
-	{
-		// Get the passkey
-		$passkey = sanitise($_GET['passkey']);
-
-		// Get the user with this passkey
-  		$result = dbQuery("SELECT id FROM users WHERE confirmation_code = '$passkey' LIMIT 1");
-
-  		// Create the variables to display errors
-		$noErrors = True;
-		$error_message = "";
-		$confirmation_message = "";
-
-  		// If this user doesn't exists
-  		if (mysql_num_rows($result) == 0)
-  		{
-			$noErrors = False;
-			$error_message .= "This user does not seem to exist!";
-  		}
-  	
-		// If there are no errors
-		if ( $noErrors )
-		{
-			// Generate a new password
-    		$password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
-    		$salt = randomStr(3);
-    		$saltPassword = md5(md5($password).$salt);
-
-    		// Put this password in the database
-    		dbQuery("UPDATE users SET password = '$saltPassword' WHERE confirmation_code = '$passkey'");
-
-			$confirmation_message = "Your password has been reset. ";
-    		$confirmation_message = "Your new password is <b>".$password."</b>";
-    		$PAGE['confirmation_message'] = nl2br(html_entity_decode($confirmation_message));
-		}
-		else
-		{
-    		$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
-  		}
-	}
 }
 
 ?>
