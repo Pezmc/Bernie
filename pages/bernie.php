@@ -19,6 +19,14 @@
 
 
 $category = $GLOBAL['category'];
+if(empty($category)) { 
+  switch(floor(rand(1,4))) {
+    case 0: $category = "books";
+    case 1: $category = "web";
+    case 2: $category = "music";
+    default: $category = "tv";
+  }
+}
 if(!empty($GLOBAL['id'])) {
   $suggestionID = $GLOBAL['id'];
 } else {
