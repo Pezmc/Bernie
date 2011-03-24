@@ -1,0 +1,136 @@
+p { margin: 0; padding: 0; }
+ul.hoof {
+margin: 0;
+padding: 0;
+}
+
+.green {color: green;}
+.orange {color: orange;}
+
+
+#container {
+	width:auto;
+	display:block;
+}
+
+#head {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid silver;
+}
+.highlight {
+	color: blue;
+	font-weight: bold;
+}
+
+#subcontainer {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	float: left;
+}
+#leftcontainer {
+	width: 475px;
+	float: left;
+	padding-right: 20px;
+	border-right: 1px solid silver;
+}
+#rightcontainer {
+	width: auto;
+	float: right;
+}
+
+#footer {
+	width: auto;	
+	float: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid silver;
+}
+
+#bio {
+	border-bottom: 1px solid silver;
+	padding-bottom: 20px;
+}
+
+#bio img {
+	width: 200px;
+	height: 200px;
+	float: left;
+}
+
+#bio #picturestuff{
+	width: 280px;
+	min-height: 200px;
+	float: left;
+	
+}
+
+#bio #picturestuff h3 { colour: red; } 
+
+#bio #biotext {
+	width: 100%;	
+}
+
+#biotext {	
+	margin-top: 20px;
+}
+
+#comments {
+	width: auto;
+	height: 300px;
+	padding-top: 20px;
+	float: left;
+}
+
+#purchase {
+	width: 200px;
+	height: auto;	
+	padding-bottom: 20px;
+	border-bottom: 1px solid silver;
+	float: right;
+
+}
+
+#list {
+	width: 100px;	
+	padding-top: 20px;
+	float: left;
+}
+
+#parcel {
+	width: 100px;
+	margin: 30px 62px 0 0;
+	float: right;
+}
+
+#similar {
+	width: 278px;
+	height: 450px;
+	padding-top: 20px;
+	float: right;
+	clear:right;
+
+}
+
+.altSug {
+	width: 277px;
+	height: 100px;
+	padding-top: 20px;
+	float: left;
+}
+
+.altPic {
+	width: 100px;
+	height: 100px;	
+	padding-top: 20px;
+	float: left;
+	
+}
+
+.altText {
+	width: 150px;
+	height: 100px;
+	padding-top: 20px;
+	float: left;
+}	
+

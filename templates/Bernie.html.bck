@@ -1,0 +1,195 @@
+<section class="text">
+
+<!-- The whole section container -->
+<div id="container">
+
+	<!-- The top two lines -->
+	<div id="head">
+		<!--  The category type will change -->
+		<p>You are now Bernying <b class="{category}">{strtoupper(category)}</b></p>
+		<p>Click on the {strtoupper(category)} tab or the button at the bottom of the page to Bernie more {strtoupper(category)}! </p>
+	</div> <!--  end of head -->
+	
+	<!-- The subcontainer for the left and right parts  -->
+	<div id="subcontainer">
+	
+		<!-- The left part, containing the suggestion and comments -->
+		<div id="leftcontainer">
+		
+			<!-- The top part, the suggestion -->
+			<div id="bio">
+				
+				<!--  This image will change for each suggestion -->
+				<img src={sugImage}></img>
+				
+				<!-- The part to the right of the image  -->
+				<div id="picturestuff">				
+				
+					<!--  The title of the suggestion -->
+					<p class ="item_title"> {sugTitle} </p>
+					<p class = orange>Rate this item:</p>
+					
+					<!--  The rating buttons, these will be interactive -->
+					<img style="WIDTH: 60px; HEIGHT: 60px"
+					src="/Bernie/images/rate_up.png" 
+					/>
+					<img style="WIDTH: 60px; HEIGHT: 60px"
+					src="/Bernie/images/rate_down.png"
+					/>
+					<!-- how do I fix this without <br> -->
+					<br> <br> <br>  <br>
+					<section class="text">
+					<ul class="key_info">
+	                                <li><b class="key_info">Author</b> {sugAuthor}</li>				
+	                                <li><b class="key_info">Year</b> {sugYear} </li>
+                                	{if:isOpen('web')} 		
+	                             	<li> <a href="{url}" target="_blank"> View website! </a> </li>
+
+	                               	{elseif:isOpen('music')} 
+	                               	<li> <a href="{url}" target="_blank"> View on Youtube! </a> </li>
+	                               	{else}	
+	                               	<li><b class="key_info">Length</b> {sugLength} </li>
+	                               	{end}
+	                                </ul>
+					</section>
+					
+				</div> <!-- End of the stuff to the right of the image  -->	
+						
+				<!-- The description of the suggestion  -->
+				<div id="biotext">
+					<p> <span class="subtitle"> {sugSubTitle}</p>
+					<p>  {sugDescription} </p>
+				</div> <!-- End of description  -->
+				
+			</div> <!--  End of the suggestion -->
+		
+		       	<!-- The comments  STEPHENS PART I THINK-->
+			<div id="comments">
+			<img src="http://server.pezcuckow.com/Bernie/images/comments.png"></img>
+			
+			<br><br>
+			<p> Add yours: </p>
+			<p><form name="" action="" method="">
+                              <table>
+                               <tr><td width="380px"><input type="text" class="comment" name="msg_message" placeholder="Write here" id="msg_message"/></td>
+                                   <td style="text-align:left"><input type="submit" class=medium name="msg_submit" value="POST" id="msg_submit"/></td>
+                               </tr>   
+                              </table>
+                           </form>
+                        </p>
+
+			</div> <!--  end of comments  -->
+			
+		
+		
+		</div> <!--  End of the left container -->
+		
+		<!-- Start of the right side, purchasing links and similar items  -->
+		<div id="rightcontainer">
+		
+			<!--  The purchasing links to ebay and amazon -->
+			<div id="purchase">
+						
+				<!-- The list of sites being linked  -->
+				<div id ="list">
+			
+					<img src="http://server.pezcuckow.com/Bernie/images/get_this_item.png"></img>
+					<br>
+					<ul class="hoof">
+								<!-- So this should link to an ebay search of suggestion title and category. EBAY SUPPORTS YOU JUST LINKING TO
+                                                                   "http://shop.ebay.co.uk/i.html?_nkw=" + sugestion title + category so thats nice -->
+								<li>  <a href="http://shop.ebay.co.uk/i.html?_nkw={sugTitle}+{ucwords(category)}" target="_blank">
+                                                                 <img src="http://server.pezcuckow.com/Bernie/images/ebay_logo.png" alt="Image of ebay" /> </a> </li>
+
+                                                                 <!-- http://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={sugTitle}+{ucwords(category)}&x=0&y=0 -->			
+								<li><a href="http://www.amazon.co.uk/s/re_sb_noss?url=search-alias%3Daps&field-keywords={sugTitle}+{ucwords(category)}&x=0&y=0 
+                                                                 " target="_blank">  <img src="http://server.pezcuckow.com/Bernie/images/amazon_logo.png" alt="Image of amazon" /> </a> </li>	
+					</ul>
+				</div> <!--  End of this list  -->
+				
+				<!--  Just an image of a parcel -->
+				<div id ="parcel">
+			        <img src="http://server.pezcuckow.com/Bernie/images/parcel.png" />
+				</div> <!-- end of parcel  -->
+				
+			</div> <!--  End of purchase section -->
+			
+			<!--  Similar items -->
+			<div id="similar">
+				<img src="http://server.pezcuckow.com/Bernie/images/similar_items.png" />
+				
+				<!-- 3 alternate suggestions, just repeated code three times -->
+				<div class ="altSug">				
+					<div class ="altPic">
+					<img src="{altImage1}" width="75px" height="75px" style="border: 1px solid #2F84B3" />						
+					</div>
+										
+					<div class ="altText">
+                                        	<div class ="altTitle">								
+						<text class="item_title_small"> {altTitle1} </text>
+						</div>
+                                        	<div class ="smallIcon">
+						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{smallAlt1}_small.png />
+						</div>
+					<p> {altDisc1} <br>
+					<a href="" alt="Go to this item!">Go to item!</a></p>					
+					</div>
+				</div>
+				
+				<div class ="altSug">				
+					<div class ="altPic">
+					<img src="{altImage2}" width="75px" height="75px" style="border: 1px solid #2F84B3" />					
+					</div>
+										
+					<div class ="altText">
+                                        	<div class ="altTitle">								
+						<text class="item_title_small"> {altTitle2} </text>
+						</div>
+                                        	<div class ="smallIcon">
+						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{smallAlt2}_small.png />
+						</div>					
+					<p>  {altDisc2} <br>
+					<a href="" alt="Go to this item!">Go to item!</a></p>
+					</div>
+				</div>
+				
+				<div class ="altSug">				
+					<div class ="altPic">
+                                        <img src="{altImage3}" width="75px" height="75px" style="border: 1px solid #2F84B3" />									
+					</div>
+										
+					<div class ="altText">
+                                        	<div class ="altTitle">								
+						<text class="item_title_small"> {altTitle3} </text>
+						</div>
+                                        	<div class ="smallIcon">
+						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{smallAlt3}_small.png />
+						</div>
+					<p>  {altDisc3} <br>
+					<a href="" alt="Go to this item!">Go to item!</a></p>					
+					</div>
+				</div>   <!--  End of the three alt suggestions -->
+			      
+			</div> <!-- End of similar items  -->
+			
+		</div> <!-- End of right container  -->
+		
+	</div> <!-- End of the subcontainer  -->
+	
+	<!-- The footer containing the image of the pig and a button to bernie the same category -->
+	<div id="bottom" align="center">
+
+        <form name="" action="" method="">
+	<input type="submit" class="bernie" value="Bernie more {ucwords(category)}">
+        <img src="http://server.pezcuckow.com/Bernie/images/bernie_head.png" />	
+	</form>
+
+	<!-- <img src="http://server.pezcuckow.com/Bernie/images/button_bernie.png" /> -->
+	
+	</div> <!-- End of footer  -->
+</div> <!--  End of main container  -->
+
+</section>
+
+<!-- <object type="application/x-shockwave-flash" data="http://www.youtube.com/v/nZCZ7M_lifM?f=videos&amp;d=AUZtJKg_DJaXnkBYzAS36AUO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata&amp;autoplay=1" width="100%" height="100%" id="mpf0_hmlvControl_001_video_player" style="visibility: visible; "><param name="wmode" value="transparent"><param name="allowFullScreen" value="true"></object> -->
+
