@@ -52,13 +52,13 @@ if(isLoggedIn()) {
   $extra['interests'] = giveInterests();
   // also needs to get the last three liked suggestions
   $last3Liked = getLast3Liked();
-  $firstQuery = dbQuery("SELECT id,image_thumb,title,description,category FROM suggestions WHERE id='$last3Liked[0]'");
+  $firstQuery = dbQuery("SELECT id,image_med,title,description,category FROM suggestions WHERE id='$last3Liked[0]'");
   $row = mysql_fetch_row($firstQuery);
 
-  $secondQuery = dbQuery("SELECT id,image_thumb,title,description,category FROM suggestions WHERE id='$last3Liked[1]'");
+  $secondQuery = dbQuery("SELECT id,image_med,title,description,category FROM suggestions WHERE id='$last3Liked[1]'");
   $row2 = mysql_fetch_row($secondQuery);
 
-  $thirdQuery = dbQuery("SELECT id,image_thumb,title,description,category FROM suggestions WHERE id='$last3Liked[2]'");
+  $thirdQuery = dbQuery("SELECT id,image_med,title,description,category FROM suggestions WHERE id='$last3Liked[2]'");
   $row3 = mysql_fetch_row($thirdQuery);
   
   $extra['lastThreeLiked'] = array(
