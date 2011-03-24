@@ -14,7 +14,7 @@ Here are your chosen interests. Click on the button below to edit them.
 <table>
 	<tr>
 		<td width="100%" style="vertical-align:top">
-
+    {if:empty(interests)}You have no interests!{end}
     {foreach:interests,i,value}
       {if:i <= 3}
       <li>{value}</li>
