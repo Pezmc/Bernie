@@ -16,8 +16,6 @@ Use this page to edit your profile information.
 			  <div id="errors"><ul>{error_message}</ul></div>
 		 	{end}
 
-		 	{if: isBoy()}neiuneiu{else}{end}
-
 			<table width="500px">
 				<tr>
 					<td>
@@ -29,12 +27,12 @@ Use this page to edit your profile information.
 					<table><tr>
 						<td>
 							<img src="/Bernie/images/boy.png" alt="I'm a boy" />
-							<input type="radio" name="gender" value="boy"{if:isBoy()} checked{else}{end}>
+							<input type="radio" name="gender" value="boy"{if: isBoy()} checked{end}>
 							boy
 						</td>
 						<td>
 							<img src="/Bernie/images/girl.png" alt="I'm a girl" />
-							<input type="radio" name="gender" value="girl"{if:isGirl()} checked{else}{end}>
+							<input type="radio" name="gender" value="girl"{if: isGirl()} checked{end}>
 							girl
 						</td>
 					</tr></table>
