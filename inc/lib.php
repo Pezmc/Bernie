@@ -127,6 +127,23 @@ function isGenderUnknown() {
 }
 
 /*
+ * Return true if given gender 
+ */
+function getGender($user, $gender) {
+	$result = dbQuery("SELECT * FROM users WHERE username = '$user'");
+	$row = mysql_fetch_array($result);
+
+	   if( $row['gender'] == $gender ) 
+	   {
+		   return true;
+		 } 
+		 else
+		 {
+		 	 return false;
+		 }
+}
+
+/*
  * Returns the dir of the currently running file... here becaue Soba sucks
  */
 function getCurrentDirectory() {
@@ -604,19 +621,6 @@ function checkTagLike($tagId){
   
 }
 
-/*
- * Is the comment author a girl?
- */
-function isCommentAuthorGirl($user) {
-	$result = dbQuery("SELECT gender FROM users WHERE username = '$user'");
-	$row = mysql_fetch_array($result);
-	
-	if($result) return false; //If we don't know guess they aren't
-    if($row['gender']=="f") {
-		return true;
-	} else {
-		return false;
-	}
-}
+
 
 ?>
