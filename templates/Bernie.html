@@ -139,14 +139,16 @@
 			<div id="comments">
 			<img src="http://server.pezcuckow.com/Bernie/images/comments.png"></img>
 			{foreach:comments,comment}
-				<table border='1'>
-				<tr><td><small>{comment['username']} said:</small>{comment['content']}<br /><small>on: {comment['time']}</small></td></tr>
+				<table>
+				<tr><td><img src="/Bernie/images/{if: isBoy()}boy.png{elseif: isGirl()}girl.png{else}{end}"><div class="{if: isBoy()}comment_boy{elseif: isGirl()}comment_girl{else}{end}">{comment['username']}</div> said:
+
+				<br />{comment['content']}<br />
+				<br /><div class="comment_time">{comment['time']}</div></td></tr>
 				</table>
 			{end}
 			<br><br>
 <form action="?{$_SERVER['QUERY_STRING']}" method="post">
 <div id="comments">
- <img src="http://server.pezcuckow.com/Bernie/images/comments.png"></img>
  <br><br>
  <p> Add yours: </p>
  <p>
