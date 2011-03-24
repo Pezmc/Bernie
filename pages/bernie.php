@@ -31,13 +31,13 @@ $altSuggestionIDs = getAltSuggestions($suggestionID);
 $suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
 $row = mysql_fetch_row($suggestion1);
 
-$suggestion2 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[0]'");
+$suggestion2 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[0]'");
 $row2 = mysql_fetch_row($suggestion2);
 
-$suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[1]'");
+$suggestion3 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[1]'");
 $row3 = mysql_fetch_row($suggestion3);
 
-$suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[2]'");
+$suggestion4 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[2]'");
 $row4 = mysql_fetch_row($suggestion4);
 
 
@@ -46,6 +46,30 @@ $suggestion= array("sugId"=>"$suggestionID","sugImage"=>"$row[1]","sugTitle"=>"$
 "altSugId1"=>"$altSuggestionIDs[0]","altImage1"=>"$row2[1]","altCategory1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 85),
 "altSugId2"=>"$altSuggestionIDs[1]","altImage2"=>"$row3[1]","altCategory2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
 "altSugId3"=>"$altSuggestionIDs[2]","altImage3"=>"$row4[1]","altCategory3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
+
+/////////////COMMMENTNSMNTS////////////////////
+if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
+
+
+	$comment = sanitise($_POST['comment'],1);
+	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
+	$time = date("m/d/Y");
+	
+	$comment = mysql_real_escape_string($comment);
+	$suggestion_id = mysql_real_escape_string($suggestion_id);
+	
+	$sql = dbQuery("INSERT INTO comments (`suggestion_id`, `username`, `content`, `time`) VALUES ('$suggestion_id', '{$USER['username']}', '$comment', '$time')");
+}
+
+
+$suggestion['comments'] = array();
+
+$sql = dbQuery("SELECT * FROM comments WHERE suggestion_id='$suggestionID' ORDER BY id DESC");
+if(mysql_num_rows($sql)>0) {
+	while($row = mysql_fetch_array($sql)){
+		$suggestion['comments'][] = array("username"=>$row['username'], "content"=>$row['content'], "time"=>$row['time']);
+	}
+}
 
 /* Pez - This could be done like
 

@@ -24,7 +24,6 @@ function parse($template, $extra = "") {
 	$t->config("rootDir", getCurrentDirectory());
 	$t->config("templateDir", "templates/");
 	$t->config("compileDir", "tmp/");
-	$t->config("cacheHTML", false);
 	if($CONFIG['debug']) {
 		$t->config("warning", true);
 		//$t->assign("random", time());

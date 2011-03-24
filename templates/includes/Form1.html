@@ -25,126 +25,125 @@
            http://web.enavu.com/tutorials/checking-username-availability-with-ajax-using-jquery/ 
            -->
 
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-      <script type="text/javascript">
+<!--      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>-->
+<!--      <script type="text/javascript">-->
 
-      $(document).ready(function() {  
-  
-        // Username can be this many characters long  
-        // var min_chars_username = 3; 
+<!--      $(document).ready(function() {  -->
+<!--  -->
+<!--        // Username can be this many characters long  -->
+<!--        // var min_chars_username = 3; -->
 
-        // Email can be this many characters long  
-        // var min_chars_email = 8; 
- 
-  
-        // Error messages  
-        var username_characters_error = 'The username has to be more than '+min_chars_username+' characters long.'; 
-        var email_characters_error = 'The email has to be more than '+min_chars_email+' characters long.';   
-        var checking_html = 'Checking...';  
-  
-        // When the submit button is clicked 
-        var validusername = true;
-        var validemail = true;
-        		  
-        // Check username
-        $('#signup_form').submit(function()
-        {  
+<!--        // Email can be this many characters long  -->
+<!--        // var min_chars_email = 8; -->
+<!-- -->
+<!--  -->
+<!--        // Error messages  -->
+<!--        var username_characters_error = 'The username has to be more than '+min_chars_username+' characters long.'; -->
+<!--        var email_characters_error = 'The email has to be more than '+min_chars_email+' characters long.';   -->
+<!--        var checking_html = 'Checking...';  -->
+<!--  -->
+<!--        // When the submit button is clicked -->
+<!--        var validusername = true;-->
+<!--        var validemail = true;-->
+<!--        		  -->
+<!--        // Check username-->
+<!--        $('#signup_form').submit(function()-->
+<!--        {  -->
 
-            // Run the character number check  
-            if($('#username').val().length < min_chars_username)
-            {  
-                // If it's below the minimum show username_characters_error text '  
-                $('#username_availability_result').html(username_characters_error).slideDown(); 
-                validusername = false; 
-            }
-            else
-            {  
-                //else show the cheking_text and run the function to check  
-                $('#username_availability_result').html(checking_html).slideDown();  
-                check_username_availability();  
-            }  
+<!--            // Run the character number check  -->
+<!--            if($('#username').val().length < min_chars_username)-->
+<!--            {  -->
+<!--                // If it's below the minimum show username_characters_error text '  -->
+<!--                $('#username_availability_result').html(username_characters_error).slideDown(); -->
+<!--                validusername = false; -->
+<!--            }-->
+<!--            else-->
+<!--            {  -->
+<!--                //else show the cheking_text and run the function to check  -->
+<!--                $('#username_availability_result').html(checking_html).slideDown();  -->
+<!--                check_username_availability();  -->
+<!--            }  -->
 
-            // Run the character number check  
-            if($('#email').val().length < min_chars_email)
-            {  
-                // If it's below the minimum showemail_characters_error text '  
-                $('#email_availability_result').html(email_characters_error).slideDown(); 
-                validemail = false;  
-            }
-            else
-            {  
-                //else show the cheking_text and run the function to check  
-                $('#email_availability_result').html(checking_html).slideDown();  
-                check_email_availability();  
-            } 
-						//alert(validemail);
-						//alert(validusername);
-            return (validemail&&validusername); 
-        });  
-      });  
-  
-			// Function to check username availability  
-			function check_username_availability()
-			{  
-        //get the username  
-        var username = $('#username').val();  
-  
-        // Use ajax to run the check  
-/*{!}*/        $.post("?p=ajaxusername", { username: username },  
-            function(result)
-            {  
-                // If the result is 1  
-                if(result == 1)
-                {  
-                    // Show that the username is available  
-                    // $('#username_availability_result').slideUp().html(username + ' is available').slideDown();
-                    $('#username').removeClass("error");   
-                    validusername = true;
-                }
-                else
-                {  
-                    validusername = false;
-                    // Show that the username is NOT available  
-                    $('#username_availability_result').slideUp().html(username + ' is not available').slideDown();  
-                    $('#username').addClass("error"); 
-                }  
-        });  
-      }  
+<!--            // Run the character number check  -->
+<!--            if($('#email').val().length < min_chars_email)-->
+<!--            {  -->
+<!--                // If it's below the minimum showemail_characters_error text '  -->
+<!--                $('#email_availability_result').html(email_characters_error).slideDown(); -->
+<!--                validemail = false;  -->
+<!--            }-->
+<!--            else-->
+<!--            {  -->
+<!--                //else show the cheking_text and run the function to check  -->
+<!--                $('#email_availability_result').html(checking_html).slideDown();  -->
+<!--                check_email_availability();  -->
+<!--            } -->
+<!--						//alert(validemail);-->
+<!--						//alert(validusername);-->
+<!--            return (validemail&&validusername); -->
+<!--        });  -->
+<!--      });  -->
+<!--  -->
+<!--			// Function to check username availability  -->
+<!--			function check_username_availability()-->
+<!--			{  -->
+<!--        //get the username  -->
+<!--        var username = $('#username').val();  -->
+<!--  -->
+<!--        // Use ajax to run the check  -->
+<!--/*{!}*/        $.post("?p=ajaxusername", { username: username },  -->
+<!--            function(result)-->
+<!--            {  -->
+<!--                // If the result is 1  -->
+<!--                if(result == 1)-->
+<!--                {  -->
+<!--                    // Show that the username is available  -->
+<!--                    // $('#username_availability_result').slideUp().html(username + ' is available').slideDown();-->
+<!--                    $('#username').removeClass("error");   -->
+<!--                    validusername = true;-->
+<!--                }-->
+<!--                else-->
+<!--                {  -->
+<!--                    validusername = false;-->
+<!--                    // Show that the username is NOT available  -->
+<!--                    $('#username_availability_result').slideUp().html(username + ' is not available').slideDown();  -->
+<!--                    $('#username').addClass("error"); -->
+<!--                }  -->
+<!--        });  -->
+<!--      }  -->
 
-      // Function to check email availability  
-			function check_email_availability()
-			{  
-        //get the username  
-        var email = $('#email').val();  
-  
-        // Use ajax to run the check  
-/*{!}*/        $.post("?p=ajaxemail", { email: email },  
-            function(result)
-            {  
-                // If the result is 1  
-                if(result == 1)
-                {  
-                    validemail = true;
-                    // Show that the username is available  
-                    // $('#email_availability_result').html(email + ' is available'); 
-                    $('#email').removeClass("error"); 
-                }
-                else
-                {  
-                		 validemail = false;
-                    // Show that the email is NOT available  
-                    $('#email_availability_result').html(email + ' is not available'); 
-                    $('#email').addClass("error");  
-                }  
-        });  
-      }  
+<!--      // Function to check email availability  -->
+<!--			function check_email_availability()-->
+<!--			{  -->
+<!--        //get the username  -->
+<!--        var email = $('#email').val();  -->
+<!--  -->
+<!--        // Use ajax to run the check  -->
+<!--/*{!}*/        $.post("?p=ajaxemail", { email: email },  -->
+<!--            function(result)-->
+<!--            {  -->
+<!--                // If the result is 1  -->
+<!--                if(result == 1)-->
+<!--                {  -->
+<!--                    validemail = true;-->
+<!--                    // Show that the username is available  -->
+<!--                    // $('#email_availability_result').html(email + ' is available'); -->
+<!--                    $('#email').removeClass("error"); -->
+<!--                }-->
+<!--                else-->
+<!--                {  -->
+<!--                		 validemail = false;-->
+<!--                    // Show that the email is NOT available  -->
+<!--                    $('#email_availability_result').html(email + ' is not available'); -->
+<!--                    $('#email').addClass("error");  -->
+<!--                }  -->
+<!--        });  -->
+<!--      }  -->
 
 			</script> 
 
 		 	<section class="text">
 
 		 	<!-- The form -->
-		 	<!-------------------- NEEDS PHP: form validation -------------------->
 		 	<!-- To display error, add class="error" as tag attribute -->
 		 	<form name="signup_form" id="signup_form" action="/Bernie/?p=signup&id=1" method="POST" onsubmit="">
 			
@@ -163,13 +162,13 @@
 					<!-- Boy or girl -->
 					<table><tr>
 						<td>
-							<img src="/Bernie/images/boy.png" alt="I'm a boy" />
+							<img src="/Bernie/images/boy.png" alt="I'm a boy"{if: !empty(error_message)} value=<?php if ($_POST['gender'] == 'm') echo "checked"; ?>{else}{end} />
 							<input type="radio" name="gender" value="m">
 							boy
 						</td>
 						<td>
 							<img src="/Bernie/images/girl.png" alt="I'm a girl" />
-							<input type="radio" name="gender" value="f">
+							<input type="radio" name="gender" value="f"{if: !empty(error_message)} value=<?php if ($_POST['gender'] == 'f') echo "checked"; ?>{else}{end} >
 							girl
 						</td>
 					</tr></table>
@@ -181,7 +180,7 @@
 					My name is
 					</td>
 					<td>
-					<input type="text" name="first_name" maxlength="32"{if: errorLocation("first_name")} class="error"{else}{end}>
+					<input type="text" name="first_name" maxlength="32"{if: errorLocation("first_name")} class="error"{else}{end}{if: !empty(error_message)} value=<?php echo $_POST['first_name']; ?>{else}{end}>
 					</td>
 				</tr>
 				<tr>
@@ -189,7 +188,7 @@
 					Choose a username
 					</td>
 					<td>
-					<input type="text" name="username" id="username" maxlength="32"{if: errorLocation("username")} class="error"{else}{end}>
+					<input type="text" name="username" id="username" maxlength="32"{if: errorLocation("username")} class="error"{else}{end}{if: !empty(error_message)} value=<?php echo $_POST['username']; ?>{else}{end}>
 					<div id='username_availability_result'></div> 
 					</td>
 				</tr>
@@ -199,9 +198,9 @@
 					</td>
 					<td class="date">
 
-					<input type="number" name="day" placeholder="DD" {if: errorLocation("day")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="31">
-					<input type="number" name="month" placeholder="MM" {if: errorLocation("month")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="12">
-					<input type="number" name="year" placeholder="YYYY" {if: errorLocation("year")}class="year_error"{else}class="year"{end} maxlength="4" min="1900" max="2011">
+					<input type="number" name="day" placeholder="DD" {if: errorLocation("day")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="31"{if: !empty(error_message)} value=<?php echo $_POST['day']; ?>{else}{end}>
+					<input type="number" name="month" placeholder="MM" {if: errorLocation("month")}class="date_error"{else}class="date"{end} maxlength="2" min="1" max="12"{if: !empty(error_message)} value=<?php echo $_POST['month']; ?>{else}{end}>
+					<input type="number" name="year" placeholder="YYYY" {if: errorLocation("year")}class="year_error"{else}class="year"{end} maxlength="4" min="1900" max="2011"{if: !empty(error_message)} value=<?php echo $_POST['year']; ?>{else}{end}>
 								
 					</td>
 				</tr>
@@ -210,7 +209,7 @@
 					Parent's name
 					</td>
 					<td>
-					<input type="text" name="parents_name" maxlength="32"{if: errorLocation("parents_name")} class="error"{end}>
+					<input type="text" name="parents_name" maxlength="32"{if: errorLocation("parents_name")} class="error"{end}{if: !empty(error_message)} value=<?php echo $_POST['parents_name']; ?>{else}{end}>
 					</td>
 				</tr>
 				<tr>
@@ -218,7 +217,7 @@
 					Parent's email
 					</td>
 					<td>
-					<input type="email" name="parents_email" id="email" maxlength="128"{if: errorLocation("parents_email")} class="error"{end}>
+					<input type="email" name="parents_email" id="email" maxlength="128"{if: errorLocation("parents_email")} class="error"{end}{if: !empty(error_message)} value=<?php echo $_POST['parents_email']; ?>{else}{end}>
 					<div id='email_availability_result'></div> 
 					</td>
 				</tr>
@@ -244,7 +243,7 @@
 			
     		<!-- The right side -->	
 			<section class="text">
-			Us explaining how it’s gonna go, parent’s email address to confirm, sending the passw etcetc. And how it’s meant to be used by parent + child together as a pair.
+			Bernie is meant to be enjoyed by parents and children alike. In order to be sure that parents are aware of the account creation, we are sending the password and verification link to the parent's e-mail address provided. 
 			</section>
 
 			<p />

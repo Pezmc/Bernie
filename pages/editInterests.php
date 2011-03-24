@@ -1,0 +1,3 @@
+<?php
+$PAGE['content'] = "FUCKCOPS";
+?>

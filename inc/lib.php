@@ -178,7 +178,6 @@ function isDisliked() {
     global $USER, $GLOBAL;
     $id = $GLOBAL['id'];
     $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='".$USER['id']."'");
-    /* $justTheUser = dbQuery("SELECT * FROM user_interests WHERE user_id ='$USER['id']'");*/
     while($row = mysql_fetch_array($justTheUser)) {
       $currentDislikes = @unserialize($row['disliked']);   
 			if(!$currentDislikes) {
@@ -247,45 +246,28 @@ function threeLetterWord() {
 }
 
 /* Given the category needed, this function returns a new suggestion ID */
-function getNewSuggestion($category) { /*
-
-Go through current users likes, adding every tag and every time it appears to an array 
-
-in the user_interests in the database which record the id's of likes and id's of dislikes. 
-
-It creats an array called likedTags. then goes through the users database.
-
-finds users row and gets all that shit
-
-for every liked "tag" add that X ammount of times to the likedTags array
-
-for every liked suggestion, extract the tags from that suggestion, and adds the tags to the likedTags array
-
-for every disliked suggestion, extract the tags from that suggestion, and for every tag, go through the likedTags array until it finds an occurance of that tag, if it does, it removes that []entry from the
-array */
+function getNewSuggestion($category) { 
 	
-	// The user is needed so we know which id to get from the first dbQuery
-	global $USER;
+ // The user is needed so we know which id to get from the first dbQuery
+  global $USER, $PAGE;
 	
-	// Returns from the user interests database our users row.
-	$thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."'");
+  // Returns from the user interests database our users row.
+  $thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."' LIMIT 1");
 	
-	// gets all the suggestions.
-	$allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+  //creates an empty array which is edited three times.
+  $likedTags = array();
 	
-	//creates an empty array which is edited three times. the code does work so far unless this is populated before
-	$likedTags = array(1,2,4);
+  // In order to know which suggestions to not suggest (if they've already been rated before).
+  $alreadyRatedSuggestions = array();
+  // This while loop only happens once.
+  while($row = mysql_fetch_array($thisUsersLikes)) {
 	
-	// In order to know which suggestions to not suggest (if they've already been rated before).
-	$alreadyRatedSuggestions = array();
-	// This while loop only happens once.
-        while($row = mysql_fetch_array($thisUsersLikes)) {
-	
-		/* The tags, liked suggestion and dcaisliked suggestions are taken from the users interests,
-		if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
-		$initialTags = @unserialize($row['tags']);
-		$likedSuggestions = @unserialize($row['liked']);
-		$dislikedSuggestions = @unserialize($row['disliked']);
+    /* The tags, liked suggestion and dcaisliked suggestions are taken from the users interests,
+  retur  if they cant be found ( the column was empty in the database) it just creates an empty array instead. */
+    $initialTags = @unserialize($row['tags']);
+    $likedSuggestions = @unserialize($row['liked']);
+    $dislikedSuggestions = @unserialize($row['disliked']);
+  }
 		if(!$initialTags) {
 		    $initialTags = array();
 		}
@@ -296,114 +278,142 @@ array */
 		    $dislikedSuggestions = array();
 		}
 		
+		
 		// The first loop which populates the likedTags array
 		// for every tag inside initial tags
 		foreach($initialTags as $thisID) {
 		  //Adds the id of this tag X times to the liked tags ( $times is the 'weighting')
 		  for ($times=1; $times<=3; $times++)
- 		 {
+ 		  {
  		   $likedTags[] = $thisID;
- 		 }		
-		}  
+ 		  }		
+	  }  
 		  
+		// gets all the suggestions.
+    $allSuggestions = dbQuery("SELECT id,tags FROM suggestions");
+		
 		// The second loop which populates the likedTags array
 		// every tag inside every suggestion that is liked
-		foreach($likedSuggestions as $thisID) { 
+		//foreach($likedSuggestions as $thisID) { 
 		  //marks the tags id as already rated
-		  $alreadyRatedSuggestions[] = $thisID;
+		 
 		  // for every suggestion
-		  while($row2 = mysql_fetch_array($allSuggestions)) {	
+		  while($row = mysql_fetch_array($allSuggestions)) {		  	
 		    
-		    if ($row2['id'] == $thisID ) {
-		      
-		    
-		      $theTagsOfThisSuggestion = @unserialize($row2[1]);
+		    if (in_array($row['id'],$likedSuggestions)) {
+		      $alreadyRatedSuggestions[] = $row['id'];    		    
+		      $theTagsOfThisSuggestion = @unserialize($row['tags']);
 		      if(!$theTagsOfThisSuggestion) {
-	                $theTagsOfThisSuggestion = array();                  
-	       	      }		
-          else return 4;      
+	          $theTagsOfThisSuggestion = array();              
+	       	}		               
 		      foreach($theTagsOfThisSuggestion as $aLikedTag) {
 		        $likedTags[] = $aLikedTag;
-			return 3;
-									 
-		      }
-		    }
-		  }
-		}
+		      } //foreach
+		    } //if
+		  } // while
+		//} //foreach
 		// At this point we have an array filled with every tag from every suggestion they like. 
+		
+		//print_r($likedTags);
+
+		// gets all the suggestions again.
+   		$allSuggestionsToDislike = dbQuery("SELECT id,tags FROM suggestions");
+		//foreach($dislikedSuggestions as $thisID) { 
 		  
-		foreach($dislikedSuggestions as $thisID) { 
-		$alreadyRatedSuggestions[] = $thisID;    
-		  while($row2 = mysql_fetch_array($allSuggestions)) {		
-		    if ($row2['id'] == $thisID ) { return 10;
-		      $theUnTagsOfThisSuggestion = @unserialize($row2['tags']);
-		      if(!$theUnTagsOfThisSuggestion) {
-		        $theUnTagsOfThisSuggestion = array();
-            
+			   
+		  while($row = mysql_fetch_array($allSuggestionsToDislike)) {		
+		    if (in_array($row['id'],$dislikedSuggestions)) { 
+			  $alreadyRatedSuggestions[] = $row['id'];
+		      $theUnTagsOfThisSuggestion = @unserialize($row['tags']);
+		      if(!$theUnTagsOfThisSuggestion) { 
+		        $theUnTagsOfThisSuggestion = array();						           
 		      } 
-		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {
-                  return 7;
-	                $removeThisTag = array_search($aDislikedTag, $likedTags);
-			if (!$removeThisTag) {}
-			else {
-			  unset($likedTags[$removeThisTag]);			   
-		        } //else
-		      } // foreach
+		      foreach($theUnTagsOfThisSuggestion as $aDislikedTag) {    
+					  $tc=0;
+					  $found = 0;
+					  while ($found == 0) {
+					   		if ($likedTags[$tc] == $aDislikedTag) {
+				        		unset($likedTags[$tc]);
+								$found = 1;
+							}
+							$tc++ ;
+							if ($tc == sizeof($likedTags)-1)
+							  $found = 1;
+						}
+					  
+					}
+						
+									
+									// $removeThisTag = array_search("7", $likedTags);
+			//if (!$removeThisTag) {return $theUnTagsOfThisSuggestion[0];}
+			//else {
+			 // unset($likedTags[$removeThisTag]);	
+				//return 11;		   
+		    //    }  //else 
+						
+		      
 		    } // if
 		  } // while
-		}  // foreach
-	} //  while
+		//}   // foreach 
+	
 
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
 	
-        $potentialSuggestions = array();
+  $potentialSuggestions = array();
 	$i=0;
 	$z=0;
+	$allSuggestions = dbQuery("SELECT id,tags,category FROM suggestions");	
+	while (sizeof($potentialSuggestions)==0&&$z<20) {
+	    $chosenTags = array();		
+	    $chosenTags[] = $likedTags[array_rand($likedTags)];
+	    $chosenTags[] = $likedTags[array_rand($likedTags)];
+	    $chosenTags[] = $likedTags[array_rand($likedTags)];
+	    
+	    while($row = mysql_fetch_array($allSuggestions)) {
+		    if (strtolower($row['category']) == strtolower($category)) {
+		      $abc = @unserialize($row['tags']);	
+		      if(!$abc) {
+		        $abc = array();
+		      }
+		      
+		        foreach($abc as $someTag) { 		
+			      	if (in_array($someTag,$chosenTags)&&(empty($_SESSION['lastID'])||$row['id']!=$_SESSION['lastID'])) {                          		
+				   			$potentialSuggestions[] = $row['id'];
+				   			$PAGE['system_info'] .= "I added ".$row['id'].' because of chosen tag '.$someTag.'<br />';				
+		 			}
+		        }
+		    }	     
+		  }
+		  $z++;
+	}  
 	
-	do {
-		$chosenTag = $likedTags[array_rand($likedTags)];
-
-		
-    
-    while($row3 = mysql_fetch_array($allSuggestions))
-		if ($row3['category'] == $category) {
-			$abc = @unserialize($row3['tags']);	
-			if(!$abc) {
-		          $abc = array();
-			}
-			foreach($abc as $someTag) {		
-				if ($someTag==$chosenTag) {                		
-					$potentialSuggestions[$i] = $row3['id'];				
-					$i+= 1;
-				}
-			}
-		}
-		$z++;
-	}
-	while (sizeof($potentialSuggestions)==0&&$z<50);
+	//echo "<!--".print_r($potentialSuggestions,true)."-->";
 	
-	if($z>=50) {
+	if($z>=20) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
       // $suggestion = dbQuery("SELECT id,tags FROM suggestions WHERE ORDER BY rand() LIMIT 1");
     $row = mysql_fetch_array($suggestion);
-    $potentialSuggestions[$i] = $row['id'];	
+    $potentialSuggestions[$i] = $row['id'];	 
 	}
 	
 	$notSeenPotentialSuggestions = array();	
-	foreach($potentialSuggestions as $aPotentialSuggestion) {
-	  $removeThisSuggestion = array_search($aPotentialSuggestion, $alreadyRatedSuggestions);
-	  if (!$removeThisSuggestion) {
+	foreach($potentialSuggestions as $aPotentialSuggestion) {  //$alreadyRatedSuggestions[] 
+	  if (!in_array($aPotentialSuggestion, $alreadyRatedSuggestions)) {
 	    $notSeenPotentialSuggestions[] = $aPotentialSuggestion;
 	  }
 	}
 	if (sizeof($notSeenPotentialSuggestions)==0) {
 	  $suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
+	  $PAGE['system_info'] .= "You have already seen all my potential suggestions, I grabbed one of them<br />";
+	  //echo "Chose one at random";
 	}
 	else {
-	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];	
+	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];
+	  $PAGE['system_info'] .= "I chose this suggestion with love<br />";
 	}
-	return $suggestionID;	
+	$_SESSION['lastID'] = $suggestionID;
+	return $suggestionID;		
 }
 
 
@@ -413,7 +423,9 @@ function getAltSuggestions($mainSuggestionID) {
 	
 	while($row = mysql_fetch_array($mainSuggestion)) {
 		$mainTags = @unserialize($row['tags']);
-  }
+		//$abc = array(1,2,3);
+		//return $abc;
+  	}
 	
 	$i = 0;	
 	$z = 0;
@@ -440,11 +452,11 @@ function getAltSuggestions($mainSuggestionID) {
 			  }
 		  }
       
-		$z++;
-    }
+		
+    } $z++;
 	}
-	while (sizeof($potentialSuggestions) < 3&&$z<20);
-	
+	//while (((sizeof($potentialSuggestions) < 3))||($z>2));
+	while ($z>2);
 	if(sizeof($potentialSuggestions)<3) {
 	   //echo "I cheated";
      $allSuggestions = dbQuery("SELECT id FROM suggestions ORDER BY rand() LIMIT 3");
@@ -472,7 +484,7 @@ function getAltSuggestions($mainSuggestionID) {
  * Returns true if the user is on the given signup step
  */
 function isOnStep($step) {
-        global $GLOBAL;
+    global $GLOBAL;
 	if($GLOBAL['id']==$step)
 		return true;
 }
@@ -544,35 +556,44 @@ function errorLocation($string) {
 /*
  * Prints the users chosen interests in two columns
  */
-function printColumns() {
+function giveInterests() {
 	global $USER;
 	
 	// First get the array containing the interests
 	$id = $USER['id'];
-	$interests = array();
-	$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
+		$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
+
 	while($row = mysql_fetch_array($query)) {
-	  $interests .= $row['tags'];
+	  $interests = unserialize($row['tags']);  
 	}
+  if (!$interests)
+    $interests = array();
+  $allTheTags = array();
+  
+  $query = dbQuery("SELECT id,tag FROM tags");
+  while($row = mysql_fetch_array($query)) {
+    $allTheTags[$row['id']] = $row['tag'];
+  }
+  $interestsAsWords = array();
+  foreach($interests as $anInterest) {
+    $interestsAsWords[] = $allTheTags[$anInterest];
+  }
+ // interests = array( 2 3 4)     = array( cat dog bitch)
+  return $interestsAsWords;
 
-  // Unserialise the interests
-  $unserialisedInterests = unserialize($interests);
+}
 
-	for($i = 0; $i < count($unserialisedInterests); $i++) {
- 		while($unserialisedInterests[$i] < (count($unserialisedInterests) / 2)) {
-  		  echo "<li> unserialisedInterests[$i]";
-		}//while
-	}//for
+function getLast3Liked(){
+  global $USER;
+  $query = dbQuery("SELECT liked FROM user_interests WHERE user_id= '".$USER['id']."'");
 
-  // Begin the second column
-  echo "</td><td width=50% style=vertical-align: top>";
-   
-  // Print the second column
-  for($i = 0; $i < count($unserialisedInterests); $i++) {
-  		while($unserialisedInterests[$i] >= (count($unserialisedInterests) / 2)) {
-  			echo "<li> $unserialisedIinterests[$i]";
-		}//while
-	}//for
+  while($row = mysql_fetch_array($query)){
+    $allLikes = unserialize($row['liked']);
+  }
+  if (!$allLikes)
+    $allLikes = array();
+   $last3 = array_splice($allLikes, -3, 3);
+  return $last3;
 }
 
 ?>

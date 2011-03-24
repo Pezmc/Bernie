@@ -49,7 +49,7 @@ switch($msg) {
 
   case "dislike":
     while($row = mysql_fetch_array($justTheUser)) {
-      if(!in_array($id, $currentLikes)) {
+      if(!in_array($id, $currentDislikes)) {
         $currentDislikes[] = $id;
         $newCurrentLikes = array();
         foreach($currentLikes as $thisLiked) {

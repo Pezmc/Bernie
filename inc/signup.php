@@ -36,6 +36,9 @@ if (!empty($_POST)){
 		$password = threeLetterWord()."-".threeLetterWord()."-".threeLetterWord();
 		$salt = randomStr(3);
 		$saltPassword = md5(md5($password).$salt);
+
+		// Generate a random confirmation code and hash it
+		$confirmation_code = md5(uniqid(rand()));
 		
 		// Other inputs from form
 		if (isset($_POST["gender"])) $gender = sanitise($_POST["gender"], 1); else $gender = "";
@@ -73,7 +76,7 @@ if (!empty($_POST)){
 		// Query the database to find a field that has the same value username as $username
 	  $resultuser = dbQuery('SELECT username FROM users WHERE username = "'. $username .'"');  
 	
-		if(mysql_num_rows($resultuser)>0)
+		if ( mysql_num_rows($resultuser)>0 )
 	  {
 			$noErrors = False;
 			$error_message .= "<li> This username seems to already exist! 
@@ -155,34 +158,61 @@ if (!empty($_POST)){
       array_push( $error_location, "parents_email" );
 		}
 
-		////////////////////// END ERROR CHECKING \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		////////////////////// END ERROR CHECKING \\\\\\\\\\\\\\\\\\\\
+
+	  ////////////////////// SEND AN EMAIL \\\\\\\\\\\\\\\\\\\\
+		// Modified from tutorial on http://www.phpeasystep.com/phptu/24.html
+
+		$ccto = 'elisehein@gmail.com';
+		$to = $parents_email.','.$ccto;
+		$subject = "Welcome to Bernie! Confirm your e-mail address";
+		$header = 'MIME-Version: 1.0' . "\r\n";
+		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$header .= "From: Bernie <bernie@server.pezcuckow.com>";
+
+		$message = "Thank you for registering on Bernie! You'll be sure to find new and interesting activities to do with your kids!"."\n\n";
+		$message .= "Use the details below to login to your account and begin bernying:"."\n";
+		$message .= "Username: ".$username."\n";
+		$message .= "Password: ".$password."\n\n";
+		$message .= "You will need to verify your account before you can log in. 
+								Click on the link below: "."\n";
+		$message .= "    http://server.pezcuckow.com/Bernie/?p=confirmation&passkey=$confirmation_code";
+
+		$emailSent = mail($to, $subject, nl2br($message), $header);
 		
-		// If no errors, update the database and go to the next page
-		if ($noErrors)
+		// If no errors and the email was sent, update the database and go to the next page
+		if ($noErrors && $emailSent)
 		{
 		  // Create the user
-		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt) 
+		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt, confirmation_code) 
 						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
-						         '".$parents_email."', '".$saltPassword."', '".$salt."')");
+						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
+		  $_SESSION['newid'] = mysql_insert_id();
+		 
 
-		  header("Location: /Bernie/?p=signup&id=2");
+		  header("Location: /Bernie/?p=signup&id=2"); die();
+		  $GLOBAL["id"] = 2;
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message)); 
 			$PAGE['error_location'] = $error_location;
-		}		
-  	         
+		}		   
   } // step 1
 
   else if ($GLOBAL['id']==2)
   {
 		// Get all of the checked interests from the form, as an array
-		if (isset($_POST["tags[]"])) {$chosenTags = $_POST['tags[]'];} else $chosenTags = array();
+		if (isset($_POST["tags"])) {$chosenTags = $_POST['tags'];} else $chosenTags = array();
 
 		// Serialise the array
 		$serialisedTags = serialize($chosenTags);
 
 		// Get the current user id
-		$user_id = $USER['id'];
+		if(empty($_SESSION['newid'])) {
+			$noErrors = False;
+			$error_message = "<li> Please fill in step one</li>"; 
+		} else {
+ 			$user_id = $_SESSION['newid'];
+ 		}
 	
 		// Check for errors (only one possible: 0 tags chosen)
 		$noErrors = True;
@@ -191,7 +221,7 @@ if (!empty($_POST)){
 		if ( count($chosenTags) < 1 )
 		{
 			$noErrors = False;
-			$error_message = "<li> Please choose at least one iterest!"; 
+			$error_message = "<li> Please choose at least one interest!"; 
 		}
 
 	  // If no errors, update the database and go to the next page
@@ -199,17 +229,15 @@ if (!empty($_POST)){
 		{
 		  // Insert the array into the db (table user_interests, col tags, where id = $USER['id'])
    		// At this step the user always exists as they have just finished step 1
-	   	dbQuery("UPDATE user_interests SET tags='$serialisedTags' WHERE user_id=$user_id");
-		  header("Location: /Bernie/?p=signup&id=3");
+	   	dbQuery("INSERT INTO user_interests (tags, user_id) 
+	   					 VALUES ('".$serialisedTags."', '".$user_id."')");
+		  header("Location: /Bernie/?p=signup&id=3"); exit;
+		  $GLOBAL['id'] = 3;
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
 		}	
   				         
   } // step 2 
-  else if ($GLOBAL['id']==3)
-  {
-  //mail(); Could this be called after step two?
-  }
 }
 
 ?>

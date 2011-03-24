@@ -267,6 +267,7 @@ vertical-align: top;
 /* The right side of the content area (front page and suggestion page) */
 td.right {
 padding-left: 12px;
+padding-right: 10px;
 vertical-align: top;
 }
 
@@ -585,4 +586,13 @@ font-size: 16px;
 /* Don\t show a border around an images with firefox */
 img {
 border: 0px;
+}
+
+/* Confirmation message after submitting lost password form */
+#confirmations {
+font-size: 11px;
+margin: 10px 0px 10px 0px;
+padding: 10px;
+text-align: left;
+line-height: 24px;
 }

@@ -1,0 +1,138 @@
+<table width="100%">
+    <tr>
+    		<td class="title">
+    		<!-- You are now bernying? -->
+                <p> You are now Bernying <FONT COLOR= "Blue"> {category} </FONT>
+                <br> Click on the {category} tab or the button on the bottom of the page to Bernie another {category}!</p>
+		<hr>  
+    		</td>    		
+    	</tr>
+    	<tr>
+	
+      <td class="left">  
+      <!-- Left content -->
+  
+      <section class="Suggestion">
+      <! -- Image of the suggested item on the left. On the right, the title, rate, author, year of release,
+      length -->
+        <table width="100%">
+          <tr>
+            <td>{suggestionsimage}</td>
+            <td>
+	      <table width="100%">
+	        <h1> <FONT COLOR="#008000">{Title of suggestion} by {author}</FONT></h1>
+	        <p> <FONT COLOR="#ff8000">  Rate this item </FONT> </p>
+		<br>	
+		<img src="/Bernie/images/rate_up.png" alt"Rate up" /> 
+		<img src="/Bernie/images/rate_down.png" alt"Rate down" />
+		<br>
+		<img src="/Bernie/images/hoof.png" alt"Hoof" />
+		<p> <FONT COLOR="#008000"> Author </FONT> {Author} </p>
+		<img src="/Bernie/images/hoof.png" alt"Hoof" />
+		<p> <FONT COLOR="#008000"> Year of release </FONT> {Year of release} </p>
+		<img src="/Bernie/images/hoof.png" alt"Hoof" />
+		<p> <FONT COLOR="#008000"> Length </FONT> {length} </p>
+              
+      </table>
+       
+	
+	
+      </td>
+      </tr>
+      </table>
+     
+      </section>  
+
+      <p />
+
+			<!-- To Bernie -->
+      <hr />
+      <table>
+      		<tr>
+      			<td>
+					<img src="/Bernie/images/hoof.png" alt="A green hoof" />
+					</td>
+					<td id="toBernie">
+					to Ber&middot;nie
+					</td>
+					<td id="toBernie">
+					<img src="/Bernie/images/speaker.png" alt="speaker" />
+					</td>
+					<td id="definition">
+					<i>-verb</i> &#124; witty explanation of what it means to Bernie.
+					</td>
+				</tr>
+			</table>      
+      <hr />
+
+			<p />
+
+			<section class="text">
+			Paragraph of text here to appeal to parents. Fusce ultricies ornare hendrerit. In ultrices odio adipiscing dolor varius sodales. Sed nec ligula justo, nec ornare odio. Cras quis metus justo. In ullamcorper nisi malesuada massa pharetra porttitor. Sed et sem ac leo vehicula sagittis. Sed justo odio, fringilla sit amet vulputate vel, dignissim nec tellus. Sed cursus malesuada malesuada.  We have four great categories to choose from:
+
+			<p />
+
+			<!-- Table of four categories -->
+			<table id="categories" cellspacing="20px">
+				<tr>
+					<td id="icon">
+					<img src="/Bernie/images/books_large.png" alt"Books" />
+					</td>
+					<td>
+					<b class="books">BOOKS</b> Nulla facilisi. Vivamus vitae risus metus. Integer in ornare urna. Fusce ut justo orci. Great selection!!
+					<p/>
+					</td>
+				</tr>
+				<tr>
+					<td id="icon">
+					<img src="/Bernie/images/tv_large.png" alt"TV" />
+					</td>
+					<td>
+					<b class="tv">TV</b> Nulla facilisi. Vivamus vitae risus metus. Integer in ornare urna. Fusce ut justo orci. Great selection!!
+					</td>
+				</tr>
+				<tr>
+					<td id="icon">
+					<img src="/Bernie/images/music_large.png" alt"Music" />
+					</td>
+					<td>
+					<b class="music">MUSIC</b> Nulla facilisi. Vivamus vitae risus metus. Integer in ornare urna. Fusce ut justo orci. Great selection!!
+					</td>
+				</tr>
+				<tr>
+					<td id="icon">
+					<img src="/Bernie/images/web_large.png" alt"Websites" />
+					</td>
+					<td>
+					<b class="web">WEBSITES</b> Nulla facilisi. Vivamus vitae risus metus. Integer in ornare urna. Great selection!!
+					</td>
+				</tr>
+			</table>
+			
+			</section>
+
+			<!-- End left content -->
+
+      </td>
+			<td class="right">
+			
+    		<!-- Right content -->
+
+			<!-- Why it's safe -->
+			
+    		<section class="text">
+			Either log in or <a href="" alt="Create an account!">create and account</a> to begin exploring!
+We require you to sign up for bladidadia purposes, but really, it’s super safe and we wont use your information for evil.
+			</section>
+
+			<hr />
+			<p />
+
+			<!-- Tip from Bernie -->
+			<section id="tip">
+			Brush your teeth before bedtime!
+			</section>
+			
+    		</td>
+    	</tr>
+	</table>

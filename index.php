@@ -16,8 +16,8 @@
 
 /* Show us errors */
 ini_set('display_errors', 1); 
-ini_set('log_errors', 1); 
-error_reporting(E_ALL);
+ini_set('log_errors', 0); 
+error_reporting(E_ERROR);
 ini_set('mysql.connect_timeout', 10);
 
 /* Allow tracking sessions (logins) */
@@ -48,6 +48,8 @@ if(!isLoggedIn()) {
 		case "demopegparse":
 		case "ajaxusername":
 		case "ajaxemail":
+		case "lostpassword":
+		case "confirmation":
 		break;
 		default:
 			$GLOBAL['page']="home"; //Send them home	
@@ -79,7 +81,8 @@ switch ($GLOBAL['page']) {
 	case "profile": include_once('pages/profile.php'); break;	
 	case "lostpassword": include_once('pages/lostPassword.php'); break;
 	case "signup": include_once('pages/signup.php'); break;
-        case "editInterests": include_once('pages/editInterests.php'); break;
+  case "editinterests": include_once('pages/editInterests.php'); break;
+  case "confirmation": include_once('pages/confirmation.php'); break;
 	case "demopegparse": include_once('pages/demoPegParse.php'); break;
 	default: include_once('pages/home.php'); break;
 }

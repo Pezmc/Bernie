@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>{name}: {title}</title>
+  
+  <link rel="stylesheet" type="text/css" href="/Bernie/css/master.css">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <script>
+    // View category name on mouseover
+		function catMouseover (image, id)
+		{
+			var element = document.getElementById(id);
+			element.style.backgroundImage = "url("+image+")";
+		}
+
+    // Clear category name on mouseout
+		function catMouseout (id)
+		{
+			var element = document.getElementById(id);
+			element.style.backgroundImage = "";
+		}
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+
+  <!-- The header area starts here -->
+  <header>
+  <section class="header">
+
+  <!-- Code for header area here (width and padding has been applied) -->
+  
+  <!-- If user logged in -->
+  {if:isLoggedIn()}
+  	{include:includes/header_loggedin.html}
+  {else}
+  	{include:includes/header_loggedout.html}
+  {end}
+ 
+  </section>
+  </header>
+  <!-- End of the header area -->
+
+  <!-- The content area starts here -->
+  <section class="content">
+  
+  <!-- Code for content area here (width and padding has been applied) -->
+  {content}
+  {include:includes/Bernie.html}
+  </section>
+  <!-- End of content area -->
+
+  <!-- Begin footer -->
+  <footer>
+  
+  <!-- The footer class makes the background img appear -->
+  <section class="footer">
+  {footer}
+  </section>
+  
+  </footer>
+  <!-- End footer -->
+</body>
+</html>

@@ -1,7 +1,12 @@
 p { margin: 0; padding: 0; }
+ul.hoof {
+margin: 0;
+padding: 0;
+}
 
-.green {color: #32AA1B;}
-.orange {color: #C25B3F; padding: 7px 0px 7px 0px; font-size: 13px; font-weight: normal}
+.green {color: green;}
+.orange {color: orange;}
+
 
 #container {
 	width:auto;
@@ -11,7 +16,7 @@ p { margin: 0; padding: 0; }
 #head {
 	padding-top: 10px;
 	padding-bottom: 10px;
-	border-bottom: 1px solid #CBDBC4;
+	border-bottom: 1px solid silver;
 }
 .highlight {
 	color: blue;
@@ -27,24 +32,23 @@ p { margin: 0; padding: 0; }
 	width: 475px;
 	float: left;
 	padding-right: 20px;
-	border-right: 1px solid #CBDBC4;
+	border-right: 1px solid silver;
 }
 #rightcontainer {
-	width: 280px;
-        padding-left: 20px;
-	float: left;
+	width: auto;
+	float: right;
 }
 
 #footer {
-	width: 600px;	
+	width: auto;	
 	float: left;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	border-top: 1px solid #CBDBC4;
+	border-top: 1px solid silver;
 }
 
 #bio {
-	border-bottom: 1px solid #CBDBC4;
+	border-bottom: 1px solid silver;
 	padding-bottom: 20px;
 }
 
@@ -55,13 +59,13 @@ p { margin: 0; padding: 0; }
 }
 
 #bio #picturestuff{
-	width: 260px;
-        padding-left: 10px;
+	width: 280px;
 	min-height: 200px;
-        overflow: visible;
 	float: left;
 	
 }
+
+#bio #picturestuff h3 { colour: red; } 
 
 #bio #biotext {
 	width: 100%;	
@@ -79,65 +83,54 @@ p { margin: 0; padding: 0; }
 }
 
 #purchase {
-	width: 280px;
+	width: 200px;
 	height: auto;	
 	padding-bottom: 20px;
-        border-bottom: 1px solid #CBDBC4;	
-	float: left;
+	border-bottom: 1px solid silver;
+	float: right;
 
 }
 
 #list {
-	width: 90px;	
+	width: 100px;	
 	padding-top: 20px;
 	float: left;
 }
 
 #parcel {
-	width: 90px;
+	width: 100px;
 	margin: 30px 62px 0 0;
 	float: right;
 }
 
 #similar {
 	width: 278px;
-	height: auto;
+	height: 450px;
 	padding-top: 20px;
-	float: right;	
+	float: right;
+	clear:right;
+
 }
 
 .altSug {
 	width: 277px;
-	height: auto;
+	height: 100px;
 	padding-top: 20px;
 	float: left;
 }
 
 .altPic {
-	width: 80px;
-	height: 80px;	
+	width: 100px;
+	height: 100px;	
 	padding-top: 20px;
 	float: left;
 	
 }
 
-#similar .altText {
-	width: 170px;
-	height: auto;
+.altText {
+	width: 150px;
+	height: 100px;
 	padding-top: 20px;
-        padding-left: 10px;
 	float: left;
 }	
 
-#similar .altText .altTitle {
-	width: 139px;
-	height: auto;	
-	float: left;
-}
-
-#similar .altText .smallIcon {
-	width: 20px;
-	height: auto;
-	padding-left: 10px;
-	float: left;
-}
