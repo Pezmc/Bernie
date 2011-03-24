@@ -23,4 +23,6 @@ $GLOBAL['page'] = tidy((isset($_GET['p']) ? $_GET['p'] : ""),2);
 $GLOBAL['category'] = tidy((isset($_GET['c']) ? $_GET['c'] : ""),2);
 $GLOBAL['id'] = tidy((isset($_GET['id']) ? $_GET['id'] : ""),2);
 
+$GLOBAL['liked_interests'] = array();
+
 ?>

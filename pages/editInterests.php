@@ -13,6 +13,7 @@ global $USER;
 	if (!$likedInterests)
     $likedInterests = array();
 
+$GLOBAL['liked_interests'] = $likedInterests;
  
   //$liked = array();
   //$liked['likedInterests'] = $likedInterests;
