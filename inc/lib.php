@@ -564,8 +564,7 @@ function giveInterests() {
 		$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
 
 	while($row = mysql_fetch_array($query)) {
-	  $interests = unserialize($row['tags']);
-  $interests = array(12,13,18);
+	  $interests = unserialize($row['tags']);  
 	}
   if (!$interests)
     $interests = array();
