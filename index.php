@@ -12,6 +12,8 @@
  *
 /*/
 
+mail("pegpro@gmail.com", "Test", "Test");
+
 /* ===== God like code from here on in ===== */
 
 /* Show us errors */
