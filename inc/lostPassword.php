@@ -45,7 +45,7 @@ if (!empty($_POST))
 	  $passkey = md5(rand());
 
     // Insert the passkey into the database
-	  dbQuery("UPDATE users SET confirmation_code = '$passkey' WHERE id = '$row['id']'");
+	  dbQuery("UPDATE users SET confirmation_code = '$passkey' WHERE id = {$row['id']} ");
 
 	  // Send them an email with the passkey
 		$to = $email;
@@ -96,7 +96,7 @@ if (!empty($_POST))
   		if (mysql_num_rows($result) == 0)
   		{
 			$noErrors = False;
-			$error_message .= "This user does not seem to exist!"
+			$error_message .= "This user does not seem to exist!";
   		}
   	
 		// If there are no errors
