@@ -38,8 +38,12 @@ if (isset($_GET['passkey']))	{
     		// Put this password in the database
     		dbQuery("UPDATE users SET password = '$saltPassword', `salt` = '$salt', `confirmation_code`='' WHERE confirmation_code = '$passkey'");
 
-			$confirmation_message = "<p style='font-size:16px'>Your password has been reset. ";
-    		$confirmation_message .= "Your new password is <b>".$password."</b>";
+    		$res = dbQuery("SELECT * FROM users WHERE confirmation_code = '$passkey' ");
+    		$thisUser = mysql_fetch_array($res);
+
+			$confirmation_message = "<p style='font-size:16px'>Your password has been reset. <br />";
+    		$confirmation_message .= "Your new password is <b>".$password."</b><br />";
+    		$confirmation_message .= "Your username is ".$thisUser['username'];
     		$PAGE['confirmation_message'] = nl2br(html_entity_decode($confirmation_message));
 		}
 		else

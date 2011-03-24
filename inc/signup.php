@@ -180,7 +180,7 @@ if (!empty($_POST)){
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$header .= "From: Bernie <bernie@server.pezcuckow.com>";
 
-		$message = "Thank you for registering on Bernie! You'll be sure to find new and interesting activities to do with your kids!"."\n\n";
+		$message = "Thank you for registering on Bernie, ".$parents_name."! You'll be sure to find new and interesting activities to do with your kids!"."\n\n";
 		$message .= "Use the details below to login to your account and begin bernying:"."\n";
 		$message .= "Username: ".$username."\n";
 		$message .= "Password: ".$password."\n\n";
