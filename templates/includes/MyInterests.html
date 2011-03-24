@@ -9,14 +9,22 @@ Here are your chosen interests. Click on the button below to edit them.
 <!-- Make a loop so that it organises the list into two columns -->
 <!-------------------- NEEDS LOGIC: loop through all of  the user's chosen interests -------------------->
 <!-- Right now displays 7 for testing purposes -->
-<ul class="interests">
+<ul class="interests" >
 
-<table>
+<table style="margin-bottom: 20px">
 	<tr>
-		<td width="100%" style="vertical-align:top">
+		<td width="50%" style="vertical-align:top">
     {if:empty(interests)}You have no interests!{end}
     {foreach:interests,i,value}
-      {if:i <= 28}
+      {if:i % 2 == 0}
+      <li>{value}</li>
+      {end}
+    {end}
+			
+		</td>
+			<td width="50%" style="vertical-align:top">
+    {foreach:interests,i,value}
+      {if:i % 2 == 1}
       <li>{value}</li>
       {end}
     {end}
@@ -31,4 +39,8 @@ Here are your chosen interests. Click on the button below to edit them.
 
 <!-- Not sure if this is supposed to be a type="submit" or just a link. 
 		 Type=submit for now for convenienve -->
+
 <input type="submit" class="large" value="EDIT INTERESTS" onclick="location.href=' />
+		 <form action="/Bernie/?p=editInterests" method="POST">
+<input type="submit" class="large" value="EDIT INTERESTS" /> </form>
+

@@ -19,6 +19,14 @@
 
 
 $category = $GLOBAL['category'];
+if(empty($category)) { 
+  switch(floor(rand(1,4))) {
+    case 0: $category = "books";
+    case 1: $category = "web";
+    case 2: $category = "music";
+    default: $category = "tv";
+  }
+}
 if(!empty($GLOBAL['id'])) {
   $suggestionID = $GLOBAL['id'];
 } else {
@@ -31,13 +39,13 @@ $altSuggestionIDs = getAltSuggestions($suggestionID);
 $suggestion1 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,url FROM suggestions WHERE id='$suggestionID'");
 $row = mysql_fetch_row($suggestion1);
 
-$suggestion2 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[0]'");
+$suggestion2 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[0]'");
 $row2 = mysql_fetch_row($suggestion2);
 
-$suggestion3 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[1]'");
+$suggestion3 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[1]'");
 $row3 = mysql_fetch_row($suggestion3);
 
-$suggestion4 = dbQuery("SELECT id,image_thumb,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[2]'");
+$suggestion4 = dbQuery("SELECT id,image_med,title,author,release_year,length,summary,description,category FROM suggestions WHERE id='$altSuggestionIDs[2]'");
 $row4 = mysql_fetch_row($suggestion4);
 
 
@@ -52,6 +60,11 @@ if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 
 
 	$comment = sanitise($_POST['comment'],1);
+		
+
+$badWords = array("/knob/", "/dick/", "/fuck/" , "/shit/" , "/cunt(s)/" , "/wanker/" , "/arse/" , "/tit/" , "/bellend/" , "/twat/" );
+$comment = preg_replace($badWords, '****' , $comment); 
+
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
 	$time = date("m/d/Y");
 	
@@ -84,5 +97,8 @@ etc...
 
 $PAGE['title'] = " has suggested you, '$row[2]'";
 $PAGE['content'] = parse("Bernie.html", $suggestion);
+
+/* swear filter */
+
 
  ?>

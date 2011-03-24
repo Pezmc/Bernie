@@ -150,6 +150,7 @@ function getDayOfBirth() {
 function getMonthOfBirth() {
         global $USER;
 	$monthOfBirth = date("m", $USER['dob']);
+	//echo $monthOfBirth;
 	return $monthOfBirth;
 }
 

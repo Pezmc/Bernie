@@ -1,7 +1,7 @@
 p { margin: 0; padding: 0; }
 
 .green {color: #32AA1B;}
-.orange {color: #C25B3F; padding: 7px 0px 7px 0px}
+.orange {color: #C25B3F; padding: 7px 0px 7px 0px; font-size: 13px; font-weight: normal}
 
 #container {
 	width:auto;

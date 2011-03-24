@@ -1,33 +1,30 @@
-<section class="text">
+<table width="100%">
+	<tr>
+		<td colspan="2">
+		<section class="text">
+		<!-- Begin the item information -->
 
-<!-- The whole section container -->
-<div id="container">
-
-	<!-- The top two lines -->
-	<div id="head">
-		<!--  The category type will change -->
 		<p>You are now Bernying <b class="{category}">{strtoupper(category)}</b></p>
-		<p>Click on the {strtoupper(category)} tab or the button at the bottom of the page to Bernie more {strtoupper(category)}! </p>
-	</div> <!--  end of head -->
-	
-	<!-- The subcontainer for the left and right parts  -->
-	<div id="subcontainer">
-	
-		<!-- The left part, containing the suggestion and comments -->
-		<div id="leftcontainer">
-		
-			<!-- The top part, the suggestion -->
-			<div id="bio">
-				
-				<!--  This image will change for each suggestion -->
+		<p>Click on the {strtoupper(category)} tab or the button at the bottom of the page to Bernie more {strtoupper(category)}! 
+
+		<hr />
+
+		</td>
+	</tr>
+	<tr>
+	<td width="500px" class="right" style="border-right: 1px solid #cbdbc4">
+		<!-- Begin table for image and key information -->
+		<table style="padding-bottom: 15px; padding-top: 20px">
+			<tr>
+				<td width="205px">
 				<img src="simages/{sugImage}" style="border: 1px solid #2F84B3"></img>
-				
-				<!-- The part to the right of the image  -->
-				<div id="picturestuff" style="padding-bottom: 20px">				
-				
-					<!--  The title of the suggestion -->
-					<p class ="item_title"> {sugTitle} </p>
-					<p class = "orange"> Rate this item:</p>
+				</td>
+				<td style="vertical-align: top">
+
+				<!--  The title of the suggestion -->
+				<span class ="item_title"> {sugTitle} </span>
+				<br />
+				<span class="orange"> Rate this item:</span>
 					
 					<!--  The rating buttons, these will be interactive 
 					when mouseover, will change to highlighted.
@@ -91,7 +88,7 @@
 					}
 					
 					</script>
-
+<br />
 					{if:isLiked()}
           <img id="likeButton" style="WIDTH: 60px; HEIGHT: 60px; cursor: pointer" 
 					src="http://server.pezcuckow.com/Bernie/images/rate_up_done.png" />          
@@ -109,7 +106,7 @@
 					
           
 					<!-- how do I fix this without <br> -->
-					<br> <br> <br>  <br>
+					<p />
 					<section class="text">
 					<ul class="key_info">
 	                                <li><b class="key_info">Author</b> {sugAuthor}</li>				
@@ -124,130 +121,137 @@
 	                               	{end}
 	                                </ul>
 					</section>
-					
-				</div> <!-- End of the stuff to the right of the image  -->	
-						
-				<!-- The description of the suggestion  -->
-				<div id="biotext" style="padding-top: 20px; margin-bottom: 20px">
-					<p> <span class="subtitle"> {sugSubTitle}</p>
-					<p>  {sugDescription} </p>
-				</div> <!-- End of description  -->
-				
-			</div> <!--  End of the suggestion -->
+				</td>
+			</tr>
+		</table>
+
+		<p />
+
+		<!-- Begin the description section -->
+		<section class="text">
+		<span class="subtitle"> {sugSubTitle}</span>
+		<p style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #cbdbc4">  {sugDescription} </p>
+		</section>
 		
-		       <!-- Comments here -->
-		       {include:includes/Comments.html}
-			
-		
-		
-		</div> <!--  End of the left container -->
-		
-		<!-- Start of the right side, purchasing links and similar items  -->
-		<div id="rightcontainer">
-		
-			<!--  The purchasing links to ebay and amazon -->
-			<div id="purchase">
-						
-				<!-- The list of sites being linked  -->
-				<div id ="list">
-			
-					<img src="http://server.pezcuckow.com/Bernie/images/get_this_item.png"></img>
-					<br>
-					<ul class="hoof">
-								<!-- So this should link to an ebay search of suggestion title and category. EBAY SUPPORTS YOU JUST LINKING TO
+		<!-- Begin comments section -->
+		<span class="padding-top: 20px; ">
+		{include:includes/Comments.html}
+		</span>
+
+		</section>
+		</td>
+		<td class="right" style="padding-top: 15px">
+
+		<!-- Get this item -->
+		<img src="http://server.pezcuckow.com/Bernie/images/get_this_item.png">
+		<p>
+
+
+		<table style="padding-bottom: 15px"><tr><td>
+		<ul class="hoof">
+		<!-- So this should link to an ebay search of suggestion title and category. EBAY SUPPORTS YOU JUST LINKING TO
                                                                    "http://shop.ebay.co.uk/i.html?_nkw=" + sugestion title + category so thats nice -->
-								<li>  <a href="http://shop.ebay.co.uk/i.html?_nkw={sugTitle}+{ucwords(category)}" target="_blank">
-                                                                 <img src="http://server.pezcuckow.com/Bernie/images/ebay_logo.png" alt="Image of ebay" /> </a> </li>
+			<li>  <a href="http://shop.ebay.co.uk/i.html?_nkw={sugTitle}+{ucwords(category)}" target="_blank">
+            <img src="http://server.pezcuckow.com/Bernie/images/ebay_logo.png" alt="Image of ebay" /> </a> </li>
 
-                                                                 <!-- http://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={sugTitle}+{ucwords(category)}&x=0&y=0 -->			
-								<li><a href="http://www.amazon.co.uk/s/re_sb_noss?url=search-alias%3Daps&field-keywords={sugTitle}+{ucwords(category)}&x=0&y=0 
-                                                                 " target="_blank">  <img src="http://server.pezcuckow.com/Bernie/images/amazon_logo.png" alt="Image of amazon" /> </a> </li>	
-					</ul>
-				</div> <!--  End of this list  -->
-				
-				<!--  Just an image of a parcel -->
-				<div id ="parcel">
-			        <img src="http://server.pezcuckow.com/Bernie/images/parcel.png" />
-				</div> <!-- end of parcel  -->
-				
-			</div> <!--  End of purchase section -->
-			
-			<!--  Similar items -->
-			<div id="similar">
-				<img src="http://server.pezcuckow.com/Bernie/images/similar_items.png" />
-				
-				<!-- 3 alternate suggestions, just repeated code three times -->
-				<div class ="altSug">				
-					<div class ="altPic">
-					<img src="simages/{altImage1}" width="75px" height="75px" style="border: 1px solid #2F84B3" />						
-					</div>
-										
-					<div class ="altText">
-                                        	<div class ="altTitle">								
-						<text class="item_title_small"> {altTitle1} </text>
-						</div>
-                                        	<div class ="smallIcon">
-						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{altCategory1}_small.png />
-						</div>
-					<p> {altDisc1} <br>
-					<a href="?p=bernie&c={altCategory1}&id={altSugId1}"" alt="Go to this item!">Go to item!</a></p>					
-					</div>
-				</div>
-				
-				<div class ="altSug">				
-					<div class ="altPic">
-					<img src="simages/{altImage2}" width="75px" height="75px" style="border: 1px solid #2F84B3" />					
-					</div>
-										
-					<div class ="altText">
-                                        	<div class ="altTitle">								
-						<text class="item_title_small"> {altTitle2} </text>
-						</div>
-                                        	<div class ="smallIcon">
-						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{altCategory2}_small.png />
-						</div>					
-					<p>  {altDisc2} <br>
-					<a href="?p=bernie&c={altCategory2}&id={altSugId2}"" alt="Go to this item!">Go to item!</a></p>
-					</div>
-				</div>
-				
-				<div class ="altSug">				
-					<div class ="altPic">
-                                        <img src="simages/{altImage3}" width="75px" height="75px" style="border: 1px solid #2F84B3" />									
-					</div>
-										
-					<div class ="altText">
-                                        	<div class ="altTitle">								
-						<text class="item_title_small"> {altTitle3} </text>
-						</div>
-                                        	<div class ="smallIcon">
-						<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{altCategory3}_small.png />
-						</div>
-					<p>  {altDisc3} <br>
-					<a href="?p=bernie&c={altCategory3}&id={altSugId3}" alt="Go to this item!">Go to item!</a></p>					
-					</div>
-				</div>   <!--  End of the three alt suggestions -->
-			      
-			</div> <!-- End of similar items  -->
-			
-		</div> <!-- End of right container  -->
+<!-- http://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={sugTitle}+{ucwords(category)}&x=0&y=0 -->			
+			<li><a href="http://www.amazon.co.uk/s/re_sb_noss?url=search-alias%3Daps&field-keywords={sugTitle}+{ucwords(category)}&x=0&y=0" target="_blank">  
+					<img src="http://server.pezcuckow.com/Bernie/images/amazon_logo.png" alt="Image of amazon" /> </a> </li>	
+		</ul>
+		</td>
+		<td>
 		
-	</div> <!-- End of the subcontainer  -->
-	
-	<!-- The footer containing the image of the pig and a button to bernie the same category -->
-	<div id="bottom" align="center">
+			        <img src="http://server.pezcuckow.com/Bernie/images/parcel.png" />
+		
 
-        <form name="xxx" action="?p=bernie&c={category}" method="POST">
+		</td>
+		</tr></table>
+
+		<hr />
+
+		<!-- Begin similar items -->
+		<img src="http://server.pezcuckow.com/Bernie/images/similar_items.png" style="padding-top: 20px"/>
+		<p />
+		<section class="text">
+		<table>
+			<tr>
+			<!-- SIMILAR ITEM 1 -->
+				<td width="70px" height="70px" style="vertical-align: top">
+				<img src="simages/{altImage1}" width="75px" height="75px" style="border: 1px solid #2F84B3" />
+				</td>
+				<td>
+
+				<table><tr><td>
+					<div class="item_title_small" style="text-align: left">{altTitle1}</div>
+					</td><td>
+					<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{altCategory1}_small.png />
+				</td></tr></table>
+
+					<!-- Use truncate function here (in inc/lib.php)-->
+					{altDisc1}
+					<br /><a href="?p=bernie&c={altCategory1}&id={altSugId1}"" alt="Go to this item!">Go to item!</a>
+						
+				</td>
+			</tr>
+			<tr>
+<!-- SIMILAR ITEM 2 -->
+				<td width="70px" height="70px" style="vertical-align: top">
+				<img src="simages/{altImage2}" width="75px" height="75px" style="border: 1px solid #2F84B3" />
+				</td>
+				<td>
+
+				<table><tr><td>
+					<div class="item_title_small" style="text-align: left">{altTitle2}</div>
+					</td><td>
+					<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{altCategory2}_small.png />
+				</td></tr></table>
+
+					<!-- Use truncate function here (in inc/lib.php)-->
+					{altDisc2}
+					<br /><a href="?p=bernie&c={altCategory2}&id={altSugId2}"" alt="Go to this item!">Go to item!</a>
+						
+				</td>
+			</tr>
+<!-- SIMILAR ITEM 3 -->
+				<td width="70px" height="70px" style="vertical-align: top">
+				<img src="simages/{altImage3}" width="75px" height="75px" style="border: 1px solid #2F84B3" />
+				</td>
+				<td>
+
+				<table><tr><td>
+					<div class="item_title_small" style="text-align: left">{altTitle3}</div>
+					</td><td>
+					<img src=http://server.pezcuckow.com/Bernie/old/Original%20Files/icon_{altCategory3}_small.png />
+				</td></tr></table>
+
+					<!-- Use truncate function here (in inc/lib.php)-->
+					{altDisc3}
+					<br /><a href="?p=bernie&c={altCategory3}&id={altSugId3}"" alt="Go to this item!">Go to item!</a>
+						
+				</td>
+			<tr>
+			</tr>			
+		</table>
+		</section>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center" style="text-align:center; padding-top: 20px">
+
+		<table width="100%"><tr>
+		<td style="vertical-align:top; text-align: right; width: 60%">
+
+		<form name="xxx" action="?p=bernie&c={category}" method="POST">
 	<input type="submit" class="bernie" value="Bernie more {ucwords(category)}">
-	
-	  <img src="http://server.pezcuckow.com/Bernie/images/bernie_head.png" style="position:relative; top: 20px; left: 10px"/>	
-</form>
-	<!-- <img src="http://server.pezcuckow.com/Bernie/images/button_bernie.png" /> -->
-	
-	</div> <!-- End of footer  -->
-</div> <!--  End of main container  -->
+	</form>
+		</td>
+		<td style="vertical-align:top; text-align: left; width: 40%">
 
-</section>
-
-<!-- <object type="application/x-shockwave-flash" data="http://www.youtube.com/v/nZCZ7M_lifM?f=videos&amp;d=AUZtJKg_DJaXnkBYzAS36AUO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata&amp;autoplay=1" width="100%" height="100%" id="mpf0_hmlvControl_001_video_player" style="visibility: visible; "><param name="wmode" value="transparent"><param name="allowFullScreen" value="true"></object> -->
-
+		<img src="http://server.pezcuckow.com/Bernie/images/bernie_head.png" />	
+		
+		</td>
+		</tr></table>
+		
+		</td>
+	</tr>
+</table>

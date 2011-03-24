@@ -267,6 +267,7 @@ vertical-align: top;
 /* The right side of the content area (front page and suggestion page) */
 td.right {
 padding-left: 12px;
+padding-right: 10px;
 vertical-align: top;
 }
 
