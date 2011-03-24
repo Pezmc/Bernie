@@ -48,6 +48,8 @@ if(!isLoggedIn()) {
 		case "demopegparse":
 		case "ajaxusername":
 		case "ajaxemail":
+		case "lostpassword":
+		case "confirmation":
 		break;
 		default:
 			$GLOBAL['page']="home"; //Send them home	
