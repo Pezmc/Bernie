@@ -49,7 +49,7 @@ $extraContent = array("tip"=>"row[0]");
 if(isLoggedIn()) {
   // get the interests
   $extra = array();
-  $extra['interests'] = printColumns();
+  $extra['interests'] = giveInterests();
   // also needs to get the last three liked suggestions
   // . . . . . 
 	$PAGE['content'] = parse("FrontPageLoggedIn.html", $extra);
