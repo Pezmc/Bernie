@@ -187,6 +187,8 @@ if (!empty($_POST)){
 		  dbQuery("INSERT INTO users (gender, first_name, username, dob, parents_name, parents_email, password, salt, confirmation_code) 
 						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
 						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
+		  $_SESSION['newid'] = mysql_insert_id();
+		 
 
 		  header("Location: /Bernie/?p=signup&id=2"); die();
 		  $GLOBAL["id"] = 2;
@@ -199,13 +201,18 @@ if (!empty($_POST)){
   else if ($GLOBAL['id']==2)
   {
 		// Get all of the checked interests from the form, as an array
-		if (isset($_POST["tags[]"])) {$chosenTags = $_POST['tags[]'];} else $chosenTags = array();
+		if (isset($_POST["tags"])) {$chosenTags = $_POST['tags'];} else $chosenTags = array();
 
 		// Serialise the array
 		$serialisedTags = serialize($chosenTags);
 
 		// Get the current user id
-		$user_id = $USER['id'];
+		if(empty($_SESSION['newid'])) {
+			$noErrors = False;
+			$error_message = "<li> Please fill in step one</li>"; 
+		} else {
+ 			$user_id = $_SESSION['newid'];
+ 		}
 	
 		// Check for errors (only one possible: 0 tags chosen)
 		$noErrors = True;
@@ -214,7 +221,7 @@ if (!empty($_POST)){
 		if ( count($chosenTags) < 1 )
 		{
 			$noErrors = False;
-			$error_message = "<li> Please choose at least one iterest!"; 
+			$error_message = "<li> Please choose at least one interest!"; 
 		}
 
 	  // If no errors, update the database and go to the next page
