@@ -11,13 +11,16 @@
      </table>
 </p>
 </form>
+
+
+
 {foreach:comments,comment}
 					<table style="padding-top: 20px">
 						<tr>
 							<td>
-							<img src="/Bernie/images/{if: isBoy()}boy.png{else}girl.png{end}">
+							<img src="/Bernie/images/{if: isCommentAuthorGirl()}girl.png{else}boy.png{end}">
 
-							<span class="{if: isBoy()}comment_boy{else}comment_girl{end}">{comment['username']}</span> 	said:
+							<span class="{if: isCommentAuthorGirl()}comment_girl{else}comment_boy{end}">{comment['username']}</span> 	said:
 
 							<br />{comment['content']}
 							<br /><span class="comment_time">{comment['time']}</span>
