@@ -249,7 +249,7 @@ function threeLetterWord() {
 function getNewSuggestion($category) { 
 	
  // The user is needed so we know which id to get from the first dbQuery
-  global $USER;
+  global $USER, $PAGE;
 	
   // Returns from the user interests database our users row.
   $thisUsersLikes = dbQuery("SELECT * FROM user_interests WHERE user_id='".$USER['id']."' LIMIT 1");
@@ -360,24 +360,27 @@ function getNewSuggestion($category) {
 		// At this point for every tag in disliked suggestions is removed once from likedTags.
 		// And we have an array containing our "likedTags"
 	
-        $potentialSuggestions = array();
+  $potentialSuggestions = array();
 	$i=0;
 	$z=0;
+	$allSuggestions = dbQuery("SELECT id,tags,category FROM suggestions");	
 	while (sizeof($potentialSuggestions)==0&&$z<20) {
 	    $chosenTags = array();		
 	    $chosenTags[] = $likedTags[array_rand($likedTags)];
 	    $chosenTags[] = $likedTags[array_rand($likedTags)];
 	    $chosenTags[] = $likedTags[array_rand($likedTags)];
-			
+	    
 	    while($row = mysql_fetch_array($allSuggestions)) {
-		    if ($row['category'] == $category) {
+		    if (strtolower($row['category']) == strtolower($category)) {
 		      $abc = @unserialize($row['tags']);	
 		      if(!$abc) {
 		        $abc = array();
 		      }
+		      
 		        foreach($abc as $someTag) { 		
 			      	if (in_array($someTag,$chosenTags)&&(empty($_SESSION['lastID'])||$row['id']!=$_SESSION['lastID'])) {                          		
-				   			$potentialSuggestions[] = $row['id'];				
+				   			$potentialSuggestions[] = $row['id'];
+				   			$PAGE['system_info'] .= "I added ".$row['id'].' because of chosen tag '.$someTag.'<br />';				
 		 			}
 		        }
 		    }	     
@@ -385,13 +388,13 @@ function getNewSuggestion($category) {
 		  $z++;
 	}  
 	
-	print_r($potentialSuggestions);
+	//echo "<!--".print_r($potentialSuggestions,true)."-->";
 	
 	if($z>=20) {
 	 $suggestion = dbQuery("SELECT id,tags,category FROM suggestions WHERE category ='$category' ORDER BY rand() LIMIT 1");
       // $suggestion = dbQuery("SELECT id,tags FROM suggestions WHERE ORDER BY rand() LIMIT 1");
     $row = mysql_fetch_array($suggestion);
-    $potentialSuggestions[$i] = $row['id'];	
+    $potentialSuggestions[$i] = $row['id'];	 
 	}
 	
 	$notSeenPotentialSuggestions = array();	
@@ -402,11 +405,12 @@ function getNewSuggestion($category) {
 	}
 	if (sizeof($notSeenPotentialSuggestions)==0) {
 	  $suggestionID = $potentialSuggestions[array_rand($potentialSuggestions)];
+	  $PAGE['system_info'] .= "You have already seen all my potential suggestions, I grabbed one of them<br />";
 	  //echo "Chose one at random";
 	}
 	else {
 	  $suggestionID = $notSeenPotentialSuggestions[array_rand($notSeenPotentialSuggestions)];
-	   //echo "Used logic";
+	  $PAGE['system_info'] .= "I chose this suggestion with love<br />";
 	}
 	$_SESSION['lastID'] = $suggestionID;
 	return $suggestionID;		
@@ -414,14 +418,14 @@ function getNewSuggestion($category) {
 
 
 function getAltSuggestions($mainSuggestionID) { 	
-  $mainSuggestion = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID'");
+  $mainSuggestion = dbQuery("SELECT tags FROM suggestions WHERE id='$mainSuggestionID' LIMIT 1");
   $potentialSuggestions = array();  
 	
 	while($row = mysql_fetch_array($mainSuggestion)) {
 		$mainTags = @unserialize($row['tags']);
-		$abc = array(1,2,3);
-		return $abc;
-  }
+		//$abc = array(1,2,3);
+		//return $abc;
+  	}
 	
 	$i = 0;	
 	$z = 0;
@@ -557,13 +561,16 @@ function printColumns() {
 	
 	// First get the array containing the interests
 	$id = $USER['id'];
-	$interests = array();
-	$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
-	while($row = mysql_fetch_array($query)) {
-	  $interests .= $row['tags'];
-	}
+		$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
 
-  // Unserialise the interests
+	while($row = mysql_fetch_array($query)) {
+	  $interests = unserialize($row['tags']);
+	}
+  if (!$interests)
+    $interests = array();
+  return $interests;
+
+  /* // Unserialise the interests
   $unserialisedInterests = unserialize($interests);
 
 	for($i = 0; $i < count($unserialisedInterests); $i++) {
@@ -578,9 +585,10 @@ function printColumns() {
   // Print the second column
   for($i = 0; $i < count($unserialisedInterests); $i++) {
   		while($unserialisedInterests[$i] >= (count($unserialisedInterests) / 2)) {
-  			echo "<li> $unserialisedIinterests[$i]";
+  			echo "<li> $unserialisedIinterests[$i]"; 
+
 		}//while
-	}//for
+	}//for */
 }
 
 ?>
