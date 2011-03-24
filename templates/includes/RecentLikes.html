@@ -9,12 +9,12 @@ Here are your most recent likes. Click on the button below to see all of your li
 
 <table>
 
-
+  
 	<tr>
 		<td>
 
 		<!-- Begin table to display one like object -->
-	
+	  {if:!empty(lastThreeLiked['recImage1'])}
 		<table width="100%">
 			<tr>
 				<td width="103px">
@@ -35,9 +35,10 @@ Here are your most recent likes. Click on the button below to see all of your li
 				</td>
 			</tr>
 		</table>
-					
+		{else} You havent liked anything :( {end}			
 		</td>
 	</tr>
+  
 <!-- End code for one recent like -->
 <!-- Begin code for one recent like item: this is the part that needs to be looped -->
 	<tr>
@@ -49,6 +50,7 @@ Here are your most recent likes. Click on the button below to see all of your li
 																			 which title to use?
 																			 which desc to use?
 																			 where the link takes them?-------------------->
+    {if:!empty(lastThreeLiked['recImage2'])}
 		<table width="100%">
 			<tr>
 				<td width="103px">
@@ -69,9 +71,10 @@ Here are your most recent likes. Click on the button below to see all of your li
 				</td>
 			</tr>
 		</table>
-					
+	  {end}		
 		</td>
 	</tr>
+
 <!-- End code for one recent like -->
 <!-- Begin code for one recent like item: this is the part that needs to be looped -->
 	<tr>
@@ -83,6 +86,7 @@ Here are your most recent likes. Click on the button below to see all of your li
 																			 which title to use?
 																			 which desc to use?
 																			 where the link takes them?-------------------->
+    {if:!empty(lastThreeLiked['recImage3'])}
 		<table width="100%">
 			<tr>
 				<td width="103px">
@@ -103,11 +107,12 @@ Here are your most recent likes. Click on the button below to see all of your li
 				</td>
 			</tr>
 		</table>
-					
+		{end}			
 		</td>
 	</tr>
 <!-- End code for one recent like -->
 </table>
+
 
 <p />
 <!-- Not sure if this is supposed to be a type="submit" or just a link. 
