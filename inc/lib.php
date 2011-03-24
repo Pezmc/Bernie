@@ -565,7 +565,7 @@ function giveInterests() {
 
 	while($row = mysql_fetch_array($query)) {
 	  $interests = unserialize($row['tags']);
- // 12 13 18
+  $interests = array(12,13,18);
 	}
   if (!$interests)
     $interests = array();
@@ -575,7 +575,7 @@ function giveInterests() {
   while($row = mysql_fetch_array($query)) {
     $allTheTags[$row['id']] = $row['tag'];
   }
-  
+  $interestsAsWords = array();
   foreach($interests as $anInterest) {
     $interestsAsWords[] = $allTheTags[$anInterest];
   }
