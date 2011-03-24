@@ -27,6 +27,7 @@ $PAGE['title'] = "My Likes";
     //build array of stuff from this...
     while ($row= mysql_fetch_array($query)) {
       $row['category'] = strtolower($row['category']);
+      $row['description'] = truncate($row['category'], 120);
       $bigList[] = $row;
       
     }
