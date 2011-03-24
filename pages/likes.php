@@ -23,10 +23,10 @@ $PAGE['title'] = "My Likes";
   $bigList = array();
 
   foreach($likes as $like) {
-    $query = dbQuery("SELECT id,category,tags,title,author,image_med,summary,description,release_year,length FROM suggestions WHERE id='$like' LIMIT 1");
+    $query = dbQuery("SELECT id,category,tags,title,author,image_med,description,release_year,length FROM suggestions WHERE id='$like' LIMIT 1");
     //build array of stuff from this...
     while ($row= mysql_fetch_array($query)) {
-      //$row['category'] = strtolower($row['category']);
+      $row['category'] = strtolower($row['category']);
       $bigList[] = $row;
       
     }
