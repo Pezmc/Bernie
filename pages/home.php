@@ -62,12 +62,13 @@ if(isLoggedIn()) {
   $row3 = mysql_fetch_row($thirdQuery);
   
   $extra['lastThreeLiked'] = array(
-  "altSugId1"=>"$last3Liked[0]","altImage1"=>"$row[1]","category1"=>strtolower("$row[4]"),
-  "altTitle1"=>"$row[2]","altDisc1"=>truncate("$row[3]", 85),
-  "altSugId1"=>"$last3Liked[0]","altImage1"=>"$row[1]","category1"=>strtolower("$row[4]"),
-  "altTitle1"=>"$row[2]","altDisc1"=>truncate("$row[3]", 85),
-  "altSugId1"=>"$last3Liked[0]","altImage1"=>"$row[1]","category1"=>strtolower("$row[4]"),
-  "altTitle1"=>"$row[2]","altDisc1"=>truncate("$row[3]", 85));
+  "recId1"=>"$last3Liked[0]","recImage1"=>"$row[1]","recCategory1"=>strtolower("$row[4]"),
+  "recTitle1"=>$row[2],"recDisc1"=>truncate("$row[3]", 85),
+  "recId2"=>"$last3Liked[0]","recImage2"=>"$row2[1]","recCategory2"=>strtolower("$row2[4]"),
+  "recTitle2"=>"$row2[2]","recDisc2"=>truncate("$row2[3]", 85),
+  "recId3"=>"$last3Liked[0]","recImage3"=>"$row3[1]","recCategory3"=>strtolower("$row3[4]"),
+  "recTitle3"=>"$row3[2]","recDisc3"=>truncate("$row3[3]", 85));
+  
 
 
 
