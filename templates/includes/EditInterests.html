@@ -16,24 +16,14 @@ function toggle(it) {
     		<td class="tabs" colspan="3">
     		<!-- Cell for tabs with two sign up steps -->
 
-			<table>
-				<tr class="subtitle">
-					<td class="spacer"></td>
-					<td class="tab_closed">
-					<b>STEP 1:</b> User info
-					</td>
-					<td class="tab_open">
-					<b>STEP 2:</b> Interests
-					</td>
-				</tr>
-			</table>
+			<img src="/Bernie/images/My_Interests_larger.png">
 			
     		</td>
     	</tr>
     	<tr>
       <td class="interestsform">
       <section class="text">
-
+<p><p>
       So, what are you interested in? By choosing your interests on this page, Bernie will know what items to suggest to you! Pick as many as you like!
 
 			<p />
@@ -50,7 +40,7 @@ function toggle(it) {
 		 
 		 <table style="width: 100%; padding-top: 20px" cellspacing="4px">
 
-		 <form name="interests" action="/Bernie/?p=signup&id=2" method="POST">
+		 <form name="interests" action="/Bernie/?p=editInterests" method="POST">
 		 <tr>
      {foreach:getTagArray(),i,tag}
        {if: i != 0}
