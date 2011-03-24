@@ -477,7 +477,7 @@ function getAltSuggestions($mainSuggestionID) {
  * Returns true if the user is on the given signup step
  */
 function isOnStep($step) {
-        global $GLOBAL;
+    global $GLOBAL;
 	if($GLOBAL['id']==$step)
 		return true;
 }

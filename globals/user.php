@@ -21,6 +21,6 @@ $USER['last_name'] = "";
 $USER['password'] = "";
 $USER['gender'] = "";
 $USER['salt'] = "";
-$USER['id'] = 0;
+//$USER['id'] = 0;
 
 ?>

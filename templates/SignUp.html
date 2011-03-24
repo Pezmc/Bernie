@@ -17,15 +17,14 @@ Devs: Elise, Florin
     	</tr>
 
         <!-- Code here for php include form1 and form2 -->
-        
         <!-------------------- NEEDS LOGIC: When to display which step of the sign up? -------------------->
-        {if:isOnStep(1)}
-                    {include:includes/Form1.html}
-        {elseif:isOnStep(2)}
-       						 {include:includes/Form2.html}
-        {elseif:isOnStep(3)}
-									 {include:includes/Confirmation.html}
-				{else}{end}
+        {if:id==1}
+							{include:includes/Form1.html}
+        {elseif:id==2}
+							{include:includes/Form2.html}
+        {elseif:id==3}
+							{include:includes/Confirmation.html}
+		{end}
                     
 
 	</td>

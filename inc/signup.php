@@ -168,7 +168,7 @@ if (!empty($_POST)){
 		$subject = "Welcome to Bernie! Confirm your e-mail address";
 		$header = 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		$header .= "From: Bernie <elisehein@gmail.com>";
+		$header .= "From: Bernie <bernie@server.pezcuckow.com>";
 
 		$message = "Thank you for registering on Bernie! You'll be sure to find new and interesting activities to do with your kids!"."\n\n";
 		$message .= "Use the details below to login to your account and begin bernying:"."\n";
@@ -176,7 +176,7 @@ if (!empty($_POST)){
 		$message .= "Password: ".$password."\n\n";
 		$message .= "You will need to verify your account before you can log in. 
 								Click on the link below: "."\n";
-		$message .= "http://server.pezcuckow.com/Bernie/?p=confirmation&$confirmation_code";
+		$message .= "    http://server.pezcuckow.com/Bernie/?p=confirmation&$confirmation_code";
 
 		$emailSent = mail($to, $subject, $message, $header);
 		
@@ -188,7 +188,7 @@ if (!empty($_POST)){
 						 VALUES ('".$gender."', '".$first_name."', '".$username."', '".$dob."', '".$parents_name."',
 						         '".$parents_email."', '".$saltPassword."', '".$salt."', '".$confirmation_code."')");
 
-		  header("Location: /Bernie/?p=signup&id=2"); exit;
+		  header("Location: /Bernie/?p=signup&id=2"); die();
 		  $GLOBAL["id"] = 2;
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message)); 
