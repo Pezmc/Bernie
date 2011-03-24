@@ -199,7 +199,7 @@ if (!empty($_POST)){
   else if ($GLOBAL['id']==2)
   {
 		// Get all of the checked interests from the form, as an array
-		if (isset($_POST["tags[]"])) {$chosenTags = $_POST['tags[]'];} else $chosenTags = array();
+		if (isset($_POST["tags[]"])) {$chosenTags = $_POST['tags'];} else $chosenTags = array();
 
 		// Serialise the array
 		$serialisedTags = serialize($chosenTags);
