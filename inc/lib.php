@@ -192,6 +192,18 @@ function isOpen($cat) {
 	}
 }
 
+/*
+ * Returns true if given interest is chosen by the user
+ */
+function userLikes($interest) {
+        global $PAGE;
+	if( in_array($interest, $PAGE['chosen_interests'])) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function isDisliked() {
     global $USER, $GLOBAL;
     $id = $GLOBAL['id'];

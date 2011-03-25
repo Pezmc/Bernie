@@ -23,4 +23,6 @@ $PAGE['error_id'] = 0;
 $PAGE['error_location'] = array(""); // used in the signup form 
 $PAGE['system_info'] = "";
 
+$PAGE['chosen_interests'] = array(""); // used when editing interests
+
 ?>
