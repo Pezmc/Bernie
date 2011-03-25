@@ -38,7 +38,7 @@
 
 					 {if:isLiked()}
 					 $("#likeButton").toggle(function() {						
-						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png", "#dislikeButton", "/Bernie/images/rate_up.png");
+						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png", "#dislikeButton", "/Bernie/images/rate_down.png");
 					 }, function() {
 						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up_done.png");
            });
@@ -79,7 +79,7 @@
 						    data: dataString,
 						    success: function() {
 							$(button).attr("src",imgsrc);
-							$(otherbutton).att("src",otherimg);
+							$(otherbutton).attr("src",otherimg);
 						    },
 						    error: function() {
 							alert("Failed");
