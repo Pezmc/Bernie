@@ -116,9 +116,8 @@ else
 	if(!($file_info['mime']=="image/jpeg"||$file_info['mime']=="image/jpg")) {
 		echo "There was an error uploading the file, please try again! Is it a jpeg?<br /><br />I think it is a ".$file_info['mime'];
 		
-  if(!move_uploaded_file($_FILES['image']['tmp_name'], $target_image)) {
-    echo "There was an error uploading the file, please try again! I couldn't move it."
-  }
+  } elseif(!move_uploaded_file($_FILES['image']['tmp_name'], $target_image)) {
+    echo "There was an error uploading the file, please try again! I couldn't move it.";
 		
 	} else {
 		include('SimpleImage.php');
