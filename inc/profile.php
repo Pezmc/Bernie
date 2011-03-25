@@ -72,8 +72,7 @@ if (!empty($_POST)) {
 
 	// IS THE DATE OK
 	if ( empty($day) || empty($month) || empty($year) ||
-		!ctype_digit($day) || !ctype_digit($month) || !ctype_digit($year) ||
-		!strlen($dobString) == 10 ) {
+		!ctype_digit($day) || !ctype_digit($month) || !ctype_digit($year)) {
 		$noErrors = False;
 		$error_message .= "<li> You forgot to tell us when you were born!
 											Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";
