@@ -15,10 +15,9 @@
 /* ===== God like code from here on in ===== */
 
 /* Show us errors */
-ini_set('display_errors', 1); 
+ini_set('display_errors', 0); 
 ini_set('log_errors', 0); 
-error_reporting(E_STRICT);
-ini_set('mysql.connect_timeout', 10);
+ini_set('mysql.connect_timeout', 15);
 
 /* Allow tracking sessions (logins) */
 session_start();
@@ -91,9 +90,6 @@ switch ($GLOBAL['page']) {
 disconnectMe(); //Last thing we do is close the DB
 
 /* Parse Template Here */
-//include_once("inc/htmLawed.php");
-//$out = htmLawed(parse('master.html'), array('tidy'=>'    ')); 
-//echo $out;
 echo parse('master.html');
 
 /* Short and sweet :-) */
