@@ -12,7 +12,7 @@
 /*/
 
 /* Thinking Code */
-//include_once('inc/editinterests.php');
+include_once('inc/editinterests.php');
 
 /* Rest of document just deals with displaying information not getting it */
 
