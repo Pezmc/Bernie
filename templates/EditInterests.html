@@ -36,6 +36,7 @@ function toggle(it) {
 			<!-- Show confirmation message here if all ok -->
 			{if:!empty(confirmation_message)}
 			  <div id="errors"><ul>{confirmation_message}</ul></div>
+			  <?php sleep(3); header('Location: ?p=editinterests'); ?>
 		 	{end}
       <p />
 
