@@ -34,7 +34,7 @@ Category:
 <select name="category">
   <option value="Books">Books</option>
   <option value="Music">Music</option>
-  <option value="Film">Film</option>
+  <option value="Tv">Tv</option>
   <option value="Website">Website</option>
 </select>
 <br />
