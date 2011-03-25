@@ -68,9 +68,7 @@ if (!empty($_POST))
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));
 		}	
-}
-
-
+} 
 /* Rest of document just deals with displaying information not getting it */
 
 $PAGE['title'] = "Edit interests";
