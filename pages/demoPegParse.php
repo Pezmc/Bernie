@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * pages/demoPegParse.php
  *
  * A demo of how pegParse could be used, ours is much less complex in general
@@ -26,17 +26,17 @@ $t->assign($PAGE);
 //Current page
 $t->assign('page', $page);
 
-if($page=="examples") {  //Extra stuff for the examples page
+if ($page=="examples") {  //Extra stuff for the examples page
 	//If/else
 	$t->assign('true', true);
 	$t->assign('false', false);
-	
+
 	//Switch
 	$t->assign('name', 'steve');
-	
+
 	//ForEach
-	$t->assign('people', array('Pez','John','George'));
-	
+	$t->assign('people', array('Pez', 'John', 'George'));
+
 	//Object
 	class person {
 		public $name;
@@ -46,10 +46,16 @@ if($page=="examples") {  //Extra stuff for the examples page
 				'last' => 'Dean'
 			);
 		}
+
+
 		public function fullName() {
 			return implode(' ', $this->name);
 		}
+
+
 	}
+
+
 	$t->assign('person', new person());
 }
 

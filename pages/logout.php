@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * pages/logout.php
  * See login.php
  *

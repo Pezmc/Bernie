@@ -27,26 +27,22 @@ $passkey = $_GET['passkey'];
 $matchFound = dbQuery("SELECT active FROM users WHERE confirmation_code ='$passkey'");
 
 // If successfully queried
-if ( $matchFound )
-{
+if ( $matchFound ) {
 	// There should be just one passkey like this
 	$count = mysql_num_rows($matchFound);
 
-	if($count==1)
-	{
+	if ($count==1) {
 		// Make this user active
 		$userNowActive = dbQuery("UPDATE users SET active = '1' WHERE confirmation_code ='$passkey'");
 	}
 
 	// Otherwise...
-	else
-	{
+	else {
 		$PAGE['content'] = "Sorry - this confirmation code does not seem to exist! Are you sure you have signed up?";
 	}
 
 	// If the dbQuery was successful, display a confirmation message
-	if ( $userNowActive )
-	{
+	if ( $userNowActive ) {
 		$PAGE['content'] = "Yay! Your account has been verified! You can now log in to begin Bernying!";
 	}
 }

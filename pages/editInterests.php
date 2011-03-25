@@ -16,8 +16,7 @@
 
 
 // Don"t send anything to the database if the form has not been filled in
-if (!empty($_POST))
-{
+if (!empty($_POST)) {
 
 	// First get an array of all the tags the user likes
 	// This is so the form can display liked tags as checked when the user navigates to the page
@@ -28,8 +27,7 @@ if (!empty($_POST))
 	$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
 	$chosenInterests = array();
 
-	while($row = mysql_fetch_array($query))
-	{
+	while ($row = mysql_fetch_array($query)) {
 		$chosenInterests = unserialize($row['tags']);
 	}
 
@@ -54,15 +52,13 @@ if (!empty($_POST))
 	$noErrors = True;
 	$error_message = "";
 
-	if ( count($chosenTags) < 1 )
-	{
+	if ( count($chosenTags) < 1 ) {
 		$noErrors = False;
 		$error_message = "<li> Please choose at least one interest!";
 	}
 
 	// If no errors, update the database and go to the next page
-	if ($noErrors)
-	{
+	if ($noErrors) {
 		// Update the the tags field in the db (table user_interests, col tags, where id = $USER['id'])
 		dbQuery("UPDATE user_interests SET tags = '$serialisedTags' WHERE user_id = '$user_id'");
 		$PAGE['confirmation_message'] = "Your new interests have been saved!";

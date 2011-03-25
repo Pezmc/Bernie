@@ -26,18 +26,15 @@ $extraContent = array();
 // store teh query as a result variable
 //$tip = "";
 $extraContent['tip'] = "";
-if(mysql_num_rows($result)>0)
-{
+if (mysql_num_rows($result)>0) {
 	// output as long as rthere is still available fields we have limit 1
-	while($row = mysql_fetch_array($result))
-	{
+	while ($row = mysql_fetch_array($result)) {
 		$tip=$row['tip'];
 		$extraContent['tip']=$row['tip'];
 	}
 }
 // Else do nothing
-else
-{
+else {
 	$extraContent['tip'] = "Be nice to people";
 }
 // I think this does the same thing with less lines
@@ -46,7 +43,7 @@ $row = mysql_fetch_row($theTipToGive);
 $extraContent = array("tip"=>"row[0]");
 */
 
-if(isLoggedIn()) {
+if (isLoggedIn()) {
 	// get the interests
 	$extra = array();
 	$extra['interests'] = giveInterests();
@@ -62,12 +59,12 @@ if(isLoggedIn()) {
 	$row3 = mysql_fetch_row($thirdQuery);
 
 	$extra['lastThreeLiked'] = array(
-		"recId1"=>$last3Liked[0],"recImage1"=>$row[1],"recCategory1"=>strtolower("$row[4]"),
-		"recTitle1"=>$row[2],"recDisc1"=>truncate("$row[3]", 85),
-		"recId2"=>$last3Liked[1],"recImage2"=>$row2[1],"recCategory2"=>strtolower("$row2[4]"),
-		"recTitle2"=>$row2[2],"recDisc2"=>truncate("$row2[3]", 85),
-		"recId3"=>$last3Liked[2],"recImage3"=>$row3[1],"recCategory3"=>strtolower("$row3[4]"),
-		"recTitle3"=>$row3[2],"recDisc3"=>truncate("$row3[3]", 85));
+		"recId1"=>$last3Liked[0], "recImage1"=>$row[1], "recCategory1"=>strtolower("$row[4]"),
+		"recTitle1"=>$row[2], "recDisc1"=>truncate("$row[3]", 85),
+		"recId2"=>$last3Liked[1], "recImage2"=>$row2[1], "recCategory2"=>strtolower("$row2[4]"),
+		"recTitle2"=>$row2[2], "recDisc2"=>truncate("$row2[3]", 85),
+		"recId3"=>$last3Liked[2], "recImage3"=>$row3[1], "recCategory3"=>strtolower("$row3[4]"),
+		"recTitle3"=>$row3[2], "recDisc3"=>truncate("$row3[3]", 85));
 
 
 
