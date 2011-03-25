@@ -22,7 +22,7 @@ function toggle(it) {
     	</tr>
     	<tr>
       <td class="interestsform">
-      <section class="text">
+      <section class="text" style="padding-top: 15px">
 <p><p>
       So, what are you interested in? By choosing your interests on this page, Bernie will know what items to suggest to you! Pick as many as you like!
 
@@ -33,6 +33,10 @@ function toggle(it) {
 			  <div id="errors"><ul>{error_message}</ul></div>
 		 	{end}
 
+			<!-- Show confirmation message here if all ok -->
+			{if:!empty(confirmation_message)}
+			  <div id="errors"><ul>{confirmation_message}</ul></div>
+		 	{end}
       <p />
 
       <!-- Begin interests selection form -->
@@ -48,7 +52,7 @@ function toggle(it) {
 		     <!-- Print one table cell with the input type=checkbox and the tag name -->
 		     <!-- the value of the input is the tag id -->
 		     <td id="tag">
-							<input id="{i}" type="checkbox" name="tags[]" onChange="toggle(this)" {if:in_array({i},{liked_interests})} checked {end} value="{tag['id']}" /> <label for="{i}">{tag['tag']}</label>
+							<input id="{i}" type="checkbox" name="tags[]" onChange="toggle(this)" value="{tag['id']}" /> <label for="{i}">{tag['tag']}</label>
 				 </td>
 				 
 		     <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
@@ -72,10 +76,12 @@ function toggle(it) {
 				
 		       {end}
 		     {end}
+		     {end}
+		     {end}
+		     
 
 		    </section>
-		   {end}
-     {end} 
+
      </tr>
 	</table>
 
