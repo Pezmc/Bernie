@@ -28,9 +28,9 @@ if (!empty($_POST)) {
 
 	// Convert users date, month and year of birth into a timestamp
 	$dobString = $day;
-	$dobString .= "/";
+	$dobString .= "-";
 	$dobString .= $month;
-	$dobString .= "/";
+	$dobString .= "-";
 	$dobString .= $year;
 	$dob = strtotime($dobString);
 
