@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * admin/index.php
  * Front end for the functions Florin wrote, adds basic passowrd
  *
@@ -39,31 +39,31 @@ if(!empty($_POST['login_submit'])) {
 /* Actual Page Display */
 if(loggedIn()) {
 	switch ($global['page']) {
-		case 'addSuggestions': 
-				$page['page'] = 'Add Suggestions';
-				include('addSuggestions.php');
-				
+	case 'addSuggestions':
+		$page['page'] = 'Add Suggestions';
+		include('addSuggestions.php');
+
 		break; case 'viewSuggestions':
-				$page['page'] = 'View Suggestions';
-				include('viewSuggestions.php');
-				
+		$page['page'] = 'View Suggestions';
+		include('viewSuggestions.php');
+
 		break; case 'addTags':
-				$page['page'] = 'Add Tags';
-				include('addTags.php');
-				
+		$page['page'] = 'Add Tags';
+		include('addTags.php');
+
 		break; case 'logout':
-				setcookie('login', md5($global['password'] . $_SERVER["remote_addr"]), time()-(3600*24));
-				$page['page'] = 'Logout';
-				$page['content'] = 'Logged out';
-				
+		setcookie('login', md5($global['password'] . $_SERVER["remote_addr"]), time()-(3600*24));
+		$page['page'] = 'Logout';
+		$page['content'] = 'Logged out';
+
 		break; default:
-			$page['content'] = '<ul><li><a href="?p=addTags"> Add Tags </a></li>';
-			$page['content'] .= '<li><a href="?p=viewSuggestions"> View Suggestions </a></li>'; 
-			$page['content'] .= '<li><a href="?p=addSuggestions"> Add Suggestions	</a></li>';
-			$page['content'] .= '<li><a href="?p=logout"> Logout </a></li></ul>'; 
+		$page['content'] = '<ul><li><a href="?p=addTags"> Add Tags </a></li>';
+		$page['content'] .= '<li><a href="?p=viewSuggestions"> View Suggestions </a></li>';
+		$page['content'] .= '<li><a href="?p=addSuggestions"> Add Suggestions	</a></li>';
+		$page['content'] .= '<li><a href="?p=logout"> Logout </a></li></ul>';
 	}
 } else {
-	$page['content'] = 	'<form action="index.php" method="post">Password: <input type="password" name="password" /><input type="submit" name="login_submit" value="Go" /></form>';
+	$page['content'] =  '<form action="index.php" method="post">Password: <input type="password" name="password" /><input type="submit" name="login_submit" value="Go" /></form>';
 }
 
 /* Parse and display the template */

@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * admin/addTags.php
  * Add tags to the database
  *
@@ -20,9 +20,9 @@ mysql_select_db("11_COMP10120_D1", $connection) or die("Could not select databas
 
 if (isset($_POST['addTag']))
 {
-  $tag = ucfirst(strtolower($_POST['tag']));
-  mysql_query("INSERT INTO `tags` VALUES ('', '{$tag}', 1)") or die("Could not add tag");
-  echo $_POST['tag'] . " has been added to the tags list.";
+	$tag = ucfirst(strtolower($_POST['tag']));
+	mysql_query("INSERT INTO `tags` VALUES ('', '{$tag}', 1)") or die("Could not add tag");
+	echo $_POST['tag'] . " has been added to the tags list.";
 }
 else
 {
