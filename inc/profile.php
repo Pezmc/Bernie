@@ -32,7 +32,7 @@ if (!empty($_POST)) {
 	$dobString .= $month;
 	$dobString .= "-";
 	$dobString .= $year;*/
-	$dob = mktime(0,0,0,$month,$day,$year)
+	$dob = mktime(0,0,0,$month,$day,$year);
 	//$dob = strtotime($dobString);
 
 	// Other inputs from form
