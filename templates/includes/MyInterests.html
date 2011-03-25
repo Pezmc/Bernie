@@ -6,6 +6,11 @@ Here are your chosen interests. Click on the button below to edit them.
 
 <p />
 
+	<!-- Show confirmation message here if all ok -->
+			{if:!empty(confirmation_message)}
+			  <div id="errors"><ul>{confirmation_message}</ul></div>
+		 	{end}
+
 <!-- Make a loop so that it organises the list into two columns -->
 <!-------------------- NEEDS LOGIC: loop through all of  the user's chosen interests -------------------->
 <!-- Right now displays 7 for testing purposes -->
