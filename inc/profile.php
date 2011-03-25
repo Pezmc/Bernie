@@ -27,12 +27,13 @@ if (!empty($_POST)) {
 	if (isset($_POST["year"])) $year = sanitise($_POST["year"], 1); else $year = "";
 
 	// Convert users date, month and year of birth into a timestamp
-	$dobString = $day;
+	/*$dobString = $day;
 	$dobString .= "-";
 	$dobString .= $month;
 	$dobString .= "-";
-	$dobString .= $year;
-	$dob = strtotime($dobString);
+	$dobString .= $year;*/
+	$dob = mktime(0,0,0,$month,$day,$year)
+	//$dob = strtotime($dobString);
 
 	// Other inputs from form
 	if (isset($_POST["gender"])) $gender = $_POST["gender"]; else $gender = "u";
@@ -62,6 +63,12 @@ if (!empty($_POST)) {
 		$error_message .= "<li> Your name has to be at least 2 characters long and contain only letters!"."\n";
 		array_push( $error_location, "first_name" );
 	}
+	
+	if($dob==False) {
+		$noErrors = False;
+		$error_message .= "<li>I couldn't understand your date!
+											Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";	
+  }
 
 	// IS THE DATE OK
 	if ( empty($day) || empty($month) || empty($year) ||
