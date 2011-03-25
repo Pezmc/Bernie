@@ -45,8 +45,7 @@ Use this page to edit your profile information.
 					</td>
 					<td>
 					<input type="text" name="first_name" 
-					 			 value="{if: !empty(error_message)}<?php echo $_POST['first_name']; ?>
-								 {else}{first_name}{end}" 
+					 			 value="{if: !empty(error_message)}<?php echo $_POST['first_name']; ?>{else}{first_name}{end}" 
 								 maxlength="32"
 								 {if: errorLocation("first_name")} class="error"{end} />
 								 
@@ -59,8 +58,7 @@ Use this page to edit your profile information.
 					<td class="date">
 
 					<input type="number" name="day" 
-								 value={if: !empty(error_message)}<?php echo $_POST['day']; ?>
-								 {else}{getDayOfBirth()}{end} 
+								 value="{if: !empty(error_message)}<?php echo $_POST['day']; ?>{else}{getDayOfBirth()}{end}"
 
 								 {if: errorLocation("day")}class="date_error"
 								 {else}class="date"{end} 
@@ -68,8 +66,7 @@ Use this page to edit your profile information.
 								 maxlength="2" min="1" max="31" />
 								 
 					<input type="number" name="month" 
-								 value={if: !empty(error_message)}<?php echo $_POST['month']; ?>
-								 {else}{getMonthOfBirth()}{end} 
+								 value="{if: !empty(error_message)}<?php echo $_POST['month']; ?>{else}{getMonthOfBirth()}{end}"
 								 
 								 {if: errorLocation("month")}class="date_error"
 								 {else}class="date"{end} 
@@ -92,8 +89,7 @@ Use this page to edit your profile information.
 					</td>
 					<td>
 					<input type="text" name="parents_name" 
-								 value="{if:!empty(error_message)}<?php echo $_POST['parents_name']; ?>
-								 {else}{parents_name}{end}" 
+								 value="{if:!empty(error_message)}<?php echo $_POST['parents_name']; ?>{else}{parents_name}{end}" 
 								 maxlength="16"
 								 {if: errorLocation("parents_name")} class="error"{end} />
 					</td>
@@ -104,8 +100,7 @@ Use this page to edit your profile information.
 					</td>
 					<td>
 					<input type="email" name="parents_email" 
-								 value="{if:!empty(error_message)}<?php echo $_POST['parents_email']; ?>
-								 {else}{parents_email}{end}" 
+								 value="{if:!empty(error_message)}<?php echo $_POST['parents_email']; ?>{else}{parents_email}{end}" 
 								 maxlength="128"
 								 {if: errorLocation("parents_email")} class="error"{end} />
 					</td>
