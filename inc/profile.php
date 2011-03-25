@@ -145,7 +145,7 @@ if (!empty($_POST)){
 		////////////////////// SEND AN EMAIL \\\\\\\\\\\\\\\\\\\\
 		// Modified from tutorial on http://www.phpeasystep.com/phptu/24.html
 
-		$ccto = 'elisehein@gmail.com';
+		$ccto = 'captainbernie123@hotmail.co.uk';
 		$to = $parents_email;
 		$subject = "Your new password";
 		$header = 'MIME-Version: 1.0' . "\r\n";
