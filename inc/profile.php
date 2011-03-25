@@ -32,7 +32,7 @@ if (!empty($_POST)) {
 	$dobString .= $month;
 	$dobString .= "-";
 	$dobString .= $year;*/
-	$dob = mktime(0,0,0,$month,$day,$year);
+	$dob = mktime(0, 0, 0, $month, $day, $year);
 	//$dob = strtotime($dobString);
 
 	// Other inputs from form
@@ -63,24 +63,24 @@ if (!empty($_POST)) {
 		$error_message .= "<li> Your name has to be at least 2 characters long and contain only letters!"."\n";
 		array_push( $error_location, "first_name" );
 	}
-	
+
+
+
+	// IS THE DATE OK
 	if($dob==False) {
 		$noErrors = False;
 		$error_message .= "<li>I couldn't understand your date!
-											Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";	
-  }
-
-	// IS THE DATE OK
-	if ( empty($day) || empty($month) || empty($year) ||
-		!ctype_digit($day) || !ctype_digit($month) || !ctype_digit($year)) {
-		$noErrors = False;
-		$error_message .= "<li> You forgot to tell us when you were born!
+											Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";
+	} else if ( empty($day) || empty($month) || empty($year) ||
+			!ctype_digit($day) || !ctype_digit($month) || !ctype_digit($year)) {
+			$noErrors = False;
+			$error_message .= "<li> You forgot to tell us when you were born!
 											Please use only numbers in the format DD MM YYYY, for example 02 11 2006"."\n";
 
-		if ( empty($day) || !ctype_digit($day)) { array_push( $error_location, "day" ); }
-		if ( empty($month) || !ctype_digit($month)) { array_push( $error_location, "month" ); }
-		if ( empty($year) || !ctype_digit($year)) { array_push( $error_location, "year" ); }
-	}
+			if ( empty($day) || !ctype_digit($day)) { array_push( $error_location, "day" ); }
+			if ( empty($month) || !ctype_digit($month)) { array_push( $error_location, "month" ); }
+			if ( empty($year) || !ctype_digit($year)) { array_push( $error_location, "year" ); }
+		}
 	else if ( $day < 1 || $day > 31
 			|| $month < 1 || $month > 12
 			|| $year < 1900 || $year > 2011
@@ -102,8 +102,7 @@ if (!empty($_POST)) {
 	// IS THE PARENT'S NAME VALID
 	if ( strlen($parents_name) < 2
 		|| empty($parents_name)
-		|| is_numeric($parents_name)
-	) {
+		|| is_numeric($parents_name)) {
 		$noErrors = False;
 		$error_message .= "<li> The parent's name has to be at least 2 characters long and contain only letters!"."\n";
 		array_push( $error_location, "parents_name" );
