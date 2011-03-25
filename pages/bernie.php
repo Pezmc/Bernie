@@ -95,7 +95,7 @@ etc...
 
 /* Rest of document just deals with displaying information not getting it */
 
-$PAGE['title'] = " has suggested you, '$row[2]'";
+$PAGE['title'] = " has suggested you " . $row[2];
 $PAGE['content'] = parse("Bernie.html", $suggestion);
 
 /* swear filter */
