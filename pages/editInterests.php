@@ -64,8 +64,9 @@ if (!empty($_POST))
 		if ($noErrors)
 		{
 		  // Update the the tags field in the db (table user_interests, col tags, where id = $USER['id'])
-	   	dbQuery("UPDATE user_interests SET tags = '$serialisedTags'");
+	   	dbQuery("UPDATE user_interests SET tags = '$serialisedTags' WHERE user_id = '$user_id'");
 	   	$PAGE['confirmation_message'] = "Your new interests have been saved!";
+
 		 
 		}	else {
 			$PAGE['error_message'] = nl2br(html_entity_decode($error_message));

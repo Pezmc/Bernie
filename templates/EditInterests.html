@@ -39,20 +39,23 @@ function toggle(it) {
 		 	{end}
       <p />
 
+
       <!-- Begin interests selection form -->
       <!-- NOTE: Javascript bg toggle only works right when user clicks inside the checkbox, not on the label --> 
+
 		 
 		 <table style="width: 100%; padding-top: 20px" cellspacing="4px">
 
 		 <form name="interests" action="/Bernie/?p=editInterests" method="POST">
 		 <tr>
      {foreach:getTagArray(),i,tag}
+ 
        {if: i != 0}
 		     <section class="text">
 		     <!-- Print one table cell with the input type=checkbox and the tag name -->
 		     <!-- the value of the input is the tag id -->
 		     <td id="tag">
-							<input id="{i}" type="checkbox" name="tags[]" onChange="toggle(this)" value="{tag['id']}" {if: userLikes(i)} checked {end}/> <label for="{i}">{tag['tag']}</label>
+							<input id="{i}" type="checkbox" name="tags[]" onChange="toggle(this)" value="{tag['id']}" {if: userLikes(tag['id'])} checked {end}/> <label for="{i}">{tag['tag']}</label>
 				 </td>
 				 
 		     <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
