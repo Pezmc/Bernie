@@ -38,7 +38,7 @@
 
 					 {if:isLiked()}
 					 $("#likeButton").toggle(function() {						
-						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png");
+						sendMessage({sugId}, "unlike", this, "/Bernie/images/rate_up.png", "#dislikeButton", "/Bernie/images/rate_up.png");
 					 }, function() {
 						sendMessage({sugId}, "like", this, "/Bernie/images/rate_up_done.png");
            });
@@ -70,7 +70,7 @@
           });
 
 
-					function sendMessage(id, msg, button, imgsrc) {
+					function sendMessage(id, msg, button, imgsrc, otherbutton, otherimg) {
 						var dataString = 'p=ajax&id='+ id + '&msg=' + msg;
 						 //alert (dataString);return false;
 						 $.ajax({
@@ -79,6 +79,7 @@
 						    data: dataString,
 						    success: function() {
 							$(button).attr("src",imgsrc);
+							$(otherbutton).att("src",otherimg);
 						    },
 						    error: function() {
 							alert("Failed");
