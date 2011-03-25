@@ -22,6 +22,8 @@ if (!empty($_POST))
   // First get an array of all the tags the user likes
   // This is so the form can display liked tags as checked when the user navigates to the page
 
+	global $USER;
+	
 	$id = $USER['id'];
   $query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
   $chosenInterests = array();
