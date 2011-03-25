@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * pages/lostPassword.php
  * When the lost password item is clicked, a new randomly generated password will be sent to their parents account.
  * Similar to the one sent during the registration process.

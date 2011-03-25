@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * pages/login.php
  * System processes logging in and out, should redirect to home everytime
  *
@@ -12,9 +12,9 @@
 
 /* Special Dev Login */
 if(isset($_GET['override'])&&$_GET['override']=="login") {
-validateUser(rand(1,2)); //tempory login
-header('Location: ?p=home');
-die();
+	validateUser(rand(1,2)); //tempory login
+	header('Location: ?p=home');
+	die();
 }
 
 /* Thinking Code */

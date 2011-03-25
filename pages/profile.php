@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * pages/profile.php
  * This will allow the user to change all their personal information which they entered during step one of the sign up process
  * and allows the user to edit their interests, doing this will make new item become available to be shown when bernieing.

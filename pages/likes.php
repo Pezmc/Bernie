@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * pages/likes.php
  * Lists all the users likes, on a ten per page system. So they can be viewed
  *
@@ -17,28 +17,28 @@ $PAGE['title'] = "My Likes";
 // so does an array need to contain all the details from every liked suggestion.
 // so it can do an alternate number of dbQuerys... erm - how the fuck do I do that
 
-  $user = dbQuery("SELECT user_id,liked FROM user_interests WHERE user_id='{$USER['id']}' LIMIT 1");
-  $row = mysql_fetch_array($user);
-  $likes = unserialize($row['liked']);
-  $bigList = array();
+$user = dbQuery("SELECT user_id,liked FROM user_interests WHERE user_id='{$USER['id']}' LIMIT 1");
+$row = mysql_fetch_array($user);
+$likes = unserialize($row['liked']);
+$bigList = array();
 
-  foreach($likes as $like) {
-    $query = dbQuery("SELECT id,category,tags,title,author,image_med,description,release_year,length FROM suggestions WHERE id='$like' LIMIT 1");
-    //build array of stuff from this...
-    while ($row= mysql_fetch_array($query)) {
-      $row['category'] = strtolower($row['category']);
-      $row['description'] = truncate($row['description'], 120);
-      $bigList[] = $row;
-      
-    }
+foreach($likes as $like) {
+	$query = dbQuery("SELECT id,category,tags,title,author,image_med,description,release_year,length FROM suggestions WHERE id='$like' LIMIT 1");
+	//build array of stuff from this...
+	while ($row= mysql_fetch_array($query)) {
+		$row['category'] = strtolower($row['category']);
+		$row['description'] = truncate($row['description'], 120);
+		$bigList[] = $row;
 
-    //then the HTML can for each loop over biglist
-  }
-  
+	}
+
+	//then the HTML can for each loop over biglist
+}
+
 
 //FUCK YER ADAMAMAMAMSJDJ
 
-$extra['bigList'] = $bigList; 
+$extra['bigList'] = $bigList;
 
 $PAGE['content'] = parse("MyLikes.html", $extra);
 

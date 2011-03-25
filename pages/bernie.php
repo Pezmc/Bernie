@@ -1,9 +1,9 @@
 <?php
 
-/*/          
+/*/
  * pages/bernie.php
- * When one of the four individual icons buttons are pressed the system will loop through that category and find one that matches the users interests. 
- * It will not be one that has previously been liked or disliked (unless there are no more that haven't been liked of disliked in which case it will 
+ * When one of the four individual icons buttons are pressed the system will loop through that category and find one that matches the users interests.
+ * It will not be one that has previously been liked or disliked (unless there are no more that haven't been liked of disliked in which case it will
  * randomly choose one of the already liked items). Then it will randomly choose 3 more items with matching or similar tags to the 'feature' item.
  *
  * If a category is set it only uses that category, else chooses one at random
@@ -19,19 +19,19 @@
 
 
 $category = $GLOBAL['category'];
-if(empty($category)) { 
-  switch(floor(rand(1,4))) {
-    case 0: $category = "books";
-    case 1: $category = "web";
-    case 2: $category = "music";
-    default: $category = "tv";
-  }
+if(empty($category)) {
+	switch(floor(rand(1,4))) {
+  	case 0: $category = "books";
+  	case 1: $category = "web";
+  	case 2: $category = "music";
+  	default: $category = "tv";
+	}
 }
 if(!empty($GLOBAL['id'])) {
-  $suggestionID = $GLOBAL['id'];
+	$suggestionID = $GLOBAL['id'];
 } else {
-  $suggestionID = getNewSuggestion($category);
-  header("Location: ".getFullUrl()."&id=$suggestionID");
+	$suggestionID = getNewSuggestion($category);
+	header("Location: ".getFullUrl()."&id=$suggestionID");
 }
 $altSuggestionIDs = getAltSuggestions($suggestionID);
 
@@ -50,27 +50,27 @@ $row4 = mysql_fetch_row($suggestion4);
 
 
 $suggestion= array("sugId"=>"$suggestionID","sugImage"=>"$row[1]","sugTitle"=>"$row[2]","sugAuthor"=>"$row[3]",
-"sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]","sugDescription"=>"$row[7]","url"=>"$row[8]",
-"altSugId1"=>"$altSuggestionIDs[0]","altImage1"=>"$row2[1]","altCategory1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 85),
-"altSugId2"=>"$altSuggestionIDs[1]","altImage2"=>"$row3[1]","altCategory2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
-"altSugId3"=>"$altSuggestionIDs[2]","altImage3"=>"$row4[1]","altCategory3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
+	"sugYear"=>"$row[4]","sugLength"=>"$row[5]","sugSubTitle"=>"$row[6]","sugDescription"=>"$row[7]","url"=>"$row[8]",
+	"altSugId1"=>"$altSuggestionIDs[0]","altImage1"=>"$row2[1]","altCategory1"=>strtolower("$row2[8]"),"altTitle1"=>"$row2[2]","altDisc1"=>truncate("$row2[7]", 85),
+	"altSugId2"=>"$altSuggestionIDs[1]","altImage2"=>"$row3[1]","altCategory2"=>strtolower("$row3[8]"),"altTitle2"=>"$row3[2]","altDisc2"=>truncate("$row3[7]", 85),
+	"altSugId3"=>"$altSuggestionIDs[2]","altImage3"=>"$row4[1]","altCategory3"=>strtolower("$row4[8]"),"altTitle3"=>"$row4[2]","altDisc3"=>truncate("$row4[7]", 85));
 
 /////////////COMMMENTNSMNTS////////////////////
 if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 
 
 	$comment = sanitise($_POST['comment'],1);
-		
 
-$badWords = array("/knob/", "/dick/", "/fuck/", "/shit/" , "/cunt/", "/cunts/" , "/wanker/" , "/arse/" , "/tit/" , "/bellend/" , "/twat/", "/ass/", "/sex/", "/balls/", "/scrotum/", "/testicles/", "/cock/", "/tits/", "/suck/", "/fuck you/", "/vagina/", "/pussy/", "/penis/", "/fucking/", "/shitty/", "/stumbleupon/", "/sperm/", "/jizz/" );
-$comment = preg_replace($badWords, '*****' , $comment); 
+
+	$badWords = array("/knob/", "/dick/", "/fuck/", "/shit/" , "/cunt/", "/cunts/" , "/wanker/" , "/arse/" , "/tit/" , "/bellend/" , "/twat/", "/ass/", "/sex/", "/balls/", "/scrotum/", "/testicles/", "/cock/", "/tits/", "/suck/", "/fuck you/", "/vagina/", "/pussy/", "/penis/", "/fucking/", "/shitty/", "/stumbleupon/", "/sperm/", "/jizz/" );
+	$comment = preg_replace($badWords, '*****' , $comment);
 
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
 	$time = date("F j, Y, g:i a");
-	
+
 	$comment = mysql_real_escape_string($comment);
 	$suggestion_id = mysql_real_escape_string($suggestion_id);
-	
+
 	$sql = dbQuery("INSERT INTO comments (`suggestion_id`, `username`, `content`, `time`) VALUES ('$suggestion_id', '{$USER['username']}', '$comment', '$time')");
 }
 
@@ -101,4 +101,4 @@ $PAGE['content'] = parse("Bernie.html", $suggestion);
 /* swear filter */
 
 
- ?>
+?>

@@ -1,6 +1,6 @@
 <?php
 
-/*/          
+/*/
  * config.php
  * All of the Bernie's system config is set here
  *
