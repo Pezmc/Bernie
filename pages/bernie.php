@@ -74,13 +74,12 @@ if (isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 	$sql = dbQuery("INSERT INTO comments (`suggestion_id`, `username`, `content`, `time`) VALUES ('$suggestion_id', '{$USER['username']}', '$comment', '$time')");
 }
 
-
 $suggestion['comments'] = array();
 
 $sql = dbQuery("SELECT * FROM comments WHERE suggestion_id='$suggestionID' ORDER BY id DESC");
 if (mysql_num_rows($sql)>0) {
 	while ($row = mysql_fetch_array($sql)) {
-		$suggestion['comments'][] = array("username"=>$row['username'], "content"=>$row['content'], "time"=>$row['time']);
+		$suggestion['comments'][] = array("username"=>$row['username'], "content"=>stripslashes($row['content']), "time"=>$row['time']);
 	}
 }
 
