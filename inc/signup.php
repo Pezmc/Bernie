@@ -173,7 +173,7 @@ if (!empty($_POST)){
 		 	  ////////////////////// SEND AN EMAIL \\\\\\\\\\\\\\\\\\\\
 		// Modified from tutorial on http://www.phpeasystep.com/phptu/24.html
 
-		$ccto = 'elisehein@gmail.com';
+		$ccto = 'captainbernie123@hotmail.co.uk';
 		$to = $parents_email.','.$ccto;
 		$subject = "Welcome to Bernie! Confirm your e-mail address";
 		$header = 'MIME-Version: 1.0' . "\r\n";
