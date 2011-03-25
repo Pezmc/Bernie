@@ -41,7 +41,6 @@ if (isset($_GET['passkey'])) {
 
 		$confirmation_message = "<p style='font-size:16px'>Your password has been reset. <br />";
 		$confirmation_message .= "Your new password is <b>".$password."</b><br />";
-		$confirmation_message .= $thisUser['username'];
 		$PAGE['confirmation_message'] = nl2br(html_entity_decode($confirmation_message));
 	}
 	else {
