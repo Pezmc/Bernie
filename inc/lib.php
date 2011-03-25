@@ -197,7 +197,7 @@ function isOpen($cat) {
  */
 function userLikes($interest) {
         global $PAGE;
-	if( in_array($interest, $PAGE['chosen_interests'])) {
+	if(in_array($interest, $PAGE['chosen_interests'])) {
 		return true;
 	} else {
 		return false;
