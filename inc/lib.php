@@ -563,10 +563,11 @@ function giveInterests() {
 	// First get the array containing the interests
 	$id = $USER['id'];
 		$query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
-
+  // Unserialize the array from the db and fill it with tags
 	while($row = mysql_fetch_array($query)) {
 	  $interests = unserialize($row['tags']);  
 	}
+	// if the array is empty clear the other array
   if (!$interests)
     $interests = array();
   $allTheTags = array();
@@ -575,15 +576,18 @@ function giveInterests() {
   while($row = mysql_fetch_array($query)) {
     $allTheTags[$row['id']] = $row['tag'];
   }
+  // Get the names of the chosen interests
   $interestsAsWords = array();
   foreach($interests as $anInterest) {
     $interestsAsWords[] = $allTheTags[$anInterest];
   }
- // interests = array( 2 3 4)     = array( cat dog bitch)
+ // interests = array( 2 3 4)     = array( cat dog sports)
   return $interestsAsWords;
 
 }
-
+/*
+A fuunction for the last 3 liked suggestions
+*/
 function getLast3Liked(){
   global $USER;
   $query = dbQuery("SELECT liked FROM user_interests WHERE user_id= '".$USER['id']."'");
@@ -593,7 +597,7 @@ function getLast3Liked(){
   }
   if (!$allLikes)
     $allLikes = array();
-   $last3 = array_splice($allLikes, -3, 3);
+  $last3 = array_splice($allLikes, -3, 3);
   return $last3;
 }
 
