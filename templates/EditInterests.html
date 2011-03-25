@@ -9,8 +9,8 @@ function toggle(it) {
     it.id = 'tag';
 }
 
-function selected() {
-    this.id = 'tag_selected';
+function select(it) {
+    it.id = 'tag_selected';
 }
 
 </script>
@@ -59,7 +59,7 @@ function selected() {
 		     <!-- Print one table cell with the input type=checkbox and the tag name -->
 		     <!-- the value of the input is the tag id -->
 		     <td id="tag">
-							<input id="{i}" type="checkbox" name="tags[]" onChange="toggle(this)" value="{tag['id']}" {if: userLikes(tag['id'])} checked onLoad="selected()"{end}/> <label for="{i}">{tag['tag']}</label>
+							<input id="{i}" type="checkbox" name="tags[]" onChange="toggle(this)" value="{tag['id']}" {if: userLikes(tag['id'])} checked onLoad="select(this)"{end}/> <label for="{i}">{tag['tag']}</label>
 				 </td>
 				 
 		     <!-- While the count of the current item % 3 = 0, begin a new row in the table -->
