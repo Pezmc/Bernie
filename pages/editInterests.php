@@ -1,21 +1,25 @@
 <?php
 
-global $USER;
-	
-	$id = $USER['id'];
-  $query = dbQuery("SELECT tags FROM user_interests WHERE user_id = '$id'");
-  $likedInterests = array();
- 
-  while($row = mysql_fetch_array($query)) {
-	  $likedInterests = unserialize($row['tags']);  
-	}
-	
-	if (!$interests)
-    $interests = array();
-  $allTheTags = array();
-  
-  $liked = array();
-  $liked['likedInterests'] = $likedInterests;
+/*/          
+ * pages/editInterests.php
+ * Allows the user to edit their interests
+ * Uses the same form as includes/Form2 from the signup
+ * 
+ * Usage: Imported by index when this page is requested
+ *
+ * Devs: Niki & Elise
+ *
+/*/
 
-$PAGE['content'] = parse("includes/EditInterests.html", $liked);
+/* Thinking Code */
+//include_once('inc/editinterests.php');
+
+/* Rest of document just deals with displaying information not getting it */
+
+$PAGE['title'] = "Edit interests";
+
+$PAGE['content'] = parse("EditInterests.html");
+
+
+
 ?>

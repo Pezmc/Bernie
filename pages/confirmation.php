@@ -47,7 +47,7 @@ if ( $matchFound )
 	// If the dbQuery was successful, display a confirmation message
 	if ( $userNowActive )
 	{
-		$PAGE['content'] = "Yay! Your account has been verified! You can now log in to begin Berying!";
+		$PAGE['content'] = "Yay! Your account has been verified! You can now log in to begin Bernying!";
 	}
 }
 

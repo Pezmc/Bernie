@@ -424,6 +424,9 @@ function getAltSuggestions($mainSuggestionID) {
 	
 	while($row = mysql_fetch_array($mainSuggestion)) {
 		$mainTags = @unserialize($row['tags']);
+     if(!$mainTags) {
+		      $mainTags = array();
+     }
 		//$abc = array(1,2,3);
 		//return $abc;
   	}
@@ -603,6 +606,21 @@ function getLast3Liked(){
 
 function checkTagLike($tagId){
   
+}
+
+/*
+ * Is the comment author a girl?
+ */
+function isCommentAuthorGirl($user) {
+	$result = dbQuery("SELECT gender FROM users WHERE username = '$user'");
+	$row = mysql_fetch_array($result);
+	
+	if($result) return false; //If we don't know guess they aren't
+    if($row['gender']=="f") {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 ?>
