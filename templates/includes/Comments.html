@@ -12,11 +12,21 @@
 </p>
 </form>
 
+<!-- Function to show or hide extra comments -->
+<script type="text/javascript"> 
+function toggleVisibility()
+{
+	var element = document.getElementById('extracomments');
+	if (element.style.display != 'none' )
+    element.style.display = 'none';
+  else
+    element.style.display= '';
+}
+</script> 
 
-
-
-{foreach:comments,comment}
-
+{foreach:comments, i, comment}
+<!-- Only show the first two comments --> 
+{if: i < 2}
 					<table style="padding-top: 20px">
 						<tr>
 							<td>
@@ -32,6 +42,38 @@
 				</table>
 
 				<hr />
+		{end}
+		
 			{end}
+
+<!-- If more than two comments, display a Show all button -->
+{if: count(comments) > 1}
+<div id="extracomments" style="display: none;">
+{foreach:comments, i, comment}
+<!-- Only show the first two comments  -->
+{if: i >= 2}
+					<table style="padding-top: 20px">
+						<tr>
+							<td>
+							<img src="/Bernie/images/{if: getGender(comment['username'], 'f') }girl.png{else}boy.png{end}">
+
+							<span class="{if: getGender(comment['username'], 'f') }comment_girl{else}comment_boy{end}">{comment['username']}</span> 	said:
+
+							<br />{comment['content']}
+							<br /><span class="comment_time">{comment['time']}</span>
+
+							</td>
+						</tr>
+				</table>
+
+				<hr />
+		{end}
+		
+			{end}
+</div>
+
+<p /><p style="padding-top: 20px"><a href="#self" onclick="toggleVisibility();">Show/hide more comments</a>
+
+{end}
 </section>
 			 <!--  end of comments  -->

@@ -63,7 +63,7 @@ if(isset($_POST['comment'])&&isset($_POST['suggestion_id'])) {
 		
 
 $badWords = array("/knob/", "/dick/", "/fuck/", "/shit/" , "/cunt/", "/cunts/" , "/wanker/" , "/arse/" , "/tit/" , "/bellend/" , "/twat/", "/ass/", "/sex/", "/balls/", "/scrotum/", "/testicles/", "/cock/", "/tits/", "/suck/", "/fuck you/", "/vagina/", "/pussy/", "/penis/", "/fucking/", "/shitty/", "/stumbleupon/", "/sperm/", "/jizz/" );
-$comment = preg_replace($badWords, 'BERNIE' , $comment); 
+$comment = preg_replace($badWords, '*****' , $comment); 
 
 	$suggestion_id  = sanitise($_POST['suggestion_id'],1);
 	$time = date("F j, Y, g:i a");
