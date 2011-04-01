@@ -489,7 +489,7 @@ function getAltSuggestions($mainSuggestionID) {
     } $z++;
 	}
 	//while (((sizeof($potentialSuggestions) < 3))||($z>2));
-	while ($z>2);
+	while ($z<2);
 	if(sizeof($potentialSuggestions)<3) {
 	   //echo "I cheated";
      $allSuggestions = dbQuery("SELECT id FROM suggestions ORDER BY rand() LIMIT 3");
